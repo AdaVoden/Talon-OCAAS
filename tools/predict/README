@@ -1,0 +1,42 @@
+Predict prints out a list of times when eclipsing binary stars will be at a
+minima. Only minima which occur during local night with the star above the
+horizon and within abs(HA) < 6 are shown, unless the -a switch is used.
+The program requires two environment variables: LATITUDE, in rads +N, and
+LONGITUDE, rads +W.
+
+Usage: predict [options]
+    -a:          show all minima, regardless of dusk/dawn/up/HA limits, etc.
+    -d m/d/y:    starting date (y is full year, as in 1996); default is today.
+    -f starfile: alternate star list;
+		 default is /brutus/astrolabs/labimage/varstars/ecl-bin.txt.
+    -n minima:   number of consecutive minima to report; default is 1.
+    -s starname: name of star; default is all stars in star list file.
+
+The program requires a file of known minima for the stars to be predicted. This
+file consists of 10 columns, as follows:
+
+    Name	the name of the star.
+    RA-h,m,s	three columns for RA hour, minute and second (J2000)
+    Dec-d,m,s	three columns for Dec degrees, minutes, seconds; the first
+		of these may be immediately preceeded with + or -
+    P		period, days.
+    JD0		Julian date of a minima, referenced to heliocentric time.
+    Mag		Magnitude range as Brightest-DimmestX, where X is a
+		one-character band code such as B, V, R or I.
+
+The output consists of the several columns for each star and minimum in range,
+as follows.
+
+
+    Name	the name of the star.
+    Date	date of minimum, M/D/Y UT.
+    JD		time of minimum, JD.
+    Dusk	time of dusk the night of the minimum, UT.
+    UT		time of minimum, UT.
+    Dawn	time of dawn the night of the minimum, UT.
+    LST		time of minimum, Local Sideral Time.
+    HA		Hour angle of star at minimum, H:M:S.
+    Elev	Elevation of star at minimum, Degrees.
+
+! For RCS Only -- Do Not Edit
+! @(#) $RCSfile: README,v $ $Date: 2003/04/15 20:48:38 $ $Revision: 1.1.1.1 $ $Name:  $

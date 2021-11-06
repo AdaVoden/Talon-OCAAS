@@ -1,0 +1,157 @@
+#!/usr/bin/perl -w
+# script to burn a cdrom with OCAAS data.
+# N.B. relies on nogchkin for cleaning up after delivery.
+# if given a dir, force writing that dir.
+#
+# staging areas contain the following file once burned but not confirmed:
+# BURNED.YYYYMMDDHHMMSS
+#
+# algorithm:
+#   pick the fullest staging area not yet burned
+#   move until fills or no more to do
+#   if fills add BURNED stamp and burn disk
+
+# keep stdout in sync with stderr
+$| = 1;
+
+# tracks
+print &timestamp, "starting\n";
+
+# setup
+$mkisofs = "/usr/local/lib/xcdroast-0.96d/bin/mymkisofs-1.12b3";
+$cdrecord = "/usr/local/lib/xcdroast-0.96d/bin/cdrecord-1.6";
+$raw = "/mnt/cdimage/raw/image.raw";
+$dev = "1,00,00";
+$appid = "Iowa Robitic Observatory Archive";
+$preper = "OCAAS operator";
+$pub = "University of Iowa, Dept of Physics and Astronomy";
+$cdgap = 3000;	# consider partition full when < this many KB left
+$TELHOME = $ENV{TELHOME} or $TELHOME = "/usr/local/telescope";
+$ENV{PATH} .= ":$TELHOME/bin";
+
+# just burn if given a directory
+if (@ARGV > 0) {
+    $cdroot = $ARGV[0];
+    if ("$cdroot" eq "-help") {
+	print "Usage: $0 [dir]\n";
+	print "Purpose: burn a cdrom\n";
+	print " dir: directory to force-burn as-is\n";
+	print " else pick from built-in staging areas and burn if fills.\n";
+	exit 0;
+    }
+    goto burn;
+}
+
+# set of staging areas for making disk images
+@stgdirs = ("/mnt/cdimage/d0",
+	   "/mnt/cdimage/d1",
+	   "/mnt/cdimage/d2",
+	   "/mnt/cdimage/d3",
+	   "/mnt/cdimage/d4");
+
+# globs to mv (wrt TELHOME)
+@mvglobs = ("user/images/*.ft[sh]",
+ 	    "user/logs/*.log",
+ 	    "archive/images/*.ft[sh]",
+ 	    "archive/userlogs/*.log",
+ 	    "archive/pointmesh/*.ft[sh]",
+ 	   );
+
+# globs to cp (wrt TELHOME)
+@cpglobs = ("archive/config/*",
+	    "archive/photcal/*",
+	    "archive/calib/*.ft[sh]",
+ 	    "archive/logs/*.log",
+	   );
+
+# set cdroot to fullest of the stgdirs without BURNED.*
+$minleft = 10000000;
+foreach $sd (@stgdirs) {
+    my $left = &kbleft ($sd);
+    @burned = <$sd/BURNED.*>;
+    if (@burned == 0 and $left < $minleft) {
+	$minleft = $left;
+	$cdroot = $sd;
+    }
+}
+if (!$cdroot) {
+    print &timestamp, "All staging areas are full!\n";
+    exit 1;
+}
+
+print &timestamp, "Using $cdroot with $minleft KB left.\n";
+
+# work wrt TELHOME
+chdir $TELHOME or die "Can not chdir $TELHOME\n";
+
+# write stuff to the staging area -- goto burn if fills.
+foreach $mv (<@mvglobs>) {
+    my $left = &kbleft ($cdroot);
+    goto burn if ($left < $cdgap);
+    my $dir = $mv; $dir =~ s#/[^/]*$##;
+    my $base = $mv; $base =~ s#.*/##;
+    my $cddir = "$cdroot/$dir";
+    if (! -w $cddir and system "mkdir -p -m 775 $cddir") {
+	print &timestamp, "Can not mkdir $cddir\n";
+    } elsif (system "mv $mv $cddir/$base") {
+	print &timestamp, "Can not mv $mv $cddir/$base\n";
+    }
+}
+foreach $cp (<@cpglobs>) {
+    my $left = &kbleft ($cdroot);
+    goto burn if ($left < $cdgap);
+    my $dir = $cp; $dir =~ s#/[^/]*$##;
+    my $base = $cp; $base =~ s#.*/##;
+    my $cddir = "$cdroot/$dir";
+    if (! -w $cddir and system "mkdir -p -m 775 $cddir") {
+	print &timestamp, "Can not mkdir $cddir\n";
+    } elsif (system "cp $cp $cddir/$base") {
+	print &timestamp, "Can not cp $cp $cddir/$base\n";
+    }
+}
+
+# not full -- that's all for this time.
+print &timestamp, "$cdroot not yet full.. maybe next time.";
+exit 0;
+
+# return a string of the form "YYYYMMDDHHMMSS: "
+sub timestamp
+{
+	my ($sec,$min,$hour,$mday,$mon,$year,$wday,$yday,$isdst) = gmtime(time);
+
+	sprintf "%04d%02d%02d%02d%02d%02d: ", $year+1900, $mon+1, $mday, $hour,
+								    $min, $sec;
+}
+
+# come here to burn whatever is in $cdroot
+burn:
+
+# add stamp -- takes no space
+$dateid = &timestamp;
+$dateid =~ s/://;
+$burnstamp = "BURNED.$dateid";
+system "touch $cdroot/$burnstamp";
+
+# go for it
+print &timestamp, "burning $cdroot with stamp $burnstamp\n";
+print &timestamp, "unlinking $raw\n";
+unlink $raw;
+print &timestamp, "Starting mkisofs\n";
+!system "$mkisofs -o $raw -q -a -l -r -L -N -V \"IRO $dateid\" -P \"$pub\" -p \"$preper\" -A \"$appid\" $cdroot" or die "mkisofs failed";
+
+print &timestamp, "erasing (in case of CD-RW)\n";
+system "$cdrecord -v speed=2 dev=$dev -blank=fast";
+
+print &timestamp, "Starting cdrecord\n";
+!system "$cdrecord -v speed=2 dev=$dev -eject -data $raw" or die "cdrecord failed";
+
+print &timestamp, "$cdroot burned with stamp $burnstamp\n";
+
+# return number of kb left on device $_[0]
+sub kbleft
+{
+    `df $_[0] | awk '/dev/ {print \$4}'` + 0;
+}
+
+# For RCS Only -- Do Not Edit
+# @(#) $RCSfile: cdarchive,v $ $Date: 2003/04/15 20:47:55 $ $Revision: 1.1.1.1 $ $Name:  $

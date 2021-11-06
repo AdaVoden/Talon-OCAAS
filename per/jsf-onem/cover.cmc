@@ -1,0 +1,15 @@
+// special control for mirror cover 
+// controls via node three
+
+define cover($open)
+{
+	if($open) {
+		// signal the node
+		olevel@3 = (olevel@3&0x9F)|0x20;
+	} else {
+		olevel@3 = (olevel@3&0x9F)|0x40;
+	}
+	
+	printf("0: cover in place\n");
+}
+

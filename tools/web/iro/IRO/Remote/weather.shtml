@@ -1,0 +1,42 @@
+<HTML>
+
+<! Elwood Downey 30 April 1996 >
+
+<HEAD>
+<TITLE>IRO Weather Information</TITLE>
+</HEAD>
+<body bgcolor="white">
+<font color="red" size=6>Current Weather Conditions</font><br>
+<img src="/images/main_line.gif"><p>
+
+
+<UL>
+    <LI><a href="http://cirrus.sprl.umich.edu/wxnet/fcst/tucson.txt" target="mainframe">Forecast (simple text).</a>
+
+    <LI><a href="http://cnn.com/WEATHER/html/FortHuachucaAZ.html" target="_top">Another forecast with satellite and radar images (full screen).</a>
+
+    <LI><a href="/cgi-bin/wx_iro" target="mainframe">IRO Weather station data.</a>
+
+</UL>
+
+</BODY>
+
+</HTML>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

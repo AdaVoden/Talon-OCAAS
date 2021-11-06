@@ -1,0 +1,18 @@
+#!/bin/csh -f
+
+pc39 << _EOF_
+# Run the alt and az motors from here and back.
+
+ax			# select the az axis 
+lp0			# init counter here
+ac250000 vl240000	# set max accel and vel
+sl			# use soft limits to avoid killing the loop
+ma800000 go ma0 go
+
+ay			# select the alt axis 
+lp0			# init counter here
+ac125000 vl120000	# set max accel and vel
+sl			# use soft limits to avoid killing the loop
+ma800000 go ma0 go
+
+_EOF_

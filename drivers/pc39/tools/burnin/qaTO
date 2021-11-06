@@ -1,0 +1,24 @@
+#!/bin/csh -f
+# wait up to timeout for given char in the QA from the given axis
+
+if ($#argv != 3) then
+    echo $0':' axis char timeout
+    exit 1
+endif
+
+set ax = $argv[1]
+set ch = $argv[2]
+set to = $argv[3]
+
+onintr quit
+
+set t = $to
+while ($t > 0)
+    sleep 1
+    set qa = `pc39cmd "a$ax qa"`
+    if ("$qa" =~ *$ch*) exit 0
+    @ t --
+end
+
+quit:
+exit 1

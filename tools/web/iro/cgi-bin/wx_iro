@@ -1,0 +1,184 @@
+#!/usr/bin/perl -w
+# main weather page
+# $0 after wx_ is name of site either IRO or ATF
+# we use gnuplot, ppmtogif and jd.
+
+# set up site-specific info
+$whoami = $0; $whoami =~ s#.*wx_##;
+if ($whoami eq "iro") {
+    $sitename = "Iowa Robotic Observatory";
+    $sitedir = "IRO";
+    $ttl = "<P>Weather data at the $sitename<BR>Winer Mobile Observatory<BR>Sonoita AZ USA";
+    $wxlog = "/net/iro/usr/local/telescope/archive/logs/wx.log";
+    $tzoff = 7;
+} elsif ($whoami eq "atf") {
+    $sitename = "Automated Telescope Facility";
+    $sitedir = "ATF";
+    $ttl = "<P>Weather data at the $sitename<BR>Van Allen Hall<BR>Iowa City IA USA";
+    $wxlog = "/net/atf/usr/local/telescope/archive/logs/wx.log";
+    $tzoff = 6;
+} else {
+    die "Unknown site $whoami\n";
+}
+
+# find goodies
+$ENV{PATH} .= ":/usr/local/bin:/usr/local/telescope/bin";
+
+# set desired destination directory (wrt to cgi-bin dir)
+$outdir = "../html/$sitedir/wx";
+
+# set desired names of output files
+$outfn1 = "$outdir/wx_tp.gif";
+$outfn2 = "$outdir/wx_th.gif";
+$outfn3 = "$outdir/wx_rain.gif";
+$outfn4 = "$outdir/wx_wind.gif";
+
+# no stdout buffering
+$| = 1;
+
+# first some basic html
+print "Content-type: text/html\n\n";
+print "<HTML>\n";
+print "<HEAD>\n";
+print "<TITLE>$sitename Weather</TITLE>\n";
+print "</HEAD>\n";
+print "<body bgcolor=\"#ffffff\">\n";
+print "<font color=\"red\" size=6>\n";
+print "<center>\n";
+print "$ttl\n";
+print "</center>\n";
+print "</font>\n";
+print "<p>\n";
+print "<img src=\"/images/main_line.gif\">\n";
+
+# show the latest conditions
+$dsgn = "&#176;";
+$_ = `tail -1 $wxlog`;
+chop();
+($jd,$ws,$wd,$temp,$hum,$pres,$rain) = split();
+print "<P><H2>Conditions as of ";
+system ("jd $jd");
+print "</H2>\n";
+print "<table>\n";
+$degf = sprintf ("%.1f", 9*$temp/5 + 32);
+print "<tr><td>Temperature:</td><td>$temp ${dsgn}C ($degf ${dsgn}F)</td></tr>\n";
+print "<tr><td>Humidity:</td><td>$hum percent relative</td></tr>\n";
+$inHg = sprintf ("%.2f", $pres/33.86);
+print "<tr><td>Pressure:</td><td>$pres mBar ($inHg\")</td></tr>\n";
+$mph = sprintf ("%.0f", $ws/1.609);
+print "<tr><td>Wind:</td> <td>$ws kph ($mph mph) from $wd$dsgn E of N</td></tr>\n";
+$inr = sprintf ("%.2f", $rain/25.4);
+print "<tr><td>Rain:</td><td>$rain mm ($inr inches) since last reset</td></tr>\n";
+print "</table>";
+
+# now the graphs
+
+# build new graphs if more than an hour old
+&makegifs if (! -r $outfn1 or -M $outfn1 > .04);
+
+# display them
+print "<P>\n";
+print "The graphs below show weather data at the $sitename for the last\n";
+print "several days. The data are updated each hour. The abscissa on each\n";
+print "graph is two digits for the year followed by three digits for the\n";
+print "number of days since Jan 1, local site timezone.\n";
+print "<P>\n";
+print "Temperature and Humidy:\n";
+print "<BR>\n";
+print "<img src=\"/$sitedir/wx/wx_th.gif\">\n";
+print "<P>\n";
+print "Temperature and Pressure:\n";
+print "<BR>\n";
+print "<img src=\"/$sitedir/wx/wx_tp.gif\">\n";
+print "<P>\n";
+print "Rain:\n";
+print "<BR>\n";
+print "<img src=\"/$sitedir/wx/wx_rain.gif\">\n";
+print "<P>\n";
+print "Wind speed:\n";
+print "<BR>\n";
+print "<img src=\"/$sitedir/wx/wx_wind.gif\">\n";
+
+# finish up
+print "</BODY>\n";
+print "</HTML>\n";
+exit 0;
+
+# build the 4 graphs
+sub makegifs 
+{
+    # create a temp file
+    $tmpfn = "/tmp/wx.$$";
+    open TMPF, ">$tmpfn" or die "Can not create $tmpfn";
+
+    # check for wxlog
+    die "$wxlog: $!" if (! -r $wxlog);
+
+    # find jd step size for 100 steps
+    $_ = `head -1 $wxlog`; chop(); ($fjd,$tmp) = split();
+    $_ = `tail -1 $wxlog`; chop(); ($ljd,$tmp) = split();
+    $jdstep = ($ljd - $fjd)/100;
+
+    # open and read weather log.
+    # convert jd to year_daynumber for a sensible abscissa.
+    open WXLOG, "$wxlog" or die "Can not open $wxlog";
+    while (<WXLOG>) {
+	chop();
+	my ($jd,$ws,$wd,$temp,$hum,$pres,$rain) = split();
+	$jd -= $tzoff/24;
+	next if (defined $lastjd and $jd < $lastjd + $jdstep and $jd != $ljd);
+	$lastjd = $jd;
+	if (!$jd0) {
+	    # first time through find year, jd of jan 1, and first date.
+	    ($x,$fmn,$fdy,$x,$x,$year) = split(/ +/, `jd $jd`);
+	    chop($year);
+	    $jd0 = `jd 01010000$year.00`;
+	    chop($jd0);
+	    $fdn = int($jd-$jd0); # first whole day number -- used for x label
+	    $year -= 1900;
+	}
+	my $doy = $jd - $jd0;
+	printf TMPF "$year%08.4f", $doy;
+	$pres -= 900;
+	print TMPF " $ws $wd $temp $hum $pres $rain\n";
+    }
+    close WXLOG;
+    close TMPF;
+
+    # create the gifs
+
+    &oneplot ($outfn1, "'$tmpfn' using 1:4 title 'Temp, C', '$tmpfn' using 1:6 title 'Pressure, mBar-900'");
+
+    &oneplot ($outfn2, "'$tmpfn' using 1:4 title 'Temp, C', '$tmpfn' using 1:5 title 'Humidity, %'");
+
+    &oneplot ($outfn3, "'$tmpfn' using 1:7 title 'Rain, mm'");
+
+    &oneplot ($outfn4, "'$tmpfn' using 1:2 title 'Wind speed, kph'");
+
+    # clean up temp file
+    unlink ("$tmpfn");
+}
+
+# make one plot
+sub oneplot
+{
+    my ($fn, $pcmd) = @_;
+
+    # open a connection to gnuplot and filter through ppmtogif
+    # throw ppmtogif's chatter away.
+    open GP, "|gnuplot|ppmtogif > $fn 2> /dev/null" or die "No gnuplot";
+
+    # generate pbm on stdout
+    print GP "set terminal pbm small color\n";
+
+    # set some plot options
+    print GP "set size 0.75,0.75\n";
+    print GP "set xlabel 'YrDay, Day $fdn = $fmn $fdy; TZ = UT - $tzoff Hrs'\n";
+    print GP "set data style lines\n";
+
+    # go
+    print GP "plot $pcmd\n";
+
+    # closing will block until gnuplot is finished -- just what we want
+    close GP;
+}

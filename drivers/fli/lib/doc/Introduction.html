@@ -1,0 +1,40 @@
+<HTML>
+<HEAD>
+   <TITLE> </TITLE>
+   <META NAME="GENERATOR" CONTENT="DOC++ 3.4.3">
+</HEAD>
+<BODY BGCOLOR="#ffffff">
+
+<H2> <A HREF="#DOC.DOCU">Introduction</A></H2>
+<A NAME="DOC.DOCU">
+<BLOCKQUOTE>
+This library provides a core set of functions for programming
+FLI CCD cameras under Linux.  The type definitions, function
+prototypes, and definitions/enumerations of constant values used
+by library functions are spcified in <TT>fli.h</TT> All library
+functions return zero on sucessful completion, and non-zero if
+the function failed.  The exact nature of a failure can be found
+by treating the negative of the function's return value as a
+system error code, for example:
+<PRE>
+      if ((err = FLIOpen(port, dev, cam)))
+      {
+        fprintf(stderr, &quot;Error FLIOpen: %s\n&quot;, strerror(-err));
+        exit(1);
+      }
+      </PRE><P>Library functions use three types of handles to manage how FLI
+CCD camera hardware is accessed; a port handle of type
+<TT>fliport_t</TT>, a device handle of type <TT>flidev_t</TT>
+and a camera handle of type <TT>flicam_t</TT>.  The port handle
+represents an abstract interface to a parallel port managed by
+the FLI CCD device driver module.  The device handle represents
+an abstract interface to a physical FLI CCD camera device.  The
+camera handle represents an abstract interface to a virtual FLI
+CCD camera device, which allows multiple virtual cameras to
+share a single physical camera.<P>A simple example of how the library functions can be used is
+given in the <!1><A HREF="Example.html">Example</A> section.
+</BLOCKQUOTE>
+<DL><DT><DD></DL><P><I><A HREF="index.html">Alphabetic index</A></I> <I><A HREF="HIER.html">Hierarchy of classes</A></I></P><HR>
+<BR>
+This page was generated with the help of <A HREF="http://www.linuxsupportline.com/~doc++">DOC++</A>.
+</BODY>

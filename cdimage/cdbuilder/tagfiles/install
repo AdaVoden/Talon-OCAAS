@@ -1,0 +1,434 @@
+#!/bin/tcsh -f
+# Installation script for Talon CDROM.
+
+# must be root
+if (`whoami` != "root") then
+    echo You must be root to run this.
+    exit
+endif
+
+# intro
+if ( -x /usr/bin/clear ) clear
+echo "                This is the Talon installation script."
+
+# find the cdrom root by looking for the version signature
+set vfn = telescope/VERSION
+if (-e /mnt/cdrom/$vfn) set cdrom = /mnt/cdrom
+if (-e /cdrom/$vfn) set cdrom = /cdrom
+if (-e $0:h/$vfn) set cdrom = $0:h
+if (-e $1/$vfn) set cdrom = $1
+if (! $?cdrom) then
+    echo can not find path to cdrom -- type as argument to this script and rerun
+    exit 1
+endif
+
+# cd to cdrom base from now on
+cd $cdrom
+# make this a literal in case it's not
+set cdrom = `pwd`
+
+# get version
+set version = `head -1 $vfn`
+set pre = "pre-$version"
+
+# confirm intent
+echo ""
+echo -n "Proceed to install Talon Version $version? [y] (y/n) "
+if ("$<" == "n") then
+    echo installation cancelled.
+    exit 0
+endif
+
+# confirm licensed
+if ( -x /usr/bin/clear ) clear
+cat COPYRIGHT
+if ($status) then
+    echo Can not find COPYRIGHT
+    exit 1
+endif
+echo ""
+echo -n "Have you read the COPYRIGHT above and executed a license agreement? [n] (y/n) "
+if ("$<" != "y") then
+    echo installation not authorized.
+    exit 0
+endif
+
+# look for a former installation
+set prevUser = 0
+set prevGSC = 0
+set upgrade = 0
+set insdir = /usr/local/telescope
+setenv TELHOME /usr/local/telescope
+
+# check for talon login and group.
+# give option to preserve if find, else create new.
+echo ""
+grep -q '^talon:' /etc/passwd
+if ($status) then
+    set prevUser = 0
+else
+    set prevUser = 1
+    set ohome = `awk -F: '/^talon:/{print $6}' /etc/passwd`
+    set SETTEL = `grep 'setenv TELHOME' $ohome/.cshrc`
+    $SETTEL
+endif
+
+# if user exists, do sanity check on $TELHOME directory to see if we're reasonably sure we're there
+set sane = 1
+foreach saned (bin comm dev lib)
+    set d = $TELHOME/$saned
+    if(! -e $d) set sane = 0
+end
+
+if($sane) then
+    set insdir = $TELHOME
+    echo 'You appear to have an existing Talon installation '
+	echo 'residing at '$TELHOME'.'
+    echo ''
+	echo 'Would you like to perform an upgrade installation '
+	echo -n 'of new code and libraries only? (y/n) '
+    set ans = "$<"
+    if("$ans" == "y") then
+	set upgrade = 1
+    else
+	set upgrade = 0
+    endif
+    echo ' '
+endif
+
+
+if(! $upgrade) then
+    # ask installation directory
+    if ( -x /usr/bin/clear ) clear
+    echo -n "Base directory: [$insdir] "
+    set ans = "$<"
+    if ("$ans" != "") set insdir = $ans
+
+    # see if a gsc is still good
+    set gsc = $insdir/archive/catalogs/gsc
+    if (-d $gsc/s3730 && -d $gsc/n1500) then
+	set gscsave = $insdir/.gsc	# hide name from * when clean insdir
+	mv $gsc $gscsave	# hide from *
+    endif
+endif
+
+# if upgrading, backup existing bin and lib directories
+if($upgrade) then
+    set f = `date +%y%m%d%H%M%S`
+    set bu = "binlib-"$f".tgz"
+	echo ''
+    echo 'Archiving your current bin and lib directories '
+	echo 'in '$insdir/$bu
+	echo ''
+    cd $insdir
+    if(-e VERSION) then
+	tar czf $bu VERSION bin lib
+    else
+	tar czf $bu bin lib
+    endif
+    cd $cdrom
+endif    
+
+
+# Test the kernel versions and warn if they are different
+if(! $upgrade) then
+    set thisk = `uname -r`
+    set devk = `head -1 $cdrom/DEV_KERNEL`
+    if("$devk" != "$thisk") then
+	echo ""
+	echo "---- NOTE ----"
+	echo "The kernel version installed on your system"
+	echo "is "$thisk", which is not the same as "
+	echo "kernel version "$devk", which was used "
+	echo "to build the device drivers on this CD-ROM."
+	echo ""
+	echo "If the difference is only in revision number,"
+	echo "there will probably not be a problem, but you"
+	echo "may get a warning message in your boot.log file."
+	echo ""
+	echo "If the versions differ by a full minor version,"
+	echo "one or more the drivers may fail to work correctly."
+	if(-e $insdir) then
+	    echo ""
+	    echo "You should answer 'yes' at the next prompt asking "
+	    echo "if you wish to preserve your current installation, "
+	    echo "or otherwise backup your existing $TELHOME/dev directory."
+	endif
+	echo ""
+	echo "Contact Torus for more information."
+	echo ""
+     endif
+endif
+
+# make sure we're still here now after all that...
+cd $cdrom
+
+# preserve or clean out telhome
+if(! $upgrade) then
+    if (-e $insdir) then
+	# do not disturb $insdir itself in case it is a link or something
+	echo ""
+	echo -n "Preserve existing $insdir? [y] (y/n) "
+	set ans = "$<"
+	if ($ans == 'n') then
+	    echo cleaning out $insdir ..
+	    touch $insdir/x.x
+	    rm -fr $insdir/*
+	else
+	    set predir = $insdir/telescope.$pre
+	    echo saving $insdir in $predir
+	    set tmppre = $insdir/.x.x.$pre	# * won't see this
+	    rm -fr $tmppre
+	    mkdir -p $tmppre
+	    mv $insdir/* $tmppre
+	    if ($status) then
+		echo can not save $insdir
+		exit 1
+	    endif
+	    mv $tmppre $predir
+	endif
+    else
+	echo creating $insdir ..
+	mkdir -p $insdir
+	if ($status) then
+	    echo can not create $insdir
+	    exit 1
+	endif
+    endif
+endif
+
+# check for enough room there
+set telneeds = `du -s $cdrom/telescope | awk '{print $1}'`
+set newgsc = `du -s $cdrom/telescope/archive/catalogs/gsc | awk '{print $1}'`
+if($upgrade) then
+    # get size of current installation
+    set oldtel = `du -s $insdir | awk '{print $1}'`
+    # take gsc out of the picture... it could be a link or a directory, but 
+    # it's not relevant to the update anyway.
+    if(-e $insdir/archive/catalogs/gsc) then
+	set oldgsc = `du -s $insdir/archive/catalogs/gsc | awk '{print $1}'`
+    else
+	set oldgsc = 0 
+    endif
+    @ oldtel = $oldtel - $oldgsc
+    @ telneeds = $telneeds - $newgsc
+    @ telneeds = $telneeds - $oldtel
+
+endif
+
+set needfree = $telneeds
+
+if ($?gscsave) then
+    set needfree = $telneeds
+else
+    if(! $upgrade) @ needfree = $telneeds + $newgsc
+endif
+set free = `df -P $insdir | awk '! /Filesystem/ {print $4;}'`
+if ($free < $needfree) then
+    @ needfree = $needfree / 1024
+    @ free = $free / 1024
+    echo need at least ${needfree}MB free but only found ${free}MB
+    exit 1
+endif
+
+# check for talon login and group.
+# give option to preserve if find, else create new.
+echo ""
+#grep -q '^talon:' /etc/passwd
+#if ($status) then
+if(! $upgrade) then
+    if(! $prevUser) then
+	echo "creating new Talon login and group"
+	set ohome = /home/talon
+	/usr/sbin/useradd -M -d $ohome -s /bin/tcsh talon
+	echo enter new Talon login password now
+	echo you may ignore any "bad password" warnings that may occur
+	echo if you choose a password which is too short or too common
+	passwd talon
+    else
+	echo user talon already exists.
+	set ohome = `awk -F: '/^talon:/{print $6}' /etc/passwd`
+	echo -n "clean out the existing $ohome? [n] (y/n) "
+	set ans = "$<"
+	if ($ans == 'y') then
+	    touch $ohome/x.x
+	    rm -fr $ohome/*
+	endif
+    endif
+endif
+
+# let's do it
+set clog = "/tmp/Talon.$$"
+rm -f $clog
+echo ""
+echo No more questions ..
+echo ""
+echo Loading new software .. each file is listed in $clog
+onintr kp
+
+# copy stuff into $ohome and fix up TELHOME in .cshrc
+if(! $upgrade) then
+    if ( ! -e $ohome ) mkdir $ohome
+    (cd home; find . -print | cpio -pdvu $ohome >>& $clog)
+    set fn = $ohome/.cshrc
+    set tmp = $fn.tmp
+    cp $fn $tmp
+    sed -e 's#/usr/local/telescope#'$insdir'#' < $tmp > $fn
+    rm $tmp
+    chown -R talon $ohome
+    chgrp -R talon $ohome
+    chmod -R u+w $ohome $ohome/.[a-z]*
+endif
+
+# copy in basic stuff, with a simple progress indicator
+if($upgrade) then
+    ( cd telescope; find bin lib -print | cpio -pdv $insdir >>& $clog & )
+else
+    ( cd telescope; find . -print | cpio -pdv $insdir >>& $clog & )
+endif
+set lastfreenow = 0
+while (1)
+    set freenow = `df -P $insdir | awk '! /Filesystem/ {print $4;}'`
+    @ new = $lastfreenow - $freenow
+    if ($new == 0) break
+    set lastfreenow = $freenow
+    @ pd = ( ( $free - $freenow ) * 100 ) / $needfree
+    if ($pd < 100) /bin/echo -ne "${pd}%\r"
+    sleep 5
+end
+
+# copy or restore gsc
+if(! $upgrade) then
+    rm -fr $gsc
+    if ($?gscsave) then
+	mv $gscsave $gsc
+    else
+	( find gsc -print | cpio -pdv $gsc:h >>& $clog & )
+	set lastfreenow = 0
+	while (1)
+	    set freenow = `df -P $insdir | awk '! /Filesystem/ {print $4;}'`
+	    @ new = $lastfreenow - $freenow
+	    if ($new == 0) break
+	    set lastfreenow = $freenow
+	    @ pd = ( ( $free - $freenow ) * 100 ) / $needfree
+	    if ($pd < 100) /bin/echo -ne "${pd}%\r"
+	    sleep 5
+	end
+    endif
+
+    # fifos don't come across CDROM
+    echo making fifos
+    mkfifo -m 0660 $insdir/comm/xephem_in_fifo
+    mkfifo -m 0660 $insdir/comm/xephem_loc_fifo
+
+endif
+
+# make the new telsched user directories if they aren't already there
+if( ! -e $insdir/user ) then
+	mkdir $insdir/user
+endif
+if( ! -e $insdir/user/logs ) then
+	mkdir $insdir/user/logs
+endif
+if( ! -e $insdir/user/logs/summary ) then
+	mkdir $insdir/user/logs/summary
+endif
+
+# set owners and writable (since all will be r/o from cdrom)
+echo setting permissions
+chown -R talon $insdir/*
+chgrp -R talon $insdir/*
+chmod -R u+w $insdir/*
+
+# the odd little lpio command has different usage...
+if( -e $insdir/bin/lpio ) then
+	chown root $insdir/bin/lpio
+	chgrp root $insdir/bin/lpio
+	chmod 555 $insdir/bin/lpio
+	chmod u+s $insdir/bin/lpio
+endif
+
+
+if(! $upgrade) then
+    # point to shared libs
+    set ldc = /etc/ld.so.conf
+    grep -q telescope $ldc
+    if ($status) then
+	echo adding $insdir/lib to $ldc and running ldconfig ..
+	echo $insdir/lib >> $ldc
+	/sbin/ldconfig
+    endif
+
+    # add bootup
+    set rcl = /etc/rc.d/rc.local
+    if (-e $rcl) then
+	grep -q TELHOME $rcl
+	if (! $status) then
+	    set fn = $rcl
+	    set tmp = $rcl.tmp
+	    cp $fn $tmp
+	    sed -e '/Talon/d' -e '/talon/d' -e '/TELHOME/d' < $tmp > $fn
+	    rm $tmp
+	endif
+	echo installing auto boot startup code in $rcl ..
+	echo '' >> $rcl
+	echo 'echo Starting Talon:' >> $rcl
+	echo 'export TELHOME='$insdir >> $rcl
+	echo '$TELHOME/bin/boot >> $TELHOME/archive/logs/boot.log 2>&1' >> $rcl
+    else
+	echo no $rcl so not adding boot code.
+    endif
+
+endif
+
+# update the version stamp; add one if not there
+if(! -e $TELHOME/VERSION ) then
+	echo "(unknown version)" > $TELHOME/VERSION
+endif
+echo $version > $TELHOME/~VERSION~TMP
+echo Updated `date` from: >> $TELHOME/~VERSION~TMP
+cat $TELHOME/VERSION >> $TELHOME/~VERSION~TMP
+cp $TELHOME/~VERSION~TMP $TELHOME/VERSION
+rm -f $TELHOME/~VERSION~TMP	
+	
+# done
+if($upgrade) then
+    echo ""
+    echo Upgrade of $insdir/bin and $insdir/lib files to 
+	echo version $version is complete.
+    echo ""
+    echo Check any additional information that may have accompanied this CD-ROM
+    echo for tips about the changes, including possible editing you may need to
+    echo perform on your existing configuration files.
+    echo ""
+    echo -n 'Would you like to read the README-UPGRADE information now? (y/n) '
+    set $ans = "$<"
+    if("$ans" != "n") then
+	more $cdrom/README-UPGRADE
+    endif
+else
+    echo ""
+    echo Installation is complete.
+    echo ""
+    echo Now you really must study the manual. Then edit the sample config files
+    echo in $insdir/archive/config to match your site.
+endif
+echo ""
+echo Email support is available at stohmert@torusoptics.com.
+echo ""
+echo "Welcome, Talon  user."
+echo ""
+
+exit 0
+
+kp:
+echo ""
+echo Installation has been aborted part-way through. Suggest not preserving
+echo $insdir and $ohome if the installation is repeated.
+echo But if you have any config files from a prior install, it might be
+echo useful to copy them somewhere for reference.
+
+/bin/kill `ps | awk '/cpio/ {print $1}'`
+
+# For CVS Only -- Do Not Edit
+# $Id: install,v 1.1.1.1 2003/04/15 20:47:56 lostairman Exp $

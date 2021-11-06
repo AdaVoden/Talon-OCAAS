@@ -1,0 +1,178 @@
+			Description of Photom
+
+
+'photom' is a program which performs aperture photometry on sparse-field star
+images. It is driven by a configuration file, described below. The config file
+lists several .fts image files and the locations of several fixed stars. The
+first image is a reference image and its last star is a reference star. The
+config file may also specify the location of a "wanderer" on two images and the
+location will be interpolated on all other images.
+
+The locations of stars are givin by their RA and Dec. The images should have
+WCS header fields for these to work, but we also allow the U of IA local
+RA and DEC nominal fields if present, though these will always be of much
+lesser accuracy.
+
+Photom produces one line of output per image with the following initial fields:
+
+    file number
+    file name
+    airmass
+    pixel displacements from previous image
+    value to be subtracted from JD to get heliocentric time
+    Heliocentric JD (minus a bias of 2449000.0)
+    Median sky value around reference star on this image
+    RMS of sky value
+
+Subsequent columns are in sets per star. Each set consists of:
+
+    magnitude difference
+    error estimate
+    geometric mean of horizontal and vertical full-width-half-max values, pixels
+    ratio of horizontal and vertical full-width-half-max values
+    X image location of brightest pixel in star
+    Y image location of brightest pixel in star
+
+In a given row, the magnitudes are relative to the star in the last column. The
+magnitude reported in the last column is relative that star on the first image.
+Estimates of the error of each brightness calculation are also given.
+
+Follows is a description of the command line options photom recognizes:
+
+-c
+
+    Crop: Find a bounding box that contains just the given stars
+    and replace each image file with a version cropped to this
+    size (plus a border of 20 pixels). The box is adjusted for the aligned
+    location of the stars in each image so the location of the box will differ
+    for each image but they will all have the same size box. Photom does this
+    IN PLACE forever destroying the original image files. To record the
+    cropping action that photom has performed it adds two INTEGER fields to
+    the FITS header of each such cropped image: CROPX and CROPY. The effective
+    bounding box size is just the size of the image, of course.
+
+-f
+
+    Include the two FWHM columns; they are not printed by default.
+
+-x
+
+    Include the two X and Y columns; they are not printed by default.
+
+-v
+
+    Verbose: Generate extra output. One line per star per image consisting of:
+
+	star number
+	x=     X location of star
+	y=     Y location of star
+	max=   maximum pixel value of star
+	r=     radius where star ends and noise begins
+	sum=   sum of all pixels within r
+	n=     number of pixels within r
+	nmed=  median pixel value in noise annulus
+	nmean= mean pixel value in the noise annulus
+	nsd=   sd within the noise annulus
+
+
+
+Follows is a description of the photom configuration file format:
+
+all blank lines and lines which begin with # are ignored. Names which
+appear in BOLD FACE are keywords that should appear in the file; case is
+ignored.
+
+first line consists of two integer parameters, separated by one or more spaces:
+
+    rsearch:  max radius to search for brightest pixel from given coordinate
+
+    apradius: the aperture radius to use, in pixels. If set to 0, the
+	      aperture will be automatically determined using the reference
+	      star on the reference image, based on that radius which maximizes
+	      the SNR. Use 0 if unsure.
+
+FILES:
+<file>
+<file>
+<file>
+...
+
+where:
+    <file> can be any of:
+	a simple file name;
+	a range; ranges must be of the form Xaa-bb.fts, where:
+	    X is anything;
+	    aa-bb is a starting and ending hex range, such as 10-a0.
+	or the name of a file containing file names or ranges. Must be
+	    preceded with a * to makr it as a file of files.
+
+    There is no fixed limit to the number of files which may be given.
+
+FIXED:
+<RA Dec>
+<RA Dec>
+<RA Dec>
+    ...
+
+    where:
+	<RA Dec> are star coordinates. These may be in H:M:S and D:M:S format;
+	or decimal degrees (yes, even RA is given in decimal degrees).
+
+WANDERER: file1 RA Dec file2 RA Dec
+
+    This line is optional. If present, it specifies the location of an object
+    assumed to move linearly in time and space between its location on the
+    two files indicated. The format of the RA and Dec fields are as for fixed
+    objects, above. Its position on all other files will be based on these
+    known positions and times.
+
+No more than 100 stars may be specified, including the wanderer if present.
+
+Sample:
+
+# Sample photom config file
+10 10 .1 
+
+# the files
+FILES:
+gabb2114.fts
+gabb2216.fts
+gabb2218.fts
+gabb221a.fts
+gabb221c.fts
+gabb221e.fts
+gabb2220.fts
+gabb2222.fts
+gabb2224.fts
+gabb2226.fts
+gabb2228.fts
+gabb222a.fts
+gabb2204.fts
+gabb2206.fts
+gabb2208.fts
+gabb220a.fts
+gabb220c.fts
+gabb222c.fts
+gabb220e.fts
+gabb2210.fts
+gabb2212.fts
+gabb222e.fts
+gabb2230.fts
+gabb2232.fts
+gabb2234.fts
+gabb2236.fts
+gabb2238.fts
+gabb2236.fts
+gabb2238.fts
+
+# the fixed stars
+FIXED:
+0:39:09.6 -0:26:37
+0:39:45.2 -0:19:18
+0:39:44.0 -0:32:00
+
+# an asteroid
+WANDERER: gabb2114.fts 0:39:22.7 -0:24.57 gabb2236.fts 0:39:15.0 -0:23:09
+
+! For RCS Only -- Do Not Edit
+! @(#) $RCSfile: README,v $ $Date: 2003/04/15 20:48:36 $ $Revision: 1.1.1.1 $ $Name:  $

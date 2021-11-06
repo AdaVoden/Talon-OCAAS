@@ -1,0 +1,69 @@
+dxpc Change Log
+
+3.7.0 (Septmber 7, 1997)
+
+Added compression for CloseFont, ConvertSelection, CreateNotify,
+DeleteProperty, FreeColors, FreeCursor, GetAtomName, ListFonts,
+ReparentNotify, SelectionClear, SelectionRequest, and QueryBestSize messages
+
+Improved compression slightly for ChangeGC, CreateGC, CreateWindow,
+ConfigureWindow, and FillPoly requests
+
+Improved the text compression slightly (lengthened the context for
+next-character prediction, added logic to use 1st-order predictive
+model if 3rd-order model hasn't been built yet (helps improve prediction
+during startup))
+
+Added detection of the "accept requires a size_t third arg" OSes in
+the autoconf configure script (using the original logic from dxpc-3.3.0)
+
+Fixed a bug in ServerCache.C that was introduced in 3.6.1 (which was a beta
+only release).
+
+3.6.0 (May 26, 1997)
+
+Improved compression for various X messages:
+  - PolyFillRectangle
+  - AllocNamedColor
+  - LookupColor
+  - KeyPress
+  - KeyRelease
+  - ButtonPress
+  - ButtonRelease
+
+3.5.0 (February 27, 1997)
+
+Changed checking of version numbers so that it prints out both numbers
+(local and remote) to aid in resolving version problems.
+
+Added ability to fork and run as a daemon process (-f cmdline option).
+(Thanks to Brian Williams (epabcw@epa.ericsson.se) for the idea.
+
+Added ability to have the client initiate the connection to the server.
+
+Also, -k cmdline option will search for a daemonized dxpc and send it
+SIGTERM.
+
+Many documentation fixes related to changes implemented in 3.3.1 (an
+unreleased version, whose changes didn't make it into the docs for 3.4.0).
+
+dxpc got a mailing list!  To subscribe, send a message with a blank
+subject to listproc@mcfeeley.cc.utexas.edu with the words
+	sub dxpc yourfirstname yourlastname
+in the body of the message.
+
+3.4.0 (November 14, 1996)
+
+New maintainer: Zachary Vonler (lightborn@mail.utexas.edu)
+
+dxpc now has a home page:
+  http://ccwf.cc.utexas.edu/~zvonler/dxpc/
+
+Implemented exchange of version numbers when connection between client and
+server is first established so that in the future people won't have
+problems trying to run incompatible versions.
+
+Server and client switched cmdline args, so that the client needs no
+parameters, and the server needs the hostname of the remote machine.
+
+No change history is available for versions prior to 3.4.0.

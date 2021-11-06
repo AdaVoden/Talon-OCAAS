@@ -1,0 +1,38 @@
+#!/usr/bin/perl -w
+# manage the comm/tts.in fifo
+# just send to festival on deepsky
+# We also implement OCAAS locking so we can be a "real daemon".
+
+# go to comm directory
+chdir "$ENV{TELHOME}/comm" || die "Can not chdir to comm\n";
+
+# check or lock
+$lockfn = "ttsd.pid";
+if (open (LOCK, "< $lockfn")) {
+    chomp ($lckpid = <LOCK>);
+    die "Already running\n" if (kill (0, $lckpid) || $! == 1);
+    close LOCK;
+}
+open (LOCK, "> $lockfn") or die "Can not create $lockfn.\n";
+print LOCK "$$\n";
+close LOCK;
+
+# connect to the fifo
+$fifofn = 'tts.in';
+unless (-p $fifofn) {
+    unlink ($fifofn);
+    system ("mkfifo $fifofn") && die "Can not mkfifo $fifofn\n";
+}
+open FIFO, "+< $fifofn" or die "Can not read $fifofn\n";
+
+# start festival
+open FEST, "| rsh deepsky festival --pipe" or die "Can not start festival\n";
+select FEST; $| = 1;
+
+# copy fifo over to festival
+&sayit ($_) while (<FIFO>);
+
+sub sayit
+{
+    print FEST "(SayText \"@_\")\n";
+}

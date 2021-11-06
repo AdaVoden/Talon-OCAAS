@@ -1,0 +1,14 @@
+# Master file for the pc34 driver.
+# This is new in SVR4.2; ergo, the first non-comment line must be `$version 1'.
+# for a complete description, read the `master' man page.
+# `idinstall -k -a pc34' copies this to /etc/conf/mdevice.d/pc34. (-k keeps)
+# format: module-name prefix characteristics order bmaj cmaj
+#   characteristics: all sorts of things; c means this is a char driver
+#   order: order to call init and start; 0 means don't care.
+#   bmaj: block device major number, if not using auto-assignment.
+#   mmaj: char device major number, if not using auto-assignment.
+
+$version 1
+$entry open close read write chpoll intr
+
+pc34	pc34	c	0	0	10

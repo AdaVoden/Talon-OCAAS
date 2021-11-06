@@ -1,0 +1,41 @@
+<HTML>
+<HEAD>
+   <TITLE>int FLIGetVisibleArea</TITLE>
+   <META NAME="GENERATOR" CONTENT="DOC++ 3.4.3">
+</HEAD>
+<BODY BGCOLOR="#ffffff">
+
+<H2>int <A HREF="#DOC.DOCU">FLIGetVisibleArea</A>(flicam_t cam, int *ul_x, int *ul_y, int *lr_x, int *lr_y)</H2>
+<BLOCKQUOTE> Get the visible area of the given virtual camera.</BLOCKQUOTE>
+
+<A NAME="DOC.DOCU">
+<HR>
+<H2>Documentation</H2>
+<BLOCKQUOTE>
+Get the visible area of the given virtual camera.  This function
+finds the <EM>visible</EM> area of the CCD array for virtual camera
+<TT>cam</TT>.  This area is specified in terms of a upper-left
+point and a lower-right point.  The upper-left x-coordinate is
+placed in <TT>ul_x</TT>, the upper-left y-coordinate is placed in
+<TT>ul_y</TT>, the lower-right x-coordinate is placed in
+<TT>lr_x</TT>, the lower-right y-coordinate is placed in
+<TT>lr_y</TT>.<P></BLOCKQUOTE>
+<DL>
+</DL>
+<DL><DT><DT><B>Parameters:</B><DD><B>cam</B> -  Virtual camera to find visible area of.
+<BR><B>ul_x</B> -  Pointer to where the upper-left x-coordinate is to be
+placed.
+<BR><B>ul_y</B> -  Pointer to where the upper-left y-coordinate is to be
+placed.
+<BR><B>lr_x</B> -  Pointer to where the lower-right x-coordinate is to be
+placed.
+<BR><B>lr_y</B> -  Pointer to where the lower-right y-coordinate is to be
+placed.
+<BR><DT><B>Returns:</B><DD>  Zero on success.
+<BR>  Non-zero on failure.
+<BR><DT><B>See Also:</B><DD><!1><A HREF="FLISetImageArea.html">FLISetImageArea</A>
+<BR><!1><A HREF="FLIGetArrayArea.html">FLIGetArrayArea</A>
+<BR><DD></DL><P><I><A HREF="index.html">Alphabetic index</A></I> <I><A HREF="HIER.html">HTML hierarchy of classes</A> or <A HREF="HIERjava.html">Java</A></I><P><HR>
+<BR>
+This page was generated with the help of <A HREF="http://www.linuxsupportline.com/~doc++">DOC++</A>.
+</BODY>

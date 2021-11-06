@@ -1,0 +1,359 @@
+UPGRADING Talon
+===============
+If you are upgrading from an older version of Talon, 
+this file contains some information you may need in
+order to update your configuration files and to 
+make other adjustments.  Read the caveats for ALL 
+versions numbered higher than your current release, 
+and follow the instructions shown there.
+
+
+If you are upgrading from an older installation of
+OCAAS, please consult Torus Technologies for detailed
+information on the upgrade procedure for your
+installation.  
+
+You may choose to upgrade as an option when running
+the install program from the CD-ROM.  This option
+will copy only the programs in the "bin" and "lib" 
+directories of CD-ROM, but none of the config files,
+tables, or other data, nor will it create or repair
+any damaged user setting or boot configuration.  
+The original versions of your "bin" and "lib" 
+directories will be saved in a gzip/tar archive
+in your $TELHOME directory.
+
+Note that some of the upgrades will require you
+to copy configuration files from the CD-ROM or 
+edit your existing files.  Please read the
+upgrade notes carefully.
+
+
+The primary feature changes are also outlined for
+each release noted.
+
+
+Version 2.0.11
+==============
+
+Changes to Camera config files:
+-------------------------------
+If updating from a version prior to this, you must
+include the file "ip.cfg" in your archive/config directory.
+You will find this file in the telescope/archive/config 
+directory of the CD.
+
+You must also add the following lines to your camera.cfg
+file:
+
+DRIVER	/usr/local/telescope/dev/ccdcamera
+AUXCAM	0
+
+(this assumes your $TELHOME directory is /usr/local/telescope.)
+
+
+Version 2.0.12
+==============
+
+Addition of Bad Column Map
+--------------------------
+Programs/libraries changed: 
+	 calimage
+	 libfits.so
+	 Camera  (3.36)
+
+A "Bad Column Map" may be constructed, allowing for the 
+automatic removal of nonresponsive runs of pixels, occurring
+in columns, that are sometimes found as defects in a CCD
+camera.  The bad column map need only be created once for
+your camera, as the defects are permanent and unchanging.
+A bad column map is a text file that resides in your
+$TELHOME/archive/calib directory. It has the name
+bad00000.map, where the zeros may optionally be replaced 
+with any numbers, but the highest numbered file will be 
+the one chosen.  Unless you are using multiple cameras, 
+however, there is little reason to have more than
+one bad column map.
+
+You can identify bad columns by bringing up a dark image
+in Camera, and using the mouse and the x,y readouts, noting 
+the positions of the column defects.  Record the x value as
+the column number, and if the defect is not the entire column,
+record the starting and ending y values for the section to 
+remove.  This information can be typed into the bad column
+map file (bad00000.map), with each bad column entry a 
+separate line of the file, with three numbers:
+<col> <begin> <end>
+where <col> is the column number, <begin> is the beginning
+y value, and <end> is the ending y value (inclusive). 
+For example, to remove column 53, your entry might say
+53 0 10000
+which would remove an entire column (values bigger than
+your chip size are clipped to fit).  To remove a partial
+column defect in row 129, an entry might read:
+129 1687 1987
+which would remove a the 300 pixel run from the middle
+part of column 129.
+
+You can also create a bad column map automatically
+using an image as a reference.  However, it is usually
+easier to do this by hand than to find the proper range
+settings for the autodetection process.  Nevertheless,
+you may find this useful for creating a basic map
+that you can later edit.  To do this, use the
+calimage program.  Calimage -M will create a new
+bad map file.  Use the -w, -s and -r options to set
+the detector tolerances to match the bad column image
+you give it as a reference.  
+
+Once your bad column map is created, you can use it to
+correct for images a few ways.  The first is easiest --
+it is automatic. Any images processed by the "postprocess"
+script (normally any scheduled images) will automatically
+have the bad column removal done as part of the 
+normal image processing.
+
+Using Camera, control over the removal of bad pixels
+may be handled with the corrections menu, which will show
+the bad pixel map being used (and allow you to change it).
+If you choose to automatically correct images, this 
+correction will be applied before the Bias, Thermal, and
+Flat corrections are made.
+
+You may also use the command line tool calimage to 
+correct for bad columns in much the same way as for
+the Bias, Thermal, and Flat corrections.  Bad Column
+correction is applied automatically as part of
+the -C option of calimage.  To perform only the
+bad column removal and none of the other
+corrections, use the -X option.  Type
+calimage on the command line alone for more 
+options of this utility.
+
+Bad Column removal is achieved by replacing the
+designated pixels with the mean of the pixels on either
+side. If there happen to be adjacent bad columns, then
+the mean of the first good pixel to either side of the
+span is applied evenly to the affected pixels.
+
+An image that has had bad pixels removed has a field
+added to the FITS header named BADPXCOR which names
+the map file used.  An image that has been corrected
+previously with a bad column map cannot be corrected
+for again in this manner.
+
+
+CAVEAT:
+Bad Column Removal does not support binning settings 
+other than 1:1.  This problem will be addressed in the
+future.
+
+Version 2.0.13
+==============
+
+Changes made to find.cmc script
+--------------------------------
+The CSIMC controller code for finding homes
+was updated to work better with encoder index home switches.
+
+Bad Columns removed from correction images
+------------------------------------------
+Using Camera (3.37), checking the "automatically apply corrections" button
+during the creation of correction images will apply bad column corrections
+to these images as they are taken.  If this button is off, these corrections
+are not applied.
+
+Corrections added to autofocus
+------------------------------
+Corrections for columns/bias/thermal/flat were previously not applied to
+images taken during autofocus.  New keywords added to the focus.cfg file
+manage this new feature.  If the config file is not updated, no change is
+made.  The following may be added to the focus.cfg file:
+
+! corrections to apply during autofocus
+OFIXBADCOL      1   ! 1 to apply bad column correction, 0 or not here = no bad column fix
+OUSECORIMGS     1   ! 1 for bias/thermal/flat corrections, 0 or not here = no corrections
+ 
+! define if needed
+! OBADCOLMAP 	 /home/ocaas/mybadmap.map   ! use to force a specific column map, else use default
+! OBIASIMG       /home/ocaas/mybiasimg.fts  ! use to force a specific bias image, else use default
+! OTHERMIMG      /home/ocaas/mythermimg.fts ! use to force a specific thermal image, else use default
+! OFLATIMG       /home/occas/myflatimg.fts  ! use to force a specific flat image, else use default
+
+Telsched font updated
+---------------------
+A problematic font used in telsched has been changed
+
+Red Paddle Jog focus light
+--------------------------
+A focus jog would display an errant red light, although nothing was wrong.
+This has been addressed.
+
+
+
+Version 2.0.14
+==================
+
+OCAAS is being renamed to Talon.  You will note some references to Talon and
+also to OCAAS. These are synonymous.  The use of the name OCAAS will gradually
+be phased out.
+
+Kernel 2.2.12-20 (Red Hat 6.1) was used to create this version, avoiding many
+of the kernel and library related problems of 2.0.13 for update installs.
+This is the 'standard' kernel version used historically for most installations.
+
+No 2.4.x drivers exist on this CD.  If 2.4.x drivers are needed, contact
+Torus for information.
+
+
+Version 2.0.15
+==============
+Talon has been updated in this release with the introduction of a few new
+items:
+
+Support for FLI cameras added
+-----------------------------
+Cameras from Finger Lakes Instruments are now supported.  
+This is a preliminary version of the driver and has not been extensively
+tested, but initial reports are positive.
+
+Add the following line to the telModules section of your boot.cfg file:
+   -f $TELHOME/dev/fli.o io=0x378 irq=7 dma=3 major=254
+Note, however, that the "io" "irq" and "dma" settings may differ on your
+system, although these values should be fairly standard.
+
+Contact Torus if you wish to make use of an FLI camera on your system
+using this driver.
+ 
+
+Mosaic -- a FITS image divide / recombine program added
+-------------------------------------------------------
+Mosaic is a command line utility that will allow a single large FITS image
+to be cut into several smaller components.
+Although "crop" performs a similar task, mosaic will create multiple
+cropped images simultaneously.
+Each is adjusted for proper coordinates.  
+Mosaic will also allow individual component files of a single image to be
+combined again to form a complete image.
+
+"Virtual" support added ("Canary")
+------------------------------
+As a diagnostic aid, a simple virtual tool has been developed.  
+This allows Talon to be used without a telescope.  The "camera" is a web
+link to the STScI database online.
+This mode is useful for testing some of the configuration and scheduling
+features of Talon without the availability of actual hardware.
+Virtual mode is turned on by the presence of a file named "virtual" existing
+in the $TELHOME/archive/config directory.  The camera.cfg and vcam.cfg file are
+also used by the "Canary" system.
+
+If you have just done a full install, the system is set to run in virtual mode
+by default.
+You must remove the "virtual" file from your config directory, and modify the
+other configuration files to match those of your site before it will work
+properly with your telescope installation.
+
+Torus should have your original installation configuration settings for your
+site on record if you do not have these files available yourself.
+
+To enable virtual mode, create a file named "virtual" (i.e. 'touch virtual')
+in the config directory.
+
+Note that filter.cfg and focus.cfg MUST set IHAVE and OHAVE (repectively) to
+0 for use with Canary, as it does not yet support these systems.
+No weather system support is included currently either. Virtual camera
+support requires camera.cfg and vcam.cfg to be properly set.
+
+Canary is not intended for general use.
+
+
+++++++++++++++++++++++++++++++++++++
+Version 2.0.16
+==============
+
+"OCAAS" name removed; OCAAS user/group replaced by Talon
+--------------------------------------------------------
+All internal references to the name "OCAAS" have been removed.  The
+installation program will create a new user named "talon", not "ocaas".
+If you are upgrading from an older version, you should use the new user.
+If you wish to continue using 'ocaas' as a user under Talon, you need
+to add 'ocaas' to the user group 'talon'.  (You can give other users
+rights to use Talon also, by similarly adding them to the 'talon' user
+group).  Consult the documentation for your Linux distribution for
+details on how to administer user groups and permissions.
+
+
+xobs
+----
+The "autofocus" feature of xobs has been updated to support the FLI and
+other cameras.  Note that the autofocus algorithm has not changed.  This
+is a matter for future update.
+
+camerad
+-------
+A minor change in the way that the "EXPOSING" status of the camera is
+reported has been implemented.  Also, an external hook to allow for
+alternate types of postprocessing has been added.  If the camera.cfg
+file contains the keyword "SIGNALCMD" then the given command will be
+executed with the recently saved filename as the parameter.
+Example:
+	SIGNALCMD	/usr/local/telescope/bin/camaccept
+This will execute a command named "camaccept" to perform certain
+post-process operations on each file camerad takes.
+This keyword is optional and is not normally part of the camera.cfg
+file.
+
+telsched
+--------
+Some updates to timing and dome status reporting have been made.
+Also, preliminary support for additional keywords controlling focus
+position and alt/az exposures have been added.  However, these new
+features lack the corresponding GUI components.  Such functionality
+is envisioned as a more comprehensive revision of Talon in the future.
+
+gpsd
+----
+The GPS daemon has been updated with new features and logging options.
+Check the command usage (gpsd --help) for more information.
+
+
+telescoped / Dome updates
+-------------------------
+The telescope daemon has been updated in minor fashion for improvements
+to the general axes control.  Extensive revision of the dome control
+portion of this daemon has been made.
+
+Virtual mode (Canary)
+---------------------
+The virtual mode (Canary) introduced in the previous version has been
+updated to allow support for the focus and filter axes (no need to
+disable these in the config files).  With minor specific exceptions,
+the virtual telescope should behave essentially the same as the
+physical model using the same config files.
+The virtual camera has also been updated to better report errors and
+to support additional databases.  This is not officially supported,
+but information about this is available by contacting Torus.
+The presence of a file named "virtual" in $TELHOME/archive/config
+turns this feature on or off.  To enable virtual mode, enter the
+command "touch virtual" while within this directory.
+To turn it off, enter the command "rm -f virtual".
+
+
+Flipfits -- rotation
+--------------------
+The "flipfits" command has been updated with two new options (-xl and -xr)
+which allow you to "rotate" left or right 90 degrees.  This effectively
+transposes the X and Y axes of the FITS file.  These commands can be used
+in conjuction with the other flip options (-r, -c) to produce different
+orientations.  See "flipfits --help" for more information.
+
+Calimage -- bug fix
+-------------------
+A bug fix that prevented proper image corrections for systems that did
+not create a "bad column map" has been fixed.
+
+Mosaic -- bug fix
+-----------------
+The "mosaic" program will now adjust the RA offset properly according
+to changing declination.
+

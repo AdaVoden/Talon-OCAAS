@@ -1,0 +1,249 @@
+#!/bin/csh -f
+
+
+# This script is designed to run
+# from the home directory of cdbuilder
+# it is designed to create an ocaas installation CD
+# Variables may be set here to change the environment
+
+# The basic setup has the cdbuilder scripts in the $ROOTDIR folder
+# The source code is pulled from CVS and built in the $SOURCEDIR folder
+# The cdimage is created in the $CDROOT folder
+
+if(`whoami` != "root") then
+   echo Should run as root.  Enter root password
+   su -c ./makecd
+   exit
+endif
+
+# Root directory is normally our /home/cdbuilder folder
+set ROOTDIR = (/home/cdbuilder)
+#we need to identify our source base directory here to build scripts
+set SOURCEDIR = ($ROOTDIR/source)
+#and the root for the cd image
+set CDROOT = (/cdimages/talon)
+#set where the tag (stamp) files are
+set TAGFILES= ($ROOTDIR/tagfiles)
+#set to where the manual is
+set MANUALFILES= ($ROOTDIR/manual/ocaas.pdf $ROOTDIR/manual/CSIMCRefMan.rtf)
+
+if(!($?CVSROOT)) then
+   echo You must set up a CVS environment
+   echo including CVSROOT, logging in if necessary
+   echo do this first, then continue
+endif
+
+cvs login
+
+#set telhome to be the version in our image
+setenv TELHOME $CDROOT/telescope
+
+#make a link to the root that burncd can see
+rm -f $ROOTDIR/cdroot
+ln -s $CDROOT $ROOTDIR/cdroot
+
+# We should run from the directory /home/cdbuilder
+echo -n 'Running as '
+whoami
+echo
+
+set TAG = `head -1 $TAGFILES/VERSION`
+echo -n 'What Version do you wish to build? ['$TAG'] '
+set ans = "$<"
+if ("$ans" != "") set TAG=($ans)
+
+echo -n 'Directory for CD Image: ['$CDROOT'] '
+set ans = "$<"
+if ("$ans" != "" ) set CDROOT=($ans)
+
+echo 'Checking '$CDROOT' for needed structure '
+set defprim = 'n'
+# make directories if they don't already exist
+if(! -e $CDROOT) mkdir $CDROOT
+if(! -e $CDROOT/gsc) then
+    mkdir $CDROOT/gsc
+    set defprim = 'y'
+endif
+if(! -e $CDROOT/telescope) mkdir $CDROOT/telescope
+if(! -e $CDROOT/telescope/comm) mkdir $CDROOT/telescope/comm
+if(! -e $CDROOT/telescope/user) mkdir $CDROOT/telescope/user
+if(! -e $CDROOT/telescope/archive) then
+    mkdir $CDROOT/telescope/archive
+    mkdir $CDROOT/telescope/archive/photcal
+    set defprim = 'y'
+endif
+if(! -e $CDROOT/telescope/xephem) mkdir $CDROOT/telescope/xephem
+if(! -e $CDROOT/home) mkdir $CDROOT/home
+
+#more dir creation if needed
+if(! -e $SOURCEDIR) mkdir $SOURCEDIR
+
+echo -n 'Prime CD Image with catalog files? (y/n) ['$defprim'] '
+set ans = "$<"
+if("$ans" == "") set ans = $defprim
+if ("$ans" == "y" ) then
+    set catmnt = (/mnt/cdrom)
+    echo -n 'Source disk for prime copy? ['$catmnt'] '
+    set ans = "$<"
+    if("$ans" != "") set catmnt = ($ans)
+    
+    echo Transferring:
+    foreach cpd (home gsc telescope/archive telescope/xephem)
+	cd $catmnt/$cpd;
+	echo $cpd
+	tar cf - . | (cd $CDROOT/$cpd; tar xf -)
+    end
+endif
+
+set SITE = "virtual"
+echo -n 'What site do you wish to build for?  ['$SITE'] '
+set ans = "$<"
+if("$ans" != "") set SITE = $ans
+
+cd $ROOTDIR
+
+if($status) exit 1;
+
+# clear out everything
+echo "clearing source image"
+rm -fr $SOURCEDIR/*
+echo "clearing $TELHOME/bin"
+rm -fr $TELHOME/bin
+echo "clearing $TELHOME/lib"
+rm -fr $TELHOME/lib
+echo "clearing $TELHOME/dev"
+rm -fr $TELHOME/dev
+ln -s $SOURCEDIR/torus/talon $SOURCEDIR/telescope
+
+# get code from CVS
+echo "getting build script"
+cd $SOURCEDIR
+cvs -Q checkout -r$TAG torus/talon/bin
+
+# Link to our source directory from root home
+if(-e ~/telescope) rm -f ~/telescope
+ln -s ~/telescope $SOURCEDIR/telescope
+
+# make a 'fake' xephem directory -- Make.all tests for this to determine devroot
+if(! -d $SOURCEDIR/telescope/GUI) mkdir $SOURCEDIR/telescope/GUI
+if(! -d $SOURCEDIR/telescope/GUI/xephem) mkdir $SOURCEDIR/telescope/GUI/xephem
+
+if ( ! $?CC ) setenv CC gcc
+setenv MOTIFI "-I$SOURCEDIR/telescope/Motif -I/usr/X11R6/include"
+setenv MOTIFL "-L$TELHOME/lib -L/usr/X11R6/lib"
+setenv MOTIFLIBS "-lXm -lXp -lXpm -lXt -lXext -lXmu -lX11"
+
+set history = 100
+
+set path = ($path $SOURCEDIR/telescope/bin)
+set path = ($path $TELHOME/bin)
+set path = ($path $SOURCEDIR/telescope/CSIMC/icc/bin)
+
+# -------------------
+# do the build
+# ------------------
+cd $SOURCEDIR 
+echo
+echo ----------------------------------------------------
+echo Doing the $TAG build for $SITE.  
+echo This will take a while.  
+echo Results may be found in $ROOTDIR/build.log.
+echo ----------------------------------------------------
+echo $TAG > $TAGFILES/VERSION
+# echo "Note: Not applying tag; latest version source will be built"
+echo -n "Version stamp is: "
+head -1 $TAGFILES/VERSION
+echo ""
+#Make.all -release $TAG $SITE >& $ROOTDIR/build.log
+# check out here, not in Make.all (7/14)
+rm -fr torus
+cvs -Q checkout -r$TAG torus
+Make.all $SITE >& $ROOTDIR/build.log
+echo ""
+echo The last bit of output from the build.log...
+tail $ROOTDIR/build.log
+echo ""
+echo -n "Everything OK? Continue? (y/n) "
+set ans = "$<"
+if("$ans" != "y") then
+  echo "Bummer."
+  exit 1
+endif
+echo ""
+echo "Now we'll make the drivers..."
+su -c "Make.pass pass8a $SITE"
+
+#echo ""
+#echo "Now we do the install pass (may be redundant)"
+#su -c "Make.pass install $SITE >& $ROOTDIR/build.log"
+
+# stamp the dev version
+uname -r > $TAGFILES/DEV_KERNEL
+
+# copy over the config stuff per site
+echo -----------------------------------------------------
+echo "Copying over configuration files for $SITE"
+echo -----------------------------------------------------
+if(-e $CDROOT/telescope/archive/config) rm -fr $CDROOT/telescope/archive/config
+if(! -e $CDROOT/telescope/archive/config) mkdir $CDROOT/telescope/archive/config
+
+cd $SOURCEDIR/telescope/per/$SITE
+tar --exclude CVS -cf - . | (cd $CDROOT/telescope/archive/config; tar xf -)
+
+#---------------
+# do the backup
+#---------------
+echo
+echo ----------------------------------------------------
+echo "making source code archive"
+echo ----------------------------------------------------
+cd $SOURCEDIR
+telbu
+# note: telbu will put backup into $HOME, which for root is /root
+ 
+#---------------
+# save stamps
+#---------------
+echo saving stamps
+cd $TAGFILES 
+cp install README README-UPGRADE COPYRIGHT VERSION DEV_KERNEL $CDROOT
+cp VERSION DEV_KERNEL $CDROOT/telescope
+if($status) exit 1
+
+#--------------
+# save manual
+#--------------    
+echo saving manuals
+cp $MANUALFILES $CDROOT
+if ($status) exit 1
+
+#--------------    
+# save source
+#-------------
+echo 'saving source code with encryption ("Unlock Talon")'
+set newl = `ls -t $HOME/telbu* | head -1`
+$CDROOT/telescope/bin/csi 1 "Unlock Talon" < $newl > $CDROOT/.scTalon
+
+echo 'saving Motif includes with encryption ("Unlock Motif")' 
+(cd /usr/X11R6/include; tar czf - Xm;) | csi 1 "Unlock Motif" > $CDROOT/.scXm
+
+#---------------
+# release CVS
+#---------------
+echo "... now releasing CVS checkout ..."
+cvs -Q release -d torus/talon
+
+#----------------
+# do the burn
+#----------------
+cd ~
+echo
+echo ============================================
+echo "ready to do the burn..."
+
+cd $ROOTDIR
+su -c ./burncd
+
+# For CVS Only -- Do Not Edit
+# $Id: makecd,v 1.1.1.1 2003/04/15 20:47:56 lostairman Exp $
+

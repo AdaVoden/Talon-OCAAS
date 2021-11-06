@@ -1,0 +1,30 @@
+<html>
+<title>TOC</title>
+<head>
+
+
+</head>
+<body bgcolor="wheat">
+<small>
+<font color="blue" size=3><B>Table of Contents</B></font><br>
+<img src="images/toc_line.gif"><p>
+
+<a href="index1.shtml" target="mainframe">Summary</a><p>
+<a href="cdrom.shtml" target="mainframe">ATF CD-ROM Edition</a><p>
+
+<a href="class_support.shtml" target="mainframe">Laboratory Observing Support</a><p>
+<a href="ATF/index.shtml" target="_top">Automated Telescope Facility</a><p>
+
+<a href="IRO/index.shtml" target="_top">Iowa Robotic Observatory</a><p>
+
+<a href="IMAGE_ANALYSIS/image_analysis.shtml" target="mainframe">Image Analysis Software</a><p>
+
+<a href="RESEARCH_Proj/research_proj.shtml" target="mainframe"> Student Research</a><p>
+
+<a href="DB_Images/archive_images.shtml" target="mainframe">Database of Images</a><p>
+
+<a href="Curriculum/curriculum_index.shtml" target="_top"> Curriculum, <i>Imaging the Universe</i></a><p>
+
+<a href="Other_ATS/other_ats.shtml" target="mainframe">Links to Other Automated Telescopes</a><p>
+</small>
+</html>

@@ -1,0 +1,16 @@
+20 April 1992
+This directory contains documentation for HCOMPRESS.  Files include:
+
+hcompress.man   Description of how to use the programs (plain text file)
+hcompress.ps    Description of how to use the programs (Postscript file)
+paper.tex       Paper describing the compression method (TeX file).
+paper.ps        Paper describing the compression method (Postscript file).
+
+The paper will be published in the Proceedings of the NASA Space and
+Earth Science Data Compression Workshop, ed. James C. Tilton, Snowbird,
+Utah, March 1992.  The Postscript images have been omitted from this
+paper to reduce the file size.
+
+Additional documentation on installing the programs and on operating-system
+dependent problems may be found in the aareadme files in the unix and
+vms directories.

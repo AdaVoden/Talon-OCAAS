@@ -1,0 +1,2 @@
+# check for new images each hour
+0 * * * * /usr/local/telescope/bin/nogchkin >> /usr/local/telescope/archive/logs/nog.log 2>&1

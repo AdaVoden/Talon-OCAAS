@@ -1,0 +1,60 @@
+<HTML>
+
+<! Elwood Downey 30 April 1996 >
+
+<HEAD>
+<TITLE>Telescope Status</TITLE>
+</HEAD>
+<body bgcolor="white">
+<font color="red" size=6>Telescope Status</font><br>
+<img src="../images/main_line.gif"><p>
+<FORM METHOD="POST" ACTION="../cgi-bin/atfquery.pl">
+<p>
+
+<INPUT TYPE="radio" NAME="QType" Value="Image">
+Display the most recently acquired image.
+
+<p>
+<INPUT TYPE="radio" NAME="QType" Value="System">
+System Status (no Observer code required)
+
+<p>
+<INPUT TYPE="radio" NAME="QType" Value="Admin">
+Administrative access (password required)
+<ul>
+    <li>Adminstrative password: <INPUT TYPE="PASSWORD" NAME="AdminPW"></li>
+</ul>
+
+<p>
+
+<INPUT TYPE="submit" VALUE="Submit">
+<INPUT TYPE="reset" VALUE="Reset the Form">
+
+</FORM>
+
+
+<!--#include file="remote_button_bar.shtml"-->
+</BODY>
+
+</HTML>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<! For RCS Only -- Do Not Edit >
+<! @(#) $RCSfile: remote_current.shtml,v $ $Date: 2003/04/15 20:48:47 $ $Revision: 1.1.1.1 $ $Name:  $ >

@@ -1,0 +1,32 @@
+#!/bin/csh -f
+# run ntpdate for a small collection of primary time servers.
+
+# must be root
+if (`whoami` != "root") then
+    echo Must be root
+    exit 1
+endif
+
+# insure net is up
+/sbin/ifconfig | grep -q aps0
+if ($status) then
+    echo No network access
+    exit 1
+endif
+
+
+# see list of primary servers at http://www.eecis.udel.edu/~mills/ntp/clock1.htm
+set servers = (tick.usno.navy.mil navobs1.wustl.edu clock.via.net)
+
+# loop through list until one works, then set hw clock too
+foreach s ($servers)
+    echo -n "$s "
+    /usr/local/bin/ntpdate $s && /sbin/hwclock --utc --systohc && exit 0
+end
+
+# oh oh
+echo no servers responding
+exit 1
+
+# For RCS Only -- Do Not Edit
+# @(#) $RCSfile: setntp,v $ $Date: 2003/04/15 20:48:36 $ $Revision: 1.1.1.1 $ $Name:  $

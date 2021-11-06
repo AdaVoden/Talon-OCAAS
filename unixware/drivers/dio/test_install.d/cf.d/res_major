@@ -1,0 +1,42 @@
+#ident	"@(#)/etc/conf/cf.d/res_major.sl 1.1 1.0 10/31/92 16142 Univel"
+#ident	"$Header:"
+b	0	sc01
+c	0	sc01
+b	1	fd
+c	1	fd
+c	2	mm
+c	3	iasy
+c	4	lp
+c	5	cmux
+c	6	prf
+c	7	clone
+c	8	rtc
+c	9	log
+c	11	ptm
+c	12	qt
+c	13	oxt
+c	14	osxt
+c	16	gentty
+c	18	cram
+c	19	sysmsg
+c	20	kdvm
+b	21	ramd
+c	21	ramd
+c	22	st01
+c	25	sad
+c	29	gvid
+c	30	kd
+c	33	xt
+c	34	sxt
+c	35	pts
+c	39	nullzero
+c	40	tpath
+c	41	sp
+b	47-53	sd01
+c	47-53	sd01
+c	80	event
+c	70	nspx
+c	71	ipxl
+# the following is used to reserve a range of najor numbers for a lan driver
+# (ethernet or token ring) for network installation
+c	72-76 	lan

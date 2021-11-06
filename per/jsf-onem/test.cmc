@@ -1,0 +1,17 @@
+define wipe() {
+	maxvel = maxacc = limacc = 1;
+	esteps = msteps = 12345678;
+	esign = 1;
+	ipolar = 0;
+}
+
+define verify() {
+	if(maxvel != 152836) printf("maxvel wrong %d\n",maxvel);
+	if(maxacc != 122549) printf("maxacc wrong %d\n",maxacc);
+	if(limacc != 175070) printf("limacc wrong %d\n",limacc);
+	if(esteps != 16777216) printf("esteps wrong %d\n",esteps);
+	if(msteps != 11000000) printf("msteps wrong %d\n",msteps);
+	if(esign != -1) printf("esign wrong %d\n",esign);
+	if(ipolar != 1) printf("ipolar wrong %d\n",ipolar);
+}
+

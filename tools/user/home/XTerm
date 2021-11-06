@@ -1,0 +1,9 @@
+XTerm*font: 9x15
+XTerm*scrollBar: True
+XTerm*geometry: 80x40
+XTerm*vt100.cursorColor: #051
+XTerm*vt100.foreground: black
+XTerm*vt100.background: #fbd500
+
+! For RCS Only -- Do Not Edit
+! @(#) $RCSfile: XTerm,v $ $Date: 2003/04/15 20:48:40 $ $Revision: 1.1.1.1 $ $Name:  $

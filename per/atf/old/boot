@@ -1,0 +1,54 @@
+#!/bin/csh -f
+# script run when ATF system is booted
+# this is expected to be from /etc/rc.d/rc.local
+
+echo Initializing observatory control software
+
+# directory root
+setenv TELHOME /usr/local/telescope
+
+# load the driver modules
+echo Loading hardware drivers ...
+/sbin/insmod -f $TELHOME/dev/dio.o dio=0x300,96,0x350,24
+/sbin/insmod -f $TELHOME/dev/pc39.o pc39_io_base=0x340
+/sbin/insmod -f $TELHOME/dev/hpc.o hpc0=0x120 hpc_impact=3
+
+# start daemons as teloper
+echo -n "Starting daemons ..."
+
+# start the telescoped daemon with a fresh note in log
+echo -n " telescoped"
+set log = $TELHOME/archive/logs/telescoped.log
+su teloper -c touch $log
+su teloper -c echo -n "Starting new telescoped at " >> $log
+su teloper -c date >> $log
+su teloper -c $TELHOME/bin/telescoped >>& $log
+
+# start CCD camera daemon
+echo -n " camerad"
+set log = $TELHOME/archive/logs/camerad.log
+su teloper -c touch $log
+su teloper -c echo -n "Starting camerad at " >> $log
+su teloper -c date >> $log
+su teloper -c $TELHOME/bin/camerad >>& $log
+
+# finished starting daemons
+echo " done."
+
+# wait for daemons to start up
+echo "Waiting for daemons to start..."
+sh -c 'while [ ! -e ${TELHOME}/comm/Focus.in ] ; do sleep 1; done'
+
+# find scope home and wait
+echo "Initializing telescope..."
+/bin/echo home >> $TELHOME/comm/Ctrl.in
+dd bs=1 count=1 < $TELHOME/comm/Ctrl.out >& /dev/null
+
+# start telrun
+echo "Starting telrun.."
+set log = $TELHOME/archive/logs/telrun.log
+su teloper -c touch $log
+su teloper -c $TELHOME/bin/telrun >>& $log &
+
+# ok
+echo Finished.

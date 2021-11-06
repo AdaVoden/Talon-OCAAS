@@ -1,0 +1,57 @@
+<html>
+<head>
+<title>Observing Code Submission</title>
+</head>
+
+<BODY bgcolor="white">
+<font color="red" size=6>Observing Code Submission</font><br>
+<img src="/images/main_line.gif"><p>
+
+<FORM METHOD="POST" ACTION="/cgi-bin/mailto.pl">
+
+<INPUT TYPE="HIDDEN" NAME="to"      VALUE="liason@iro.physics.uiowa.edu">
+<INPUT TYPE="HIDDEN" NAME="from"    VALUE="atfproj@astro.physics.uiowa.edu">
+<INPUT TYPE="HIDDEN" NAME="name"    VALUE="New Observer">
+<INPUT TYPE="HIDDEN" NAME="sub"     VALUE="Observer Code Request">
+<INPUT TYPE="HIDDEN" NAME="body"    VALUE="Observer Code Request">
+<INPUT TYPE="HIDDEN" NAME="nexturl" VALUE="http://denali.physics.uiowa.edu/IRO/Remote/code_submitted.shtml">
+
+<H2>Personal Information</H2>
+
+<PRE>
+Full Name:       <INPUT TYPE="TEXT" NAME="Full.Name" MAXLENGTH="80" SIZE="40">
+E-mail Address:  <INPUT TYPE="TEXT" NAME="E-mail.Address" MAXLENGTH="80" SIZE="40">
+City:            <INPUT TYPE="TEXT" NAME="City" MAXLENGTH="80" SIZE="20"> 
+State/Province:  <INPUT TYPE="TEXT" NAME="State.Province" MAXLENGTH="80" SIZE="20">
+Country:         <INPUT TYPE="TEXT" NAME="Country" MAXLENGTH="80" SIZE="20">
+
+<p>Institutional affiliation (optional):
+<INPUT TYPE=TEXT NAME=Institute MAXLENGTH=80 SIZE=40></TEXTAREA>
+
+<p>Possible area(s) of astronomical observation/research (optional):
+<Input type=text NAME="Comment" maxlength=80 size=40></TEXTAREA>
+
+</PRE>
+<HR>
+
+<INPUT TYPE="SUBMIT" VALUE="Submit Request"> <INPUT TYPE="RESET" VALUE="Reset Form">
+
+<hr>
+<small><i>Last update August 19, 1997 by <a href="mailto:bmp@astro.physics.uiowa.edu">bmp</a></i></small>
+</FORM>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+

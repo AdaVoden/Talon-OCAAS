@@ -1,0 +1,11 @@
+// Focus axis
+homebit = 0x1;
+nlimbit=4;
+plimbit=2;
+
+// Damping factor
+kv     = 2000;
+
+// these are just until telescoped starts
+maxvel = 3000;
+maxacc = 3000;

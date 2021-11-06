@@ -1,0 +1,77 @@
+#!/usr/bin/perl -w
+# rcstree: run rcs commands throughout a tree.
+
+# check for help
+&usage() if (@ARGV == 0);
+
+# set defaults then check for flags
+$mr = $mw = $me = $mn = $mc = $md = $ml = 0;
+$ma = 1;
+$ig = 0;
+while ($ARGV[0] =~ /^-/) {
+    SWITCH: {
+	$ARGV[0] =~ /-i/ and do { $ig = 1; last SWITCH; };
+	$ARGV[0] =~ /-r/ and do { $mr = 1; $ma = 0; last SWITCH; };
+	$ARGV[0] =~ /-w/ and do { $mw = 1; $ma = 0; last SWITCH; };
+	$ARGV[0] =~ /-e/ and do { $me = 1; $ma = 0; last SWITCH; };
+	$ARGV[0] =~ /-l/ and do { $ml = 1; $ma = 0; last SWITCH; };
+	$ARGV[0] =~ /-n/ and do { $mn = 1; $ma = 0; last SWITCH; };
+	$ARGV[0] =~ /-a/ and do { $ma = 1; last SWITCH; };
+	$ARGV[0] =~ /-c/ and do { $mc = 1; last SWITCH; };
+	$ARGV[0] =~ /-d/ and do { $md = 1; last SWITCH; };
+	&usage(); # default
+    }
+    if (@ARGV > 1) {
+	shift;
+    } else {
+	exit 0;
+    }
+}
+
+# open a pipe to find all *,v files
+open F, "find . \\\( -name '*,v' -o -name '.*,v' \\\) -print |"
+						or die "Can not start find\n";
+
+# process each such file
+while (<F>) {
+    chomp();
+    $dir = $_; $dir =~ s#/RCS/.*$##;
+    $file = $_; $file =~ s#.*/RCS/(.*),v$#$1#;
+    $path = "$dir/$file";
+    $isr = -r $path;
+    $isw = -w $path;
+    $ise = $isr || $isw;
+    $isro = $isr && !$isw;
+    if ($ma || $mr && $isro || $mw && $isw || $me && $ise || $mn && !$ise
+							  || $ml && !$isw) {
+	if ($mc) {
+	    $ex = 0xffff & system "@ARGV $_";
+	} elsif ($md) {
+	    $ex = 0xffff & system "@ARGV $dir/$file";
+	} else {
+	    $ex = 0xffff & system "cd $dir; @ARGV $file";
+	}
+	exit 1 if ($ex != 0 && $ig == 0);
+    }
+}
+
+# print usage and exit
+sub usage {
+
+    print "usage: [-rwena] [-cd] command\n";
+    print "purpose: run \"cd d; command f\" for each d/RCS/f,v from . down\n";
+    print "options:\n";
+    print " -i: ignore exit status of command\n";
+    print " -r: run command only if f is checked out read-only (not locked)\n";
+    print " -w: run command only if f is checked out writable (locked)\n";
+    print " -e: run command only if f is checked out (either way)\n";
+    print " -l: run command only if f is not checked out writable (not locked)\n";
+    print " -n: run command only if f is not checked out at all\n";
+    print " -a: run command without regard to state of f (default)\n";
+    print " -c: do not cd; rather, run from . as \"command d/RCS/f,v\"\n";
+    print " -d: do not cd; rather, run from . as \"command d/f\"\n";
+    exit 1;
+}
+
+# For RCS Only -- Do Not Edit
+# @(#) $RCSfile: rcstree,v $ $Date: 2003/04/15 20:47:55 $ $Revision: 1.1.1.1 $ $Name:  $

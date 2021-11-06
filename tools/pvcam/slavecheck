@@ -1,0 +1,4 @@
+rsh onem-1 pvslave id
+rsh onem-2 pvslave id
+rsh onem-3 pvslave id
+rsh onem-4 pvslave id

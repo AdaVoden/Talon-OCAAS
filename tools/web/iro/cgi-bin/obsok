@@ -1,0 +1,13 @@
+#!/usr/bin/perl -w
+# print 1 if $1 is a valid obs code in $2, else print 0
+
+$obc = $ARGV[0];
+$obc =~ s/ //g;
+
+$obstxtfn = $ARGV[1];
+open (OBSTXT, "<$obstxtfn") or die "Can not open $obstxtfn\n";
+@obstxt = <OBSTXT>;
+close OBSTXT;
+
+$nmatch = grep (/^ *$obc *\|/, @obstxt);
+print "$nmatch\n";

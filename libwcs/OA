@@ -1,0 +1,176 @@
+
+
+
+HOSTNAME(1)         Linux Programmer's Manual         HOSTNAME(1)
+
+
+NNAAMMEE
+       hostname - show or set the system's host name
+       domainname - show or set the system's NIS/YP domain name
+       dnsdomainname - show the system's DNS domain name
+       nisdomainname - show or set system's NIS/YP domain name
+       ypdomainname - show or set the system's NIS/YP domain name
+       nodename - show or set the system's DECnet node name
+
+
+SSYYNNOOPPSSIISS
+       hhoossttnnaammee [--vv] [--aa] [----aalliiaass] [--dd] [----ddoommaaiinn] [--ff] [----ffqqddnn]
+       [--ii]  [----iipp--aaddddrreessss]  [----lloonngg]  [--ss] [----sshhoorrtt] [--yy] [----yypp]
+       [----nniiss] [--nn] [----nnooddee]
+
+
+       hhoossttnnaammee [--vv] [--FF ffiilleennaammee] [----ffiillee ffiilleennaammee] [hhoossttnnaammee]
+
+
+       ddoommaaiinnnnaammee [--vv] [--FF ffiilleennaammee] [----ffiillee ffiilleennaammee] [nnaammee]
+
+
+       nnooddeennaammee [--vv] [--FF ffiilleennaammee] [----ffiillee ffiilleennaammee] [nnaammee]
+
+
+       hhoossttnnaammee [--vv] [--hh] [----hheellpp] [--VV] [----vveerrssiioonn]
+
+
+       ddnnssddoommaaiinnnnaammee [--vv]
+       nniissddoommaaiinnnnaammee [--vv]
+       yyppddoommaaiinnnnaammee [--vv]
+
+
+DDEESSCCRRIIPPTTIIOONN
+       HHoossttnnaammee is the program that is used to either set or dis­
+       play  the current host, domain or node name of the system.
+       These names are used by many of the networking programs to
+       identify  the  machine.  The  domain  name is also used by
+       NIS/YP.
+
+
+   GGEETT NNAAMMEE
+       When called without any arguments,  the  program  displays
+       the current names:
+
+
+       hhoossttnnaammee  will print the name of the system as returned by
+       the ggeetthhoossttnnaammee(2) function.
+
+
+       ddoommaaiinnnnaammee,, nniissddoommaaiinnnnaammee,,  yyppddoommaaiinnnnaammee  will  print  the
+       name  of  the  system  as returned by the ggeettddoommaaiinnnnaammee(2)
+       function. This is also known as the YP/NIS domain name  of
+       the system.
+
+
+       nnooddeennaammee  will print the DECnet node name of the system as
+       returned by the ggeettnnooddeennaammee(2) function.
+
+
+       ddnnssddoommaaiinnnnaammee will print  the  domain  part  of  the  FQDN
+       (Fully  Qualified  Domain  Name). The complete FQDN of the
+       system is returned with hhoossttnnaammee ----ffqqddnn.
+
+
+   SSEETT NNAAMMEE
+       When called with one argument or with the  ----ffiillee  option,
+       the  commands set the host name, the NIS/YP domain name or
+       the node name.
+
+
+       Note, that only the super-user can change the names.
+
+
+       It is not possible to set the FQDN or the DNS domain  name
+       with the ddnnssddoommaaiinnnnaammee command (see TTHHEE FFQQDDNN below).
+
+
+       The  host  name  is  usually set once at system startup in
+       _/_e_t_c_/_r_c_._d_/_r_c_._i_n_e_t_1 or _/_e_t_c_/_i_n_i_t_._d_/_b_o_o_t (normally by  read­
+       ing  the  contents of a file which contains the host name,
+       e.g.  _/_e_t_c_/_h_o_s_t_n_a_m_e).
+
+
+   TTHHEE FFQQDDNN
+       You can't change the FQDN (as returned by hhoossttnnaammee ----ffqqddnn)
+       or the DNS domain name (as returned by ddnnssddoommaaiinnnnaammee) with
+       this command. The FQDN of the system is the name that  the
+       rreessoollvveerr(3) returns for the host name.
+
+
+       Technically: The FQDN is the name ggeetthhoossttbbyynnaammee(2) returns
+       for the host name returned  by  ggeetthhoossttnnaammee(2).   The  DNS
+       domain name is the part after the first dot.
+
+       Therefore  it  depends  on  the  configuration (usually in
+       _/_e_t_c_/_h_o_s_t_._c_o_n_f) how you can change  it.  Usually  (if  the
+       hosts  file is parsed before DNS or NIS) you can change it
+       in _/_e_t_c_/_h_o_s_t_s.
+
+
+
+OOPPTTIIOONNSS
+       _-_a_, _-_-_a_l_i_a_s
+              Display the alias name of the host (if used).
+
+       _-_d_, _-_-_d_o_m_a_i_n
+              Display the name of the DNS domain. Don't  use  the
+              command  ddoommaaiinnnnaammee  to  get  the  DNS  domain name
+              because it will show the NIS domain  name  and  not
+              the DNS domain name. Use ddnnssddoommaaiinnnnaammee instead.
+
+       _-_F_, _-_-_f_i_l_e _f_i_l_e_n_a_m_e
+              Read  the  host  name from the specified file. Com­
+              ments (lines starting with a `#') are ignored.
+
+       _-_f_, _-_-_f_q_d_n_, _-_-_l_o_n_g
+              Display the FQDN (Fully Qualified Domain  Name).  A
+              FQDN  consists  of  a  short  host name and the DNS
+              domain name. Unless you are using bind or  NIS  for
+              host  lookups  you  can change the FQDN and the DNS
+              domain name (which is part  of  the  FQDN)  in  the
+              _/_e_t_c_/_h_o_s_t_s file.
+
+       _-_h_, _-_-_h_e_l_p
+              Print a usage message and exit.
+
+       _-_i_, _-_-_i_p_-_a_d_d_r_e_s_s
+              Display the IP address(es) of the host.
+
+       _-_n_, _-_-_n_o_d_e
+              Display  the  DECnet  node  name. If a parameter is
+              given (or ----ffiillee nnaammee ) the root can also set a new
+              node name.
+
+       _-_s_, _-_-_s_h_o_r_t
+              Display  the short host name. This is the host name
+              cut at the first dot.
+
+       _-_V_, _-_-_v_e_r_s_i_o_n
+              Print version information on  standard  output  and
+              exit successfully.
+
+       _-_v_, _-_-_v_e_r_b_o_s_e
+              Be verbose and tell what's going on.
+
+       _-_y_, _-_-_y_p_, _-_-_n_i_s
+              Display  the  NIS  domain  name.  If a parameter is
+              given (or ----ffiillee nnaammee ) then root can  also  set  a
+              new NIS domain.
+
+FFIILLEESS
+       //eettcc//hhoossttss
+
+AAUUTTHHOORR
+       Peter Tobias, <tobias@et-inf.fho-emden.de>
+       Bernd  Eckenfels,  <net-tools@lina.inka.de>  (NIS and man­
+       page).
+       Steve Whitehouse,  <SteveW@ACM.org>  (DECnet  support  and
+       manpage).
+
+
+
+
+
+
+
+
+net-tools                  28 Jan 1996                          1
+
+

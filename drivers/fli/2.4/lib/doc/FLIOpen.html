@@ -1,0 +1,34 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<HTML>
+<HEAD>
+   <TITLE>int FLIOpen</TITLE>
+   <META NAME="GENERATOR" CONTENT="DOC++ 3.4.8">
+</HEAD>
+<BODY BGCOLOR="#ffffff">
+
+<H2>int <A HREF="#DOC.DOCU">FLIOpen</A></H2><H2>(fliport_t port,  flidev_t dev,  flicam_t* cam)</H2><BLOCKQUOTE> Get a handle to a virtual camera.</BLOCKQUOTE>
+
+<A NAME="DOC.DOCU"></A>
+<HR>
+<H2>Documentation</H2>
+<BLOCKQUOTE>
+Get a handle to a virtual camera.  The caller of this function can
+optionally request a handle associated with the specific physical
+camera <TT>dev</TT>.  If <TT>dev</TT> has a <TT>NULL</TT> value,
+the default (first) camera is used.  An application may use any
+number of handles associated with the same physical camera.
+
+<P></BLOCKQUOTE>
+<DL><DT><DT><B>Parameters:</B><DD><B>port</B> -  Port handle from a previous call to <TT><!1><A HREF="FLIInit.html">FLIInit</A></TT>.
+<BR><B>dev</B> -  Device handle to request a specific device, or
+<TT>NULL</TT> for the default (first) device.
+<BR><B>cam</B> -  Pointer to where a camera handle will be placed.
+<BR><DT><B>Returns:</B><DD>  Zero on success.
+<BR>  Non-zero on failure.
+<BR><DT><B>See Also:</B><DD><!1><A HREF="FLIClose.html">FLIClose</A>
+<BR><DD></DL><P><P><I><A HREF="index.html">Alphabetic index</A></I></P><HR>
+<BR>
+This page was generated with the help of <A HREF="http://docpp.sourceforge.net">DOC++</A>.
+</BODY>
+</HTML>

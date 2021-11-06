@@ -1,0 +1,14 @@
+# Node file for the pc34 driver.
+# This is new in SVR4.2.
+# for a complete description, read the `node' man page.
+# `idinstall -k -a pc34' copies this to /etc/conf/node.d/pc34. (-k keeps)
+# format: module-name node-name type minor user group permissions
+#   node-name:	name of special file, relative to /dev.
+#   type:	b or c
+#   minor:	minor device number
+#   user:	decimal uid (optional)
+#   group:	decimal gid (optional)
+#   permissions:octal perms, as per chmod (optional)
+
+pc34 pc34 c 0
+

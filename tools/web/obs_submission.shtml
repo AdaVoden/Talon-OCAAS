@@ -1,0 +1,29 @@
+<HTML>
+
+
+
+<HEAD>
+<TITLE>ATF Stats</TITLE>
+</HEAD>
+<body bgcolor="white">
+<font color="red" size=6>Requesting an Observation</font><br>
+<img src="../images/main_line.gif"><p>
+
+Open the submission request form in a:<p>
+<ul>
+
+<li><a href="atfmsched.shtml" target="top">New window</a> - this allows easy reference to other 
+resources in the original browser window.
+ 
+<li><a href="atfmsched.shtml" target="mainframe">Main frame</a> - This does not open a new browser window, but does maintain the frame based website.
+
+<li><a href="atfmsched.shtml" target="_top">Same browser, no frames</a> - This puts the form in your browser without frames.
+
+</ul>
+<!--#include file="remote_button_bar.shtml"-->
+</BODY>
+
+</HTML>
+
+<! For RCS Only -- Do Not Edit >
+<! @(#) $RCSfile: obs_submission.shtml,v $ $Date: 2003/04/15 20:48:47 $ $Revision: 1.1.1.1 $ $Name:  $ >

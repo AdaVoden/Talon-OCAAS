@@ -1,0 +1,16 @@
+Planned performance enhancements:
+	- Better compression of X_Poly* requests by enhancing
+	  dxpc to try multiple predictive models for coordinates
+	  and use the one that yields the shortest encoding
+	- Better color image compression (the current implementation
+	  is really primitive, though fairly effective for something
+	  so simple; a better algorithm and support for image depths
+	  other than 8 would make dxpc useful for a wider range of
+	  X applications)
+	- More compact encodings for the compressed data stream
+	- Profile the code and look for possible speedups
+
+Possible usability improvements include:
+	- Better integration with SSH (I suspect that modifying
+	  dxpc to allow the use of a UNIX domain pipe between
+	  the Client Proxy and Server Proxy would be a good idea...)

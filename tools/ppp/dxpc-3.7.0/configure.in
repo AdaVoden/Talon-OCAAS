@@ -1,0 +1,25 @@
+dnl Process this file with autoconf to produce a configure script.
+
+dnl Prolog
+AC_INIT(main.C)
+AC_PREREQ(2.12)
+
+dnl Checks for programs.
+AC_PROG_CXX
+AC_PROG_INSTALL
+
+dnl Checks for header files.
+AC_PATH_XTRA
+#AC_CHECK_HEADERS(sys/select.h)
+
+# UnixWare-2.x and AIX reportedly declare accept(2) with size_t, rather
+# than int, as the type of the third argument...
+if uname -a | egrep -i "UNIX_SV.*4\.2MP.*86" >/dev/null
+then
+  AC_DEFINE(DXPC_ACCEPT_IS_SIZE_T)
+elif uname -a | egrep -i "AIX" >/dev/null
+then
+  AC_DEFINE(DXPC_ACCEPT_IS_SIZE_T)
+fi
+
+AC_OUTPUT(Makefile)

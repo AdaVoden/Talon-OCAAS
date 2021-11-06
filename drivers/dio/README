@@ -1,0 +1,4 @@
+Linux driver for the DIO family of boards. We can handle up to 2 boards.
+
+! For RCS Only -- Do Not Edit
+! @(#) $RCSfile: README,v $ $Date: 2003/04/15 20:48:05 $ $Revision: 1.1.1.1 $ $Name:  $

@@ -1,0 +1,67 @@
+Photcal scans a directory of images of photometric standard fields and,
+along with standard field name information in photcal.ref and default k''
+values from photcal.def, determines a set of 8 photometric parameters: V0 and
+k' for each of 4 colors, BVRI, which best-fits the image data. These values
+are written in a form suitable for use with fphotom and so, by default, photcal
+appends the new set of values with a date header to the file photcal.cal. The
+values of k'' are held constant and may be read from photcal.def or changed on
+the command line. Run the program with no arguments to display the built-in
+defaults.
+
+The photometric model is from Simon et al 1994 and can be summarized as follows:
+
+	V = Vobs + V0 + k'Z + k''(B-V)
+
+where:
+
+    Symbol	Meaning				Role/Source
+
+    V  		true apparent magnitude		per star, from photcal.ref
+    Vobs	observed magnitude 		per star, from pixels
+    V0		instrumental correction		to be solved
+    Z 		air mass			per field, from header
+    B-V		color index			per star, drivd from photcal.ref
+    k' 		airmass dependency		to be solved
+    k''		color index dependency		to be solved
+
+This equation is repeated for each color B, V, R and I. Thus, the total
+solution consists of 8 numbers: V0 and k' for each color. (Be careful not to
+confuse the color V with the V in the equation).
+
+Stars with SNR < 4.0 are rejected.
+
+Usage summary;
+./photcal: [options] mm/dd/yyyy
+Options:
+  -i dir:  directory of images; default is archive/photcal
+  -p file: directory for def/ref/out files; default is archive/photcal
+  -d file: default k'' values filename; default is photcal.def
+  -r file: field ids filename; default is photcal.ref
+  -c file: calibration filename to append to (- means stdout);
+           default is photcal.out
+  -k B V R I: values of k'' for each color;
+           may be set from file using -d or built-in
+           defaults are: -0.46 -0.15 -0.02 -0.06
+  -t days: +/- days image's JD may vary from given date; default is 0.5
+  -v:      verbose: generates additional output
+  -m:      print name, Z, filter, observed mag and err for each star.
+
+Required:
+  mm/dd/yyyy: date for which constants are to be determined
+           d may be a real number; y is full year, eg, 1995
+
+The program prints error messages to stderr but usually tries to keep going.
+
+The resulting values are appended to the output file in the following format.
+No output is generated if there are not sufficient data to solve for all four
+sets of values.
+
+JD (M/D/Y)
+
+B: V0 k' k''
+V: V0 k' k''
+R: V0 k' k''
+I: V0 k' k''
+
+! For RCS Only -- Do Not Edit
+! @(#) $RCSfile: README,v $ $Date: 2003/04/15 20:48:35 $ $Revision: 1.1.1.1 $ $Name:  $

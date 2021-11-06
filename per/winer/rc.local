@@ -1,0 +1,53 @@
+#!/bin/sh
+#
+# This script will be executed *after* all the other init scripts.
+# You can put your own initialization stuff in here if you don't
+# want to do the full Sys V style init stuff.
+
+if [ -f /etc/redhat-release ]; then
+    R=$(cat /etc/redhat-release)
+
+    arch=$(uname -m)
+    a="a"
+    case "_$arch" in
+	    _a*) a="an";;
+	    _i*) a="an";;
+    esac
+    
+    NUMPROC=`egrep -c "^cpu[0-9]+" /proc/stat`
+    if [ "$NUMPROC" -gt "1" ]; then
+        SMP="$NUMPROC-processor "
+        if [ "$NUMPROC" = "8" -o "$NUMPROC" = "11" ]; then
+            a="an"
+	else
+	    a="a"
+        fi
+    fi
+
+    # This will overwrite /etc/issue at every boot.  So, make any changes you
+    # want to make to /etc/issue here or you will lose them when you reboot.
+    echo "" > /etc/issue
+    echo "$R" >> /etc/issue
+    echo "Kernel $(uname -r) on $a $SMP$(uname -m)" >> /etc/issue
+
+    cp -f /etc/issue /etc/issue.net
+    echo >> /etc/issue
+
+    # start IP masquerading
+    if [ -x /etc/rc.d/rc.masq ]; then
+	/etc/rc.d/rc.masq
+    fi
+
+    # start WMO services
+    export TELHOME=/usr/local/telescope
+    touch $TELHOME/comm/x.pid; rm -f $TELHOME/comm/*.pid
+    export PATH=$PATH:$TELHOME/bin
+    echo Starting RainWise daemon
+    rund wxd -nu /home/httpd/html/weather.html /home/mark/weather.template -l $TELHOME/archive/logs/wx.log
+    echo Get NTP time
+    /usr/local/bin/setntp
+    echo Starting GPS daemon
+    rund gpsd -fa
+    echo Starting sshd
+    /usr/local/sbin/sshd
+fi

@@ -1,0 +1,611 @@
+<TITLE>Imaging The Universe: Guide for Remote Observers</TITLE>
+
+<BODY bgcolor="white">
+
+<font color="red" size=6>Guide for Remote Observers</font><br>
+<img src="../images/main_line.gif"><p>
+ 
+<B>Internet Observing Guidelines.</B> <P>
+We are now accepting observing requests from internet users.  The guidelines limit an internet observer to 40 minutes total time per night.  To receive an observer's code (required), send your name, address, and a brief (one paragraph) description of the observing program to
+<A HREF="mailto:atfobs@astro.physics.uiowa.edu">atfobs</A>.
+
+<P>
+<b> HTML Forms-based Observing Schedule Input.</B><P>
+Schedules are normally submitted using a table-based schedule submission <a href="atfmsched.shtml" target="top">form</A>.  It allows the user to request scheduling up to <B>five</B> sources with multiple filters, exposure times, repeats with delays,
+and compression.
+
+<P>
+<B>
+Most users should now be able to use the new forms page for
+all observing requests. It should now be very rarely necessary to read
+the detailed manual below for creating native scheduling scripts.
+</B>
+
+<P>
+<B> Introduction</B>
+
+<P>
+The University of Iowa Automated Telescope Facility consists of an fully automated telescope system located on the roof of the Physics Building on the University campus in Iowa City. The facility is used primarily by undergraduate students in introductory astronomy laboratories. Last year more than 1,000 students submitted observing requests to the ATF, resulting in more than 15,000
+images.
+
+<P>
+Prospective observers must first plan the technical details of a proposed
+observation (choice of object(s), exposure time, filter, number of repeat
+observations, etc). If the observer is an internet observer an observing code must be secured to allow observing files to be submitted.  The Modern and General Astronomy lab observing file submission will be handled by the TAs.  The observer then creates an observing file using the <A HREF="atfmsched.shtml" target="top">
+Automated Telescope Facility Observing Request Form</A>. A telescope operator checks this directory every clear evening and submits as many of the requested observations as possible to the telescope scheduling program. The scheduling program sorts the observing requests on a image by image basis, trying to optimize the observation time to match the transit time of each object as closely as possible.  Completed images and a copy of the computer generated observing log are written to the user's designated image save directory which can then be downloaded or ftp'ed. <P>
+
+
+<B> Schedule Preparation</B>
+
+<P>
+<B>Select Sources with Appropriate Positions</B>. Determine the celestial and
+horizon coordinates of the target objects and epoch using catalogs or a sky
+display program. Ensure the objects transit above 15 degrees elevation at Iowa City (coords 41.7 deg N latitude, 91.5 deg W longitude, CST=UT+6) and are
+within 6 hours of transit (|HA|</a>&lt;6 h) sometime during the night. The telescope operates from astronomical dusk to dawn under clear sky conditions. The automated schedule optimization algorithm will schedule all observing requests as close to transit as possible for each source by default. If the observation must be must at specified LST times (e.g. stellar eclipse timing observations), the observer should specify LST start time(s) in the schedule  file (see below). 
+
+<P>
+<B>Select Appropriate Exposure Times.</B> Determine the appropriate exposure times needed for each object and filter.  As a rough guide, the maximum
+allowable exposure time to prevent an object with apparent magnitude M from saturating the CCD image can be determined from the following equation:
+
+<P>
+<I> log(t/t<SUB>0</SUB>) = 0.4*M   </I>
+
+<P> 
+Where <I>t<SUB>0</SUB> = 0.02, 0.03, 0.03, 0.07 sec</I> for M = B,V,R, or I apparent magnitude and filter respectively. The exposure time in seconds required to obtain a given signal to noise ratio (SNR) for a stellar image is given roughly by the following equation:
+
+<P>
+<I>log(t) = 2*[log(SNR) + 0.4*M - A]</I>
+
+<P>
+Where A~5.7, 5.2, 5.7, 4.7 for M = B, V, R, or I magnitudes and filters respectively. Using a clear filter will increase the SNR by about ~3x, depending on the color of the star. This equation is only accurate for low zenith angle, clear skies, and moonless conditions. Note that if you want to perform accurate photometry  (~1%) on a star, choose an exposure time which will result in an SNR of 100 or greater.
+
+<P>
+<I>Exposure times greater than ~60 sec are automatically aligned and stacked in multiples of 60 sec to prevent tracking errors. If you need very long exposures, specify exposure times in multiples of 60 sec.</I>
+
+<P>
+<B> Calibration</B>
+
+<P>
+<B> CCD Calibration frames</B>
+
+<P> The software corrects all images for thermal noise and flat fielding by default, so there is normally no reason to obtain dark frames or flats. For observers who wish to do their own CCD calibration, a raw archive frame is always written and is available on request.
+
+<P>
+<B> Standard BVRI Stars</B>
+
+<P> 
+Anyone who needs to measure the BVRI colors of stars should schedule one or
+more standard UBVRI stars from section H32-34 of the Astronomical Almanac.  Choose stars as close to the target star as possible. Note that these stars are
+typically very bright, so the exposure times will be quite short.
+
+<P>
+<B> Observing File Format</B>
+
+<P>
+The observing file is an ordinary text file which can be generated by any text editor.  The observing file naming convention is as follows: 
+
+<P>
+<H3><B>abbmdd.sch</B></H3>
+
+<P>
+where:
+<UL>		
+	<LI><B>a</B> is the institution or class letter code. Currently defined
+codes are: <I>N</I> = University of Northern Iowa, <I>G</I> = UI General Astronomy class, <I>M</I> = UI Modern Astronomy class,
+<I>F</I> = UI Faculty and graduate students, <I>U</I> = UI undergraduates,
+ <I>W</I> = West High School, <I>I</I> =  External Internet Observers.
+	<LI><B>bb</B> is a two alphanumeric code unique to each observer (or
+observing team). This code is assigned by the teaching assistant (UI classes)
+or by the remote observing coordinator at each institution.
+	<LI><B>mdd</B> is the date the observing request was submitted in
+numerical format with the month given in <B>hex</B>(10=A, 11=B, 12=C). File
+names are recycled every calendar year so the year is not imbedded in the
+name.
+	<LI><B>sch</B> is the extension indicating it is a schedule file. 
+</UL>
+
+<P>
+An example of a complete file name for an observation request from R. Mutel (UI
+faculty) made on October 15  would be frma15.sch.  The <A HREF="atfmsched.shtml" target="top">Automated Telescope Facility Observing Request Form</A> has instructions on that page.
+
+<P>
+<B> Note: Only one schedule file can be submitted per observer per night.  Successive submissions overwrite the preceeding files.</I>
+
+<P>
+<B>Keywords and Keyvalues.</B> The schedule file is in a <I>keyword=keyvalue(s)</I> format with one or more spaces between keywords. There are several mandatory keywords and many more optional keywords. A series of keywords with key values ending with a /
+mark constitutes a <B>scan</B> with repeat count given by the <I>repeat</I> keyword. Comments can be written by typing an exclamation mark (!) anywhere in a line.
+
+<P>
+
+
+<P>
+The slash mark (/) 
+means <I>'take the image'</I> using all key values currently assigned. For observing files without repeat counts, every image request will have a slash mark in the file. Conversely, an observing file without slashes requests no images.
+
+<P>
+The currently supported keyword list is given in the Table below.
+
+<P>
+<TABLE BORDER=10 WIDTH=100%>
+	<TR>
+		<TH>Keyword</TH>
+		<TH>Type</TH>
+		<TH>Units</TH>
+		<TH>Default</TH>
+    		<TH>Example</TH>
+	        <TH>Comment</TH>
+	</TR>
+	<TR ALIGN=MIDDLE>
+		<TH>Title</TH>
+	        <TD>String</TD>
+                <TD>none</TD> 
+		<TD>none</TD> 
+                <TD>title 'Photometry of LPV Variables'</TD> 
+  		<TD ALIGN=LEFT><B>Mandatory</B></TD>
+	</TR>
+	<TR ALIGN=MIDDLE>
+                <TH>Observer</TH>
+	        <TD>String</TD>
+	        <TD>none</TD> 
+		<TD>none</TD> 
+	        <TD>obs 'A. Einstein'</TD>
+		<TD ALIGN=LEFT><B>Mandatory</B></TD>
+	</TR>
+	<TR ALIGN=MIDDLE>
+                <TH>Source</TH>
+                <TD>String</TD>
+                <TD>none</TD>
+		<TD>none</TD>
+                <TD>sou 'Z_Her'</TD>
+                <TD ALIGN=LEFT><B>Mandatory</B></TD>
+	</TR>
+	<TR ALIGN=MIDDLE>
+                <TH>Duration</TH>
+	        <TD>Integer</TD>    
+		<TD>Second</TD>   
+		<TD>none</TD>         
+		<TD>dur 30,20,10</TD>         
+		<TD ALIGN=LEFT><B>Mandatory</B>: up to 4 values separated by
+		    commas</TD>
+	</TR>
+	<TR ALIGN=MIDDLE>
+                <TH>Filter</TH>
+        	<TD>Letter</TD>      
+		<TD>Coded</TD>   
+		<TD>none</TD>         
+		<TD>fil B,V,R</TD>           
+		<TD ALIGN=LEFT><B>Mandatory</B>: up to 4 values separated by
+		    commas</TD>
+	</TR>
+	<TR ALIGN=MIDDLE>
+                <TH>Comment</TH>       
+		<TD>String</TD>        
+		<TD>none</TD>
+	        <TD>none</TD>
+                <TD>!Highly variable</TD>  
+		<TD ALIGN=LEFT><B>Optional</B>: written to FITS header, first
+		    character must be !</TD>
+ 	</TR>       
+	<TR ALIGN=MIDDLE>       
+		<TH>Binning</TH>       
+		<TD>Integer</TD>    
+		<TD>pixels</TD>
+		<TD>integer</TD>
+ 		<TD>bin 2,2</TD>         
+                <TD ALIGN=LEFT><B>Optional</B>: two (2) values separated by
+		    commas</TD> 
+	</TR> 
+	<TR ALIGN=MIDDLE>     					 
+		<TH>Compress</TH>      
+		<TD>Integer</TH>    
+		<TD>scale</TD>   
+		<TD>0</TD>            
+		<TD>50</TD>                 
+		<TD ALIGN=LEFT><B>Optional</B>: File compression</TD>
+	</TR>
+	<TR ALIGN=MIDDLE>
+                <TH>Catalog</TH>       
+		<TD>String</TD>             
+		<TD>none</TD>         
+		<TD>none</TD>
+		<TD>cat 'GCVS'</TD>             
+		<TD ALIGN=LEFT><B>Mandatory</B>: even if you are specifying RA
+		    and DEC coordinates the file must show a catalog selected 
+       		    from the list below</TD>
+	</TR>
+	<TR ALIGN=MIDDLE>
+		<TH>RA</TH>            
+		<TD>String</TD>    
+		<TD>hh:mm:ss</TD>  
+		<TD>none</TD>          
+		<TD>ra 01:12:45</TD>          
+		<TD ALIGN=LEFT><B>Optional</B>: RA of uncatalogued source</TD>
+	</TR>
+	<TR ALIGN=MIDDLE>
+		<TH>Dec</TH>           
+		<TD>String</TD>    
+		<TD>dd:mm:ss</TD>  
+		<TD>none</TD>         
+		<TD> dec -12:23:56</TD>          
+		<TD ALIGN=LEFT><B>Optional</B>: Dec of uncatalogued source</TD>
+	</TR>
+	<TR ALIGN=MIDDLE>
+		<TH>Epoch</TH>
+         	<TD>Integer</TD>   
+		<TD>Years</TD>     
+		<TD>none</TD>         
+		<TD>epoch 2000</TD>               
+		<TD ALIGN=LEFT><B>Mandatory</B>: Epoch of RA, Dec from catalog
+		    or specified non-catalogued source</TD>
+	</TR>
+	<TR ALIGN=MIDDLE>
+		<TH>Block start</TH>              
+		<TD>String</TD>   
+		<TD>none</TD>
+		<TD>none</TD>            
+		<TD>block start</TD>          
+		<TD ALIGN=LEFT><B>Optional</B>: starts a block of multiple
+		    repetitions of a line in a file</TD>
+	</TR>
+	<TR ALIGN=MIDDLE>                                  
+		<TH>Blockrepeat</TH>
+		<TD>integer</TD>
+		<TD>none</TD>
+		<TD>none</TD>
+		<TD>blockrepeat 2</TD>
+		<TD ALIGN=LEFT><B>Optional</B>: designates the number of times
+		    the computer while run through the block, minimum of 2
+		    needed to run the file and repeat it once</TD>
+	</TR>
+	<TR ALIGN=MIDDLE>
+		<TH>Repeatdelay</TH>      
+                <TD>Integer</TD>
+		<TD>hh:mm:ss</TD>            
+		<TD>none</TD>
+		<TD>repeatdelay 00:30:00</TD>
+		<TD ALIGN=LEFT><B>Optional</B>: specifies how much time elapses
+		    between repetitions</TD>
+	</TR>
+	<TR ALIGN=MIDDLE> 
+                <TH>LSTstart</TH>      
+		<TD>String</TD>	
+		<TD>hh:mm:ss</TD>  
+		<TD>none</TD>         
+		<TD>lststart 13:45:00</TD>           
+		<TD ALIGN=LEFT><B>Optional</B>: to pick an optimal LST start
+		    time</TD>
+	</TR>
+	<TR ALIGN=MIDDLE>
+		<TH>LSTDelta</TH>      
+		<TD>String</TD>   
+		<TD>hh:mm:ss</TD>   
+		<TD>none</TD>           
+		<TD>lstdelta 00:30:00</TD>                
+		<TD ALIGN=LEFT><B>Optional</B>: asks the scheduler to insert the
+		    file within a certain window of LST</TD>
+	</TR>
+	<TR ALIGN=MIDDLE>
+		<TH>Priority</TH>
+		<TD>Integer</TD>
+		<TD>none</TD>
+		<TD>none</TD>
+		<TD>priority 0</TD>
+		<TD ALIGN=LEFT><B>Optional</B>: asks the scheduler to give your
+		    file priority over another file</TD>
+	</TR>
+	<TR ALIGN=MIDDLE>
+		<TH>HAstart</TH>
+		<TD>String</TD>
+		<TD>hh:mm:ss</TD>
+		<TD>none</TD>
+		<TD>hastart -04:30:00</TD>
+		<TD ALIGN=LEFT><B>Optional</B>: asks the scheduler to insert
+		    your file at a given hour angle.</TD>
+	</TR>
+	<TR ALIGN=MIDDLE>
+		<TH>UTdate</TH>
+		<TD>String</TD>
+		<TD>mm/dd/yyyy</TD>
+		<TD>none</TD>
+		<TD>utdate 09/06/1996</TD>
+		<TD ALIGN=LEFT><B>Optional</B>: the scheduler will read this 
+		    file and insert it in the schedule only if the UT date in
+		    in the file matches that given in the file.</TD>
+	</TR>
+	<TR ALIGN=MIDDLE>
+		<TH>CCDCalib</TH>
+		<TD>String</TD>
+		<TD>none</TD>
+		<TD>ccdcalib 'standard'</TD>
+		<TD>ccdcalib 'none'</TD>
+		<TD ALIGN=LEFT><B>Optional</B>: this option is used if the
+		     desired sensitivity requires darks to be taken as close
+		     to the time of the image as possible for better dark 
+	             subtraction.  This is only really necessary for observing 
+		     very diffuse objects and for some narrow band
+		     observations.  Add source 'dark' to your source list
+		     to take your darks with your primary source.</TD>
+	</TR>
+	
+</TABLE><P>
+
+<B> Some additional comments on observing file keywords:</B><P>
+
+<OL>
+<LI>Keywords that are not changed between scans default to their last values.<P>
+
+<LI>Keywords and key values are not case sensitive, so that <I>Title,
+title, TITLE</I> are all acceptable.<P>
+
+<LI>Keywords which require strings, such as title and observer, should be in
+single quotes.<P>
+
+<LI>Keywords are <B>parsed</B>, so that the user need only type as many
+letters as are needed to distinguish different keywords. For example,
+
+<LI>Duration</I>and <I>Dur</I>are both acceptable, but <I>D</I> is not because it is confused with Date.<P>
+
+<LI>Keywords which contain spaces e.g. 4 Vesta, must be surrounded by quotes.
+
+<LI>The equal sign can also be a space, i.e. <I>Filter = C,V</I> is
+equivalent to <I>Filter C,V</I>.<P>
+
+<LI>Source names must be exactly as in the specified catalog (except for
+case).<P>
+
+<LI>The duration and filter keywords work as follows. If the numberof filter and duration keyvalues are equal (e.g. filter=b,v,r dur
+10,5,3), they are paired (e.g.  three exposures are taken using B at 10
+sec, V at 5 sec, R and 3 sec). If the filter and duration keyvalue
+numbers do not match, <B> all possible combinations are used</B> (e.g.
+filter=b,v and dur = 10,5,3 results in 6 images).<P>
+
+<LI>The allowed values of the filter keyword are Clear (C), Blue (B), Visual
+(V), Red (R), Infrared (I), H-alpha (W), H-off (X), H-beta (Y), and OIII (Z). The last four filters are 1nm FWHM so allow exposure sufficient time<P>
+
+<LI><B>Compression option:</B> requests H-transform compression of a calibrated file.  Use 1 for lossless compression (typically 3x compression), and 50 for ~6-8x compression with vitually no loss in image fidelity. Software for running hcompress/decompress is accessible by  
+<A HREF="ftp://ftp-astro.physics.uiowa.edu/pub/hcompress">ftp</A>.<P>
+
+<LI><B>Block Repeat:</B>  The block start/blockrepeat keywords surround a block of lines which will be repeated. There is also a repeatdelay keyword (format hh:mm:ss) which allows a time gap between block repetitions. See example below.<P>
+
+<LI><B>Binning option:</B> Binning refers to on-chip averaging of adjacent
+groups of pixels in square areas. The default value of 2x2 binning (3x3 arcsec
+pixels) is required at present. It provides a good match to the typical
+seeeing conditions at the ATF and the resulting images are much
+smaller than 1x1 binning (512KB versus 2MB for 1x1 binning). <P>
+
+<LI><B>RA, Dec, Epoch:</B> The observer may specify the equatorial coordinates of sources which are not in one of the supplied catalogs (see below). Note that the epoch of the RA and Dec <I>must</I> be specified.<P> 
+
+<LI><B>LSTstart, LSTdelta:</B>  The default scheduler automatically schedules requests so that objects are observed as close to transit as possible. Observers who wish to override this default may request specific LST start times and a tolerance (LSTdelta, defaults to 30 min). The LSTdelta keyword means that the scheduler will try to insert the requested observation within a window of
+LSTstart +/- LSTdelta, but will <I>not</I> schedule the observation at all if this cannot be done.<P>
+</OL>
+
+A list of currently supported catalogs is in the following table. The catalogs are available by anonymous <A HREF="ftp://ftp-astro.physics.uiowa.edu/pub/remote/catalogs">ftp</A>. Check the catalog for the correct name of each source before using in a schedule file.<P>
+
+
+<TABLE BORDER=10 WIDTH=100%>
+	<TR ALIGN=MIDDLE>
+		<TH>Catalog Name</TH>     
+		<TH>Objects</TH>   
+		<TH>Example</TH>   
+		<TH>Description</TH>
+	</TR>                                               
+	<TR ALIGN=MIDDLE>
+		<TH>
+<A HREF="ftp://ftp-astro.physics.uiowa.edu/pub/remote/catalogs/bs.cat">
+		bs</TH>               
+		<TD>6430</TD>      
+		<TD>BS45</TD>      
+		<TD>Yale bright star catalog, declinations &gt; -30</TD>    
+	</TR>
+	<TR ALIGN=MIDDLE>                       
+		<TH>
+<A HREF="ftp://ftp-astro.physics.uiowa.edu/pub/remote/catalogs/bright.cat">
+		bright</TH>           
+		<TD>324</TD>       
+		<TD>BS7789</TD>    
+		<TD>Subset of the BS catalog, V &lt; 4, Dec. &gt; -30</TD>
+	</TR>
+	<TR ALIGN=MIDDLE>  
+		<TH>
+<A HREF="ftp://ftp-astro.physics.uiowa.edu/pub/remote/catalogs/gcvs.cat">
+		GCVS</A></TH>             
+		<TD>2487</TD>      
+		<TD>'S_Uma'</TD>   
+		<TD>General Catalog of Variable Stars, 2nd edition</TD>
+	</TR>
+	<TR ALIGN=MIDDLE>            
+		<TH>
+<A HREF="ftp://ftp-astro.physics.uiowa.edu/pub/remote/catalogs/messier.cat">
+		Messier</A></TH>          
+		<TD>109</TD>       
+		<TD>M67</TD>       
+		<TD>Messier catalog</TD>
+	</TR>
+	<TR ALIGN=MIDDLE>                                           
+		<TH>
+<A HREF="ftp://ftp-astro.physics.uiowa.edu/pub/remote/catalogs/ngc.xdb">
+		NGC</A></TH>              
+		<TD>2405</TD>      
+		<TD>NGC5471</TD>   
+		<TD>New General Catalog of Non-Stellar Objects</TD>
+	</TR>
+	<TR ALIGN=MIDDLE>
+		<TH>
+<A HREF="ftp://ftp-astro.physics.uiowa.edu/pub/remote/catalogs/asteroid.xdb">
+		Asteroids</A></TH>         
+		<TD>4848</TD>      
+		<TD>'67'</TD> 
+		<TD>Asteroid orbital elements, epoch 1994.7</TD>
+	</TR>
+	<TR ALIGN=MIDDLE>
+		<TH>
+<A HREF="ftp://ftp-astro.physics.uiowa.edu/pub/remote/catalogs/comets.xdb">
+		Comets</A></TH>		 
+		<TD>~10</TD>       
+		<TD>Borrelly</TD>  
+		<TD>Comet orbital elements (only a few at present)</TD>
+	</TR>
+	<TR ALIGN=MIDDLE>
+		<TH>
+<A HREF="ftp://ftp-astro.physics.uiowa.edu/pub/remote/catalogs/xephem.xdb">
+		xephem</TH>           
+		<TD>~2,000</TD>    
+		<TD>Neptune</TD>   
+		<TD>Planets, IC, UGC, others</TD>
+	</TR>
+	<TR ALIGN=MIDDLE>
+		<TH>
+<A HREF="ftp://ftp-astro.physics.uiowa.edu/pub/remote/catalogs/sao.xdb">
+		sao</TH>		
+		<TD>~250,000</TD>   
+		<TD>SAO45367</TD>  
+		<TD>Smithsonian Astrophysical Obs. star catalog</TD>
+	</TR>
+</TABLE><P>
+
+The asteroid catalog is mostly from Batrakov's 1990 Catalog, plus recent entries from unpublished sources.  The source name format  <I>'ny' (e.g. '4') </I>for named asteroids (Vesta in this case), or <I>'number year' (e.g. '2866 1961')</I> for asteroids without names.<P>
+
+<B> Oberving File Examples</B><P>
+
+Three examples of schedule files are given below.
+<UL>
+<LI><I>Example 1:</I> A very simple schedule file requesting a single image of  M81 with a clear filter. The camera defaults to 2x2 binning using the full
+field.<P>
+
+<PRE>
+Title 'M81 Observation' Observer 'F. Sinatra' Fil C Dur 60 cat messier 
+source M81 /
+</PRE><P>
+
+<LI><I>Example 2:</I> A  Schedule File for observing Saturn and the asteroid 67 Asia using B and V filters with different exposure times. Calibration stars from the bright star catalog are also observed with different exposure times. Each
+observation is repeated twice.<P>
+
+<PRE>
+Title 'Photometry of Saturn and 67 Asia' Observer 'E. Hubble' 
+Block start repeatdelay 00:30:00
+Filter B,V Duration 30,15   
+catalog xephem source saturn /
+blockrepeat 2
+! This is a comment line
+catalog bs source BS453 dur 10,5 /
+cat asteroids source '67' dur 40,20 /  ! Asia is about V=9<p>
+cat bs source bs231 dur 10,5 /
+</PRE>
+
+<LI><I>Example 3:</I> A schedule file for observing galaxy NGC224 six times,
+followed by observations of three galaxies observed four times in the sequence
+NGC 891, 931,45, 891, 931,45, etc. Note that neither <I>block start</I> or
+<I>blockrepeat</I> has a slash (/) after it and that <I>block start</I> is two
+words while <I>blockrepeat</I> is one (key)word followed by a repeat count. <P>
+
+<PRE>
+Title 'Strange Galaxies' Observer 'Fred Astair' filter V catalog ngc
+block start repeatdelay 01:00:00
+source ngc224 dur 10 /
+blockrepeat 6
+blockrepeat 1
+! reset repeat keyword to 1 time
+block start 
+source ngc891 dur 15 /   ! Note: This block of 3 galaxies repeated 4 times
+source ngc931 dur 10 /
+source ngc45 dur 20 /
+blockrepeat 4
+</PRE>
+
+<LI><I>Example 4:</I> A schedule file for observing two asteroids every 20 minutes for 8 hours to obtain a light curve. The LSTstart has be chosen to correspond to 4 hours before transit.<P>
+
+<PRE>
+Title 'Asteroid Light Curves' Observer 'Fred Astair' filter R catalog asteroid
+block start 
+lststart 14:00:00 repeatdelay 0:20:00
+source '4' dur 10 /  !Vesta
+source '264' dur 60 / !Libussa
+blockrepeat 
+24
+</PRE>
+</UL>
+
+<EM><B>Note that observing requests with incorrect formats will not be observed.</B></EM><P>
+
+<B>Submitting Observing Files</B><P>
+The observing files should be completed using the <A HREF="atfmsched.shtml" target="top">Observing File Request Form</A>  Each clear evening, the telescope operator will check both email and the incoming directories for observing requests. She/he will generally give higher priority to the earlier requests, but this may be modified by length of observation (shorter observations get higher priority) and timeliness (e.g. favorable eclipse of a binary star which must be done on a given night). Schedules which are in correct format and do not violate the maxumum time/source guidelines are accepted into the <B>incoming</B> directory.
+After the observations are made, the schedule files are transferred to directory <I>done</I>.  The images are available for <A HREF="ftp://ftp-astro.physics.uiowa.edu/pub/remote/images">ftp</A><P>
+
+<B> Checking Status of Observations</B><P>
+
+<B>Summary log files</B><P>
+
+There are two summary log files generated every night that observations are made. They are named mmmdd.lis and mmmdd.sum where mmmdd is the month and day (e.g. mar05). The .lis file contain one line per image and is generated by the scheduler just <I>before</I> observations begin and contains all the images to be observed that evening. This is the <I>planned</I> schedule>  If weather or mechanical problems arise during the night,  not all scans will be observed. The .sum file is a short text file which the telescope operator generates the next morning indicating the overall status of the previous nights observations. <P>
+
+<B>Observers' log files</B><P>
+
+A copy of the observing log is generated by the telescope control program using the file name <I>abbmdd.lis</I> where <I>abbmdd</I> is the same as the schedule file. The log files are available for <A HREF="ftp://ftp-astro.physics.uiowa.edu/pub/remote/logs">ftp</A>. If the schedule is observed over several days, the log file is appended.<P>
+
+<B>Retriving Image and Logs</B><P>
+
+Images and log files are distributed by the observer on the morning following the observation.  Local observers in the labs can find their images on h:\,
+which is cassius/astrolabs/modern or general or west.  The log files are located on drive k:\ (home1/ccdoper/user/logs>.  Internet users can retrieve their logs
+and images by ftp as shown above.<P>
+
+<I>Image files which are more than 7 days old may be deleted. Any images which were not downloaded before this time can be restored from the backup medium on request.</I><P>
+
+<UL>
+<LI><B>FTP transfers:</B>  For text files (e.g. <I>.log</I> files) make sure the mode is ascii (default, type <I>mode</I> <I>ascii</I> to reset).
+For image files (extension <I>.fts</I>) set mode to binary (type <I>mode</I> <I>binary</I>). Use  the command <I>get</I> for single files or <I>mget</I> with wildcard substitution for multiple files. 
+
+<LI><B>Modem Transfers:</B> Use the command <I>sz</I>.  Type <I>sz</I> without any filename for a brief list of command line options.  Remember to delete all files after successful downloading.<P>
+</UL>
+  
+<B>Contacting the Operator</B><P>
+
+The operator can be called during late afternoon or early evening at
+(319)-335-2863. Electronic mail can be sent to user
+<a href="mailto:atfproj@astro.physics.uiowa.edu">atfproj</a>.
+For remote sites connected to internet, an interactive Unix 'talk' session can be established during observations. Telephone the telescope operator for
+details.<P>
+
+
+
+<!--#include file="remote_button_bar.shtml"-->
+
+</BODY>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<! For RCS Only -- Do Not Edit >
+<! @(#) $RCSfile: guide.shtml,v $ $Date: 2003/04/15 20:48:46 $ $Revision: 1.1.1.1 $ $Name:  $ >

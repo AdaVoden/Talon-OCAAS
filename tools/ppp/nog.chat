@@ -1,0 +1,18 @@
+#!/bin/sh
+#
+# This is used by the infippp script to dial up.
+#
+exec /usr/sbin/chat -v					\
+	TIMEOUT		10				\
+	ABORT		'\nBUSY\r'			\
+	ABORT		'\nNO ANSWER\r'			\
+	''		'\rAT'				\
+	'OK-+++\c-OK'	ATH0				\
+	TIMEOUT		60				\
+	OK		ATDT$TELEPHONE			\
+	ogin:		$ACCOUNT			\
+	assword:	$PASSWORD			\
+	beginning
+
+# For RCS Only -- Do Not Edit
+# @(#) $RCSfile: nog.chat,v $ $Date: 2003/04/15 20:48:36 $ $Revision: 1.1.1.1 $ $Name:  $

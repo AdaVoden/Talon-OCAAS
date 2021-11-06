@@ -1,0 +1,31 @@
+<html>
+<head>
+<TITLE>Iowa Robotic Observatory</TITLE>
+</head>
+<body bgcolor="wheat">
+
+<base target="mainframe">
+
+<font color="blue" size=3><B>Table of Contents</B></font><br>
+<img src="../images/toc_line.gif"><p>
+
+<small>
+
+<A HREF="Remote/index.shtml" target="_top">Remote Observing</A><p>
+<A HREF="iro_main.shtml"> Summary</A><p>
+<A HREF="rational.shtml"> Rationale for the IRO Facility</A><p>
+<A HREF="teaching.shtml"> Using the IRO for Teaching</A><p>
+<A HREF="research.shtml"> Research Projects</A><p>
+<A HREF="technicl.shtml"> Technical Description of IRO</a><p>
+<A HREF="timetbl.shtml"> Project Schedule and Status</a><p>
+<a href="pic_gal.shtml"> IRO Picture Gallery</a><p>
+
+<A HREF="../index.shtml" target="_top">Back</a><p>
+
+</small>
+
+</body>
+</html>
+
+
+

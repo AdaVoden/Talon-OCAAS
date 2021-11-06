@@ -1,0 +1,17 @@
+#!/bin/csh -f
+
+pc39 << _EOF_
+# Run the alt motor from limit to limit forever
+
+ay			# select the alt axis 
+lp0			# init counter here
+ac150000 vl250000	# set max accel and vel
+ln			# hard limits on just in case
+wh ma5000000 go ma-5000000 go wg # full range is ~ +-10,000,000 from vertical
+
+_EOF_
+
+echo Hit RETURN to stop alt ..
+$<
+
+pc39cmd 'ay st'

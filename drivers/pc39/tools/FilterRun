@@ -1,0 +1,17 @@
+#!/bin/csh -f
+
+pc39 << _EOF_
+# Run the filter motor continuously
+
+av			# select the rotator axis 
+ac1000000 vl200000	# set max accel and vel
+lf			# limits off (because there aren't any
+rp			# report initial position, for fun
+jg200000
+
+_EOF_
+
+echo Hit RETURN to stop filter..
+$<
+
+pc39cmd 'av st'

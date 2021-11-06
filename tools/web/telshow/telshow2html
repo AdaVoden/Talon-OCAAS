@@ -1,0 +1,62 @@
+#!/bin/csh -f
+
+set utdate = `cat $1 | grep 'UT Date and Time' | awk '{print $5}'`
+set uttime = `cat $1 | grep 'UT Date and Time' | awk '{print $6}'`
+set lst = `cat $1 | grep 'LST' | awk '{print $4}'`
+set jd = `cat $1 | grep 'LST' | awk '{print $5}'`
+set CmdHA = `cat $1 | grep 'Command position' | awk '{print $3}'`
+set CmdDec = `cat $1 | grep 'Command position' | awk '{print $4}'`
+set CmdEl = `cat $1 | grep 'Command position' | awk '{print $5}'`
+set CmdAz = `cat $1 | grep 'Command position' | awk '{print $6}'`
+set EncHA = `cat $1 | grep 'Encoder position' | awk '{print $3}'`
+set EncDec = `cat $1 | grep 'Encoder position' | awk '{print $4}'`
+set EncEl = `cat $1 | grep 'Encoder position' | awk '{print $5}'`
+set EncAz = `cat $1 | grep 'Encoder position' | awk '{print $6}'`
+set TelStat = `cat $1 | grep 'Telescope status' | awk '{print $3}'`
+set DomeStat = `cat $1 | grep 'Dome Status' | awk '{print $3}'`
+set DomeAz = `cat $1 | grep 'Dome Azimuth' | awk '{print $3}'`
+set ShutterStat = `cat $1 | grep 'Shutter Status' | awk '{print $3}'`
+set CamStat = `cat $1 | grep 'Camera Status' | awk '{print $3}'`
+set Filter = `cat $1 | grep 'Filter Wheel' | awk '{print $3}'`
+set TelrunStat = `cat $1 | grep 'Telrun Status' | awk '{printf "%s %s %s", $3, $4, $5}'`
+
+echo '<html>'
+echo '<body>'
+echo '<h1>'ATF Status: NOTE - This page is currently under construction...'</h1>''<hr>'
+echo '<table border = "0">'
+echo '<tr>''<td>''</td>''<td>''</td>''<td>''<h3>'Dome'</h3>''</td>''<td>''</td>''<td>''<h3>'Telescope'</h3>''</td>''<td>''</td>''</tr>'
+echo '<tr>''<td>''<h3>'UT Date   '</h3>''</td>''<td>''<h3>''<font color="red">'$utdate'</font>''</h3>''</td>''<td>''<h3>'Status'</h3>''</td>''<td>''<h3>''<font color="red">'$DomeStat'</font>''</h3>''</td>''<td>''<h3>'Status'</h3>''</td>''<td>''<h3>''<font color="red">'$TelStat'</font>''</h3>''</td>''</tr>'
+echo '<tr>''<td>''<h3>'UT'</h3>''</td>''<td>''<h3>''<font color="red">'$uttime'</font>''</h3>''</td>''<td>''<h3>'Azimuth'</h3>''</td>''<td>''<h3>''<font color="red">'$DomeAz'</font>''</h3>''</td>''<td>''<h3>'Camera'</h3>''</td>''<td>''<h3>''<font color="red">'$CamStat'</font>''</h3>''</td>''</tr>'
+echo '<tr>''<td>''<h3>'LST'</h3>''</td>''<td>''<h3>''<font color="red">'$lst'</font>''</h3>''</td>''<td>''<h3>'Shutter'</h3>''</td>' '<td>''<h3>''<font color="red">'$ShutterStat'</font>''</h3>''</td>''<td>''<h3>'Filter'</h3>''</td>''<td>''<h3>''<font color="red">'$Filter'</font>''</h3>''</td>''</tr>'
+echo '</table>'
+echo '<table border = "5">'
+echo '<tr>'
+echo 	'<td>''</td>'
+echo 	'<td>'Hour Angle'</td>'
+echo 	'<td>'Declination'</td>'
+echo 	'<td>'Elevation'</td>'
+echo 	'<td>'Azimuth'</td>'
+echo '</tr>'
+echo '<tr>'
+echo 	'<td>'Command Position'</td>'
+echo 	'<td>'$CmdHA'</td>'
+echo 	'<td>'$CmdDec'</td>'
+echo 	'<td>'$CmdEl'</td>'
+echo 	'<td>'$CmdAz'</td>'
+echo '</tr>'
+echo '<tr>'
+echo 	'<td>'Encoder Position'</td>'
+echo 	'<td>'$EncHA'</td>'
+echo 	'<td>'$EncDec'</td>'
+echo 	'<td>'$EncEl'</td>'
+echo 	'<td>'$EncAz'</td>'
+echo '</tr>'
+echo '</table>'
+echo
+echo '<hr>'
+
+
+
+
+
+

@@ -1,0 +1,50 @@
+#!/bin/csh -f
+# move and compute the motor/encoder ratio.
+
+if ($#argv != 4) then
+    echo $0':' axis steps vel dir
+    exit 1
+endif
+
+set ax = $argv[1]
+set st = $argv[2]
+set vl = $argv[3]
+set dr = $argv[4]
+if ("$dr" != '+' && "$dr" != '-') then
+    echo dir must be + or -
+    exit 1
+endif
+
+# init vel and acc
+@ ac = $vl / 2
+pc39cmd "a$ax st vl$vl ac$ac"
+
+# get positions now
+set rp0 = `pc39cmd "a$ax rp"`
+set re0 = `pc39cmd "a$ax re"`
+
+# move
+pc39cmd "a$ax mr$dr$st go"
+
+# wait for completion
+onintr stop
+@ to = 2 * $st / $vl
+stopTO $ax $to
+if ($status) then
+    echo a$ax timed out waiting for stop
+  stop:
+    pc39cmd "kl"
+    exit 1
+endif
+
+# get positions now
+set rp1 = `pc39cmd "a$ax rp"`
+set re1 = `pc39cmd "a$ax re"`
+
+@ sc = ( 1000 * ( $rp1 - $rp0 ) ) / ( $re1 - $re0 )
+@ dm = $rp1 - $rp0
+@ de = $re1 - $re0
+
+echo motor $dm
+echo encod $de
+echo $sc motor per 1000 encoder

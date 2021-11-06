@@ -1,0 +1,26 @@
+An example of a remote site checking in via an ISP on a regular basis to
+upload new images and weather data and download a new .sls file.
+
+dxpc is unrelated.. but is a nifty tool which gives 4-5x improvement
+running X over a phone line. It is needed on both ends. Here is an
+excerpt from the man page (-f means fork and run as a daemon):
+
+       Assume that you're running a real X server on the  console
+       of a local workstation called homepc, and that you want to
+       run some X applications on a remote  system  called  work-
+       server  and  have them display on the console of the local
+       system.
+
+       On workserver, run
+           $ export DISPLAY=homepc:0
+           $ dxpc -f
+           $ export DISPLAY=unix:8
+
+       On homepc, run
+           $ export DISPLAY=unix:0
+           $ dxpc -f workserver
+
+       Now on workserver,
+           $ xterm&
+           $ xemacs&
+           etc...

@@ -1,0 +1,22 @@
+#!/bin/csh -f
+# wait up to timeout for given axis to stop
+
+if ($#argv != 2) then
+    echo $0':' axis timeout
+    exit 1
+endif
+
+set ax = $argv[1]
+set to = $argv[2]
+
+onintr quit
+set t = $to
+while ($t > 0)
+    sleep 1
+    set rv = `pc39cmd "a$ax rv"`
+    if ($rv == "0") exit 0
+    @ t --
+end
+
+quit:
+exit 1

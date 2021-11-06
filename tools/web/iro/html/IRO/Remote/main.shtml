@@ -1,0 +1,39 @@
+<html>
+
+<head>
+<TITLE>IRO Remote Observing</TITLE>
+<base target="mainframe">
+</head>
+
+<BODY bgcolor="#FFFFFF">
+
+<font color="red" size=6>IRO Remote Observers Page</font><br>
+<img src="/images/main_line.gif"><p>
+
+Welcome to the Iowa Robotic Telescope Observer page.  The Table of 
+Contents is designed to assist you in completing your observing request.
+
+<p>Before you can observe, it is necessary to have a <a
+href="code_request.shtml">remote observer's code</a>.  This is a three letter
+code which allows us to tag your images for retrieval.  It also gives us a
+nice idea of where everyone is from.
+
+<p>Once you have an observers code, you can go straight to the <a
+href="submit_formatq.shtml">Observation Submission Form</a>.  The <a
+href="guide.shtml">observer's guide</a> will assist you in preparing your
+observing proposal.
+
+<p> You will also find links to current weather conditions and status of
+the telescope.
+<p>
+
+Thanks again for using the IRO.  If you have any comments, please send them
+to our <a href="mailto:liason@iro.physics.uiowa.edu">internet liason.</a>
+
+<hr>
+</body>
+
+</html>
+
+
+

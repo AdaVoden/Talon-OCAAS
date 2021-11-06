@@ -1,0 +1,70 @@
+Vsmon is a program for monitoring a set of variable stars over an extended
+period. The list of stars to monitor is specified in a catalog file. The format
+is detailed below. vsmon scans a given directory of fits images and checks each
+image against the catalog to produce one line of output for each image whose
+OBJECT field is found in the catalog. The format of the output is detailed
+below.
+
+
+
+Usage:
+usage: ./vsmon [options]
+  -b     : use bright-walk star search method. default is max-in-area.
+  -c file: alternate catalog file.
+           default is /home1/ccdoper/archive/photcal/vsmon.lst
+  -i file: alternate image directory.
+           default is /home1/ccdoper/user/images
+  -o file: alternate output file; use - for stdout.
+           default is /home1/ccdoper/archive/photcal/vsmon.out
+  -r rmax: max radius to search for star, pixels. default is 12
+  -v:      verbose
+
+
+The catalog file format consists of three lines per target star, as follows.
+There is one line for the target star, and one line each for the calibrator and
+check stars. All fields are separated by blanks. Blank lines and lines which
+begin with # are ignored.
+
+
+C name RA Dec V B-V V-R V-I
+K name RA Dec V B-V V-R V-I
+T name RA Dec V B-V V-R V-I
+
+where:
+    C/K/T:	The first column is one of the characters C, K or T. These
+		serve to mark each entry as the Calibrator, Check, or Target,
+		respectvively. They must appear in the first column and always
+		in the order C then K then T for each star group.
+    name:	The second column is the name of the star. Only the name of
+		the Target star is used by vsmon for anything. No spaces are
+		allowed.
+    RA:		The third column is the RA of the star. The format is H:M:S.
+    Dec:	The fourth column is the Dec of the star. The format is D:M:S.
+
+    V:		The last 4 columns are the magnitudes of the star in several
+    B-V:	bands. Column five is the magnitude in the V band; column six
+    V-R:	is the B-V magnitude; column seven is the V-R magnitude; and
+    V-I		column eigth is the V-I magnitude.
+
+
+
+The output file consists of one line per file as follows:
+
+FName OName UD UT HJD Z F TMag TErr TTrig KDiff KErr
+
+where:
+    FName:	name of file
+    OName:	name of object
+    UD:		UT Date of observation, M/D/Y
+    UT:		UT Time of observation, H:M:S
+    HJD:	JD of observation, corrected to Heliocentric time
+    Z:		airmass
+    F:		filter code
+    TMag:	computed true magnitude of target star
+    TErr:	statistical error in TMag, in magnitudes
+    TTrig:	Y if TMag is >= the trigger threshold, else N.
+    KDiff:	measured - expected check star magnitude
+    KErr:	statistical error in check star, in magnitudes
+
+! For RCS Only -- Do Not Edit
+! @(#) $RCSfile: README,v $ $Date: 2003/04/15 20:48:46 $ $Revision: 1.1.1.1 $ $Name:  $

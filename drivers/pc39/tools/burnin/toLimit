@@ -1,0 +1,32 @@
+#!/bin/csh -f
+# go to limit in given dir at given vel, waiting up to timeout.
+# exit 0 if ok, else issue message and exit 1
+
+if ($#argv != 4) then
+    echo $0':' axis vel timeout dir
+    exit 1
+endif
+
+set ax = $argv[1]
+set vl = $argv[2]
+set to = $argv[3]
+set dr = $argv[4]
+if ("$dr" != '+' && "$dr" != '-') then
+    echo limit dir must be + or -
+    exit 1
+endif
+
+onintr stop
+
+pc39cmd "a$ax ln jg$dr$vl"
+qaTO $ax "L" $to
+if ($status) then
+    echo seeking $dr limit timed out
+    pc39cmd "kl"
+    exit 1
+endif
+exit 0
+
+stop:
+pc39cmd "a$ax st"
+exit 1

@@ -1,0 +1,34 @@
+<HTML>
+<HEAD>
+   <TITLE>int FLIGetModel</TITLE>
+   <META NAME="GENERATOR" CONTENT="DOC++ 3.4.3">
+</HEAD>
+<BODY BGCOLOR="#ffffff">
+
+<H2>int <A HREF="#DOC.DOCU">FLIGetModel</A>(flidev_t dev, char *model, size_t len)</H2>
+<BLOCKQUOTE> Get the model of a given physical camera device.</BLOCKQUOTE>
+
+<A NAME="DOC.DOCU">
+<HR>
+<H2>Documentation</H2>
+<BLOCKQUOTE>
+Get the model of a given physical camera device.  This function
+copies up to <TT>len - 1</TT> characters of the model string for
+physical device <TT>dev</TT>, and a terminating <TT>NULL</TT>
+character, into the buffer pointed to by <TT>model</TT>.  If
+<TT>len</TT> is less than or equal to zero this function has no
+effect.<P></BLOCKQUOTE>
+<DL>
+</DL>
+<DL><DT><DT><B>Parameters:</B><DD><B>dev</B> -  Physical camera device to find model of.
+<BR><B>model</B> -  Pointer to a character buffer where the model string
+is to be placed.
+<BR><B>len</B> -  Size in bytes of buffer pointed to by <TT>model</TT>.
+<BR><DT><B>Returns:</B><DD>  Zero on success.
+<BR>  Non-zero on failure.
+<BR><DT><B>See Also:</B><DD><!1><A HREF="FLIGetFirmwareRev.html">FLIGetFirmwareRev</A>
+<BR><!1><A HREF="FLIGetSerialNum.html">FLIGetSerialNum</A>
+<BR><DD></DL><P><I><A HREF="index.html">Alphabetic index</A></I> <I><A HREF="HIER.html">HTML hierarchy of classes</A> or <A HREF="HIERjava.html">Java</A></I><P><HR>
+<BR>
+This page was generated with the help of <A HREF="http://www.linuxsupportline.com/~doc++">DOC++</A>.
+</BODY>

@@ -1,0 +1,11 @@
+ define creep($way, $spd) {
+   iedge = 255;
+   mtvel = $way * $spd;
+   while(!iedge) {
+   	printf("mpos = %d epos = %d\n",mpos,epos);
+	pause(500);
+   }
+   mtvel = 0;
+   printf("found %d at %d\n",iedge,mtrig);
+}
+

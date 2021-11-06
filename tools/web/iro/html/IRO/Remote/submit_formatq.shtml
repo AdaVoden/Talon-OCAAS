@@ -1,0 +1,27 @@
+<HTML>
+
+
+
+<HEAD>
+<TITLE>ATF Stats</TITLE>
+</HEAD>
+<body bgcolor="white">
+<font color="red" size=6>Requesting an Observation</font><br>
+<img src="/images/main_line.gif"><p>
+
+Choose one of the following formats:<p>
+<ul>
+
+<li><a href="submit_sched.shtml" target="top">New browser</a> - this allows easy
+reference to other resources in the original browser window.
+ 
+<li><a href="submit_sched.shtml" target="mainframe">This frame</a> - this does
+not open a new browser window, but does maintain the frame based website.
+
+<li><a href="submit_sched.shtml" target="_top">Same browser, no frames</a> -
+This puts the form in your browser without frames.
+
+</ul>
+</BODY>
+
+</HTML>

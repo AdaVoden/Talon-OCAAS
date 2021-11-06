@@ -1,0 +1,40 @@
+<HTML>
+
+
+<HEAD>
+<TITLE>Observer Info</TITLE>
+</HEAD>
+<body bgcolor="white">
+<font color="red" size=6>Remote Observer Information</font><br>
+<img src="/images/main_line.gif"><p>
+<FORM METHOD="POST" ACTION="/cgi-bin/query.pl">
+<p>
+
+<! identify which scope we want to report on >
+<INPUT TYPE="hidden" NAME="Scope" VALUE="iro">
+
+<! what to ask for -- no choice on this page >
+<INPUT TYPE="hidden" NAME="QType" Value="PerUser">
+
+Please supply the following information:
+<P>
+<ul>
+    <li>Observer Code: <INPUT SIZE=3 MAXLENGTH=3 NAME="Obscode"></li>
+    <li>Maximum image age to list (days): <INPUT VALUE=" 30" SIZE=3 MAXLENGTH=4 NAME="Age"></li>
+</ul>
+
+<p>
+
+<INPUT TYPE="submit" VALUE="Submit">
+<INPUT TYPE="reset" VALUE="Reset the Form">
+
+</FORM>
+
+</BODY>
+
+</HTML>
+
+
+
+
+

@@ -1,0 +1,13 @@
+
+
+echo getting images from onem-1
+rcp -r onem-1:/mdo/user/images collection
+
+echo getting images from onem-2
+rcp -r onem-2:/mdo/user/images collection
+
+echo getting images from onem-3
+rcp -r onem-3:/mdo/user/images collection
+
+echo getting images from onem-4
+rcp -r onem-4:/mdo/user/images collection

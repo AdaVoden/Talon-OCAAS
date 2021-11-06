@@ -1,0 +1,16 @@
+#!/bin/csh -f
+
+pc39 << _EOF_
+# Run the focus motor from limit to limit forever
+
+au			# select the rotator axis 
+ac1000000 vl100000	# set max accel and vel
+sl			# use soft limits to avoid killing the loop
+wh mr-2000000 go mr2000000 go wg # full range is ~1M
+
+_EOF_
+
+echo Hit RETURN to stop focus..
+$<
+
+pc39cmd 'au st'

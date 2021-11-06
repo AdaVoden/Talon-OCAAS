@@ -1,0 +1,4 @@
+REGEDIT4
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\PixelVision\PixelView\3.2\Library\settings]
+"Exposure Time"=dword:00002710

@@ -1,0 +1,124 @@
+WCSLIB contains C routines which implement the proposed "World Coordinate
+System" (WCS) convention in FITS (Flexible Image Transport System).
+This proposal is described in "Representations of Celestial Coordinates in
+FITS" by Eric W. Greisen and Mark Calabretta.  A draft of this document is
+available via anonymous ftp from fits.cv.nrao.edu:/fits/documents/wcs.
+
+
+Manifest
+--------
+   Makefile     GNU makefile for installing WCSLIB
+   README       This file.
+
+   proj.c       Implementation of the WCS spherical projections.
+   proj.h       Header file for proj.c; contains the definition of the
+                "prjprm" struct and function prototypes.
+   sph.c        WCS spherical coordinate transformation routines.
+   wcs.c        WCS driver routines.
+   wcs.h        Header file for wcs.c; contains the definition of the
+                "wcsprm" struct and function prototypes.
+   wcstrig.c    Trigonometric functions which deal with degrees rather than
+                radians.
+   wcstrig.h    Header file for wcs.c; contains function prototypes.
+
+   tproj1.c     Test closure of the WCS projection routines.
+   tproj2.c     Plot test grids for each projection (requires PGPLOT and X11).
+   tsph.c       Test closure of the WCS spherical coordinate transformation
+                routines.
+   twcs.c       Plot an oblique test grid (requires PGPLOT and X11).
+   tpgc.c       C interfaces to PGPLOT used by tproj2 and twcs.
+   tpgf.f       FORTRAN interfaces to PGPLOT used by tproj2 and twcs.
+
+
+Usage notes
+-----------
+Usage of the routines is described in the prologue comments in wcs.c and
+proj.c (and also sph.c but this will not usually need to be used directly).
+The main interface is via the driver routines, wcsfwd() and wcsrev(),
+described in wcs.c.  The twcs.c test program may be taken as a programming
+template.
+
+The routines use a simple mechanism to store intermediate values and thereby
+save recomputing them on every call.  This consists of extending the structs
+("wcsprm" and "prjprm") which contain coordinate transformation and projection
+parameters so that they also store intermediate values.  Particular members of
+these structs (wcsprm.flag and prjprm.flag)) are flags which must be set (or
+reset) to zero when the parameters are set (or reset), thereby signalling that
+the intermediate values need to be computed (or recomputed).  This mechanism
+also allows an indefinite number of contexts to be maintained, something which
+is not possible via global variables.
+
+You should also be aware that while the default value of the FITS "LONGPOLE"
+keyword is 180 degrees this must be explicitly set in wcs.ref[2].
+
+
+Installation notes
+------------------
+A GNU makefile is provided; GNU make (referred to below as gmake) must be
+used.  A few variables are defined at the start of the makefile which you may
+need to tailor for your purposes.  You should then be able to build
+'libwcs_c.a' via
+
+   gmake
+
+A suite of test programs is also provided to verify the library.  Two of
+these, tproj1 and tsph, test for closure of the forward and reverse projection
+and spherical coordinate transformation routines.  Another two use PGPLOT to
+draw test coordinate grids using an X-windows viewer.  If PGPLOT and/or X11 is
+not available then you can defeat the compilation of these latter two test
+programs by unsetting the PGPLOTLIB variable in the makefile.  You can compile
+and exercise the test programs in one step via
+
+   gmake test
+
+
+Verification
+------------
+The tproj1 and tsph programs test closure of the projection routines and
+spherical coordinate transformations.  "Closure" tests apply the forward and
+reverse transformations in sequence and compare the result with the original
+value.  Ideally, the result should agree exactly, but because of floating
+point rounding errors there is usually a small discrepancy so it is only
+required to agree within a "closure tolerance".
+
+tproj1 tests for closure separately for longitude and latitude except at the
+poles where it only tests for closure in latitude.  Note that closure in
+longitude does not deal with angular displacements on the sky.  This is
+appropriate for many projections such as the cylindricals where circumpolar
+parallels are projected at the same length as the equator.  On the other hand,
+tsph does test for closure in angular displacement.
+
+The closure tolerance specified for most projections is 1e-10 degree which is
+slightly less than 3 microarcsec.  Closure is tested at all points on the 1
+degree grid of native longitude and latitude and to within 5 degrees of any
+latitude of divergence for those projections which cannot represent the full
+sphere.
+
+Closure has been verified at all test points for SUN workstations.  However,
+non-closure may be observed for other machines near native latitude -90 for
+the zenithal, cylindrical and conic equal area projections (ZEA, CEA and COE),
+and near divergent latitudes of projections such as the azimuthal perspective
+and stereographic projections (AZP and STG).   Rounding errors may also carry
+points between faces of the quad-cube projections (CSC, QSC, and TSC).
+Although such excursions may produce long lists of non-closure points, this
+is not necessarily indicative of a fundamental problem.
+
+Note that the inverse of the COBE quad-qube projection (CSC) is a polynomial
+approximation and its closure tolerance is intrinsically poor.
+
+Although tests for closure help to verify the internal consistency of the
+routines they do not verify them in an absolute sense.  This is partly
+addressed by tproj2 and twcs which plot test grids for visual inspection of
+scaling, orientation, and other macroscopic characteristics of the
+projections.
+
+
+Author
+------
+Mark Calabretta, Australia Telescope National Facility
+mcalabre@atnf.csiro.au
+
+$Id: README,v 1.1.1.1 2003/04/15 20:46:59 lostairman Exp $
+
+! For RCS Only -- Do Not Edit
+! @(#) $RCSfile: README,v $ $Date: 2003/04/15 20:46:59 $ $Revision: 1.1.1.1 $ $Name:  $

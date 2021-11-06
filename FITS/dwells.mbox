@@ -1,0 +1,127 @@
+From dwells@fits.cv.nrao.edu Fri Jan  6 09:41:21 1995
+Received: from noao.edu by tucana (4.1/SAG.sat.13)
+	id AA15427; Fri, 6 Jan 95 09:41:20 MST; for ecdowney
+Received: from fits.cv.nrao.edu by noao.edu (4.1/SAG-Noao.G96)
+	id AA17586; Fri, 6 Jan 95 09:41:18 MST; for ecdowney@tucana
+Received: by fits.cv.nrao.edu (4.1/DDN-DLB/1.5)
+	id AA14754; Fri, 6 Jan 95 11:41:16 EST
+Date: Fri, 6 Jan 95 11:41:16 EST
+From: dwells@fits.cv.nrao.edu (Don Wells)
+Message-Id: <9501061641.AA14754@fits.cv.nrao.edu>
+To: ecdowney@noao.edu
+Subject: Re: CROTAn
+In-Reply-To: <$2K3lKA8U0jT070yn@noao.edu>
+References: <$2K3lKA8U0jT070yn@noao.edu>
+Status: R
+
+Elwood,
+
+Elwood C. Downey writes:
+ > We are going to add the CTYPE/CRVAL/CDELT/CRPIX/CROTA params to the FITS
+ > files we take with our robot observatory..
+
+Good! This subject is known in the FITS community as the "WCS" [World
+Coordinate Systems] conventions.
+
+ > (.. automatically match.. stars.. with.. GSC..).
+
+Good idea. You are not restricted to use of GSC --- there are
+competitor sources, and they don't have to be on CD-ROM, they are
+available via Internet. The latter case falls under the heading of
+"Postage-Stamp" services. After the ADASS meeting in Baltimore, we
+established an Email exploder for providers and customers of these
+services to coordinate protocols. As a part of that effort, the latest
+revs of SAOimage support WCS. The GSFC postage stamp server supplies
+little GSC images of designated places with FITS WCS headers...
+
+ > ..established options.. for CTYPE? 
+
+These were originally devised by Eric Greisen circa 1982-3 for the
+AIPS project, and have subsequently been widely adopted by the radio,
+infrared and high-energy communities. There are no competing
+conventions. 
+
+ > .. NVSS uses.. > "RA---SIN" and "DEC--SIN". ..
+
+The "RA--" and "DEC-" parts have the obvious meaning.  The "-SIN"
+means that the image has sine projection geometry, also known as
+orthographic. Radio synthesis imaging systems produce this geometry.
+Most optical imaging systems produce the "-TAN", or gnomonic, geometry
+(this is probably what you want to use for your telescope). Schmidt
+cameras produce "-ARC", also known as azimuthal equidistant. There are
+an infinity of other projections which are used for a wide variety of
+purposes, such as the Mercator ("-MER") and Aitoff-Hammer Equal Area
+("-AIT") projections. The proposed standard for all of this is
+
+    ftp://fits.cv.nrao.edu/fits/documents/wcs/wcs.all.ps.Z
+
+(This 200_KB of compressed Postscript prints as a 52-page document
+dense with mathematics and containing 37 surprisingly sophisticated
+figures, graphical figures which will give any Postscript printer an
+aerobic workout --- send this one to your fastest, smartest printer!)
+
+You should also read chapter 4 (World Coordinate Systems) of the NOST
+FITS User's Guide, which is
+
+    ftp://fits.cv.nrao.edu/fits/documents/overviews/users_guide.ps.gz
+
+ > .. CROTA1,2. .. need.. rotation about.. > optical axis..
+
+Use the 1983 AIPS convention for simple rotations: set the rotation
+for the RA-like axis to zero and put your position angle into the
+rotation for the Dec-like axis. In most cases, this means
+    CROTA1  =       0.0 /
+    CROTA2  =   <angle> / in degrees
+You _may_ be able to deduce the sign convention for CROTA2 from first
+principles after reading the two documents whose URLs are given above,
+but I wouldn't bet on it. In practice, you can simply pop up your test
+image on AIPS or SAOimage or IRAF, and point at some catalog stars to
+compare their indicated coordinates with book values. Flip sign as
+needed. 
+
+-Don
+
+From dwells@fits.cv.nrao.edu Fri Jan  6 11:36:42 1995
+Received: from noao.edu by tucana (4.1/SAG.sat.13)
+	id AA20584; Fri, 6 Jan 95 11:36:41 MST; for ecdowney
+Received: from fits.cv.nrao.edu by noao.edu (4.1/SAG-Noao.G96)
+	id AA20643; Fri, 6 Jan 95 11:36:39 MST; for ecdowney@tucana
+Received: by fits.cv.nrao.edu (4.1/DDN-DLB/1.5)
+	id AA15125; Fri, 6 Jan 95 13:36:37 EST
+Date: Fri, 6 Jan 95 13:36:37 EST
+From: dwells@fits.cv.nrao.edu (Don Wells)
+Message-Id: <9501061836.AA15125@fits.cv.nrao.edu>
+To: dwells (Don Wells)
+Cc: ecdowney@noao.edu
+Subject: Re: CROTAn
+In-Reply-To: <9501061641.AA14754@fits.cv.nrao.edu>
+References: <$2K3lKA8U0jT070yn@noao.edu>
+	<9501061641.AA14754@fits.cv.nrao.edu>
+Status: R
+
+Don Wells writes:
+ >  > (.. automatically match.. stars.. with.. GSC..).
+ > 
+ > Good idea. You are not restricted to use of GSC --- there are
+ > competitor sources, and they don't have to be on CD-ROM, they are
+ > available via Internet. The latter case falls under the heading of
+ > "Postage-Stamp" services. After the ADASS meeting in Baltimore, we
+ > established an Email exploder for providers and customers of these
+ > services to coordinate protocols. As a part of that effort, the latest
+ > revs of SAOimage support WCS. The GSFC postage stamp server supplies
+ > little GSC images of designated places with FITS WCS headers...
+
+Oooooops... that paragraph is unresponsive to your question. Sigh... I
+was telling you about one of my pet ideas. The GSC is just a list of
+star coordinates.  The postage_stamp servers supply _images_ with
+attached WCS info. I responded as I did because when you said "GSC", I
+thought of the CD-ROMs of compressed survey imagery (the GSFC server
+will supply images computed from those files).  One huge advantage of
+the postage_stamp approach is that it can work with reference stars
+100x fainter, and over fields of view less than an arc-minute if
+necessary. So technology based on image matching could be used to
+attach WCS info to CCD images from big telescopes (like the Mayall
+4m). 
+
+-Don
+

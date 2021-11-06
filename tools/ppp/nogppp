@@ -1,0 +1,56 @@
+#!/bin/csh -f
+
+# try these accounts in order
+# each entry is one string "phone login password"
+set accts = (				\
+    "1234567 mylogin mypasswd"		\
+    "2345678 another itspasswd"		\
+)
+
+# using this dialer script -- wants TELEPHONE ACCOUNT PASSWORD in env.
+set DIALER_SCRIPT = /usr/local/telescope/bin/nog.chat
+
+# dynamic local ip, remote ip to isp.
+set LOCAL_IP = 0.0.0.0
+set REMOTE_IP = 0.0.0.0
+
+# at hi speed
+/bin/setserial /dev/cua0 spd_vhi
+
+# try each account
+set i = 1;
+while ($i <= $#accts)
+    set acct = ($accts[$i])
+
+    setenv TELEPHONE $acct[1]
+    setenv ACCOUNT $acct[2]
+    setenv PASSWORD $acct[3]
+
+    jd -t; echo trying $TELEPHONE
+
+    /usr/sbin/pppd /dev/cua0 38400 debug lock modem crtscts \
+	asyncmap 20A0000 escape FF kdebug 0 $LOCAL_IP\:$REMOTE_IP \
+	noipdefault defaultroute connect $DIALER_SCRIPT
+
+    # wait for ppp to become configured
+    set n = 0
+    while ($n < 9)
+	/sbin/ifconfig | grep -q ppp0
+	if ( ! $status) then
+	    jd -t; echo -n "$TELEPHONE connect at IP "
+	    /sbin/ifconfig ppp0 | grep 'inet addr' | cut -c21-35
+	    exit 0
+	endif
+	sleep 10
+	@ n ++
+    end
+
+    @ i ++
+end
+
+# nope
+jd -t; echo can not connect
+exit 1
+
+# For RCS Only -- Do Not Edit
+# @(#) $RCSfile: nogppp,v $ $Date: 2003/04/15 20:48:36 $ $Revision: 1.1.1.1 $ $Name:  $

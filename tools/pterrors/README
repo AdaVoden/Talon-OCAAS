@@ -1,0 +1,46 @@
+pterrors is a program which takes many FITS images and reports their pointing
+errors.  Each FITS image must contain WCS coordinates and target RA, HA and DEC
+keywords. A preexisting ad-hoc mount model can also be accounted for, if
+desired.
+
+Usage:
+
+pterrors: [options] *.ft[sh]
+  -a     : show Alt/Az form using latitude from -l, LATITUDE env or shared mem
+  -c     : multiply HA by cos(Dec) (or Az by cos(Alt) if -a) to form sky angle
+  -f     : prefix each line with filename
+  -l lat : latitude for use by -a, D:M:S
+  -m file: include model -- see README
+  -v     : verbose
+HA/Dec Output format:
+  Target HA, hours
+  Target Dec, degrees
+  Target HA - WCS HA, arcminutes (*cos(Dec) if -c)
+  Target Dec - WCS Dec, arcminutes
+Alt/Az (-a) Output format:
+  Target Az, degrees
+  Target Alt, degrees
+  Target Az - WCS Az, arcminutes (*cos(Alt) if -c)
+  Target Alt - WCS Alt, arcminutes
+
+
+Mount model:
+
+    dHA = (HA1*sin(HA)-HA2*cos(HA))*sin(DEC) + HA3+HA4*cos(HA-0.2)+HA5*tan(DEC);
+    dHA /= fabs(DEC)<PI/2 ? cos(DEC) : 1e-6; /* want polar angle, not sky*/
+    dDEC = DEC1*cos(HA) + DEC2*sin(HA) + DEC3+ DEC4*cos(DEC+0.35)+DEC5*tan(DEC);
+
+If the -m option is absent, dHA and dDEC are set to 0.
+
+The correction values from the program are to be added to a target value to
+yield a command value:
+
+    HAcommand = HAtarget + HAcorrection
+    DECcommand = DECtarget + DECcorrection
+    
+where
+    HAcorrection = dHA + (HAtarget - HAwcs)
+    DECcorrection = dDEC + (DECtarget - DECwcs)
+
+! For RCS Only -- Do Not Edit
+! @(#) $RCSfile: README,v $ $Date: 2003/04/15 20:48:38 $ $Revision: 1.1.1.1 $ $Name:  $

@@ -1,0 +1,16 @@
+WCS is a program which takes one or more FITS images and sets the C* fields
+by matching star patterns in the GSC catalog.
+
+wcs: usage: [options] [file.fts ...]
+  -r dir:  alternate cdrom directory (default is /cdrom)
+  -c dir:  alternate cache directory (default is /home1/ccdoper/archive/gsc)
+  -s sep:  alternate directory separator(default is /)
+  -v:      verbose
+  -o:      allow overwriting any existing WCS fields
+  -w:      write header (default is read-only)
+  -d:      delete any WCS header fields (requires -w)
+  -u rad:  hunt radius, degrees (default is 1)
+  -f file: name of file containing filenames.
+
+! For RCS Only -- Do Not Edit
+! @(#) $RCSfile: README,v $ $Date: 2003/04/15 20:48:46 $ $Revision: 1.1.1.1 $ $Name:  $

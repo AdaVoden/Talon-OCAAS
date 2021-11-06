@@ -1,0 +1,448 @@
+<HTML>
+
+<! Form for entering schedule requests. Requires atfmsched.pl for processing. >
+<! Each data row is the same except for the final digit in each NAME. >
+<! To add a row, just copy a row and change all NAMEs to end in one larger. >
+<! The number of data rows here must match $nrows in atfmsched.pl. >
+<! Elwood Downey 12 April 1996. >
+
+<HEAD>
+<TITLE>ATF Multiple Observing Request Input Form</TITLE>
+</HEAD>
+
+<body bgcolor="white">
+<font color="red" size=6>ATF Observing Schedule Input Form</font><br>
+<img src="../images/main_line.gif">
+<P>
+<UL>
+    <LI> You must have an observer code to use this facility. To request a
+	code, please send your address, email address, and a brief description
+	of observing interests to the
+	<a href="mailto:atfobs@astro.physics.uiowa.edu">
+	ATF system administrator(atfobs)</a>.
+    </LI>
+    <LI> Please do not use apostrophes or quotes in any input fields.
+    </LI>
+    <LI> If this page looks crazy, try the
+	<a href="http://www.mcom.com" target="_top"> Netscape browser.</a> The forms table
+	is wide and will look best when viewed full-screen with a 12-point font
+	or smaller.
+    </LI>
+</UL>
+<P>
+To submit an observing request, begin by entering your 3-letter observer code, a
+project title and the observer name(s) in the fields provided. Then fill in one
+row per source object in the table below. The first three fields
+in each row are required and the remaining fields are optional. 
+A row with a blank Object Name field is ignored entirely.
+Note that by using the Filters and Repeat features, one row can accommodate
+multiple filters and repetitive observations of one source object.
+<P>
+
+<FORM METHOD="POST" ACTION="../cgi-bin/atfmsched.pl">
+<INPUT TYPE=HIDDEN NAME="Level" VALUE="1">
+
+
+<a href="atfmglossary.html#obscode"><b>Observer's code: </b></a>
+<INPUT SIZE=3 MAXLENGTH=3 NAME="Obscode"><br>
+
+<A HREF="atfmglossary.html#title"><b>Project Title: </b></a>
+<INPUT SIZE=40 MAXLENGTH=72 NAME="Title"><br>
+
+<A HREF="atfmglossary.html#name"><b>Observer(s): </b></a>
+<INPUT SIZE=40 MAXLENGTH=72 NAME="Observer"><br>
+
+<P>
+
+<! The first two rows of the table are actually the column headings. >
+<! Then each data row follows -- only differences are the NAMES. >
+<TABLE BORDER>
+<CAPTION><H3>Source List</H3></CAPTION>
+
+<TR>
+    <TH COLSPAN=3>
+	<B>Required Fields</B>
+    </TH>
+    <TH ROWSPAN=100 WIDTH=30> <! ok to make this too long >
+	<BR>
+    </TH>
+    <TH COLSPAN=4>
+	<B>Optional Fields</B>
+    </TH>
+</TR>
+
+<TR>
+    <TH>
+	<A HREF="atfmglossary.html#Object">Object<br>Name</A>
+    </TH>
+    <TH>
+	<A href="atfmglossary.html#Catalogs">Catalog</A> or<BR>
+	<A href="atfmglossary.html#Celestial">Celestial Coordinates</A>
+    </TH>
+    <TH>
+	<A HREF="atfmglossary.html#Filters">Filter(s) and<BR>Duration(s)</A>
+    </TH>
+    <TH>
+	<A HREF="atfmglossary.html#Start">Start Time</A>
+    </TH>
+    <TH>
+	<A HREF="atfmglossary.html#Repeat">Repeat Count<BR>and Delay</A>
+    </TH>
+    <TH>
+	<A HREF="atfmglossary.html#Compression">Compression<BR>Scale</A>
+    </TH>
+    <TH>
+	<A href="atfmglossary.html#Comment">Comment</A> 
+    </TH>
+</TR>
+
+<! data row 0. Following is for matching in vi: { >
+<TR ALIGN=CENTER>
+    <!Object name ..>
+    <TD>
+	<INPUT SIZE=10 MAXLENGTH=30 NAME="Src0">
+    </TD>
+
+    <!Reference >
+    <TD ALIGN=LEFT>
+	<INPUT CHECKED TYPE="radio" NAME="Ref0" VALUE="Cat">Catalog:
+	<SELECT NAME="Catalog0" >
+	    <OPTION SELECTED VALUE="ngc"> NGC (e.g. NGC5148)
+	    <OPTION VALUE="messier"> Messier (e.g. M37)
+	    <OPTION VALUE="bs"> YBS (e.g. BS4211)
+	    <OPTION VALUE="gcvs"> GCVS (e.g. R_And)
+	    <OPTION VALUE="ic"> IC (e.g. IC223)
+	    <OPTION VALUE="ugc"> UGC (e.g. UGC2341)
+	    <OPTION VALUE="xephem"> Planets (e.g. Saturn)
+	    <OPTION VALUE="sao"> SAO (e.g. SAO41223)
+	    <OPTION VALUE="asteroids"> Asteroids (e.g. 345)    
+	    <OPTION VALUE="comets"> Comets (e.g. Hyakutake-B2)    
+	</SELECT>
+	<br>
+	<INPUT TYPE="radio" NAME="Ref0" VALUE="Crd">Manual:
+	<INPUT SIZE=8 MAXLENGTH=8 NAME="RA0" VALUE="00:00:00">
+	<INPUT SIZE=9 MAXLENGTH=9 NAME="Dec0" VALUE=" 00:00:00">
+	<INPUT SIZE=4 MAXLENGTH=6 NAME="Epo0" VALUE="2000">
+    </TD>
+
+    <!Filter and duration >
+    <TD>
+	<INPUT SIZE=5 MAXLENGTH=7 NAME="Ftr0" VALUE="V">
+	<br>
+	<INPUT SIZE=5 MAXLENGTH=11 NAME="Dur0" VALUE="60">
+    </TD>
+
+    <!LST/HA Start >
+    <TD>
+	<INPUT SIZE=8 MAXLENGTH=8 NAME="Stt0" VALUE="">
+	<BR>
+	<INPUT CHECKED TYPE="radio" NAME="LstHA0" VALUE="LST">LST
+	<INPUT TYPE="radio" NAME="LstHA0" VALUE="HA">HA
+    </TD>
+
+    <!Repeat count/delay >
+    <TD>
+	<INPUT SIZE=8 MAXLENGTH=7 NAME="RpC0" VALUE="1">
+	<br>
+	<INPUT SIZE=8 MAXLENGTH=11 NAME="RpD0" VALUE="00:00:00">
+    </TD>
+
+    <!Compression >
+    <TD>
+	<INPUT SIZE=5 MAXLENGTH=7 NAME="Cmp0" VALUE="0">
+    </TD>
+
+    <!Comment >
+    <TD>
+	<INPUT TYPE="text" SIZE=30 MAXLENGTH=72 NAME="Cmt0" >
+    </TD>
+
+</TR>
+<! For vi match: } >
+
+<! data row 1. Following is for matching in vi: { >
+<TR ALIGN=CENTER>
+    <!Object name ..>
+    <TD>
+	<INPUT SIZE=10 MAXLENGTH=30 NAME="Src1">
+    </TD>
+
+    <!Reference >
+    <TD ALIGN=LEFT>
+	<INPUT CHECKED TYPE="radio" NAME="Ref1" VALUE="Cat">Catalog:
+	<SELECT NAME="Catalog1" >
+	    <OPTION SELECTED VALUE="ngc"> NGC (e.g. NGC5148)
+	    <OPTION VALUE="messier"> Messier (e.g. M37)
+	    <OPTION VALUE="bs"> YBS (e.g. BS4211)
+	    <OPTION VALUE="gcvs"> GCVS (e.g. R_And)
+	    <OPTION VALUE="ic"> IC (e.g. IC223)
+	    <OPTION VALUE="ugc"> UGC (e.g. UGC2341)
+	    <OPTION VALUE="xephem"> Planets (e.g. Saturn)
+	    <OPTION VALUE="sao"> SAO (e.g. SAO41223)
+	    <OPTION VALUE="asteroids"> Asteroids (e.g. 345)    
+	    <OPTION VALUE="comets"> Comets (e.g. Hyakutake-B2)    
+	</SELECT>
+	<br>
+	<INPUT TYPE="radio" NAME="Ref1" VALUE="Crd">Manual:
+	<INPUT SIZE=8 MAXLENGTH=10 NAME="RA1" VALUE="00:00:00">
+	<INPUT SIZE=9 MAXLENGTH=9 NAME="Dec1" VALUE=" 00:00:00">
+	<INPUT SIZE=6 MAXLENGTH=6 NAME="Epo1" VALUE="2000">
+    </TD>
+
+    <!Filter and duration >
+    <TD>
+	<INPUT SIZE=5 MAXLENGTH=7 NAME="Ftr1" VALUE="V">
+	<br>
+	<INPUT SIZE=5 MAXLENGTH=11 NAME="Dur1" VALUE="60">
+    </TD>
+
+    <!LST/HA Start >
+    <TD>
+	<INPUT SIZE=8 MAXLENGTH=8 NAME="Stt1" VALUE="">
+	<BR>
+	<INPUT CHECKED TYPE="radio" NAME="LstHA1" VALUE="LST">LST
+	<INPUT TYPE="radio" NAME="LstHA1" VALUE="HA">HA
+    </TD>
+
+    <!Repeat count/delay >
+    <TD>
+	<INPUT SIZE=8 MAXLENGTH=7 NAME="RpC1" VALUE="1">
+	<br>
+	<INPUT SIZE=8 MAXLENGTH=11 NAME="RpD1" VALUE="00:00:00">
+    </TD>
+
+    <!Compression >
+    <TD>
+	<INPUT SIZE=5 MAXLENGTH=7 NAME="Cmp1" VALUE="0">
+    </TD>
+
+    <!Comment >
+    <TD>
+	<INPUT TYPE="text" SIZE=30 MAXLENGTH=72 NAME="Cmt1" >
+    </TD>
+
+</TR>
+<! For vi match: } >
+
+<! data row 2. Following is for matching in vi: { >
+<TR ALIGN=CENTER>
+    <!Object name ..>
+    <TD>
+	<INPUT SIZE=10 MAXLENGTH=30 NAME="Src2">
+    </TD>
+
+    <!Reference >
+    <TD ALIGN=LEFT>
+	<INPUT CHECKED TYPE="radio" NAME="Ref2" VALUE="Cat">Catalog:
+	<SELECT NAME="Catalog2" >
+	    <OPTION SELECTED VALUE="ngc"> NGC (e.g. NGC5148)
+	    <OPTION VALUE="messier"> Messier (e.g. M37)
+	    <OPTION VALUE="bs"> YBS (e.g. BS4211)
+	    <OPTION VALUE="gcvs"> GCVS (e.g. R_And)
+	    <OPTION VALUE="ic"> IC (e.g. IC223)
+	    <OPTION VALUE="ugc"> UGC (e.g. UGC2341)
+	    <OPTION VALUE="xephem"> Planets (e.g. Saturn)
+	    <OPTION VALUE="sao"> SAO (e.g. SAO41223)
+	    <OPTION VALUE="asteroids"> Asteroids (e.g. 345)    
+	    <OPTION VALUE="comets"> Comets (e.g. Hyakutake-B2)    
+	</SELECT>
+	<br>
+	<INPUT TYPE="radio" NAME="Ref2" VALUE="Crd">Manual:
+	<INPUT SIZE=8 MAXLENGTH=10 NAME="RA2" VALUE="00:00:00">
+	<INPUT SIZE=9 MAXLENGTH=9 NAME="Dec2" VALUE=" 00:00:00">
+	<INPUT SIZE=6 MAXLENGTH=6 NAME="Epo2" VALUE="2000">
+    </TD>
+
+    <!Filter and duration >
+    <TD>
+	<INPUT SIZE=5 MAXLENGTH=7 NAME="Ftr2" VALUE="V">
+	<br>
+	<INPUT SIZE=5 MAXLENGTH=11 NAME="Dur2" VALUE="60">
+    </TD>
+
+    <!LST/HA Start >
+    <TD>
+	<INPUT SIZE=8 MAXLENGTH=8 NAME="Stt2" VALUE="">
+	<BR>
+	<INPUT CHECKED TYPE="radio" NAME="LstHA2" VALUE="LST">LST
+	<INPUT TYPE="radio" NAME="LstHA2" VALUE="HA">HA
+    </TD>
+
+    <!Repeat count/delay >
+    <TD>
+	<INPUT SIZE=8 MAXLENGTH=7 NAME="RpC2" VALUE="1">
+	<br>
+	<INPUT SIZE=8 MAXLENGTH=11 NAME="RpD2" VALUE="00:00:00">
+    </TD>
+
+    <!Compression >
+    <TD>
+	<INPUT SIZE=5 MAXLENGTH=7 NAME="Cmp2" VALUE="0">
+    </TD>
+
+    <!Comment >
+    <TD>
+	<INPUT TYPE="text" SIZE=30 MAXLENGTH=72 NAME="Cmt2" >
+    </TD>
+
+</TR>
+<! For vi match: } >
+
+<! data row 3. Following is for matching in vi: { >
+<TR ALIGN=CENTER>
+    <!Object name ..>
+    <TD>
+	<INPUT SIZE=10 MAXLENGTH=30 NAME="Src3">
+    </TD>
+
+    <!Reference >
+    <TD ALIGN=LEFT>
+	<INPUT CHECKED TYPE="radio" NAME="Ref3" VALUE="Cat">Catalog:
+	<SELECT NAME="Catalog3" >
+	    <OPTION SELECTED VALUE="ngc"> NGC (e.g. NGC5148)
+	    <OPTION VALUE="messier"> Messier (e.g. M37)
+	    <OPTION VALUE="bs"> YBS (e.g. BS4211)
+	    <OPTION VALUE="gcvs"> GCVS (e.g. R_And)
+	    <OPTION VALUE="ic"> IC (e.g. IC223)
+	    <OPTION VALUE="ugc"> UGC (e.g. UGC2341)
+	    <OPTION VALUE="xephem"> Planets (e.g. Saturn)
+	    <OPTION VALUE="sao"> SAO (e.g. SAO41223)
+	    <OPTION VALUE="asteroids"> Asteroids (e.g. 345)    
+	    <OPTION VALUE="comets"> Comets (e.g. Hyakutake-B2)    
+	</SELECT>
+	<br>
+	<INPUT TYPE="radio" NAME="Ref3" VALUE="Crd">Manual:
+	<INPUT SIZE=8 MAXLENGTH=10 NAME="RA3" VALUE="00:00:00">
+	<INPUT SIZE=9 MAXLENGTH=9 NAME="Dec3" VALUE=" 00:00:00">
+	<INPUT SIZE=6 MAXLENGTH=6 NAME="Epo3" VALUE="2000">
+    </TD>
+
+    <!Filter and duration >
+    <TD>
+	<INPUT SIZE=5 MAXLENGTH=7 NAME="Ftr3" VALUE="V">
+	<br>
+	<INPUT SIZE=5 MAXLENGTH=11 NAME="Dur3" VALUE="60">
+    </TD>
+
+    <!LST/HA Start >
+    <TD>
+	<INPUT SIZE=8 MAXLENGTH=8 NAME="Stt3" VALUE="">
+	<BR>
+	<INPUT CHECKED TYPE="radio" NAME="LstHA3" VALUE="LST">LST
+	<INPUT TYPE="radio" NAME="LstHA3" VALUE="HA">HA
+    </TD>
+
+    <!Repeat count/delay >
+    <TD>
+	<INPUT SIZE=8 MAXLENGTH=7 NAME="RpC3" VALUE="1">
+	<br>
+	<INPUT SIZE=8 MAXLENGTH=11 NAME="RpD3" VALUE="00:00:00">
+    </TD>
+
+    <!Compression >
+    <TD>
+	<INPUT SIZE=5 MAXLENGTH=7 NAME="Cmp3" VALUE="0">
+    </TD>
+
+    <!Comment >
+    <TD>
+	<INPUT TYPE="text" SIZE=30 MAXLENGTH=72 NAME="Cmt3" >
+    </TD>
+
+</TR>
+<! For vi match: } >
+
+<! data row 4. Following is for matching in vi: { >
+<TR ALIGN=CENTER>
+    <!Object name ..>
+    <TD>
+	<INPUT SIZE=10 MAXLENGTH=30 NAME="Src4">
+    </TD>
+
+    <!Reference >
+    <TD ALIGN=LEFT>
+	<INPUT CHECKED TYPE="radio" NAME="Ref4" VALUE="Cat">Catalog:
+	<SELECT NAME="Catalog4" >
+	    <OPTION SELECTED VALUE="ngc"> NGC (e.g. NGC5148)
+	    <OPTION VALUE="messier"> Messier (e.g. M37)
+	    <OPTION VALUE="bs"> YBS (e.g. BS4211)
+	    <OPTION VALUE="gcvs"> GCVS (e.g. R_And)
+	    <OPTION VALUE="ic"> IC (e.g. IC223)
+	    <OPTION VALUE="ugc"> UGC (e.g. UGC2341)
+	    <OPTION VALUE="xephem"> Planets (e.g. Saturn)
+	    <OPTION VALUE="sao"> SAO (e.g. SAO41223)
+	    <OPTION VALUE="asteroids"> Asteroids (e.g. 345)    
+	    <OPTION VALUE="comets"> Comets (e.g. Hyakutake-B2)    
+	</SELECT>
+	<br>
+	<INPUT TYPE="radio" NAME="Ref4" VALUE="Crd">Manual:
+	<INPUT SIZE=8 MAXLENGTH=10 NAME="RA4" VALUE="00:00:00">
+	<INPUT SIZE=9 MAXLENGTH=9 NAME="Dec4" VALUE=" 00:00:00">
+	<INPUT SIZE=6 MAXLENGTH=6 NAME="Epo4" VALUE="2000">
+    </TD>
+
+    <!Filter and duration >
+    <TD>
+	<INPUT SIZE=5 MAXLENGTH=7 NAME="Ftr4" VALUE="V">
+	<br>
+	<INPUT SIZE=5 MAXLENGTH=11 NAME="Dur4" VALUE="60">
+    </TD>
+
+    <!LST/HA Start >
+    <TD>
+	<INPUT SIZE=8 MAXLENGTH=8 NAME="Stt4" VALUE="">
+	<BR>
+	<INPUT CHECKED TYPE="radio" NAME="LstHA4" VALUE="LST">LST
+	<INPUT TYPE="radio" NAME="LstHA4" VALUE="HA">HA
+    </TD>
+
+    <!Repeat count/delay >
+    <TD>
+	<INPUT SIZE=8 MAXLENGTH=7 NAME="RpC4" VALUE="1">
+	<br>
+	<INPUT SIZE=8 MAXLENGTH=11 NAME="RpD4" VALUE="00:00:00">
+    </TD>
+
+    <!Compression >
+    <TD>
+	<INPUT SIZE=5 MAXLENGTH=7 NAME="Cmp4" VALUE="0">
+    </TD>
+
+    <!Comment >
+    <TD>
+	<INPUT TYPE="text" SIZE=30 MAXLENGTH=72 NAME="Cmt4" >
+    </TD>
+
+</TR>
+<! For vi match: } >
+
+</TABLE>
+
+<P>
+
+<HR>
+<INPUT TYPE="submit" VALUE="Submit">
+<INPUT TYPE="reset" VALUE="Reset the Form">
+
+</FORM>
+
+<hr>
+
+</BODY>
+
+</HTML>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<! For RCS Only -- Do Not Edit >
+<! @(#) $RCSfile: atfmsched.shtml,v $ $Date: 2003/04/15 20:48:46 $ $Revision: 1.1.1.1 $ $Name:  $ >

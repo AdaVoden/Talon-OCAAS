@@ -1,0 +1,5 @@
+fcompress and fdecompress just run hcomp and hdecomp, respectively, plus
+fitshdr. They were originally in csh but redone in C for greater portability.
+
+! For RCS Only -- Do Not Edit
+! @(#) $RCSfile: README,v $ $Date: 2003/04/15 20:48:34 $ $Revision: 1.1.1.1 $ $Name:  $

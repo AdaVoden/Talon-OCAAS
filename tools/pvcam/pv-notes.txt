@@ -1,0 +1,125 @@
+
+
+The files in the PVCAM folder are for two development paths.
+
+Both are unique to the Pixel Vision camera implementation for JSF
+
+The first is for the 1/2 meter camera.  This involves the files:
+
+	pvcam.pl
+	========
+	This is the camera "driver" script used for the 1/2 Meter.
+	It includes support for cutup and naming and calling the
+	pipeline process.
+	
+	naming.pl
+	=========
+	This file is used by both the 1/2 meter and 1-meter. It defines
+	the process by which the files are named according to coordinates
+	and shutter codes.
+	
+	pvcam.cfg-halfm
+	===============
+	This is the configuration file as set for the half-m installation.
+	This should be be reconciled with the version in
+	telescope/per/jsf-halfm
+	
+	pvcam.virtual
+	=============
+	A version of the half-m implmentation for testing, using the
+	stsci vcam method for simulating a camera
+	
+	pvcam.cfg-vir
+	=============
+	The config file for the virtual mode
+	
+also, perhaps perversely, the files calimagePV and pipeline,
+created by daemons/telrun.jsf build, are also used.
+	
+The original, pre-pipeline, version of pvcam (from Elwood) exists as
+
+	pvcam.original.
+
+The files
+	
+	settings.exp
+	settings.sav
+	
+are keepsakes leftover from Elwood's work.
+
+---------------------------------------------------------	
+	
+The 1-Meter implementation uses these files
+
+	pvc1m.cfg.pl
+	============
+	This is the common configuration file used by all of the
+	following scripts.  It contains all the settings needed
+	for a test environment.  The actual settings should be
+	kept stored in telescope/per/jsf-onem
+
+	naming.pl
+	=========
+	This file is used by both the 1/2 meter and 1-meter. It defines
+	the process by which the files are named according to coordinates
+	and shutter codes.
+			
+	pc1m-mstr.pl
+	============
+	This is the master script, and is what the camera.cfg file
+	should point to; what Camera calls. It dispatches to each
+	slave script on the four satellite machines.
+	
+	pc1m-slave.pl
+	=============
+	This script is executed on each of the satellite machines. It
+	handles the actual download, storage, and pipeline initiation.
+	It also handles the sky monitor feedback.
+	
+	pipeln1m.pl
+	===========
+	This is the pipeline script as implemented for the 1-meter
+	
+	pipeln1m.cfg.pl
+	===============
+	This is the separate configuration file for the 1-M pipeline
+	script.
+	
+	pvcam.cfg.1M.pl
+	===============
+	This is an "adapter" script, which replaces pvcam.cfg on the
+	1-M system because calimagePV expects to find pvcam.cfg.  This
+	will convert the section names from the format used in the 1M
+	to the format used in the 1/2 meter.
+	
+	offsetfits.pl
+	=============
+	This script is called by the postprocess function (telrun.jsf version) for
+	the one-meter.  It offsets the RA/DEC coordinates of the image that was
+	saved as the return image so that the pointing mesh operations can work
+	properly.
+	
+	skycam
+	======
+	This is a simple utility script that runs camera with the
+	new -listen option, setting it to SkyListen for purposes
+	of the sky monitor feedback.
+	
+	testgo.pl
+	=========
+	This is used only in testing. It copies from a saved set of
+	images to roughly simulate the action of the pv setup.
+	
+Remember that telrun.jsf must be built for the proper postprocess and calimagePV
+ALSO - in GUI/pvoptions is the "pvoptions" program.  This is a GUI that will set
+the common settings found in the config files and give easier control over
+return section selection and enabling / disabling process options.	
+	
+
+The lpio program is the parallel port signal generator, and is used
+by both the 1/2 meter and 1 meter implementations.  See the Makefile
+for proper ownership settings of lpio.
+
+The Makefile will build properly for the 'site' tags "jsf-halfm" and
+"jsf-onem". There is are also build targets for the virtual and for
+a 1-M test mode (see makefile).

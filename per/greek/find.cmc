@@ -1,0 +1,110 @@
+/* go $way until given bit turns off */
+define goboff ($way, $bit)
+{
+	while (ilevel & $bit)
+	    mtvel = $way*maxvel;
+}
+
+/* go $way until the given bit triggers then go further until bit off again.
+ */
+define goback ($way, $bit)
+{
+    iedge = $bit;			// arm
+    mtvel = $way*maxvel;		// go
+    while (!(iedge & $bit));		// wait until see edge
+    goboff ($way, $bit);		// keep going until off
+}
+
+/* find home in pos/neg direction, according to $way = +/-1.
+ * uses encoder if esteps != 0, else motor.
+ * N.B. requires ipolar, homebit and optionally plimbit and nlimbit to be set.
+ */
+define findhome($way) {
+    printf ("1 Seeking home\n");
+    $0 = homebit|plimbit|nlimbit;	// handy mask of all bits
+    if (!homebit) {			// required!
+	printf ("-1 No bits\n");
+	return;
+    }
+
+    /* find first approx to home, allowing for being there now or bouncing
+     * off limit while searching.
+     */
+    $way = sign($way);			// insure purely +1 or -1
+    if (ilevel & homebit) {		// if over home now
+	goboff (-$way, homebit);	//   back up
+	mtrig = mpos;			//   fake a hit
+    } else {
+	iedge = $0;			// arm edge-triggered for all bits
+	$1 = $way>0?plimbit:nlimbit;	// bit for opposite-going limit
+	mtvel = $way*maxvel/2;		// start for home, going $way easy
+	while (!(iedge & homebit)) {	// wait to see home (sets e/mtrig)
+	    if ((ilevel|iedge) & $1) {	//   but if at or hit $way-going limit
+		printf ("3 Bouncing at limit\n");
+		goback (-$way,homebit);	//     go back
+		mtrig = mpos;		//     fake a hit
+		break;			//     proceed with slow
+	    }
+	}
+    }
+
+    /* found approx home going $way fast, now repeat more slowly */
+    printf ("2 Found coarse home\n");
+    mtvel = 0;				// nice stop
+    while(working);			// sync
+    mtpos = mtrig - $way*4*maxvel/10;	// go back 4 secs @maxvel/10
+    printf ("3 Going back\n");
+    while (working);			// wait until stopped
+    iedge |= homebit;			// arm edge-triggered
+    mtvel = $way*maxvel/10;		// start for home @maxvel/10
+    printf ("4 Seeking slowly\n");
+    while (!(iedge & homebit));		// wait to see home (sets e/mtrig)
+    printf ("5 Found home\n");
+    if (esteps)				// use encoder if esteps
+	etpos = etrig;			//   go back to exact encoder trigger
+    else				// else motor
+	mtpos = mtrig;			//   go back to exact motor trigger
+    printf ("6 Nailing it\n");
+    while (working);			// wait
+    epos = mpos = 0;			// set as new home
+    printf ("0 Done\n");
+}
+
+/* find and report encoder position of either limit, according to $way = +1/-1
+ * N.B. requires ipolar and plimbit or nlimbit (as appropriate) to be set up.
+ */
+define findlim($way) {
+    printf ("1 Seeking limit\n");
+
+    // set $0 to target bit, and insure $way is +1 or -1
+    if ($way > 0) {
+	if (!plimbit) {
+	    printf ("-1 No plimbit\n");
+	    return;
+	}
+	$0 = plimbit;
+	$way = 1;
+    } else {
+	if (!nlimbit) {
+	    printf ("-1 No nlimbit\n");
+	    return;
+	}
+	$0 = nlimbit;
+	$way = -1;
+    }
+
+    /* back off if on limit already */
+    goboff (-$way, $0);
+
+    /* go */
+    iedge = $0;				// arm latch
+    mtvel = $way*maxvel/2;		// go at modest speed in $way dir
+    while (!(iedge & $0));		// wait for encounter. sets etrig
+    goboff (-$way, $0);			// back off
+    mtvel = 0;				// nice stop
+    iedge = $0;				// reset
+    printf ("0 Found limit\n");
+}
+
+# For RCS Only -- Do Not Edit
+# @(#) $RCSfile: find.cmc,v $ $Date: 2003/04/15 20:48:22 $ $Revision: 1.1.1.1 $ $Name:  $

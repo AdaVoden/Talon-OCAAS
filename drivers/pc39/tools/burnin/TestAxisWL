@@ -1,0 +1,44 @@
+#!/bin/csh -f
+# test an axis with limits forever or until problem
+
+if ($#argv != 3) then
+    echo $0':' axis velocity timeout
+    exit 1
+endif
+
+# get axis to use, max velocity and acceleration
+set ax = $argv[1]
+set vl = $argv[2]
+set to = $argv[3]
+
+# liesurely acceleration
+@ ac = $vl / 2
+
+# init
+pc39cmd "a$ax st ac$ac"
+
+# issue stop if interrupted
+onintr stop
+
+# loop forever
+while (1)
+    # go to + limit
+    toLimit $ax $vl $to "+"
+    if ($status) exit 1
+
+    # go home -
+    toHome $ax $vl $to "r"
+    if ($status) exit 1
+
+    # go to - limit
+    toLimit $ax $vl $to "-"
+    if ($status) exit 1
+
+    # go home +
+    toHome $ax $vl $to "m"
+    if ($status) exit 1
+end
+
+stop:
+
+pc39cmd "a$ax st"

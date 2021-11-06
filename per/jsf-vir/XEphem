@@ -1,0 +1,6 @@
+XEphem.Sitename: Bisei Spaceguard Center
+XEphem.DBinitialFiles: YBS.edb Messier.edb NGC.edb asteroids.edb IC.edb SAC.edb
+
+XEphem*FieldStars*GSCCache.set: True
+XEphem*FieldStars*USNO.set: True
+XEphem*FieldStars*PPM.set: True

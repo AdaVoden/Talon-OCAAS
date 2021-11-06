@@ -1,0 +1,14 @@
+<html>
+<title>University of Iowa Telescope Operations Center</title>
+<head>
+</head>
+<frameset rows=65,*>
+    <frame scrolling="no" marginwidth=0 marginheight=0 src="header.shtml">
+
+    <frameset cols ="250,800">
+	<frame marginwidth=10 marginheight=2 src="toc.shtml"> 
+	<frame src="intro.shtml"> 
+    </frameset>
+
+</frameset>
+</html>

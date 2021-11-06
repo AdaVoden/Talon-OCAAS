@@ -1,0 +1,41 @@
+#!/bin/csh -f
+
+set axis = au
+
+# init axis and enable hard limits
+pc39cmd -v "$axis ln vl50000 ac20000 qa"
+
+again:
+
+# if home already, move back into hi region for sure
+set qa = `pc39cmd -v "$axis qa"`
+if ("$qa" =~ *H*) pc39cmd -v "$axis hh hr0 hl qa"
+
+# start home in positive direction, move back, come at again nice and slow.
+pc39cmd -v "$axis hm0 ma-5000 go vl1000 hm0 ma0 go qa"
+
+# go until rv == 0: either find home or a limit
+set rv = 123;
+while ("$rv" > 0)
+    set rv = `pc39cmd -v "$axis rv"`
+    sleep 1
+end
+
+# retry if hit limit, else done
+set qa = `pc39cmd -v "$axis qa"`
+if ("$qa" =~ *L*) then
+    echo encountered Focus limit while seeking home -- reversing
+    pc39cmd -v "$axis hr0 qa"
+else
+    echo Focus home
+    exit
+endif
+
+# go until rv == 0: either find home or a limit
+set rv = 123;
+while ("$rv" > 0)
+    set rv = `pc39cmd -v "$axis rv"`
+    sleep 1
+end
+
+goto again

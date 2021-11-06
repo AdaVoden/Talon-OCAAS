@@ -1,0 +1,26 @@
+This directory includes the FLI CCD device driver module for Linux, fli.o.
+It should be compatible with any 2.2.x kernel.  Use the insmod(1) or
+modprobe(1) command to install the module.  The only mandatory module
+parameter is I/O base address of the parallel port through which FLI
+devices are attached.  Use the modinfo(1) command to list other parameters
+this module supports.
+
+Examples of installing the module using insmod(1):
+
+	insmod -f fli.o io=0x378
+
+	insmod -f fli.o io=0x378 irq=7 dma=3
+
+Once the module is installed, information describing the state of the
+module can be found in /proc/fli/fli_info.  To use the module, a character
+special file having the major listed in /proc/fli/fli_info and minor number
+of 0 must exist.  Use the mknod(1) command to create such a file.
+
+Example of creating the FLI CCD character special file /dev/ccd0:
+
+	mknod -m 666 /dev/ccd0 c 254 0
+
+This example assumes 254 is the major number listed in /proc/fli/fli_info.
+
+The I/O control requst codes supported by this module are documented in
+fli_ioctl.pdf or doc/index.html.

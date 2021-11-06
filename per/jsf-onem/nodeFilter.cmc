@@ -1,0 +1,42 @@
+// Focus axis
+homebit = 0x2;
+plimbit = 0x2;
+nlimbit = 0x4;
+ipolar=0;
+
+// Damping factor
+kv     = 100; // special for this motor 
+
+// these are just until telescoped starts
+maxvel = 200000;
+maxacc = 200000;
+
+// this is current filter
+f = -1;
+
+// Set IUSESCRIPT to TRUE in filter.cfg to allow this to set filter positions
+
+define seekFilter($t, $overstep)
+{
+    f = abs($t) / 5200000;
+    if(f == 0) $1 = 0;
+    else if(f == 1) $1 = -4900000;
+    else if(f == 2) $1 = -10100000;
+    else if(f == 3) $1 = -15400000;
+    else {
+	  printf("-1: Bad filter index (%d)\n",f);
+	  return;
+     }
+     mtvel = maxvel;
+     mtpos = $1;
+     while(working) {};
+     printf("0: Filter %d indexed\n",f);
+     mtvel = 0;
+} 
+
+define curFilter()
+{
+     return f;
+}
+
+

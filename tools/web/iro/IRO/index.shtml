@@ -1,0 +1,12 @@
+<html>
+<title>Iowa Robotic Observatory</title>
+<head>
+</head>
+<frameset rows=65,*>
+    <frame scrolling="no" marginwidth=0 marginheight=0 img src="header.shtml">
+    <frameset cols ="250,800">
+	<frame marginwidth=10 marginheight=2 img src="toc.shtml"> 
+	<frame img src="first_light.shtml"> 
+    </frameset>
+</frameset>
+</html>

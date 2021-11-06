@@ -1,0 +1,52 @@
+#!/usr/bin/perl
+
+require "find.pl";
+
+if (@ARGV != 1 or ($tag = $ARGV[0]) eq "-help") {
+    print "Usage: <tag>\n";
+    print "Purpose: print rlog entries from . since the given tag was made.\n";
+    exit 1;
+}
+
+# descend down from here, calling &wanted for each file
+&find('.');
+
+# called by find() for each file
+# $name has path from starting dir, $_ just has file.
+# already chdir'd.
+sub wanted {
+    return unless (/,v$/);
+    chomp();
+    $name =~ m#^\./(.*)RCS/(.*),v$#;
+    $fn = "$1$2";
+    open (RF, "rlog $_ |") or next;
+    &showSince(RF, $fn);
+    close RF;
+}
+
+sub showSince
+{
+    my ($RF, $fn) = @_;
+    my ($mjr, $mnr);
+
+    while (<$RF>) {
+	@Fld = split();
+	if (/^[\s]+$tag: /) {
+	    $Fld[1] =~ /([\d]+)\.([\d]+)/;
+	    $mjr = $1;
+	    $mnr = $2;
+	}
+	if (/^revision/) {
+	    $Fld[1] =~ /([\d]+)\.([\d]+)/;
+	    if ($1 > $mjr or ($1 == $mjr and $2 > $mnr)) {
+		<$RF>;	# swallow date line
+		while (($_ = <$RF>) !~ /^[-=]+$/) {
+		    print "$fn:\t$_";
+		}
+	    }
+	}
+    }
+}
+
+# For RCS Only -- Do Not Edit
+# @(#) $RCSfile: rcssincetag,v $ $Date: 2003/04/15 20:47:55 $ $Revision: 1.1.1.1 $ $Name:  $

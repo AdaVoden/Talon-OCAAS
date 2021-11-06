@@ -1,0 +1,4 @@
+#!/usr/bin/perl
+
+@v = split /\./, `uname -r`;
+print $v[0].".".$v[1]."\n";

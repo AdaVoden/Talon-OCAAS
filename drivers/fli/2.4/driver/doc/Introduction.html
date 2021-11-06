@@ -1,0 +1,57 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<HTML>
+<HEAD>
+   <TITLE> Introduction</TITLE>
+   <META NAME="GENERATOR" CONTENT="DOC++ 3.4.8">
+</HEAD>
+<BODY BGCOLOR="#ffffff">
+
+<H2> <A HREF="#DOC.DOCU">Introduction</A></H2></H2><A NAME="DOC.DOCU"></A>
+<BLOCKQUOTE>
+The FLI CCD device driver provides a way to control certain
+operational characteristics through the <TT>ioctl(2)</TT> system
+call.  The valid <TT>ioctl</TT> request codes are defined in
+<TT>fli_ioctl.h</TT>.  The device driver <TT>ioctl</TT>
+implementation assumes pass by reference, meaning its third
+argument should be a pointer from/to which values are passed.
+For example:
+<PRE>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#include&nbsp;&lt;stdio.h&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#include&nbsp;&lt;sys/types.h&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#include&nbsp;&lt;sys/stat.h&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#include&nbsp;&lt;fcntl.h&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#include&nbsp;&lt;sys/ioctl.h&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#include&nbsp;&quot;fli_ioctl.h&quot;
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#define&nbsp;CCD_CHAR_FILE&nbsp;&quot;/dev/ccd0&quot;
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int&nbsp;main(int&nbsp;argc,&nbsp;char&nbsp;*argv[])
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int&nbsp;fd,&nbsp;dto&nbsp;=&nbsp;20;
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;((fd&nbsp;=&nbsp;open(CCD_CHAR_FILE))&nbsp;==&nbsp;-1)
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;perror(&quot;open&quot;);
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;exit(1);
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(ioctl(fd,&nbsp;FLI_SET_DTO,&nbsp;&amp;dto))
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;perror(&quot;ioctl&quot;);
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;exit(1);
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;close(fd);
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;exit(0);
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</PRE>
+
+<P>The <TT>ioctl</TT> request codes are described in the following
+section.
+</BLOCKQUOTE>
+<DL><DT><DD></DL><P><P><I><A HREF="index.html">Alphabetic index</A></I></P><HR>
+<BR>
+This page was generated with the help of <A HREF="http://docpp.sourceforge.net">DOC++</A>.
+</BODY>
+</HTML>

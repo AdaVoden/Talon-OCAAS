@@ -1,0 +1,118 @@
+# read by pvcam to set local options
+# 0.5m camera
+
+# set $traceon to 1 if want trace info
+$traceon = 1;
+$verboseTrace = 1;
+
+# Camera ID string
+$id = "Pixel Vision 4kx2kx2";
+
+$truew = 4096;        	# true size of camera
+$trueh = 4096;       
+
+$imw = 512;		# size of center section to return to camera	
+$imh = 512;
+
+# Pre-orient options for Mosaic
+# turn over upside-down PV image
+# do as two sections so we can do adjustments
+# for best astrometric fit between chips
+$orient = "-r 0 0 2048 4096 turnOver 2048 0 -r 2048 0 2048 4096 turnOver 0 0";
+
+# Cutting options
+# definitions of area to cut for each component
+# starting with number 1
+
+#$xywhdef[1] = "2048 0 2048 4096";
+#$xywhdef[2] = "0 0 2048 4096";
+$xywhdef[1] = "2048 1024 1024 2048";
+#$xywhdef[2] = "1024 1024 1024 2048";
+$xywhdef[2] = "1016 1024 1024 2048";
+
+# Information about return choices
+# format: "x y width height"
+$ReturnInfo = [
+ # Choice 0:
+	# Center, includes both chips
+	"1792 1792 512 512",
+
+ # Choice 1:
+ 	# East of center (E1 section)
+	"1536 1792 512 512",
+	
+ # Choice 2:
+	# West of center (E2)
+	"2048 1792 512 512",
+
+ # Choice 3:
+    # The whole of the E1 chip
+    "0 0 2048 4096",
+
+ # Choice 4:
+    # The whole of the E2 chip
+    "2048 0 2048 4096",
+
+]; # end of return info
+
+# which of the above numbers to use for return section
+$ReturnChoice = 0;
+
+# suffix strings for each section
+# as a comma-delimited string of names
+# note that section 00 is return section
+$sectionNames = "return,e1,e2";
+
+# names for temporary calibration files
+$biasName = "bias";
+$thermName = "therm";
+$flatName = "flat";
+
+# set to 0 to disable all post-process steps
+$enablePostProcessing = 1;
+
+# ==========================
+
+# fake temperature
+$faketemp = -100;
+
+$maxbx = 2;		# 3 causes pv software to choke
+$maxby = 2;
+
+# trigger LP bits
+$lpshut = 0x1;		# LP data bit to activate Shutter
+$lptrig = 0x2;		# LP data bit to activate Trigger
+
+# how to run the lpio command
+# and the stampfits command
+if (`uname -n` eq "halfm\n") {
+    $lpiocmd = "lpio";
+    $stampcmd = "stampfits";
+    $mosaicCmd = "rsh datar3 mosaic";
+    $pipelnCmd = "rsh datar3 pipeline";
+} else {
+    $lpiocmd = "rsh halfm lpio";
+    $stampcmd = "rsh halfm stampfits";
+    $mosaicCmd = "mosaic";
+    $pipelnCmd = "pipeline";
+}
+
+# shared file base dir, setup, go, done and result file
+$sfb = "/mdo/filewait";
+$sfset = "$sfb/in/settings.reg";
+$sfshadow = "$sfb/in/settings.shadow";
+$sfgo = "$sfb/in/fit16snp";
+$sfim = "$sfb/out/fitout.fit";
+$sferr = "$sfb/out/error.txt";
+$sfcancel = "$sfb/in/cancel";
+
+$base = "/mdo/user/images"; 	# base name and path for output files
+
+$fitsnow = "$TELHOME/archive/fitsnow";  # temp file for placeholder fits header
+
+# timeouts
+$dlto = 90;		# time for camera to download image
+$lanto = 40;		# max time to get image over lan
+
+# err and trace log
+$elog = "$TELHOME/archive/logs/pvcam.log";

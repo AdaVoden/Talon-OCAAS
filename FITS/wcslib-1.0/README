@@ -1,0 +1,12 @@
+WCSLIB consists of independent C and FORTRAN implementations of the spherical
+projection equations defined in the World Coordinate System proposal for FITS
+(Flexible Image Transport System).
+
+The separate C and FORTRAN implementations are provided for programming
+convenience, usually only one or the other need be compiled.  Which to use
+depends on what language is used for the applications which use WCSLIB.
+
+Further detailed information is provided with the C and FORTRAN sources.
+
+! For RCS Only -- Do Not Edit
+! @(#) $RCSfile: README,v $ $Date: 2003/04/15 20:46:59 $ $Revision: 1.1.1.1 $ $Name:  $

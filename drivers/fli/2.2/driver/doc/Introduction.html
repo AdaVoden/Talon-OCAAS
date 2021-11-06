@@ -1,0 +1,53 @@
+<HTML>
+<HEAD>
+   <TITLE> </TITLE>
+   <META NAME="GENERATOR" CONTENT="DOC++ 3.4.3">
+</HEAD>
+<BODY BGCOLOR="#ffffff">
+
+<H2> <A HREF="#DOC.DOCU">Introduction</A></H2>
+<A NAME="DOC.DOCU">
+<BLOCKQUOTE>
+The FLI CCD device driver provides a way to control certain
+operational characteristics through the <TT>ioctl(2)</TT> system
+call.  The valid <TT>ioctl</TT> request codes are defined in
+<TT>fli_ioctl.h</TT>.  The device driver <TT>ioctl</TT>
+implementation assumes pass by reference, meaning its third
+argument should be a pointer from/to which values are passed.
+For example:
+<PRE>
+      #include &lt;stdio.h&gt;
+      #include &lt;sys/types.h&gt;
+      #include &lt;sys/stat.h&gt;
+      #include &lt;fcntl.h&gt;
+      #include &lt;sys/ioctl.h&gt;
+      #include &quot;fli_ioctl.h&quot;
+
+      #define CCD_CHAR_FILE &quot;/dev/ccd0&quot;
+
+      int main(int argc, char *argv[])
+      {
+        int fd, dto = 20;
+
+        if ((fd = open(CCD_CHAR_FILE)) == -1)
+        {
+          perror(&quot;open&quot;);
+          exit(1);
+        }
+
+        if (ioctl(fd, FLI_SET_DTO, &amp;dto))
+        {
+          perror(&quot;ioctl&quot;);
+          exit(1);
+        }
+
+        close(fd);
+        exit(0);
+      }
+      </PRE><P>The <TT>ioctl</TT> request codes are described in the following
+section.
+</BLOCKQUOTE>
+<DL><DT><DD></DL><P><I><A HREF="index.html">Alphabetic index</A></I> <I><A HREF="HIER.html">Hierarchy of classes</A></I></P><HR>
+<BR>
+This page was generated with the help of <A HREF="http://www.linuxsupportline.com/~doc++">DOC++</A>.
+</BODY>

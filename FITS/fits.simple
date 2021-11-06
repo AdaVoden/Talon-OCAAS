@@ -1,0 +1,151 @@
+Article 3135 of sci.astro:
+Path: ncs-med!pwcs!quest!tcnet!nic.MR.NET!xanth!ames!uhccux!uwila!quonset.cfht.hawaii.edu!john
+From: john@quonset.cfht.hawaii.edu (John Kerr)
+Newsgroups: sci.astro
+Subject: Re: FITS
+Keywords: fits images
+Message-ID: <247@uwila.cfht.hawaii.edu>
+Date: 9 Aug 89 01:56:50 GMT
+References: <44100056@uxe.cso.uiuc.edu> <4789@tank.uchicago.edu>
+Sender: news@uwila.cfht.hawaii.edu
+Organization: Canada-France-Hawaii Telescope Corp.
+Lines: 63
+
+> 
+> What is FITS format? 
+
+
+The following is a quick summary of the FITS format.  A full description
+would take forever to type in.  I refer you to Astronomy & Astrophysics
+Supplement Series 44 (1981) pg. 363.  Or contact
+
+    Kitt Peak National Observatory
+    P.O. Box 26732
+    Tucson, AZ  85726
+
+Well, here goes...
+
+FITS: Flexible Image Transport System
+
+
+FITS format was proposed/presented by Dr. Donald C. Well & Dr. Eric W. Greisen
+back in 1979.  It is basically a format for the interchange of astronomical 
+images and digital arrays.  All records are of length 2880 8-bit bytes.  A
+file will contain one or more "header" records in the form of 36, 80-character,
+ASCII arrays.  The first data record will follow immediately after the last
+header record.  Any space remaining in a data record is zero filled.
+
+In the headers, information regarding the structure of the data is layed-out
+with an 8-character keyword, left justified, an "=" sign in column 9, and
+a blank character in column 10. (note: if this sounds very fortran'ish, it is).
+A variable follows someplace between column 11 and 50 according to the 
+following formats:
+
+1) Logical variable: T or F in col. 30.
+2) Integer variable: right justified in columns 11-30; imaginary part, if any, 
+   right justified in col. 31-50.
+3) Real variable: decimal point required; right justified (if exp. notation
+   is used) in col. 11-30;  imaginary part, if any, right justified in 
+   col. 31-50.
+4) Charater var: represented by a ' in column 11 and closed by a ' not before
+   col 20, i.e. 8 characters minimum including blanks.
+
+There are 5 fields required to describe an image.  The first four occupy a fixed
+order at the beginning of the first header record as follows:
+
+1) SIMPLE   Logical var, specifies whether the file conforms to the basic
+	    FITS standard.
+2) BITPIX   integer var, specifies the number of bits used to represent each 
+	    pixel value.
+3) NAXIS    integer var, specifies the number of coordinate axes in the image.
+4) NAXIS1   integer var, specifies the number of pixels along the most
+	    rapidily varying axis within the array.
+
+5) END      occupies the last contiguous field in the header;  any remaining
+            space in the record will be blank filled.
+
+That should get you started.  Beware of FITS-readers that are "hard-coded"
+beyond the required first fields.  We get complaints whenever we modify our
+FITS headers in the least because some fool down the pipeline built a 
+reader with rigid formating.  Remember "flexible" is the first (and last
+word IMHO) word in FITS.
+
+ ----------------------------------------------------------------------------
+ John Kerr                      Canada-France-Hawaii Telescope Corp.
+                                INTERNET: john@cfht.hawaii.edu 
+ ----------------------------------------------------------------------------
+
+
+From rlm@astro.physics.uiowa.edu Tue Jan  4 22:27:53 1994
+Received: from noao.edu by tucana.tuc.noao.edu (4.1/SAG.sat.13)
+	id AA29564; Tue, 4 Jan 94 22:27:51 MST; for ecdowney
+Received: from astro.physics.uiowa.edu (vesta.physics.uiowa.edu) by noao.edu (4.1/SAG-Noao.G90)
+	id AA00220; Tue, 4 Jan 94 22:27:50 MST; for ecdowney@tucana
+Received: from sunlight.physics.uiowa.edu by astro.physics.uiowa.edu (4.1/SMI-4.1)
+	id AA18024; Tue, 4 Jan 94 23:27:48 CST
+Date: Tue, 4 Jan 94 23:27:48 CST
+From: rlm@astro.physics.uiowa.edu (Robert Mutel)
+Message-Id: <9401050527.AA18024@astro.physics.uiowa.edu>
+To: ecdowney@noao.edu
+Subject: FITS format for 16 bit unsigned integers
+Status: R
+
+
+Elwood,
+
+This is apparently the received wisdom on handling 16-bit FITS integer data. We should implement this in our new program [Don's response to my posting
+on sci.astro].
+
+R.
+
+In article 94Jan3133318@fits.cv.nrao.edu, dwells@fits.cv.nrao.edu (Don Wells) writes:
+>    [I have added sci.astro.fits to the Newsgroups line -DCW]
+>
+>In article <CJ26DF.B5I@space.physics.uiowa.edu>
+>    rlm@astro.physics.uiowa.edu (Robert Mutel) writes:
+>
+> RM> .. an ambiguity with [all] 16-bit integer FITS files, viz that
+> RM> the most  significant bit (MSB) is either treated as a sign bit
+> RM> or a magnitude bit. ..
+>
+>There is no ambiguity in the definition of FITS for BITPIX=16: FITS
+>readers should always construe 16-bit pixels as 2-s complement signed
+>integers. FITS readers should also obey the BSCALE and BZERO keywords
+>when they are present (and should default to BSCALE=1 and BZERO=0 when
+>they are absent).  The formula which FITS readers should use to
+>interpret FITS pixels is
+>
+>    physical_value = BZERO + BSCALE * array_value
+>
+>(See Eq.5.3 in Sect.5.2.2.5 on p.19 of the NOST 100-1.0 version of the
+>FITS standard, or item III.D.1 on p.368 of the Basic FITS paper in
+>June 1981 A&A supplement Series, or Eq.3.2 in Sect.3.1.1.2 of the NOST
+>FITS User's Guide).  
+>
+> RM> The ST-6 uses the MSB as a mag. bit, so that FITS readers which
+> RM> treat it as a sign bit will 'fold' all intensities i>32767 to
+> RM> -65536+i. .. We have both ST-6 and HPC-1 cameras, both of which
+> RM> use the MSB as a magnitude bit. ..
+>
+>16-bit A-to-D converters produce unsigned integers; unsigned integers
+>are not supported by FITS.  When these pixels are being written to
+>FITS files with BITPIX=16 the camera software can utilize the optional
+>BZERO FITS keyword to shift the zero point of the number system in
+>order to give a 16-bit positive range instead of the default positive
+>and negative 15-bit range. The camera software should subtract 32768
+>from the pixels (or, equivalently, add 8000_hex) and set BZERO=32768
+>and BSCALE=1 in the header. If this is done, properly coded FITS
+>readers will construe the pixels correctly.
+>--
+>
+>  Donald C. Wells         Associate Scientist         dwells@nrao.edu
+>                    http://fits.cv.nrao.edu/~dwells
+>  National Radio Astronomy Observatory                +1-804-296-0277
+>  520 Edgemont Road,   Charlottesville, Virginia       22903-2475 USA
+
+
+
+
+----- End Included Message -----
+
+

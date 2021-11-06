@@ -1,0 +1,4 @@
+telrun operates the control fifos based on command sequence lists in telrun.sls.
+
+! For RCS Only -- Do Not Edit
+! @(#) $RCSfile: README,v $ $Date: 2003/04/15 20:48:00 $ $Revision: 1.1.1.1 $ $Name:  $

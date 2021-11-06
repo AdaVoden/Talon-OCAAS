@@ -1,0 +1,7 @@
+#!/bin/csh -f
+
+rsh -l ccdoper gastro3 '/usr/local/bin/telshow > /home2/tmp/telshow.out'
+
+/export/brutus/Web/REMOTE_OBS/telshow/telshow2html /net/gastro3/home2/tmp/telshow.out
+
+rm /net/gastro3/home2/tmp/telshow.out

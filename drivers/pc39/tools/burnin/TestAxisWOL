@@ -1,0 +1,36 @@
+#!/bin/csh -f
+# test an axis without limits forever or until problem
+# N.B. must start at home.
+
+if ($#argv != 4) then
+    echo $0':' axis velocity steps timeout
+    exit 1
+endif
+
+set ax = $argv[1]
+set vl = $argv[2]
+set st = $argv[3]
+set to = $argv[4]
+
+# liesurely acceleration
+@ ac = $vl / 2
+
+# init
+pc39cmd "a$ax st vl$vl ac$ac"
+
+# issue stop if interrupted
+onintr stop
+
+# loop forever
+while (1)
+    # move to opposite end
+    pc39cmd "a$ax mr$st go"
+
+    # go home -
+    toHome $ax $vl $to "r"
+    if ($status) exit 1
+end
+
+stop:
+
+pc39cmd "a$ax st"

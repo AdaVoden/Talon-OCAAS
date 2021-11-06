@@ -1,0 +1,21 @@
+Crop is a program which crops a set of FITS images to the largest common AOI.
+Or, crop can be given a file which lists OBJECT names and AOIs and it will crop
+each image to that AOI. Or, crop can be given an AOI on its command line and it
+will crop all images to that.
+
+N.B. It creates the new cropped images IN PLACE. Copy the images first if
+you want them preserved.
+
+Usage:
+
+crop [options] [*.fts]
+    -a AOI	crops all images to the given AOI. The AOI is in the form:
+		"East_RA North_Dec West_RA South_Dec", RA as H:M:S, Dec as D:M:S
+    -c		crops all images to their maximum common AOI.
+    -l file	crops to AOI for matching OBJECTs listed in given file.
+		file format is: OBJECT East_RA North_Dec West_RA South_Dec.
+    -f file	list of files to crop.
+    -v		verbose
+
+! For RCS Only -- Do Not Edit
+! @(#) $RCSfile: README,v $ $Date: 2003/04/15 20:48:32 $ $Revision: 1.1.1.1 $ $Name:  $

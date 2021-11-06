@@ -1,0 +1,9 @@
+# install OCAAS support for fli CCD camera
+
+MAJOR=254
+/sbin/rmmod fli
+/sbin/insmod -f fli.o io=0x378 irq=7 dma=3 major=$MAJOR
+rm -f $TELHOME/dev/fli
+mknod -m 0666 $TELHOME/dev/fli c $MAJOR 0
+rm -f $TELHOME/dev/ccdcamera
+ln -s fli $TELHOME/dev/ccdcamera

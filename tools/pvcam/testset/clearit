@@ -1,0 +1,4 @@
+rm -fr ~/pvc1m/images/*
+rm -f ~/pvc1m/*/filewait/*/*
+rm $TELHOME/archive/logs/pvc1m.log
+rm $TELHOME/archive/logs/pipeline.log

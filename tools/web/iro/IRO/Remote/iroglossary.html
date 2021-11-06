@@ -1,0 +1,331 @@
+<HTML>
+<HEAD><TITLE>IRO Schedule: Glossary of Terms</TITLE></HEAD>
+
+<BODY bgcolor="white">
+<font color="red" size=6>IRO Observers Guide</font><br>
+<img src="../images/main_line.gif"><p>
+ 
+<H1>IRO Schedule: Glossary of Terms</H1>
+
+<HR>
+
+<A NAME="obscode"><B>Observer's code</B><P>
+
+The observer's code is a three letter string assigned 
+by the IRO administrator.
+Observers' codes can be requested by submitting a <a href="code_request.shtml">request for an observing code</a>.  Astronomy students
+at the University of Iowa are assigned codes by the lab instructor.</A><P>
+
+<HR>
+
+<A NAME="title"><B>Project Title</B><P>
+The project title is short phrase  describing the project.
+The title is written as a COMMENT to the FITS header. 
+</A><P>
+
+<HR>
+
+<A NAME="name"><B>Observer Name(s)</B><P>
+Enter your name(s). 
+This is written as a COMMENT to the FITS header. 
+</A><P>
+
+<ul> 
+<li><I>Do not put quotes or apostrophes in the title or observer names!</I><P></li>
+</ul>
+
+<HR>
+
+<A NAME="Filters"><B>Filter and Duration</B><P>
+Identify the desired filter and exposure duration, in seconds, in the two fields
+provided.<P>
+
+Multiple values may be entered by separating each entry with a comma.
+Filter/durations entries are paired; if one field has more entries than the
+other the right-most value of the deficient field is reused as often as
+necessary.<P>
+
+For example, to take two images of a source, one through the V filter for a 30
+second exposure and one through the R filter for 60 seconds, enter the fields
+as:
+
+<PRE>
+	V,R
+	30,60
+</PRE>
+
+The telescope has a motorized filter wheel.
+Nine filters are currently supported for remote observing:  
+
+<UL>
+	<LI>Clear filter (code C):  Recommended for general purpose deep sky
+	 images.
+	<LI>Johnson photometric filters (codes B, V, R, and I). These are 100 nm
+	bandpass filters centered at 450,550,650, and 850 nm.
+</UL>
+</A>
+
+The exposure time of an image depends on several factors, including
+filter selection, apparent magnitude of the object, and sky conditions. For
+clear skies and low zenith angle (high elevation angle), the following table
+can be used to estimate the <b>maximum</b> exposure time to avoid saturation. <P>
+
+<CENTER><TABLE BORDER=5>
+	<TR>
+   		<TH>App. Mag.</TH>
+		<TH>C</TH>
+		<TH>B</TH>
+		<TH>V</TH>
+		<TH>R</TH>
+		<TH>I</TH>
+	</TR>
+	<TR>
+		<TH>2</TH>
+		<TD>-</TD>
+		<TD>0.1</TD>
+		<TD>0.05</TD>
+		<TD>0.05</TD>
+		<TD>0.1</TD>
+	</TR>
+	<TR>
+		<TH>4</TH>
+		<TD>0.05</TD>
+		<TD>0.5</TD>
+		<TD>0.25</TD>
+		<TD>0.25</TD>
+		<TD>0.5</TD>
+	</TR>
+	<TR>
+		<TH>6</TH>
+		<TD>0.5</TD>
+		<TD>3.5</TD>
+		<TD>1.5</TD>
+		<TD>1.5</TD>
+		<TD>3.5</TD>
+	</TR>
+	<TR>
+		<TH>8</TH>
+		<TD>2</TD>
+		<TD>21</TD>
+		<TD>10</TD>
+		<TD>10</TD>
+		<TD>22</TD>
+	</TR>
+	<TR>
+		<TH>10+</TH>
+		<TD>12</TD>
+		<TD>60</TD>
+		<TD>60</TD>
+		<TD>60</TD>
+		<TD>60</TD>
+	</TR>
+</TABLE></CENTER><P>
+</A><P>
+
+<HR>
+
+<A NAME="Object"><B>Object Name</B><P>
+This field allows you to name the observation.
+<P>
+If the position of the object is given using the Coordinates method then the
+name may be anything whatsoever.  If the position is being derived from a
+Catalog the name must be exactly as it appears in the catalog (but case and
+whitespace are ignored).
+Examples are given in each catalog selection.
+As a special case, asteroids may be entered by number only, e.g. 4 instead
+of Vesta 4. </A><P>
+
+The Object Name is used to set the OBJECT field of the FITS header.
+<P>
+<ul>
+<li>The orbital elements of
+many solar system objects are already known, so the program will calculate the
+celestial coordinates at the time of observation. Only uncataloged objects 
+need celestial coordinates entered by the observer.<P>
+</li>
+</ul>
+<HR>
+
+<A NAME="Catalogs"><B>Catalogs</B><P>
+A list of currently supported catalogs is in the following table.
+If in doubt, check the catalog contents (by clicking on hypertext link) for
+the correct name of each source before using in a schedule file.<P>
+
+<CENTER><TABLE BORDER=5 WIDTH=100%>
+	<TR>
+		<TH>Catalog Name</TH>
+		<TH>Objects</TH>
+		<TH>Example</TH>
+		<TH>Description</TH>       
+       	</TR>
+	<TR>
+		<TD>
+<A HREF="file:/net/iro/usr/local/telescope/archive/catalogs/bs.edb">
+		BS</TD>
+		<TD>5953</TD>
+		<TD>BS 45</TD>
+		<TD>Yale Bright Star Cat., dec &gt; -30</TD>
+	</TR>
+	<TR>                            
+		<TD>
+<A HREF="file:/net/iro/usr/local/telescope/archive/catalogs/gcvs.edb">
+		GCVS</A></TD>
+		<TD>28,377</TD>
+		<TD>S_Uma</TD>
+		<TD>General Catalog of Variable Stars, 3rd Ed.<TD>
+	</TR>
+	<TR>
+		<TD>
+<A HREF="file:/net/iro/usr/local/telescope/archive/catalogs/sao.edb">
+		SAO</TD>
+		<TD>~250,000</TD>
+		<TD>SAO45367</TD>
+		<TD>Smithsonian Astrophys. Obs. Star Cat.</TD>
+	</TR>
+	<TR>            
+		<TD>
+<A HREF="file:/net/iro/usr/local/telescope/archive/catalogs/Messier.edb">
+		Messier</A></TD>
+		<TD>109</TD>
+		<TD>M67</TD>
+		<TD>Messier catalog</TD>
+	</TR>
+	<TR>                                           
+		<TD>
+<A HREF="file:/net/iro/usr/local/telescope/archive/catalogs/NGC.edb">
+		NGC</A></TD>
+		<TD>8,054</TD>
+		<TD>NGC 5471</TD>
+		<TD>New General Catalog;
+		<B>Does <I>not</I> include Messier objects.</B></TD>
+	</TR>
+	<TR>                                           
+		<TD>
+<A HREF="file:/net/iro/usr/local/telescope/archive/catalogs/IC.edb">
+		IC</A></TD>
+		<TD>5,237</TD>
+		<TD>IC 4821</TD>
+		<TD>Deep Sky Catalog</TD>
+	</TR>
+	<TR>                                           
+		<TD>
+<A HREF="file:/net/iro/usr/local/telescope/archive/catalogs/UGC.edb">
+		UGC</A></TD>
+		<TD>7,331</TD>
+		<TD>UGC 12,892</TD>
+		<TD>Uppsala General Catalog</TD>
+	</TR>
+	<TR>                                           
+		<TD>
+<A HREF="file:/net/iro/usr/local/telescope/archive/catalogs/Abell.edb">
+		Abell</A></TD>
+		<TD>4,076</TD>
+		<TD>Abell 30</TD>
+		<TD>Abell Catalogue of Rich Galaxy Clusters</TD>
+	</TR>
+	<TR>                                           
+		<TD>
+<A HREF="file:/net/iro/usr/local/telescope/archive/catalogs/cgcg.edb">
+		CGCG</A></TD>
+		<TD>29,364</TD>
+		<TD>MLP 156-4</TD>
+		<TD>Galaxies and Clusters of Galaxies</TD>
+	</TR>
+	<TR>
+		<TD>
+<A HREF="file:/net/iro/usr/local/telescope/archive/catalogs/asteroids.edb">
+		Asteroids</A></TD>
+		<TD>~1,400</TD>
+		<TD>67</TD>
+		<TD>Asteroids ever brighter than V13.</TD>
+	</TR>
+	<TR>
+		<TD>
+<A HREF="file:/net/iro/usr/local/telescope/archive/catalogs/asteroids_dim.edb">
+		Dim Asteroids</A></TD>
+		<TD>~40,000</TD>
+		<TD>67</TD>
+		<TD>Asteroids never brighter than V13.</TD>
+	</TR>
+	<TR>
+		<TD>
+<A HREF="file:/net/iro/usr/local/telescope/archive/catalogs/comets.edb">
+		Comets</A></TD>
+		<TD>~40</TD>
+		<TD>22P/Kopff</TD>
+		<TD>Comets</TD>
+	</TR>
+	<TR>
+		<TD>
+<A HREF="file:/net/iro/usr/local/telescope/archive/catalogs/planets.edb">
+		Planets</A></TD>
+		<TD>8</TD>
+		<TD>Neptune</TD>
+		<TD>Planets</TD>
+	</TR>
+
+</TABLE></CENTER><P>
+
+<HR>
+
+<A NAME="Celestial"><B>Celestial Coordinates</B><P>
+
+The celestial coordinates describe the position of the source in the sky. The
+format is hh:mm:ss for the right ascension and dd:mm:ss for the declination, with a preceding sign when appropriate.  The epoch of the coordinates is in years. </A><P>
+
+<HR>
+
+<A NAME="Start"><B>LST or HA Start Time</B><P>
+Observations are normally scheduled automatically as close to the meridian
+as possible given all the other observing requests being processed in a given night. However, if it is important to observe your object at a specific local Sideral Time or Hour Angle then specify the time in the given field and set the radio button to indicate which time is being utilized.  The format of the time field is hh:mm:ss. Leave the field entirely blank if you do not wish to specifiy a start time.<P>
+
+If the scheduling program cannot schedule the observation within 30 minutes of the requested time, it is not scheduled at all.</A><P>
+
+<HR>
+
+<A NAME="Compression"><B>Compression Scale Factor</B><P>
+
+This requests compression of the image using the H Compression algorithm.
+The Space Telescope Science Institute offers the
+<A HREF=http://www.stsci.edu/software/hcompress.html>
+H compression algorithm for UNIX and VMS</A>.
+The University of Iowa's
+<A HREF=ftp://sunlight.physics.uiowa.edu/pub/software/atftools/> ATFtools</A>
+includes the H compression algorithm for Windows 95.<P>
+
+Lossless compression (scale 1) typically results in a factor of 2-3 in image
+size reduction, while a factor of 100 results in a factor of 6-8. Compression
+using more than a factor of 100 is not recommended, especially for photomteric
+analysis. A value of 0 requests no compression.<P>
+
+Compressed files will be named *.fth; uncompressed files will be named *.fts.
+</A><P>
+
+<HR>
+
+<A NAME="Repeat"><B>Repeat Parameters</B><P>
+
+An observation (including one which involves multiple filters) may be observed at regular intervals throughout a night. This option is useful for generating a sequence of images for light curves of asteroids, variable stars, etc.<P>
+
+Set the first field to the number of total observations. Set the second field
+to the elapsed time desired between observations in the format H:M:S. Due
+to a variety of factors, the actual elapsed time between the resulting
+observations may vary from the value requested.
+</A><P>
+
+<HR>
+
+<A NAME="Comment"><B>Comment Line</B><P>
+You may enter a text string (no quotes or apostrophes) in this box. This 
+will be written to the FITS header as a COMMENT keyword.
+</A>
+
+<HR>
+
+<I>Latest update:  Jan 25 1998</I><P>
+
+
+
+</BODY>
+
+</HTML>

@@ -1,0 +1,13 @@
+rsh onem-1 rm -fr /mnt/raid/user/images/*
+rsh onem-1 rm -fr /mnt/raid/filewait/*/*
+
+rsh onem-2 rm -fr /mnt/raid/user/images/*
+rsh onem-2 rm -fr /mnt/raid/filewait/*/*
+
+#rsh onem-3 rm -fr /mnt/raid/user/images/*
+#rsh onem-3 rm -fr /mnt/raid/filewait/*/*
+
+rsh onem-4 rm -fr /mnt/raid/user/images/*
+rsh onem-4 rm -fr /mnt/raid/filewait/*/*
+
+rm $TELHOME/archive/logs/*.log 

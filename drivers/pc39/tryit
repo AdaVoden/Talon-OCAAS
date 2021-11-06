@@ -1,0 +1,6 @@
+/sbin/rmmod pc39
+/sbin/insmod ./pc39.o pc39_io_base=0x2a0
+tail -5 /var/log/messages
+
+# For RCS Only -- Do Not Edit
+# @(#) $RCSfile: tryit,v $ $Date: 2003/04/15 20:48:10 $ $Revision: 1.1.1.1 $ $Name:  $

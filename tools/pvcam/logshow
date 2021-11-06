@@ -1,0 +1,2 @@
+exec $TELHOME/bin/screen -s 2 -e tail $TELHOME/archive/logs/pvc1m.log $*
+

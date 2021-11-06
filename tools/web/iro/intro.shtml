@@ -1,0 +1,82 @@
+<TITLE> University of Iowa Automated Telescope Facility </TITLE>
+<BODY bgcolor="white">
+
+
+<font color="red" size=6>Welcome</font><br>
+
+  
+
+<img src="images/main_line.gif"><p>
+
+
+<a href="http://www.public.iastate.edu/~isgc" target="_top"><img 
+		src="images/isgc2.gif" 
+		ALT="Iowa Space Grant Consortium" align="right" 
+		border="0"></a>
+
+<a href="http://www.nsf.gov/" target="_top"><img 
+		src="images/rotnsf.gif" 
+		alt="National Science Foundation" align="right" border="0"></a>
+
+
+
+
+Welcome to the <a href="http://www.uiowa.edu" target="_top">University of Iowa</a> Automated
+ Telescope Facility. 
+
+The ATF is maintained by the undergraduate students, graduate students, and 
+faculty of the
+<a href="http://www.physics.uiowa.edu" target="_top">Department of Physics and Astronomy</a>.  The facility is also supported by grants from the 
+<a href="http://www.nsf.gov/" target="_top">National
+Science Foundation</a> and <a href="http://www.public.iastate.edu/~isgc" target="_top">The Iowa Space Grant Consortium</a>.<p>
+
+
+The ATF is designed to be a useful tool for the internet community.  The
+Automated Telescope is a seven inch Astrophysics refracting telescope, equipped with 
+an HPC-1 CCD camera, located on the roof of Van Allen Hall in downtown
+Iowa City.  This telescope is freely available for use by educators, scientists
+, and anyone else with an interest in astronomy.  We currently support a 
+growing internet observers group, and we invite you to visit the
+<a href="REMOTE_OBS/remote_index.shtml" target="_top">Remote Observers Page</a>
+to get a better idea of what it's all about.<p>
+
+We are currently in the process of building a second automated facility.
+The Iowa Robotic Observatory, consisting of a 0.5 meter reflecting telescope, 
+will be located about 60 miles SSE of Tucson, Arizona at 5,300 feet elevation
+to take advantage of the clear skies and good seeing.  For a more detailed
+technical description and progress updates, please visit the <a href="IRO/iro_index.shtml" target="_top">Iowa Robotic Observatory</a> web site.<p>
+
+Since education is a primary goal of the ATF, we also offer a curriculum 
+designed for use with the facility.  <a href="Curriculum/curriculum_index.shtml" target="_top"><i>Imaging the Universe</i></a> offers laboratory exercises 
+and ideas for research projects.  The projects are designed
+for use with some special software written here at the University of Iowa by
+<a href="http://iraf.noao.edu/~ecdowney/resume.html" target="_top">Elwood Downey</a>.  The software package ATFTools, designed for Windows95, includes a number
+of useful image analysis utilities, including photometry, image cropping, and
+image compression and decompression tools.  Camera, a powerful Motif based
+image analysis program, is also available.  The program contains all of the 
+utilities included in ATFTools, with the added capabilities of FITS image
+display, point-and-click photometry, and a number of other very useful
+tools.  This program is available for both Unix and Linux platforms.
+Visit our <a href="IMAGE_ANALYSIS/image_analysis.shtml" target="mainframe">Image Analysis Software</a> page for a more complete description.<p>
+
+The ATF, operated primarily by undergraduates, supports a strong undergraduate
+research team.  Visit the <a href="RESEARCH_Proj/research_proj.shtml" target="mainframe">Student Research Page</a> for an idea of the kind of research we perform using the ATF.  
+Also, we are planning an on-line student research journal, where we would
+publish refereed papers written by undergraduates.  Many of us here have 
+published papers in other journals, but the places for students to publish
+quality research are somewhat limited.  If you have any thoughts on this 
+subject, or any interest in publishing in a journal of this type, please email
+us at <a href="mailto:atfproj@astro.physics.uiowa.edu">atfproj@astro.physics.uiowa.edu</a>.<p>
+
+Finally, we invite you to visit our <a href="DB_Images/archive_images.shtml" target="mainframe">Database of Images</a>.  Here we keep some sample images from the ATF, NGC galaxy archive images from our supernovae search, and cataclysmic
+variable light curves from our cataclysmic variable star monitoring program.  
+We also provide some links to other astronomical "sights" on the web.<p>
+
+We welcome your comments and suggestions.  Please feel free to email us
+at <a href="mailto:atfproj@astro.physics.uiowa.edu">atfproj@astro.physics.uiowa.edu</a>.<p>
+<hr>
+
+
+
+
+</HTML>

@@ -1,0 +1,57 @@
+Building and installing Talon from source:
+
+First install linux :-)
+
+Set up accounts (as root):
+
+	/etc/group
+	    talon::43201:talon
+	/etc/passwd
+	    talon::43201:43201:Talon login:/home/talon:/bin/tsch
+
+Add auto-start:
+
+	/etc/rc.d/rc.local
+	    # install Talon
+	    export TELHOME=/usr/local/telescope
+	    $TELHOME/bin/boot | 2>&1 tee -a $TELHOME/archive/logs/boot.log
+
+Build Talon (from a csh or tsh):
+
+	source ~/telescope/bin/sourceme	# if not already via .cshrc
+	Make.all <site> >& M
+	su
+	    Make.pass pass8a <site>
+
+
+
+
+--- RCS NO LONGER USED ---
+rcs hints:
+
+    add keywords and checkin files or whole directories for the first time:
+	newRCS -ci {files|dirs}
+
+    checkout and lock all files from pwd downwards:
+	rcstree -n co -q -l
+
+    checkout a few files for editing:
+	co -q -l [-rRev] {files...}
+
+    checkin and leave unlocked copy:
+	ci -q -u -m'comment' {files...}
+
+    add a nametag
+    	rcs -n'name' {files...}
+
+    compare 2 revs, ignoring keywords:
+	rcsdiff -kk -rRev1 -rRev2 file
+
+    find all files are r/w, ie, that should be locked:
+        rcstree -w -d echo
+
+    find all files that are really locked:
+	rcstree -c rlog -R -L
+
+# For RCS Only -- Do Not Edit
+# @(#) $RCSfile: Installation,v $ $Date: 2003/04/15 20:46:47 $ $Revision: 1.1.1.1 $ $Name:  $

@@ -1,0 +1,41 @@
+<html>
+<body>
+<hr>
+<h1>ATF Status</h1>
+<hr>
+UT Date - 8/21/1997<br>
+UT Time - 22:46:36<br>
+LST - 14:41:38<p>
+<table border = "5">
+<tr>
+<td></td>
+<td>Hour Angle</td>
+<td>Declination</td>
+<td>Elevation</td>
+<td>Azimuth</td>
+</tr>
+<tr>
+<td>Command Position</td>
+<td>-9:26:22</td>
+<td>-35:43:50</td>
+<td>-59:42:01</td>
+<td>91:31:47</td>
+</tr>
+<tr>
+<td>Encoder Position</td>
+<td>-9:26:22</td>
+<td>-35:43:50</td>
+<td>-59:42:01</td>
+<td>91:31:47</td>
+</tr>
+</table>
+<h2>Telescope Status</h2>
+Telescope - STOPPED<br>
+Camera - IDLE<br>
+Filter - C<br>
+<p>
+<h2>Dome Status</h2>
+Dome Status - STOPPED<br>
+Dome Azimuth - 80:26<br>
+Shutter Status - IDLE<br>
+<hr>

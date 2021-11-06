@@ -1,0 +1,24 @@
+<html>
+<head>
+<title>Observing Code Submission</title>
+</head>
+<body bgcolor="white">
+<font color="red" size=6>Observing Code Submission</font><br>
+<img src="../images/main_line.gif"><p>
+<BODY>
+
+<h2>Your message has been sent</h2>
+You can expect a response in a few days time, when we will email you your three letter
+observer's code along with some additional instructions.  Thanks for your
+interest in the ATF.<p>
+
+<i><b>Clear Skies!</b></i>
+
+
+
+</BODY>
+<!--#include file="remote_button_bar.shtml"-->
+</HTML>
+
+<! For RCS Only -- Do Not Edit >
+<! @(#) $RCSfile: obs_submit.shtml,v $ $Date: 2003/04/15 20:48:47 $ $Revision: 1.1.1.1 $ $Name:  $ >

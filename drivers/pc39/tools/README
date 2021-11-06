@@ -1,0 +1,11 @@
+pc39: infinite loop reading from stdin and printing whatever the pc39 says back.
+
+pc39cmd: sends command given as command line arguments, prints their
+    responses, exits. Each command/response pair is performed as an
+    atomic pair. Intended for use in shell scripts.
+
+pc39stat: prints the Done, Control and Status registers once, then exits.
+    N.B. some bits clear when read.
+
+! For RCS Only -- Do Not Edit
+! @(#) $RCSfile: README,v $ $Date: 2003/04/15 20:48:10 $ $Revision: 1.1.1.1 $ $Name:  $

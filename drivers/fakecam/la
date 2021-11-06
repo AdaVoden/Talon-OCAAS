@@ -1,0 +1,3 @@
+/sbin/rmmod fakecam
+make install
+/sbin/insmod -f /usr/local/telescope/dev/fakecam.o apg0=0x290,520,796,4,4,12,12,165,210,100,1,0,1,4,0 ap_impact=3

@@ -1,0 +1,498 @@
+# Copyright (c) 1995,1996 Brian Pane
+# Copyright (c) 1996,1997 Zachary Vonler and Brian Pane
+# All rights reserved.
+#
+# Redistribution and use in source and binary forms are permitted
+# provided that the above copyright notice and this paragraph are
+# duplicated in all such forms.
+# THIS SOFTWARE IS PROVIDED ``AS IS'' AND WITHOUT ANY EXPRESS OR
+# IMPLIED WARRANTIES, INCLUDING, WITHOUT LIMITATION, THE IMPLIED
+# WARRANTIES OF MERCHANTIBILITY AND FITNESS FOR A PARTICULAR PURPOSE.
+
+
+dxpc - a Differential X Protocol Compressor
+
+home page: http://ccwf.cc.utexas.edu/~zvonler/dxpc/
+
+Version 3.7.0 September 7, 1997
+
+
+0. WHAT'S NEW IN RELEASE 3.7.0
+   ===========================
+
+Various compression improvements by Brian (see the CHANGES file for
+a list)
+
+
+1. INTRODUCTION TO DXPC
+   ====================
+
+dxpc is an X protocol compressor designed to improve the
+speed of X11 applications run over low-bandwidth links
+(such as dialup PPP connections).
+
+dxpc consists of two processes:
+1. a Client Proxy that runs on the "remote" machine (the machine where
+   the X clients are running)
+2. a Server Proxy that runs on the "local" machine (the machine where
+   the X server is running)
+
+(Starting in the dxpc-3.0, release, the Client Proxy and Server Proxy
+are instances of the same program, called "dxpc"; command-line arguments
+tell the program whether it is acting as a Client Proxy or a Server Proxy.)
+
+The Client Proxy mimics an X server.  X client applications connect
+to the Client Proxy using display "unix:8" (or "<hostname>:8"; dxpc
+supports both UNIX domain and TCP sockets).  The Client Proxy receives
+X requests from the application, compresses them, and sends them to
+the Server Proxy.  The Server Proxy uncompresses the requests and
+sends them to the real X server.  Similarly, the Server Proxy receives
+X events, replies, and errors from the real X server.  It compresses
+these messages and sends them to the Client Proxy, which uncompresses
+them and sends them to the client application.
+
+dxpc attempts to exploit patterns in X protocol messages to limit
+the amount of data sent between the Client Proxy and Server Proxy.
+For many X message types, each field has a high probability of having
+the same value as it had in some previous message of the the same type.
+For such fields, dxpc maintains caches of the last 'n' values, with a
+least-recently-used replacement policy.  If a field value in a new
+message is already present in the corresponding cache, dxpc transmits
+the value's index within the cache rather than the value itself.
+Because the number of bits needed to represent this index is typically
+much smaller than the number of bits needed to represent the value
+itself, transmission of cache indices typically results in a
+significant reduction in the number of bytes transmitted over
+the low-bandwidth link.
+
+In other cases, the value of a field in an X message may differ from
+that field's value in the last message of the same type by a small
+value.  Some X messages contain sequence numbers or timestamps that
+have this property.  X requests that create new objects also tend
+to have this property; in a "Create Window" request, for example,
+the value of the "Window ID" being created is typically equal to
+"(Window ID of the last window created) + (some small positive integer)."
+For fields like these, dxpc transmits the difference between the field
+value in the new message and the value of the corresponding field in
+the previous message of the same type.  This value usually is a
+small number that can be encoded in far fewer bits than the actual
+field value.
+
+
+
+2. BUILDING DXPC
+   =============
+
+See the file INSTALL in the dxpc distribution for instructions on building
+and installing dxpc.
+
+
+
+3. RUNNING DXPC
+   ============
+
+On the machine where the X clients are located, set DISPLAY to point to the
+X server (e.g., "homepc:0.0") and run:
+
+    dxpc [-p <port_num>] [-d <display_num>] [-u] [-t] [-s(1|2)] [-v] [-f|-k]
+
+
+On the machine where the X server is located, set DISPLAY to point to
+your real X server (e.g., "unix:0") and run:
+
+    dxpc [-p <port_num>] [-f|-k] [-s(1|2)] [-v] <client_hostname>
+
+where <client_hostname> is the hostname or IP address of the machine where
+the dxpc Client Proxy  is running.
+
+
+(The presence of the <client_hostname> argument tells dxpc to act as
+ a Server Proxy.   Without this argument, it is a Client Proxy.)
+
+
+The Client Proxy normally listens on TCP port 4000.  If you
+need to use some different port, you can specify the port number by using
+the -p option for both the Client Proxy and the Server Proxy.  Also, the
+Client Proxy normally mimics display unix:8 (and <client_hostname>:8).
+If you need to use a display number other than 8, you can use the -d option.
+If the -u option is used, dxpc mimics only <client_hostname>:8, not
+unix:8.  If the -t option is used, dxpc mimics only unix:8, not
+<client_hostname>:8.
+
+The "-s1" and "-s2" options enable the reporting of compression ratio
+statistics.  See the section on "COMPRESSION STATISTICS" below for details.
+
+The "-v" option causes dxpc to display its version number and exit.
+The two communicating instances of dxpc must have the same version number.
+
+The "-f" option tells dxpc to fork immediately and run as a daemon process
+to facilitate starting it in scripts.  This option also suppresses all
+non-error output.
+
+The "-k" option finds a running daemonized dxpc and kills it.
+
+
+4. RUNNING APPLICATIONS
+   ====================
+
+Once the Client Proxy and Server Proxy are running, set the $DISPLAY
+to unix:8 (or <hostname>.8 for clients that aren't running on the same
+machine as the Client Proxy) and then just run X client applications
+as you normally would.
+
+
+
+5. DXPC AND XAUTH
+   ==============
+
+If you use X authorization, with a .Xauthority file on the workstation
+where your real X server runs, you'll need to set up a .Xauthority file
+on the host where Client Proxy runs.  One way to do this is:
+     1. Copy your ~/.Xauthority file from the host where the real X server
+        runs to the host where the Client Proxy runs.
+     2. Run
+             xauth list
+        to see the authorization keys.  There should be one for your
+        real X display.  It will look something like this:
+             <hostname>/unix:0   MIT-MAGIC-COOKIE-1   <hex string>
+     3. On the host where the Client Proxy is located, add a new entry to
+        the .Xauthority file with the display name of the fake X server
+        (the  DISPLAY where the Client Proxy is listening) and all of the
+        other values from the entry for the real X display.  The xauth "add"
+        command can be used, like this:
+             xauth add <hostname>/unix:8 MIT-MAGIC-COOKIE-1  <hex string>
+        where <hostname> is the name of the host where the Client Proxy is
+        running and <hex string> has the same value as the <hex string>
+        obtained for the real X display in step 2.  Once you do this, you
+        should be able to run X clients through dxpc successfully.
+
+Bruce Mah <bmah@cs.berkeley.edu> has kindly contributed a pair of programs to
+automate this setup.  [DISCLAIMER: This is unsupported software, so please
+don't send him too much nasty email if it doesn't work on your system
+configuration.]  The first program, rxauth, copies the .Xauthority data
+from one host to another.  The second, xauthcp, adds a new entry to the
+.Xauthority file with the same protocol (MIT-MAGIC-COOKIE-1 or whatever)
+and hex key string as an existing entry.  The usage is something like
+this (where "home-pc" is the host where the real X server and Server Proxy
+run and proxy-ws is the host where the Client Proxy runs):
+     home-pc% rxauth proxy-ws
+     proxy-ws% xauthcp home-pc/unix:0 proxy-ws/unix:8
+     proxy-ws% xauthcp home-pc/unix:0 proxy-ws:8
+
+The first command in this example copies the .Xauthority records from
+home-pc to proxy-ws.  The second command updates the .Xauthority file on
+proxy-ws to include a new security key for display unix:8 (the UNIX domain
+pipe used by the Client Proxy).  The third command updates the .Xauthority
+file on proxy-ws to include a new security key for display proxy-ws:8 (the
+TCP port used by the Client Proxy).
+
+
+-----
+
+#!/bin/csh -f
+#
+# rxauth
+# Bruce A. Mah <bmah@CS.Berkeley.EDU>
+#
+# Copy xauth keys from one .Xauthority file to another.  Assumes
+# that the target machine has .rhosts equivalence with the the
+# machine on which this command is executed.
+#
+set localdisplay=`/bin/hostname`:0
+set remotehost=$1
+
+echo Sending keys for $localdisplay to $remotehost ...
+
+xauth nextract - $localdisplay | rsh $remotehost xauth nmerge -
+
+echo Done.
+
+-----
+
+#!/bin/csh -f
+#
+# xauthcp
+# Bruce A. Mah <bmah@CS.Berkeley.EDU>
+#
+
+# Copy xauth keys used to access one display to another.  This ability
+# is primarily useful when using a proxy X server.  In such a situation,
+# client processes need to access the proxy using the xauth keys of the
+# real server (assuming the proxy takes no explicit actions to deal
+# with xauth keys).
+#
+if (argc == 3) then
+	echo "$0 source-display dest-display"
+endif
+
+set src=$1
+set dst=$2
+set tmpfile=/tmp/xauthcp.$$
+
+rm -f $tmpfile
+xauth list $src | \
+	awk -v dst=$dst '{ print "xauth add", dst, $2, $3, "; "}' > $tmpfile
+source $tmpfile
+rm -f $tmpfile
+
+-----
+
+For folks who don't have or don't like csh, here are versions of
+rxauth and xauthcp that use sh, thanks to Dirk Eddelb"uttel
+<Dirk.Eddelbuettel@qed.econ.queensu.ca>.
+
+-----
+#!/bin/sh
+#
+# rxauth
+# Bruce A. Mah <bmah@CS.Berkeley.EDU>
+#
+# 12 Jul 96	edd@qed.econ.queensu.ca 	Rewritten as a (ba)sh script
+#
+# Copy xauth keys from one .Xauthority file to another.  Assumes
+# that the target machine has .rhosts equivalence with the the
+# machine on which this command is executed.
+
+if [ $# -ne 2 ]
+then
+	echo $0 remotehost
+	exit -1
+fi
+
+localdisplay=`/bin/hostname`:0
+remotehost=$1
+
+echo Sending keys for $localdisplay to $remotehost ...
+
+xauth nextract - $localdisplay | rsh $remotehost /usr/bin/X11/xauth nmerge -
+
+echo Done.
+-----
+#!/bin/sh
+#
+# xauthcp
+# Bruce A. Mah <bmah@CS.Berkeley.EDU>
+#
+# 12 Jul 96	edd@qed.econ.queensu.ca 	Rewritten as a (ba)sh script
+#
+# Copy xauth keys used to access one display to another.  This ability
+# is primarily useful when using a proxy X server.  In such a situation,
+# client processes need to access the proxy using the xauth keys of the
+# real server (assuming the proxy takes no explicit actions to deal
+# with xauth keys).
+
+if [ $# -ne 2 ]
+then
+	echo $0 source-display dest-display
+	exit -1
+fi
+
+src=$1
+dst=$2
+tmpfile=/tmp/xauthcp.$$
+
+rm -f $tmpfile
+xauth list $src | \
+	awk -v dst=$dst '{ print "xauth add", dst, $2, $3, "; "}' > $tmpfile
+source $tmpfile
+rm -f $tmpfile
+-----
+
+
+
+6. COMPRESSION STATISTICS
+   ======================
+
+The -s option can be used to show compression statistics for an X
+client when the X client terminates.  Use -s1 to get a short report
+like this:
+
+  ** dxpc Server-side Compression statistics **
+
+  Overall compression:
+    1551744 bits compressed to 228043
+    (6.80461:1 compression ratio)
+
+The report printed by the Client Proxy shows the compression of the
+X messages sent by the X client application, and the report
+printed by the the Server Proxy shows the compression of the messages
+sent by the X server.
+
+Use -s2 for a longer report that shows the compression for each
+message type, like this:
+
+  ** dxpc Client-side Compression statistics **
+
+  Compression of requests by message type:
+
+  msg             bits    bits    compression
+  type    count   in      out     ratio
+  ----    -----   -----   -----   -----------
+  1       61      26240   4019    6.52899:1
+  2       200     25600   2780    9.20863:1
+  3       122     7808    600     13.0133:1
+  4       10      640     162     3.95062:1
+  8       68      4352    454     9.5859:1
+  [...]
+  110     4       128     114     1.12281:1
+  119     2       64      22      2.90909:1
+  127     29      928     87      10.6667:1
+
+  7096 bits used for dxpc message framing and multiplexing
+
+  Overall compression:
+    931040 bits compressed to 218506
+    (4.26094:1 compression ratio)
+
+
+The "-s2" report can be used as a profile to show what message types
+contribute the most bits to the total X protocol traffic.  (See O'Reilley's
+"X Protocol Reference" (Volume 0) for details on the messages in the X
+protocol.)
+
+
+Notes:
+
+  - The "-s2" option is really a "hacker's option."  Basically, if you
+    find yourself saying, "I wonder how effective dxpc's compression
+    of X_PolyFillRectangle requests is," then you should use "-s2";
+    otherwise, you should use "-s1."
+
+  - The -s2 report for dpxc_server shows the compression of X server reply
+    messages broken down by request type.  (Previous version of dxpc just
+    grouped all replies together under message type = 1.)  The "message
+    type" column for each request message type shows the message type of
+    the X client request that caused the X server to generate the reply.
+    For some X replies, either those that are part of X extensions or those
+    in the core protocol for which dxpc doesn't have any special compression
+    code, dxpc doesn't know the request type; the statistics for these
+    replies are grouped under message type "other" at the end of the reply
+    report.
+
+  - In dxpc-3.0, the Client Proxy and Server Proxy communicate over a single
+    TCP connection.  The compressed X messages for many X connections are
+    multiplexed into this single TCP connection.  dxpc must transmit some
+    framing bytes and control messages over this channel to manage this
+    multiplexing.  This overhead is reported in the "<some number> bits
+    used for dxpc message framing and multiplexing" message near the end
+    of the "-s2" report.  The number of framing bits is used in the
+    computation of the overall compression ratio to provide an accurate
+    measure of dxpc's real compression ratio.
+
+  - There are sometimes message types for which the compression ratio is
+    slightly less than 1:1 or slightly greater than 1:1.  These generally
+    are message types for which dxpc doesn't do any special compression,
+    either because they don't contribute enough bits to the total X traffic
+    to be worth compressing or because I just haven't had time to write
+    compression code for them yet.  In prior versions of dxpc, the compression
+    ratio for such messages would appear as 1:1.  Due to the more complex
+    encodings used in dxpc-2.0 and later, the message transmitted between
+    the dxpc proxies will typically be a few bits shorter or a few bits
+    longer than the original X message, so the compression ratio is some
+    value close to 1:1.
+
+
+
+7. VERSION NOTES
+   =============
+
+Version 3.6.0 of dxpc is not compatible with prior versions of dxpc
+(the change in the second component of the version number indicates
+a protocol change).  Thus you must use dxpc-3.6.x on both ends of the
+link.
+
+
+8. ACKNOWLEDGMENTS
+   ===============
+
+The HBX and FHBX systems (http://www.cs.dartmouth.edu/~jmd/decs/DECSpage.html)
+have had a significant influence on the design of several of the compression
+improvements implemented in versions 0.4, 0.9.x, 1.0, and 2.0 of dxpc.
+
+Thanks to all of the users of dxpc who have contributed feedback and
+suggestions.
+
+
+
+9. AUTHOR
+   ======
+
+dxpc-0.1 through dxpc-3.3.1 by Brian Pane (current address: brianp@cnet.com)
+dxpc-3.4.0 through dxpc-3.5.0 by Zachary Vonler (lightborn@mail.utexas.edu)
+dxpc-3.6.0 by Brian Pane
+
+
+10. FREQUENTLY ASKED QUESTIONS
+    ==========================
+
+Q: How much of a speedup will I see if I use dxpc?
+A: It depends heavily upon what types of applications you run.  With
+   dxpc-3.x, compression ratios for many application are between 3:1
+   and 6:1.  The performance of programs like xterm, xemacs, and exmh
+   is what I would consider "comfortably usable" with dxpc over a
+   28.8Kb/s PPP link.  FrameMaker is only "uncomfortably usable" at
+   28.8Kb/s.  Applications whose X traffic consists mostly of graphics
+   images, like xv or Netscape,  will achieve more modest speedups
+   from dxpc, since the implementation of color image compression in
+   dxpc is fairly unsophisticated.  Note also that an n:1 compression of the
+   X traffic doesn't mean that your applications will run 'n' times
+   as fast; the PPP framing bytes and compressed IP and TCP headers
+   impose an upper bound on the speedup that can be achieved.
+
+Q. Will dxpc work on machine X running operating system Y?
+A: Probably, if Y is some variant of UNIX and sizeof(int)>=32.
+   I've received reports of people running dxpc successfully
+   on LINUX, NetBSD, SunOS4, SunOS5 (Solaris 2), HP-UX, IRIX,
+   Digital UNIX, Ultrix, AIX, UnixWare, and even OS/2.
+   
+Q: Why won't dxpc compile?  It says it can't find "iostream.h"
+A: This typically means that your C++ compiler is configured wrong
+   or is missing its supporting libraries.  For g++, go FTP the
+   latest versions of the compiler and libraries.  For a commercial
+   compiler, check the documentation.
+
+Q: Why does dxpc crash immediately when I run it on Linux?
+A: Some people seem to have bad versions of libc on their
+   Linux systems, such that gethostbyname(2) crashes.  The fix
+   for this problem is to upgrade to stable versions of libc
+   and the kernel that work together.
+
+Q: Why won't dxpc run?
+A: Make sure the right programs are running on the right machines with
+   the right arguments:
+    * The Server Proxy (dxpc with the <hostname> argument) should
+      be running on the system where your real X server is (e.g., your
+      LINUX system at home).
+    * The Client Proxy (dxpc with no argument) should be running on the
+	 system where the X client applications are, or on a system with a
+	 fast network connection to the hosts where the client applications
+	 are (e.g., your workstation at work or school).
+    * When you run the Server Proxy, make sure that $DISPLAY is set to
+      point to the real X server (e.g., "unix:0").
+    * When you run the Server Proxy, make sure that the hostname or IP
+      addr that you specify on the command line is that of the system
+      where the Client Proxy is running.
+    * When you run X applications, make sure that $DISPLAY is set
+      to point to the Client Proxy (e.g., "unix:8" for an X application
+      on the same hosts as Client Proxy, or "<host where dxpc_client runs>:8"
+      for X applications running on other hosts).
+    * You usually don't need to bother with the "-p" option, unless
+      some other application is already using port 4000 on either
+      end of the link.  If you need to use this option, make sure
+      that you use the same argument for "-p" for both dxpc_client
+      and dxpc_server.
+   Also, if your X server uses xauth-style authorization, check out
+   the "dxpc and xauth" section above.
+   If none of the above checks yields a solution, send me some email.
+
+Q: I used to be able to run a dxpc_server on my home machine and an
+   instance of dxpc_client on each remote machine where I needed to run
+   X programs.  Ever since dxpc-3.0, though, it only lets me run a
+   single instance of the remote Client Proxy per Server Proxy.  How
+   am I supposed to run X applications on multiple remote machines?
+A: Pick one remote machine and run the dxpc Client Proxy on it.  On
+   this host, set the display to unix:8.  On all of the other remote
+   machines, set the display to <hostname>:8, where <hostname> is the
+   machine where you put the Client Proxy.  This allows all of your
+   remote X applications to enjoy the benefits of the shared font
+   caches in the Client Proxy (a feature added in 3.0).

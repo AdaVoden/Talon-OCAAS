@@ -1,0 +1,44 @@
+<HTML>
+
+<! Elwood Downey 30 April 1996 >
+
+<HEAD>
+<TITLE>Current Weather Conditions</TITLE>
+</HEAD>
+<body bgcolor="white">
+<font color="red" size=6>Current Weather Conditions</font><br>
+<img src="../images/main_line.gif"><p>
+
+
+<a href="http://cirrus.sprl.umich.edu/wxnet/fcst/cedarrapids.txt" target="_top">Current conditions and forecast (simple text)</a><p>
+<a href="http://kgan.com/wx/forecast.html" target="_top">KGAN Weather for eastern Iowa</a><p>
+<a href="http://www.cnn.com/WEATHER/html/IowaCityIA.html" target="_top">Another forecast (with images)</a><p>
+<a href="http://www.intellicast.com/weather/dsm/sat.gif" target="_top">Satellite image</a><p>
+<a href="http://www.intellicast.com/weather/dsm/radsum.gif" target="_top">Radar summary</a> (the telescope is somewhat south of CID)<p>
+
+
+<!--#include file="remote_button_bar.shtml"-->
+</BODY>
+
+</HTML>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<! For RCS Only -- Do Not Edit >
+<! @(#) $RCSfile: remote_weather.shtml,v $ $Date: 2003/04/15 20:48:47 $ $Revision: 1.1.1.1 $ $Name:  $ >
