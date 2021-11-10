@@ -1,5 +1,0 @@
-Camera.AuxCam: 1
-Camera.Driver: /usr/local/telescope/bin/pvcam
-Camera*Basic*Mag1.set: False
-Camera*Basic*Mag1_8.set: True
-Camera*Options.RoamReport.set: True

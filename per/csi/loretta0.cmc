@@ -1,8 +1,0 @@
-// loretta's Az axis
-homebit = 0x1;
-nlimit = 0x2;
-plimit = 0x4;
-
-// these are just until telescoped starts
-maxvel=200;
-maxacc=200;
