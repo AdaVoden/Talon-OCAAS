@@ -1,0 +1,2 @@
+Csimc is the command line tool to connect directly to the CSIMC network. It
+requires csimcd to be running, starting it if it is not already running.
