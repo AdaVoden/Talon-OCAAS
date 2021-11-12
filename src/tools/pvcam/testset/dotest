@@ -1,7 +1,0 @@
-~/pvc1m/clearit
-set cwd = `pwd`;
-cd ~/telescope/tools/pvcam
-make test1m
-pvmstr -x 10000:0:0:320:640:1:1:1 > dump
-cd $cwd
-

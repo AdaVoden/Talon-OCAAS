@@ -1,8 +1,0 @@
-#!/bin/csh
-
-kill -INT `cat /var/run/ppp0.pid`
-
-jd -t; echo ppp killed
-
-# For RCS Only -- Do Not Edit
-# @(#) $RCSfile: pppoff,v $ $Date: 2003/04/15 20:48:36 $ $Revision: 1.1.1.1 $ $Name:  $

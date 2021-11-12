@@ -1,2 +1,0 @@
-exec $TELHOME/bin/screen -s 1 -e tree ~/pvc1m $*
-

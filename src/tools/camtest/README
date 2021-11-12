@@ -1,7 +1,0 @@
-camtest can be used to test any of the ccd cameras which use the direct
-ccdcamera.h driver interface.
-
-camtesthi uses the higher level functions generic to all interface types.
-
-! For RCS Only -- Do Not Edit
-! @(#) $RCSfile: README,v $ $Date: 2003/04/15 20:48:32 $ $Revision: 1.1.1.1 $ $Name:  $
