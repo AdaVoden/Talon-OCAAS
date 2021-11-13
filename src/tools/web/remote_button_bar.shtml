@@ -1,0 +1,16 @@
+<html>
+<MAP NAME="buttonbar">
+<AREA SHAPE="RECT" COORDS="2,2,64,30" HREF="remote_main.shtml" target="mainframe">
+<AREA SHAPE="RECT" COORDS="66,2,132,30" HREF="../index.shtml" target="_top">
+<AREA SHAPE="RECT" COORDS="133,2,195,30" HREF="../ATFTech/atf_index.shtml" target="_top">
+<AREA SHAPE="RECT" COORDS="196,2,261,30" HREF="../IRO/iro_index.shtml" target="_top">
+<AREA SHAPE="RECT" COORDS="262,2,320,30" HREF="http://www-astro.physics.uiowa.edu/email.shtml" target="mainframe">
+
+</MAP>
+
+
+
+<hr>
+<img src="../images/button_bar.gif" USEMAP="#buttonbar" border=0><br>
+<hr>
+</body></html>

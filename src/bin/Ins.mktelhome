@@ -1,0 +1,45 @@
+#!/bin/csh -f
+# build up a fresh basic directory structure off TELHOME
+
+# make a fresh TELHOME
+if (-w $TELHOME) then
+    touch $TELHOME/x.x
+    rm -fr $TELHOME/*
+endif
+if (! -e $TELHOME) mkdir -p $TELHOME
+set nth = `ls $TELHOME | wc -l`
+if (! -w $TELHOME || $nth > 0) then
+    echo "Create an empty $TELHOME we can write to."
+    exit 1
+endif
+
+# use relative paths
+cd $TELHOME
+
+# clean out and rebuild
+mkdir -p archive
+mkdir -p archive/calib
+mkdir -p archive/catalogs
+mkdir -p archive/config
+mkdir -p archive/images
+mkdir -p archive/logs
+mkdir -p archive/userlogs
+mkdir -p archive/photcal
+mkdir -p archive/pointmesh
+mkdir -p archive/telrun
+
+mkdir -p bin
+
+mkdir -p comm
+
+mkdir -p dev
+
+mkdir -p lib
+
+mkdir -p user
+mkdir -p user/images
+mkdir -p user/logs
+mkdir -p user/schedin
+mkdir -p user/logs/summary
+
+# xephem dirs are made by GUI/xephem/Makefile

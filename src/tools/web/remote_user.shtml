@@ -1,0 +1,35 @@
+<HTML>
+
+
+<! Elwood Downey 30 April 1996 >
+
+<HEAD>
+<TITLE>ATF Observer Info</TITLE>
+</HEAD>
+<body bgcolor="white">
+<font color="red" size=6>Remote Observer Information</font><br>
+<img src="../images/main_line.gif"><p>
+<FORM METHOD="POST" ACTION="../cgi-bin/atfquery.pl">
+<p>
+
+<INPUT TYPE="radio" CHECKED NAME="QType" Value="PerUser"> Observer Information.
+<ul>
+    <li>Observer Code: <INPUT SIZE=3 MAXLENGTH=3 NAME="Obscode"></li>
+    <li>Maximum image age to list (days): <INPUT VALUE=" 30" SIZE=3 MAXLENGTH=4 NAME="Age"></li>
+</ul>
+
+<p>
+
+<INPUT TYPE="submit" VALUE="Submit">
+<INPUT TYPE="reset" VALUE="Reset the Form">
+
+</FORM>
+
+
+
+
+
+<!--#include file="remote_button_bar.shtml"-->
+</BODY>
+
+</HTML>

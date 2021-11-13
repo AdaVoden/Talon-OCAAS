@@ -1,0 +1,6 @@
+XTerm*font: 9x15
+XTerm*scrollBar: True
+XTerm*geometry: 80x40
+XTerm*vt100.cursorColor: #051
+XTerm*vt100.foreground: black
+XTerm*vt100.background: #fbd500
