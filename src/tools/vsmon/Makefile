@@ -17,6 +17,3 @@ pass5: install
 clobber:
 	touch x.o
 	rm -f *.o vsmon
-
-# For RCS Only -- Do Not Edit
-# @(#) $RCSfile: Makefile,v $ $Date: 2003/04/15 20:48:46 $ $Revision: 1.1.1.1 $ $Name:  $

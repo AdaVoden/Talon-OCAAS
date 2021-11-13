@@ -67,6 +67,3 @@ catbrowsemain: catbrowsemain.o
 
 catbrowsemain.o: catbrowse.c
 	$(CC) $(CFLAGS) -DTESTIT -o catbrowsemain.o -c catbrowse.c
-
-# For RCS Only -- Do Not Edit
-# @(#) $RCSfile: Makefile,v $ $Date: 2003/04/15 20:48:17 $ $Revision: 1.1.1.1 $ $Name:  $

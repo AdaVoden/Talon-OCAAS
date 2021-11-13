@@ -16,6 +16,3 @@ pass5: install
 clobber:
 	touch x.o
 	rm -fr *.o vssearch
-
-# For RCS Only -- Do Not Edit
-# @(#) $RCSfile: Makefile,v $ $Date: 2003/04/15 20:48:46 $ $Revision: 1.1.1.1 $ $Name:  $

@@ -51,6 +51,3 @@ echo -n "xephem "
 
 done:
 echo ""
-
-# For RCS Only -- Do Not Edit
-# @(#) $RCSfile: startTel,v $ $Date: 2003/04/15 20:48:39 $ $Revision: 1.1.1.1 $ $Name:  $

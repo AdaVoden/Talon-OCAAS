@@ -453,8 +453,4 @@ $cgi_lib'maxbound   =  $cgi_lib'maxbound;
 $cgi_lib'version    =  $cgi_lib'version;
 $cgi_lib'filepre    =  $cgi_lib'filepre;
 
-1; #return true 
-
-
-# For RCS Only -- Do Not Edit
-# @(#) $RCSfile: cgi-lib-97.pl,v $ $Date: 2003/04/15 20:48:46 $ $Revision: 1.1.1.1 $ $Name:  $
+1; #return true

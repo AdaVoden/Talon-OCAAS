@@ -10,6 +10,3 @@ newton: newton.o
 
 telaxes: telaxes.o
 	$(CC) $(LDFLAGS) -o telaxes telaxes.o $(LIBS)
-
-# For RCS Only -- Do Not Edit
-# @(#) $RCSfile: Makefile.tests,v $ $Date: 2003/04/15 20:48:17 $ $Revision: 1.1.1.1 $ $Name:  $

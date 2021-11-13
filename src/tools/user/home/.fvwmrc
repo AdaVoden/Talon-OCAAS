@@ -662,7 +662,3 @@ Key F8		A	M	CirculateDown
 *FvwmWinListAction Click3 Module "FvwmIdent" FvwmIdent
 *FvwmWinListUseSkipList
 *FvwmWinListGeometry +0-1
-                                      
-
-# For RCS Only -- Do Not Edit
-# @(#) $RCSfile: .fvwmrc,v $ $Date: 2003/04/15 20:48:40 $ $Revision: 1.1.1.1 $ $Name:  $

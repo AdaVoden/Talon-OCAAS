@@ -94,7 +94,3 @@ extern void initialize_digital P((Display *dpy, Visual *visual, Colormap cmap,
 				  unsigned int *widthP,
 				  unsigned int *heightP));
 extern void run_digital P((Display *dpy, Window window));
-
-/* For RCS Only -- Do Not Edit
- * @(#) $RCSfile: xdaliclock.h,v $ $Date: 2003/04/15 20:48:48 $ $Revision: 1.1.1.1 $ $Name:  $
- */

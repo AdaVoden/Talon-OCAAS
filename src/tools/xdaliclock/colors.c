@@ -222,6 +222,3 @@ cycle_colors (dpy, cmap, fg_color, bg_color, window, fg_gc, bg_gc)
 			    bg_color->pixel);
     }
 }
-
-/* For RCS Only -- Do Not Edit */
-static char *rcsid[2] = {(char *)rcsid, "@(#) $RCSfile: colors.c,v $ $Date: 2003/04/15 20:48:47 $ $Revision: 1.1.1.1 $ $Name:  $"};

@@ -114,6 +114,3 @@ cycle_hue (color, degrees)
   h = (h + degrees) % 360;
   hsv_to_rgb (h, s, v, &color->red, &color->green, &color->blue);
 }
-
-/* For RCS Only -- Do Not Edit */
-static char *rcsid[2] = {(char *)rcsid, "@(#) $RCSfile: hsv.c,v $ $Date: 2003/04/15 20:48:48 $ $Revision: 1.1.1.1 $ $Name:  $"};

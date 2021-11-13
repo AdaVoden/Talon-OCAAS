@@ -65,6 +65,3 @@ following format:
 	Dec:	Dec of candidate (J2000)
 
 A blank line is inserted after each set of objects.
-
-! For RCS Only -- Do Not Edit
-! @(#) $RCSfile: README,v $ $Date: 2003/04/15 20:48:39 $ $Revision: 1.1.1.1 $ $Name:  $

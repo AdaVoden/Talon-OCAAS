@@ -43,7 +43,3 @@ extern int readFilterCfg (int trace, char *fn, FilterInfo **fipp, int *defaultp,
     char errmsg[]);
 extern int writeFilterCfg (char *fn, FilterInfo *fip, int nfip, int filtn,
     char errmsg[]);
-
-/* For RCS Only -- Do Not Edit
- * @(#) $RCSfile: configfile.h,v $ $Date: 2003/04/15 20:48:18 $ $Revision: 1.1.1.1 $ $Name:  $
- */

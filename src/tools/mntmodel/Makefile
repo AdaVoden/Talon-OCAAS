@@ -17,6 +17,3 @@ install: mntmodel
 clobber:
 	touch x.o
 	rm -fr *.o mntmodel
-
-# For RCS Only -- Do Not Edit
-# @(#) $RCSfile: Makefile,v $ $Date: 2003/04/15 20:48:35 $ $Revision: 1.1.1.1 $ $Name:  $

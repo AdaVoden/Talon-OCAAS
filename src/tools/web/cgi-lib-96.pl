@@ -425,8 +425,4 @@ $cgi_lib'bufsize    =  $cgi_lib'bufsize ;
 $cgi_lib'maxbound   =  $cgi_lib'maxbound;
 $cgi_lib'version    =  $cgi_lib'version;
 
-1; #return true 
-
-
-# For RCS Only -- Do Not Edit
-# @(#) $RCSfile: cgi-lib-96.pl,v $ $Date: 2003/04/15 20:48:46 $ $Revision: 1.1.1.1 $ $Name:  $
+1; #return true

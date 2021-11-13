@@ -8,7 +8,3 @@ extern int newton (double (*f)(double x), double x0, double err, double *zerop);
 /* funcmax.c */
 extern int funcmax (double (*f)(double x), double x0, double dy, double *xmaxp);
 extern int parabmax (double x[3], double y[3], double *maxp);
-
-/* For RCS Only -- Do Not Edit
- * @(#) $RCSfile: lstsqr.h,v $ $Date: 2003/04/15 20:48:35 $ $Revision: 1.1.1.1 $ $Name:  $
- */

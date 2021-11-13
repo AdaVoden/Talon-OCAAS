@@ -147,6 +147,3 @@ print "<br><img src=\"../images/main_line.gif>\n";
 print "<h1>Error fetching $fn.<h1>\n";
 
 print "</body></html>";
-
-# For RCS Only -- Do Not Edit
-# @(#) $RCSfile: atfftp.pl,v $ $Date: 2003/04/15 20:48:46 $ $Revision: 1.1.1.1 $ $Name:  $

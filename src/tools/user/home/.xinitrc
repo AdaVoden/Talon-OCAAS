@@ -25,6 +25,3 @@ xobs -geometry +24+50 &
 
 # window manager, exit when it does
 exec fvwm
-
-# For RCS Only -- Do Not Edit
-# @(#) $RCSfile: .xinitrc,v $ $Date: 2003/04/15 20:48:39 $ $Revision: 1.1.1.1 $ $Name:  $

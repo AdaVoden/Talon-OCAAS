@@ -17,6 +17,3 @@ install: snsearch
 clobber:
 	touch x.o
 	rm -fr *.o snsearch
-
-# For RCS Only -- Do Not Edit
-# @(#) $RCSfile: Makefile,v $ $Date: 2003/04/15 20:48:39 $ $Revision: 1.1.1.1 $ $Name:  $

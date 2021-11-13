@@ -45,6 +45,3 @@ Synopsis: pterrors -t *.fts | mntmodel >> home.cfg
  -i   : print model initial conditions on stderr
  -z   : turn on ZENFLIP
  -r   : print residuals on stderr
-
-# For RCS Only -- Do Not Edit
-# @(#) $RCSfile: README,v $ $Date: 2003/04/15 20:48:35 $ $Revision: 1.1.1.1 $ $Name:  $

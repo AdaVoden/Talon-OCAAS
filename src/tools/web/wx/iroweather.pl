@@ -64,6 +64,3 @@ print <<xEOFx2;
 </BODY>
 </HTML>
 xEOFx2
-
-# For RCS Only -- Do Not Edit
-# @(#) $RCSfile: iroweather.pl,v $ $Date: 2003/04/15 20:48:47 $ $Revision: 1.1.1.1 $ $Name:  $

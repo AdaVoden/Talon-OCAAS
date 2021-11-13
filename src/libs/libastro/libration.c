@@ -2220,6 +2220,3 @@ double *llonp;
 	*llonp = degrad (lon/3600.0);
 	*llatp = degrad (lat/3600.0);
 }
-
-/* For RCS Only -- Do Not Edit */
-static char *rcsid[2] = {(char *)rcsid, "@(#) $RCSfile: libration.c,v $ $Date: 2003/04/15 20:48:12 $ $Revision: 1.1.1.1 $ $Name:  $"};

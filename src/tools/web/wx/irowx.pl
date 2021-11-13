@@ -20,6 +20,3 @@ system ("cd $wgd; wx.pl") if (! -r $wg || -M $wg > .04);
 $| = 1;
 print ("Content-type: image/gif\n\n");
 system ("cat $wg");
-
-# For RCS Only -- Do Not Edit
-# @(#) $RCSfile: irowx.pl,v $ $Date: 2003/04/15 20:48:47 $ $Revision: 1.1.1.1 $ $Name:  $

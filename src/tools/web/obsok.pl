@@ -15,6 +15,3 @@ $codefn = "/net/gastro3/home1/ccdoper/obs.txt";
 # scan for code
 $obc = @ARGV[0];
 exec "grep \"^$obc *|\" $codefn > /dev/null";
-
-# For RCS Only -- Do Not Edit
-# @(#) $RCSfile: obsok.pl,v $ $Date: 2003/04/15 20:48:47 $ $Revision: 1.1.1.1 $ $Name:  $

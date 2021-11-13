@@ -31,6 +31,3 @@ install: ptmeshadd pterrors
 clobber:
 	touch *.o
 	rm -fr *.o ptmeshadd pterrors
-
-# For RCS Only -- Do Not Edit
-# @(#) $RCSfile: Makefile,v $ $Date: 2003/04/15 20:48:38 $ $Revision: 1.1.1.1 $ $Name:  $

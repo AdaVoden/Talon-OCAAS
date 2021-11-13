@@ -278,6 +278,3 @@ visual_cells (dpy, visual)
   XFree ((char *) vi_out);
   return c;
 }
-
-/* For RCS Only -- Do Not Edit */
-static char *rcsid[2] = {(char *)rcsid, "@(#) $RCSfile: visual.c,v $ $Date: 2003/04/15 20:48:48 $ $Revision: 1.1.1.1 $ $Name:  $"};

@@ -15,6 +15,3 @@ install: xdaliclock
 clobber:
 	touch x.o
 	rm -f *.o xdaliclock
-
-# For RCS Only -- Do Not Edit
-# @(#) $RCSfile: Makefile,v $ $Date: 2003/04/15 20:48:47 $ $Revision: 1.1.1.1 $ $Name:  $

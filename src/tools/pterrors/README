@@ -41,6 +41,3 @@ yield a command value:
 where
     HAcorrection = dHA + (HAtarget - HAwcs)
     DECcorrection = dDEC + (DECtarget - DECwcs)
-
-! For RCS Only -- Do Not Edit
-! @(#) $RCSfile: README,v $ $Date: 2003/04/15 20:48:38 $ $Revision: 1.1.1.1 $ $Name:  $

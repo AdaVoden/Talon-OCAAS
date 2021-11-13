@@ -13,8 +13,8 @@ extern int serv_read (int fd[2], char *buf, int bufl);
 extern int serv_write (int fd[2], int code, char *msg, char *err);
 extern int open_telshm(TelStatShm **tpp);
 
-/* For RCS Only -- Do Not Edit
- * @(#) $RCSfile: cliserv.h,v $ $Date: 2003/04/15 20:48:18 $ $Revision: 1.1.1.1 $ $Name:  $
- */
+
+
+
 
 #endif // CLISERV_H

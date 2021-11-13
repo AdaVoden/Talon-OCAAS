@@ -118,6 +118,3 @@ FS "    gnuplot> plot [30:] 'F' using 1:4\n");
 
 	exit(1);
 }
-
-/* For RCS Only -- Do Not Edit */
-static char *rcsid[2] = {(char *)rcsid, "@(#) $RCSfile: dynamics.c,v $ $Date: 2003/04/15 20:48:33 $ $Revision: 1.1.1.1 $ $Name:  $"};

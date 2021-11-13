@@ -82,6 +82,3 @@ calibrator and the estimaged error in the magnitude. If the values are not
 available for any reason they are printed as 99.99 and 9.99, respectively.
 Stars that were not on at least three images with the calibrator are not
 listed at all.
-
-! For RCS Only -- Do Not Edit
-! @(#) $RCSfile: README,v $ $Date: 2003/04/15 20:48:46 $ $Revision: 1.1.1.1 $ $Name:  $

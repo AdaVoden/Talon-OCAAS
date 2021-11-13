@@ -153,6 +153,3 @@ main (int ac, char *av[])
 	return (0);
 }
 #endif /* TEST_IT */
-
-/* For RCS Only -- Do Not Edit */
-static char *rcsid[2] = {(char *)rcsid, "@(#) $RCSfile: funcmax.c,v $ $Date: 2003/04/15 20:48:18 $ $Revision: 1.1.1.1 $ $Name:  $"};

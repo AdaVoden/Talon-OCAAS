@@ -123,7 +123,3 @@ extern int csi_f2n (int fd);
 #endif /* ! _HC12 */
 
 #endif /* _CSIMC_H */
-
-/* For RCS Only -- Do Not Edit
- * @(#) $RCSfile: csimc.h,v $ $Date: 2003/04/15 20:48:18 $ $Revision: 1.1.1.1 $ $Name:  $
- */

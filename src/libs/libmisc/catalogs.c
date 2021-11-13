@@ -326,6 +326,3 @@ do_sao (FILE *fp, char name[], Obj *op, char m[])
 	sprintf (m, "SAO number %ld not found.", nname);
 	return (-1);
 }
-
-/* For RCS Only -- Do Not Edit */
-static char *rcsid[2] = {(char *)rcsid, "@(#) $RCSfile: catalogs.c,v $ $Date: 2003/04/15 20:48:17 $ $Revision: 1.1.1.1 $ $Name:  $"};

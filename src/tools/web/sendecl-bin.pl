@@ -50,6 +50,3 @@ ATF Homepage</p>
 
 </body></html>
 ENDOFTEXT
-
-# For RCS Only -- Do Not Edit
-# @(#) $RCSfile: sendecl-bin.pl,v $ $Date: 2003/04/15 20:48:47 $ $Revision: 1.1.1.1 $ $Name:  $

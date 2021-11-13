@@ -32,7 +32,3 @@ static char *defaults[] = {
    inherit it unless its class is specified explicitly.  To do otherwise
    would be annoying.
  */
-
-/* For RCS Only -- Do Not Edit
- * @(#) $RCSfile: defaults.h,v $ $Date: 2003/04/15 20:48:47 $ $Revision: 1.1.1.1 $ $Name:  $
- */

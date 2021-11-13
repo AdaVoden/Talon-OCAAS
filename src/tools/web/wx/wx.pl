@@ -157,6 +157,3 @@ close GNUPLOT;
 
 # clean up temp file
 #unlink ("$tmpfn");
-
-# For RCS Only -- Do Not Edit
-# @(#) $RCSfile: wx.pl,v $ $Date: 2003/04/15 20:48:47 $ $Revision: 1.1.1.1 $ $Name:  $

@@ -30,13 +30,3 @@ print "</body></html>\n";
 
 # remove the temp
 system "(sleep 100; rm ../$giffile) &";
-
-
-
-
-
-
-
-
-# For RCS Only -- Do Not Edit
-# @(#) $RCSfile: atfpostage.pl,v $ $Date: 2003/04/15 20:48:46 $ $Revision: 1.1.1.1 $ $Name:  $

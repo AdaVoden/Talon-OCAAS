@@ -302,6 +302,3 @@ main()
 	}
 }
 #endif
-
-/* For RCS Only -- Do Not Edit */
-static char *rcsid[2] = {(char *)rcsid, "@(#) $RCSfile: deltat.c,v $ $Date: 2003/04/15 20:48:11 $ $Revision: 1.1.1.1 $ $Name:  $"};

@@ -65,6 +65,3 @@ where:
     TTrig:	Y if TMag is >= the trigger threshold, else N.
     KDiff:	measured - expected check star magnitude
     KErr:	statistical error in check star, in magnitudes
-
-! For RCS Only -- Do Not Edit
-! @(#) $RCSfile: README,v $ $Date: 2003/04/15 20:48:46 $ $Revision: 1.1.1.1 $ $Name:  $

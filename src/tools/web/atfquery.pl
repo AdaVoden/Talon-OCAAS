@@ -539,6 +539,3 @@ sub imReport
 	print "\">Postage Stamp Collection</a> of all available images.\n";
     }
 }
-
-# For RCS Only -- Do Not Edit
-# @(#) $RCSfile: atfquery.pl,v $ $Date: 2003/04/15 20:48:46 $ $Revision: 1.1.1.1 $ $Name:  $

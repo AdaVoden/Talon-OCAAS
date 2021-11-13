@@ -28,7 +28,3 @@
 #define RHO	(0.15696590235)
 
 #endif /* _CONST_H */
-
-/* For RCS Only -- Do Not Edit
- * @(#) $RCSfile: deepconst.h,v $ $Date: 2003/04/15 20:48:11 $ $Revision: 1.1.1.1 $ $Name:  $
- */

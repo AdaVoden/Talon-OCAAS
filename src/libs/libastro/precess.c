@@ -143,6 +143,3 @@ double *ra, *dec;	/* ra/dec for mjd1 in, for mjd2 out */
 	range (ra, 2.0*PI);
 }
 #endif
-
-/* For RCS Only -- Do Not Edit */
-static char *rcsid[2] = {(char *)rcsid, "@(#) $RCSfile: precess.c,v $ $Date: 2003/04/15 20:48:13 $ $Revision: 1.1.1.1 $ $Name:  $"};

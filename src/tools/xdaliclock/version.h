@@ -36,7 +36,3 @@ Copyright (c) 1991,1992,1993,1994,1995,1996 Jamie Zawinski (jwz@netscape.com)";
     23-Feb-96 (v2.07)	Added WM_COMMAND property for session management.
 			More better VMS support from Martin Zinser.
  */
-
-/* For RCS Only -- Do Not Edit
- * @(#) $RCSfile: version.h,v $ $Date: 2003/04/15 20:48:48 $ $Revision: 1.1.1.1 $ $Name:  $
- */

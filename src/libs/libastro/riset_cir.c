@@ -382,6 +382,3 @@ double *tp, *alp;	/* time of max altitude, and that altitude */
 	*alp = op->s_alt;
 	return (0);
 }
-
-/* For RCS Only -- Do Not Edit */
-static char *rcsid[2] = {(char *)rcsid, "@(#) $RCSfile: riset_cir.c,v $ $Date: 2003/04/15 20:48:13 $ $Revision: 1.1.1.1 $ $Name:  $"};

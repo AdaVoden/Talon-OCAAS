@@ -17,6 +17,3 @@ install: dynamics
 clobber:
 	touch x.o
 	rm -fr *.o dynamics
-
-# For RCS Only -- Do Not Edit
-# @(#) $RCSfile: Makefile,v $ $Date: 2003/04/15 20:48:32 $ $Revision: 1.1.1.1 $ $Nam

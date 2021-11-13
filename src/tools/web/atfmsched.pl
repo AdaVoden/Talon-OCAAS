@@ -186,6 +186,3 @@ sub errmsg {
     close (SCHFN);
     unlink ($schfn);
 }
-
-# For RCS Only -- Do Not Edit
-# @(#) $RCSfile: atfmsched.pl,v $ $Date: 2003/04/15 20:48:46 $ $Revision: 1.1.1.1 $ $Name:  $

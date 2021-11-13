@@ -70,6 +70,3 @@ ror4 (unsigned x)
 	int bits = sizeof(unsigned)*8;
 	return ((x>>4) | ((x&0xf)<<(bits-4)));
 }
-
-/* For RCS Only -- Do Not Edit */
-static char *rcsid[2] = {(char *)rcsid, "@(#) $RCSfile: csi.c,v $ $Date: 2003/04/15 20:48:32 $ $Revision: 1.1.1.1 $ $Name:  $"};

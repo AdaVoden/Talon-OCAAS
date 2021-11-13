@@ -437,6 +437,3 @@ double mjd, *ra, *dec;
 	cartsph(x, y, z, ra, dec, &zold);	/* radius should be 1.0 */
 	if (*ra < 0.) *ra += 2.*PI;		/* make positive for display */
 }
-
-/* For RCS Only -- Do Not Edit */
-static char *rcsid[2] = {(char *)rcsid, "@(#) $RCSfile: nutation.c,v $ $Date: 2003/04/15 20:48:13 $ $Revision: 1.1.1.1 $ $Name:  $"};

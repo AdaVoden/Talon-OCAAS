@@ -17,6 +17,3 @@ install: fio
 clobber:
 	touch x.o
 	rm -fr *.o fio
-
-# For RCS Only -- Do Not Edit
-# @(#) $RCSfile: Makefile,v $ $Date: 2003/04/15 20:48:33 $ $Revision: 1.1.1.1 $ $Name:  $

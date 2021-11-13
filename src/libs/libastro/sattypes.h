@@ -22,7 +22,3 @@ typedef struct _Geoloc {
 } GeoLoc;
 
 #endif /* __SATTYPES_H */
-
-/* For RCS Only -- Do Not Edit
- * @(#) $RCSfile: sattypes.h,v $ $Date: 2003/04/15 20:48:13 $ $Revision: 1.1.1.1 $ $Name:  $
- */
