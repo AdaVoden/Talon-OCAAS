@@ -4,6 +4,8 @@
 #ifndef _CSIMC_H
 #define _CSIMC_H
 
+#include<stddef.h>
+
 /* datalink packet details */
 
 typedef unsigned char Byte;	/* unsigned int 0..255 */

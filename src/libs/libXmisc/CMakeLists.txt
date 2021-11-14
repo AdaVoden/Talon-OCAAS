@@ -7,8 +7,7 @@ set(
   xtools.c
   )
 
-include_directories(../libastro)
-include_directories(../libmisc)
+include_directories(${PROJ_LIBS})
 
 add_library(Xmisc SHARED ${SRC_FILES})
 

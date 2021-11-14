@@ -22,7 +22,7 @@ set(
 	tts.c
   )
 
-include_directories(../libastro)
+include_directories(${PROJ_LIBS})
 
 add_library(misc SHARED ${SRC_FILES})
 install(TARGETS misc DESTINATION lib)
