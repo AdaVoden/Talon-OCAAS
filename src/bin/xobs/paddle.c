@@ -29,7 +29,7 @@
 #include "telstatshm.h"
 #include "cliserv.h"
 
-#include "buildcfg.h"
+/* #include "buildcfg.h" */ /*File does not exist*/
 
 #include "xobs.h"
 

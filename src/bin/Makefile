@@ -57,10 +57,10 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/voden/Projects/Talon-OCAAS
+CMAKE_SOURCE_DIR = /home/voden/Projects/talon-ocaas
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/voden/Projects/Talon-OCAAS
+CMAKE_BINARY_DIR = /home/voden/Projects/talon-ocaas
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -132,14 +132,14 @@ edit_cache/fast: edit_cache
 
 # The main all target
 all: cmake_check_build_system
-	cd /home/voden/Projects/Talon-OCAAS && $(CMAKE_COMMAND) -E cmake_progress_start /home/voden/Projects/Talon-OCAAS/CMakeFiles /home/voden/Projects/Talon-OCAAS/src/bin//CMakeFiles/progress.marks
-	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/bin/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/voden/Projects/Talon-OCAAS/CMakeFiles 0
+	cd /home/voden/Projects/talon-ocaas && $(CMAKE_COMMAND) -E cmake_progress_start /home/voden/Projects/talon-ocaas/CMakeFiles /home/voden/Projects/talon-ocaas/src/bin//CMakeFiles/progress.marks
+	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/bin/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/voden/Projects/talon-ocaas/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
 clean:
-	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/bin/clean
+	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/bin/clean
 .PHONY : clean
 
 # The main clean target
@@ -148,17 +148,17 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/bin/preinstall
+	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/bin/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/bin/preinstall
+	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/bin/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
 depend:
-	cd /home/voden/Projects/Talon-OCAAS && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
+	cd /home/voden/Projects/talon-ocaas && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
 # Help Target
@@ -184,6 +184,6 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
-	cd /home/voden/Projects/Talon-OCAAS && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
+	cd /home/voden/Projects/talon-ocaas && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system
 

@@ -5,6 +5,9 @@ include_directories(${PROJ_LIBS})
 
 set(
   SRC_FILES
+  paddle.c
+  # batch.c # removed from source
+  calaxes.c
   config.c
   control.c
   dome.c
@@ -23,7 +26,7 @@ set(
 
 add_executable(xobs ${SRC_FILES})
 
-target_link_libraries(xobs misc Xmisc astro)
+target_link_libraries(xobs misc Xmisc astro fits wcs fs)
 target_link_libraries(xobs ${MATH_LIBRARY})
 target_link_libraries(xobs ${GUI_LIBS})
 

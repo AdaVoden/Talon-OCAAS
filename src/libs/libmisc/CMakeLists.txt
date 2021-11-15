@@ -4,7 +4,7 @@ project(libmisc VERSION 0.1)
 set(
   SRC_FILES
 	catalogs.c
-	cliserv.c
+  cliserv.c
 	configfile.c
 	crackini.c
 	csimc.c

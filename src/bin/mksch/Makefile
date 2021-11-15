@@ -57,10 +57,10 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/voden/Projects/Talon-OCAAS
+CMAKE_SOURCE_DIR = /home/voden/Projects/talon-ocaas
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/voden/Projects/Talon-OCAAS
+CMAKE_BINARY_DIR = /home/voden/Projects/talon-ocaas
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -132,14 +132,14 @@ edit_cache/fast: edit_cache
 
 # The main all target
 all: cmake_check_build_system
-	cd /home/voden/Projects/Talon-OCAAS && $(CMAKE_COMMAND) -E cmake_progress_start /home/voden/Projects/Talon-OCAAS/CMakeFiles /home/voden/Projects/Talon-OCAAS/src/bin/mksch//CMakeFiles/progress.marks
-	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/bin/mksch/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/voden/Projects/Talon-OCAAS/CMakeFiles 0
+	cd /home/voden/Projects/talon-ocaas && $(CMAKE_COMMAND) -E cmake_progress_start /home/voden/Projects/talon-ocaas/CMakeFiles /home/voden/Projects/talon-ocaas/src/bin/mksch//CMakeFiles/progress.marks
+	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/bin/mksch/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/voden/Projects/talon-ocaas/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
 clean:
-	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/bin/mksch/clean
+	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/bin/mksch/clean
 .PHONY : clean
 
 # The main clean target
@@ -148,22 +148,22 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/bin/mksch/preinstall
+	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/bin/mksch/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/bin/mksch/preinstall
+	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/bin/mksch/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
 depend:
-	cd /home/voden/Projects/Talon-OCAAS && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
+	cd /home/voden/Projects/talon-ocaas && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
 # Convenience name for target.
 src/bin/mksch/CMakeFiles/mksch.dir/rule:
-	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/bin/mksch/CMakeFiles/mksch.dir/rule
+	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/bin/mksch/CMakeFiles/mksch.dir/rule
 .PHONY : src/bin/mksch/CMakeFiles/mksch.dir/rule
 
 # Convenience name for target.
@@ -172,7 +172,7 @@ mksch: src/bin/mksch/CMakeFiles/mksch.dir/rule
 
 # fast build rule for target.
 mksch/fast:
-	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f src/bin/mksch/CMakeFiles/mksch.dir/build.make src/bin/mksch/CMakeFiles/mksch.dir/build
+	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f src/bin/mksch/CMakeFiles/mksch.dir/build.make src/bin/mksch/CMakeFiles/mksch.dir/build
 .PHONY : mksch/fast
 
 gui.o: gui.c.o
@@ -180,7 +180,7 @@ gui.o: gui.c.o
 
 # target to build an object file
 gui.c.o:
-	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f src/bin/mksch/CMakeFiles/mksch.dir/build.make src/bin/mksch/CMakeFiles/mksch.dir/gui.c.o
+	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f src/bin/mksch/CMakeFiles/mksch.dir/build.make src/bin/mksch/CMakeFiles/mksch.dir/gui.c.o
 .PHONY : gui.c.o
 
 gui.i: gui.c.i
@@ -188,7 +188,7 @@ gui.i: gui.c.i
 
 # target to preprocess a source file
 gui.c.i:
-	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f src/bin/mksch/CMakeFiles/mksch.dir/build.make src/bin/mksch/CMakeFiles/mksch.dir/gui.c.i
+	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f src/bin/mksch/CMakeFiles/mksch.dir/build.make src/bin/mksch/CMakeFiles/mksch.dir/gui.c.i
 .PHONY : gui.c.i
 
 gui.s: gui.c.s
@@ -196,7 +196,7 @@ gui.s: gui.c.s
 
 # target to generate assembly for a file
 gui.c.s:
-	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f src/bin/mksch/CMakeFiles/mksch.dir/build.make src/bin/mksch/CMakeFiles/mksch.dir/gui.c.s
+	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f src/bin/mksch/CMakeFiles/mksch.dir/build.make src/bin/mksch/CMakeFiles/mksch.dir/gui.c.s
 .PHONY : gui.c.s
 
 mksch.o: mksch.c.o
@@ -204,7 +204,7 @@ mksch.o: mksch.c.o
 
 # target to build an object file
 mksch.c.o:
-	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f src/bin/mksch/CMakeFiles/mksch.dir/build.make src/bin/mksch/CMakeFiles/mksch.dir/mksch.c.o
+	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f src/bin/mksch/CMakeFiles/mksch.dir/build.make src/bin/mksch/CMakeFiles/mksch.dir/mksch.c.o
 .PHONY : mksch.c.o
 
 mksch.i: mksch.c.i
@@ -212,7 +212,7 @@ mksch.i: mksch.c.i
 
 # target to preprocess a source file
 mksch.c.i:
-	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f src/bin/mksch/CMakeFiles/mksch.dir/build.make src/bin/mksch/CMakeFiles/mksch.dir/mksch.c.i
+	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f src/bin/mksch/CMakeFiles/mksch.dir/build.make src/bin/mksch/CMakeFiles/mksch.dir/mksch.c.i
 .PHONY : mksch.c.i
 
 mksch.s: mksch.c.s
@@ -220,7 +220,7 @@ mksch.s: mksch.c.s
 
 # target to generate assembly for a file
 mksch.c.s:
-	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f src/bin/mksch/CMakeFiles/mksch.dir/build.make src/bin/mksch/CMakeFiles/mksch.dir/mksch.c.s
+	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f src/bin/mksch/CMakeFiles/mksch.dir/build.make src/bin/mksch/CMakeFiles/mksch.dir/mksch.c.s
 .PHONY : mksch.c.s
 
 msg.o: msg.c.o
@@ -228,7 +228,7 @@ msg.o: msg.c.o
 
 # target to build an object file
 msg.c.o:
-	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f src/bin/mksch/CMakeFiles/mksch.dir/build.make src/bin/mksch/CMakeFiles/mksch.dir/msg.c.o
+	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f src/bin/mksch/CMakeFiles/mksch.dir/build.make src/bin/mksch/CMakeFiles/mksch.dir/msg.c.o
 .PHONY : msg.c.o
 
 msg.i: msg.c.i
@@ -236,7 +236,7 @@ msg.i: msg.c.i
 
 # target to preprocess a source file
 msg.c.i:
-	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f src/bin/mksch/CMakeFiles/mksch.dir/build.make src/bin/mksch/CMakeFiles/mksch.dir/msg.c.i
+	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f src/bin/mksch/CMakeFiles/mksch.dir/build.make src/bin/mksch/CMakeFiles/mksch.dir/msg.c.i
 .PHONY : msg.c.i
 
 msg.s: msg.c.s
@@ -244,7 +244,7 @@ msg.s: msg.c.s
 
 # target to generate assembly for a file
 msg.c.s:
-	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f src/bin/mksch/CMakeFiles/mksch.dir/build.make src/bin/mksch/CMakeFiles/mksch.dir/msg.c.s
+	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f src/bin/mksch/CMakeFiles/mksch.dir/build.make src/bin/mksch/CMakeFiles/mksch.dir/msg.c.s
 .PHONY : msg.c.s
 
 sched.o: sched.c.o
@@ -252,7 +252,7 @@ sched.o: sched.c.o
 
 # target to build an object file
 sched.c.o:
-	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f src/bin/mksch/CMakeFiles/mksch.dir/build.make src/bin/mksch/CMakeFiles/mksch.dir/sched.c.o
+	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f src/bin/mksch/CMakeFiles/mksch.dir/build.make src/bin/mksch/CMakeFiles/mksch.dir/sched.c.o
 .PHONY : sched.c.o
 
 sched.i: sched.c.i
@@ -260,7 +260,7 @@ sched.i: sched.c.i
 
 # target to preprocess a source file
 sched.c.i:
-	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f src/bin/mksch/CMakeFiles/mksch.dir/build.make src/bin/mksch/CMakeFiles/mksch.dir/sched.c.i
+	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f src/bin/mksch/CMakeFiles/mksch.dir/build.make src/bin/mksch/CMakeFiles/mksch.dir/sched.c.i
 .PHONY : sched.c.i
 
 sched.s: sched.c.s
@@ -268,7 +268,7 @@ sched.s: sched.c.s
 
 # target to generate assembly for a file
 sched.c.s:
-	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f src/bin/mksch/CMakeFiles/mksch.dir/build.make src/bin/mksch/CMakeFiles/mksch.dir/sched.c.s
+	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f src/bin/mksch/CMakeFiles/mksch.dir/build.make src/bin/mksch/CMakeFiles/mksch.dir/sched.c.s
 .PHONY : sched.c.s
 
 tips.o: tips.c.o
@@ -276,7 +276,7 @@ tips.o: tips.c.o
 
 # target to build an object file
 tips.c.o:
-	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f src/bin/mksch/CMakeFiles/mksch.dir/build.make src/bin/mksch/CMakeFiles/mksch.dir/tips.c.o
+	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f src/bin/mksch/CMakeFiles/mksch.dir/build.make src/bin/mksch/CMakeFiles/mksch.dir/tips.c.o
 .PHONY : tips.c.o
 
 tips.i: tips.c.i
@@ -284,7 +284,7 @@ tips.i: tips.c.i
 
 # target to preprocess a source file
 tips.c.i:
-	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f src/bin/mksch/CMakeFiles/mksch.dir/build.make src/bin/mksch/CMakeFiles/mksch.dir/tips.c.i
+	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f src/bin/mksch/CMakeFiles/mksch.dir/build.make src/bin/mksch/CMakeFiles/mksch.dir/tips.c.i
 .PHONY : tips.c.i
 
 tips.s: tips.c.s
@@ -292,7 +292,7 @@ tips.s: tips.c.s
 
 # target to generate assembly for a file
 tips.c.s:
-	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f src/bin/mksch/CMakeFiles/mksch.dir/build.make src/bin/mksch/CMakeFiles/mksch.dir/tips.c.s
+	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f src/bin/mksch/CMakeFiles/mksch.dir/build.make src/bin/mksch/CMakeFiles/mksch.dir/tips.c.s
 .PHONY : tips.c.s
 
 # Help Target
@@ -334,6 +334,6 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
-	cd /home/voden/Projects/Talon-OCAAS && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
+	cd /home/voden/Projects/talon-ocaas && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system
 

@@ -57,10 +57,10 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/voden/Projects/Talon-OCAAS
+CMAKE_SOURCE_DIR = /home/voden/Projects/talon-ocaas
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/voden/Projects/Talon-OCAAS
+CMAKE_BINARY_DIR = /home/voden/Projects/talon-ocaas
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -132,14 +132,14 @@ edit_cache/fast: edit_cache
 
 # The main all target
 all: cmake_check_build_system
-	cd /home/voden/Projects/Talon-OCAAS && $(CMAKE_COMMAND) -E cmake_progress_start /home/voden/Projects/Talon-OCAAS/CMakeFiles /home/voden/Projects/Talon-OCAAS/src/tools/xdaliclock//CMakeFiles/progress.marks
-	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/tools/xdaliclock/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/voden/Projects/Talon-OCAAS/CMakeFiles 0
+	cd /home/voden/Projects/talon-ocaas && $(CMAKE_COMMAND) -E cmake_progress_start /home/voden/Projects/talon-ocaas/CMakeFiles /home/voden/Projects/talon-ocaas/src/tools/xdaliclock//CMakeFiles/progress.marks
+	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/tools/xdaliclock/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/voden/Projects/talon-ocaas/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
 clean:
-	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/tools/xdaliclock/clean
+	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/tools/xdaliclock/clean
 .PHONY : clean
 
 # The main clean target
@@ -148,22 +148,22 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/tools/xdaliclock/preinstall
+	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/tools/xdaliclock/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/tools/xdaliclock/preinstall
+	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/tools/xdaliclock/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
 depend:
-	cd /home/voden/Projects/Talon-OCAAS && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
+	cd /home/voden/Projects/talon-ocaas && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
 # Convenience name for target.
 src/tools/xdaliclock/CMakeFiles/xdaliclock.dir/rule:
-	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/tools/xdaliclock/CMakeFiles/xdaliclock.dir/rule
+	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/tools/xdaliclock/CMakeFiles/xdaliclock.dir/rule
 .PHONY : src/tools/xdaliclock/CMakeFiles/xdaliclock.dir/rule
 
 # Convenience name for target.
@@ -172,7 +172,7 @@ xdaliclock: src/tools/xdaliclock/CMakeFiles/xdaliclock.dir/rule
 
 # fast build rule for target.
 xdaliclock/fast:
-	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f src/tools/xdaliclock/CMakeFiles/xdaliclock.dir/build.make src/tools/xdaliclock/CMakeFiles/xdaliclock.dir/build
+	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f src/tools/xdaliclock/CMakeFiles/xdaliclock.dir/build.make src/tools/xdaliclock/CMakeFiles/xdaliclock.dir/build
 .PHONY : xdaliclock/fast
 
 colors.o: colors.c.o
@@ -180,7 +180,7 @@ colors.o: colors.c.o
 
 # target to build an object file
 colors.c.o:
-	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f src/tools/xdaliclock/CMakeFiles/xdaliclock.dir/build.make src/tools/xdaliclock/CMakeFiles/xdaliclock.dir/colors.c.o
+	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f src/tools/xdaliclock/CMakeFiles/xdaliclock.dir/build.make src/tools/xdaliclock/CMakeFiles/xdaliclock.dir/colors.c.o
 .PHONY : colors.c.o
 
 colors.i: colors.c.i
@@ -188,7 +188,7 @@ colors.i: colors.c.i
 
 # target to preprocess a source file
 colors.c.i:
-	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f src/tools/xdaliclock/CMakeFiles/xdaliclock.dir/build.make src/tools/xdaliclock/CMakeFiles/xdaliclock.dir/colors.c.i
+	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f src/tools/xdaliclock/CMakeFiles/xdaliclock.dir/build.make src/tools/xdaliclock/CMakeFiles/xdaliclock.dir/colors.c.i
 .PHONY : colors.c.i
 
 colors.s: colors.c.s
@@ -196,7 +196,7 @@ colors.s: colors.c.s
 
 # target to generate assembly for a file
 colors.c.s:
-	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f src/tools/xdaliclock/CMakeFiles/xdaliclock.dir/build.make src/tools/xdaliclock/CMakeFiles/xdaliclock.dir/colors.c.s
+	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f src/tools/xdaliclock/CMakeFiles/xdaliclock.dir/build.make src/tools/xdaliclock/CMakeFiles/xdaliclock.dir/colors.c.s
 .PHONY : colors.c.s
 
 digital.o: digital.c.o
@@ -204,7 +204,7 @@ digital.o: digital.c.o
 
 # target to build an object file
 digital.c.o:
-	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f src/tools/xdaliclock/CMakeFiles/xdaliclock.dir/build.make src/tools/xdaliclock/CMakeFiles/xdaliclock.dir/digital.c.o
+	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f src/tools/xdaliclock/CMakeFiles/xdaliclock.dir/build.make src/tools/xdaliclock/CMakeFiles/xdaliclock.dir/digital.c.o
 .PHONY : digital.c.o
 
 digital.i: digital.c.i
@@ -212,7 +212,7 @@ digital.i: digital.c.i
 
 # target to preprocess a source file
 digital.c.i:
-	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f src/tools/xdaliclock/CMakeFiles/xdaliclock.dir/build.make src/tools/xdaliclock/CMakeFiles/xdaliclock.dir/digital.c.i
+	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f src/tools/xdaliclock/CMakeFiles/xdaliclock.dir/build.make src/tools/xdaliclock/CMakeFiles/xdaliclock.dir/digital.c.i
 .PHONY : digital.c.i
 
 digital.s: digital.c.s
@@ -220,7 +220,7 @@ digital.s: digital.c.s
 
 # target to generate assembly for a file
 digital.c.s:
-	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f src/tools/xdaliclock/CMakeFiles/xdaliclock.dir/build.make src/tools/xdaliclock/CMakeFiles/xdaliclock.dir/digital.c.s
+	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f src/tools/xdaliclock/CMakeFiles/xdaliclock.dir/build.make src/tools/xdaliclock/CMakeFiles/xdaliclock.dir/digital.c.s
 .PHONY : digital.c.s
 
 hsv.o: hsv.c.o
@@ -228,7 +228,7 @@ hsv.o: hsv.c.o
 
 # target to build an object file
 hsv.c.o:
-	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f src/tools/xdaliclock/CMakeFiles/xdaliclock.dir/build.make src/tools/xdaliclock/CMakeFiles/xdaliclock.dir/hsv.c.o
+	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f src/tools/xdaliclock/CMakeFiles/xdaliclock.dir/build.make src/tools/xdaliclock/CMakeFiles/xdaliclock.dir/hsv.c.o
 .PHONY : hsv.c.o
 
 hsv.i: hsv.c.i
@@ -236,7 +236,7 @@ hsv.i: hsv.c.i
 
 # target to preprocess a source file
 hsv.c.i:
-	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f src/tools/xdaliclock/CMakeFiles/xdaliclock.dir/build.make src/tools/xdaliclock/CMakeFiles/xdaliclock.dir/hsv.c.i
+	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f src/tools/xdaliclock/CMakeFiles/xdaliclock.dir/build.make src/tools/xdaliclock/CMakeFiles/xdaliclock.dir/hsv.c.i
 .PHONY : hsv.c.i
 
 hsv.s: hsv.c.s
@@ -244,7 +244,7 @@ hsv.s: hsv.c.s
 
 # target to generate assembly for a file
 hsv.c.s:
-	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f src/tools/xdaliclock/CMakeFiles/xdaliclock.dir/build.make src/tools/xdaliclock/CMakeFiles/xdaliclock.dir/hsv.c.s
+	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f src/tools/xdaliclock/CMakeFiles/xdaliclock.dir/build.make src/tools/xdaliclock/CMakeFiles/xdaliclock.dir/hsv.c.s
 .PHONY : hsv.c.s
 
 resources.o: resources.c.o
@@ -252,7 +252,7 @@ resources.o: resources.c.o
 
 # target to build an object file
 resources.c.o:
-	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f src/tools/xdaliclock/CMakeFiles/xdaliclock.dir/build.make src/tools/xdaliclock/CMakeFiles/xdaliclock.dir/resources.c.o
+	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f src/tools/xdaliclock/CMakeFiles/xdaliclock.dir/build.make src/tools/xdaliclock/CMakeFiles/xdaliclock.dir/resources.c.o
 .PHONY : resources.c.o
 
 resources.i: resources.c.i
@@ -260,7 +260,7 @@ resources.i: resources.c.i
 
 # target to preprocess a source file
 resources.c.i:
-	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f src/tools/xdaliclock/CMakeFiles/xdaliclock.dir/build.make src/tools/xdaliclock/CMakeFiles/xdaliclock.dir/resources.c.i
+	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f src/tools/xdaliclock/CMakeFiles/xdaliclock.dir/build.make src/tools/xdaliclock/CMakeFiles/xdaliclock.dir/resources.c.i
 .PHONY : resources.c.i
 
 resources.s: resources.c.s
@@ -268,7 +268,7 @@ resources.s: resources.c.s
 
 # target to generate assembly for a file
 resources.c.s:
-	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f src/tools/xdaliclock/CMakeFiles/xdaliclock.dir/build.make src/tools/xdaliclock/CMakeFiles/xdaliclock.dir/resources.c.s
+	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f src/tools/xdaliclock/CMakeFiles/xdaliclock.dir/build.make src/tools/xdaliclock/CMakeFiles/xdaliclock.dir/resources.c.s
 .PHONY : resources.c.s
 
 usleep.o: usleep.c.o
@@ -276,7 +276,7 @@ usleep.o: usleep.c.o
 
 # target to build an object file
 usleep.c.o:
-	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f src/tools/xdaliclock/CMakeFiles/xdaliclock.dir/build.make src/tools/xdaliclock/CMakeFiles/xdaliclock.dir/usleep.c.o
+	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f src/tools/xdaliclock/CMakeFiles/xdaliclock.dir/build.make src/tools/xdaliclock/CMakeFiles/xdaliclock.dir/usleep.c.o
 .PHONY : usleep.c.o
 
 usleep.i: usleep.c.i
@@ -284,7 +284,7 @@ usleep.i: usleep.c.i
 
 # target to preprocess a source file
 usleep.c.i:
-	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f src/tools/xdaliclock/CMakeFiles/xdaliclock.dir/build.make src/tools/xdaliclock/CMakeFiles/xdaliclock.dir/usleep.c.i
+	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f src/tools/xdaliclock/CMakeFiles/xdaliclock.dir/build.make src/tools/xdaliclock/CMakeFiles/xdaliclock.dir/usleep.c.i
 .PHONY : usleep.c.i
 
 usleep.s: usleep.c.s
@@ -292,7 +292,7 @@ usleep.s: usleep.c.s
 
 # target to generate assembly for a file
 usleep.c.s:
-	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f src/tools/xdaliclock/CMakeFiles/xdaliclock.dir/build.make src/tools/xdaliclock/CMakeFiles/xdaliclock.dir/usleep.c.s
+	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f src/tools/xdaliclock/CMakeFiles/xdaliclock.dir/build.make src/tools/xdaliclock/CMakeFiles/xdaliclock.dir/usleep.c.s
 .PHONY : usleep.c.s
 
 visual.o: visual.c.o
@@ -300,7 +300,7 @@ visual.o: visual.c.o
 
 # target to build an object file
 visual.c.o:
-	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f src/tools/xdaliclock/CMakeFiles/xdaliclock.dir/build.make src/tools/xdaliclock/CMakeFiles/xdaliclock.dir/visual.c.o
+	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f src/tools/xdaliclock/CMakeFiles/xdaliclock.dir/build.make src/tools/xdaliclock/CMakeFiles/xdaliclock.dir/visual.c.o
 .PHONY : visual.c.o
 
 visual.i: visual.c.i
@@ -308,7 +308,7 @@ visual.i: visual.c.i
 
 # target to preprocess a source file
 visual.c.i:
-	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f src/tools/xdaliclock/CMakeFiles/xdaliclock.dir/build.make src/tools/xdaliclock/CMakeFiles/xdaliclock.dir/visual.c.i
+	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f src/tools/xdaliclock/CMakeFiles/xdaliclock.dir/build.make src/tools/xdaliclock/CMakeFiles/xdaliclock.dir/visual.c.i
 .PHONY : visual.c.i
 
 visual.s: visual.c.s
@@ -316,7 +316,7 @@ visual.s: visual.c.s
 
 # target to generate assembly for a file
 visual.c.s:
-	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f src/tools/xdaliclock/CMakeFiles/xdaliclock.dir/build.make src/tools/xdaliclock/CMakeFiles/xdaliclock.dir/visual.c.s
+	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f src/tools/xdaliclock/CMakeFiles/xdaliclock.dir/build.make src/tools/xdaliclock/CMakeFiles/xdaliclock.dir/visual.c.s
 .PHONY : visual.c.s
 
 xdaliclock.o: xdaliclock.c.o
@@ -324,7 +324,7 @@ xdaliclock.o: xdaliclock.c.o
 
 # target to build an object file
 xdaliclock.c.o:
-	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f src/tools/xdaliclock/CMakeFiles/xdaliclock.dir/build.make src/tools/xdaliclock/CMakeFiles/xdaliclock.dir/xdaliclock.c.o
+	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f src/tools/xdaliclock/CMakeFiles/xdaliclock.dir/build.make src/tools/xdaliclock/CMakeFiles/xdaliclock.dir/xdaliclock.c.o
 .PHONY : xdaliclock.c.o
 
 xdaliclock.i: xdaliclock.c.i
@@ -332,7 +332,7 @@ xdaliclock.i: xdaliclock.c.i
 
 # target to preprocess a source file
 xdaliclock.c.i:
-	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f src/tools/xdaliclock/CMakeFiles/xdaliclock.dir/build.make src/tools/xdaliclock/CMakeFiles/xdaliclock.dir/xdaliclock.c.i
+	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f src/tools/xdaliclock/CMakeFiles/xdaliclock.dir/build.make src/tools/xdaliclock/CMakeFiles/xdaliclock.dir/xdaliclock.c.i
 .PHONY : xdaliclock.c.i
 
 xdaliclock.s: xdaliclock.c.s
@@ -340,7 +340,7 @@ xdaliclock.s: xdaliclock.c.s
 
 # target to generate assembly for a file
 xdaliclock.c.s:
-	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f src/tools/xdaliclock/CMakeFiles/xdaliclock.dir/build.make src/tools/xdaliclock/CMakeFiles/xdaliclock.dir/xdaliclock.c.s
+	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f src/tools/xdaliclock/CMakeFiles/xdaliclock.dir/build.make src/tools/xdaliclock/CMakeFiles/xdaliclock.dir/xdaliclock.c.s
 .PHONY : xdaliclock.c.s
 
 # Help Target
@@ -388,6 +388,6 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
-	cd /home/voden/Projects/Talon-OCAAS && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
+	cd /home/voden/Projects/talon-ocaas && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system
 

@@ -29,7 +29,7 @@
 #include "astro.h"
 #include "circum.h"
 #include "telstatshm.h"
-#include "ccdcamera.h"
+/* #include "ccdcamera.h" */
 #include "xtools.h"
 #include "configfile.h"
 #include "cliserv.h"
@@ -91,8 +91,8 @@ static void camCB (void);
 static int pos_qf (const void *p1, const void *p2);
 static int nextMove (FImage *fip, double *movep);
 static double findNew(void);
-static int getExpTime(CCDExpoParams *cp);
-static int getBinning (CCDExpoParams *cp);
+/* static int getExpTime(CCDExpoParams *cp); */
+/* static int getBinning (CCDExpoParams *cp); */
 static void nextName (char *fn);
 static double focusTemp(void);
 static void finishFITS (char fn[], int fd, FImage *fip);
@@ -881,7 +881,7 @@ static int
 startExpose ()
 {
 	MotorInfo *mip = OMOT;
-	CCDExpoParams cep;
+	/* CCDExpoParams cep; */
 	char buf[1024];
 	char fn[128];
 	char obj[64];

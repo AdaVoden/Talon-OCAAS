@@ -57,10 +57,10 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/voden/Projects/Talon-OCAAS
+CMAKE_SOURCE_DIR = /home/voden/Projects/talon-ocaas
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/voden/Projects/Talon-OCAAS
+CMAKE_BINARY_DIR = /home/voden/Projects/talon-ocaas
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -132,14 +132,14 @@ edit_cache/fast: edit_cache
 
 # The main all target
 all: cmake_check_build_system
-	cd /home/voden/Projects/Talon-OCAAS && $(CMAKE_COMMAND) -E cmake_progress_start /home/voden/Projects/Talon-OCAAS/CMakeFiles /home/voden/Projects/Talon-OCAAS/src/libs/libastro//CMakeFiles/progress.marks
-	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/libs/libastro/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/voden/Projects/Talon-OCAAS/CMakeFiles 0
+	cd /home/voden/Projects/talon-ocaas && $(CMAKE_COMMAND) -E cmake_progress_start /home/voden/Projects/talon-ocaas/CMakeFiles /home/voden/Projects/talon-ocaas/src/libs/libastro//CMakeFiles/progress.marks
+	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/libs/libastro/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/voden/Projects/talon-ocaas/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
 clean:
-	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/libs/libastro/clean
+	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/libs/libastro/clean
 .PHONY : clean
 
 # The main clean target
@@ -148,22 +148,22 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/libs/libastro/preinstall
+	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/libs/libastro/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/libs/libastro/preinstall
+	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/libs/libastro/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
 depend:
-	cd /home/voden/Projects/Talon-OCAAS && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
+	cd /home/voden/Projects/talon-ocaas && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
 # Convenience name for target.
 src/libs/libastro/CMakeFiles/astro.dir/rule:
-	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/libs/libastro/CMakeFiles/astro.dir/rule
+	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/libs/libastro/CMakeFiles/astro.dir/rule
 .PHONY : src/libs/libastro/CMakeFiles/astro.dir/rule
 
 # Convenience name for target.
@@ -172,7 +172,7 @@ astro: src/libs/libastro/CMakeFiles/astro.dir/rule
 
 # fast build rule for target.
 astro/fast:
-	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f src/libs/libastro/CMakeFiles/astro.dir/build.make src/libs/libastro/CMakeFiles/astro.dir/build
+	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f src/libs/libastro/CMakeFiles/astro.dir/build.make src/libs/libastro/CMakeFiles/astro.dir/build
 .PHONY : astro/fast
 
 aa_hadec.o: aa_hadec.c.o
@@ -180,7 +180,7 @@ aa_hadec.o: aa_hadec.c.o
 
 # target to build an object file
 aa_hadec.c.o:
-	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f src/libs/libastro/CMakeFiles/astro.dir/build.make src/libs/libastro/CMakeFiles/astro.dir/aa_hadec.c.o
+	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f src/libs/libastro/CMakeFiles/astro.dir/build.make src/libs/libastro/CMakeFiles/astro.dir/aa_hadec.c.o
 .PHONY : aa_hadec.c.o
 
 aa_hadec.i: aa_hadec.c.i
@@ -188,7 +188,7 @@ aa_hadec.i: aa_hadec.c.i
 
 # target to preprocess a source file
 aa_hadec.c.i:
-	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f src/libs/libastro/CMakeFiles/astro.dir/build.make src/libs/libastro/CMakeFiles/astro.dir/aa_hadec.c.i
+	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f src/libs/libastro/CMakeFiles/astro.dir/build.make src/libs/libastro/CMakeFiles/astro.dir/aa_hadec.c.i
 .PHONY : aa_hadec.c.i
 
 aa_hadec.s: aa_hadec.c.s
@@ -196,7 +196,7 @@ aa_hadec.s: aa_hadec.c.s
 
 # target to generate assembly for a file
 aa_hadec.c.s:
-	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f src/libs/libastro/CMakeFiles/astro.dir/build.make src/libs/libastro/CMakeFiles/astro.dir/aa_hadec.c.s
+	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f src/libs/libastro/CMakeFiles/astro.dir/build.make src/libs/libastro/CMakeFiles/astro.dir/aa_hadec.c.s
 .PHONY : aa_hadec.c.s
 
 aberration.o: aberration.c.o
@@ -204,7 +204,7 @@ aberration.o: aberration.c.o
 
 # target to build an object file
 aberration.c.o:
-	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f src/libs/libastro/CMakeFiles/astro.dir/build.make src/libs/libastro/CMakeFiles/astro.dir/aberration.c.o
+	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f src/libs/libastro/CMakeFiles/astro.dir/build.make src/libs/libastro/CMakeFiles/astro.dir/aberration.c.o
 .PHONY : aberration.c.o
 
 aberration.i: aberration.c.i
@@ -212,7 +212,7 @@ aberration.i: aberration.c.i
 
 # target to preprocess a source file
 aberration.c.i:
-	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f src/libs/libastro/CMakeFiles/astro.dir/build.make src/libs/libastro/CMakeFiles/astro.dir/aberration.c.i
+	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f src/libs/libastro/CMakeFiles/astro.dir/build.make src/libs/libastro/CMakeFiles/astro.dir/aberration.c.i
 .PHONY : aberration.c.i
 
 aberration.s: aberration.c.s
@@ -220,7 +220,7 @@ aberration.s: aberration.c.s
 
 # target to generate assembly for a file
 aberration.c.s:
-	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f src/libs/libastro/CMakeFiles/astro.dir/build.make src/libs/libastro/CMakeFiles/astro.dir/aberration.c.s
+	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f src/libs/libastro/CMakeFiles/astro.dir/build.make src/libs/libastro/CMakeFiles/astro.dir/aberration.c.s
 .PHONY : aberration.c.s
 
 actan.o: actan.c.o
@@ -228,7 +228,7 @@ actan.o: actan.c.o
 
 # target to build an object file
 actan.c.o:
-	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f src/libs/libastro/CMakeFiles/astro.dir/build.make src/libs/libastro/CMakeFiles/astro.dir/actan.c.o
+	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f src/libs/libastro/CMakeFiles/astro.dir/build.make src/libs/libastro/CMakeFiles/astro.dir/actan.c.o
 .PHONY : actan.c.o
 
 actan.i: actan.c.i
@@ -236,7 +236,7 @@ actan.i: actan.c.i
 
 # target to preprocess a source file
 actan.c.i:
-	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f src/libs/libastro/CMakeFiles/astro.dir/build.make src/libs/libastro/CMakeFiles/astro.dir/actan.c.i
+	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f src/libs/libastro/CMakeFiles/astro.dir/build.make src/libs/libastro/CMakeFiles/astro.dir/actan.c.i
 .PHONY : actan.c.i
 
 actan.s: actan.c.s
@@ -244,7 +244,7 @@ actan.s: actan.c.s
 
 # target to generate assembly for a file
 actan.c.s:
-	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f src/libs/libastro/CMakeFiles/astro.dir/build.make src/libs/libastro/CMakeFiles/astro.dir/actan.c.s
+	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f src/libs/libastro/CMakeFiles/astro.dir/build.make src/libs/libastro/CMakeFiles/astro.dir/actan.c.s
 .PHONY : actan.c.s
 
 airmass.o: airmass.c.o
@@ -252,7 +252,7 @@ airmass.o: airmass.c.o
 
 # target to build an object file
 airmass.c.o:
-	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f src/libs/libastro/CMakeFiles/astro.dir/build.make src/libs/libastro/CMakeFiles/astro.dir/airmass.c.o
+	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f src/libs/libastro/CMakeFiles/astro.dir/build.make src/libs/libastro/CMakeFiles/astro.dir/airmass.c.o
 .PHONY : airmass.c.o
 
 airmass.i: airmass.c.i
@@ -260,7 +260,7 @@ airmass.i: airmass.c.i
 
 # target to preprocess a source file
 airmass.c.i:
-	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f src/libs/libastro/CMakeFiles/astro.dir/build.make src/libs/libastro/CMakeFiles/astro.dir/airmass.c.i
+	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f src/libs/libastro/CMakeFiles/astro.dir/build.make src/libs/libastro/CMakeFiles/astro.dir/airmass.c.i
 .PHONY : airmass.c.i
 
 airmass.s: airmass.c.s
@@ -268,7 +268,7 @@ airmass.s: airmass.c.s
 
 # target to generate assembly for a file
 airmass.c.s:
-	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f src/libs/libastro/CMakeFiles/astro.dir/build.make src/libs/libastro/CMakeFiles/astro.dir/airmass.c.s
+	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f src/libs/libastro/CMakeFiles/astro.dir/build.make src/libs/libastro/CMakeFiles/astro.dir/airmass.c.s
 .PHONY : airmass.c.s
 
 anomaly.o: anomaly.c.o
@@ -276,7 +276,7 @@ anomaly.o: anomaly.c.o
 
 # target to build an object file
 anomaly.c.o:
-	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f src/libs/libastro/CMakeFiles/astro.dir/build.make src/libs/libastro/CMakeFiles/astro.dir/anomaly.c.o
+	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f src/libs/libastro/CMakeFiles/astro.dir/build.make src/libs/libastro/CMakeFiles/astro.dir/anomaly.c.o
 .PHONY : anomaly.c.o
 
 anomaly.i: anomaly.c.i
@@ -284,7 +284,7 @@ anomaly.i: anomaly.c.i
 
 # target to preprocess a source file
 anomaly.c.i:
-	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f src/libs/libastro/CMakeFiles/astro.dir/build.make src/libs/libastro/CMakeFiles/astro.dir/anomaly.c.i
+	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f src/libs/libastro/CMakeFiles/astro.dir/build.make src/libs/libastro/CMakeFiles/astro.dir/anomaly.c.i
 .PHONY : anomaly.c.i
 
 anomaly.s: anomaly.c.s
@@ -292,7 +292,7 @@ anomaly.s: anomaly.c.s
 
 # target to generate assembly for a file
 anomaly.c.s:
-	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f src/libs/libastro/CMakeFiles/astro.dir/build.make src/libs/libastro/CMakeFiles/astro.dir/anomaly.c.s
+	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f src/libs/libastro/CMakeFiles/astro.dir/build.make src/libs/libastro/CMakeFiles/astro.dir/anomaly.c.s
 .PHONY : anomaly.c.s
 
 ap_as.o: ap_as.c.o
@@ -300,7 +300,7 @@ ap_as.o: ap_as.c.o
 
 # target to build an object file
 ap_as.c.o:
-	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f src/libs/libastro/CMakeFiles/astro.dir/build.make src/libs/libastro/CMakeFiles/astro.dir/ap_as.c.o
+	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f src/libs/libastro/CMakeFiles/astro.dir/build.make src/libs/libastro/CMakeFiles/astro.dir/ap_as.c.o
 .PHONY : ap_as.c.o
 
 ap_as.i: ap_as.c.i
@@ -308,7 +308,7 @@ ap_as.i: ap_as.c.i
 
 # target to preprocess a source file
 ap_as.c.i:
-	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f src/libs/libastro/CMakeFiles/astro.dir/build.make src/libs/libastro/CMakeFiles/astro.dir/ap_as.c.i
+	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f src/libs/libastro/CMakeFiles/astro.dir/build.make src/libs/libastro/CMakeFiles/astro.dir/ap_as.c.i
 .PHONY : ap_as.c.i
 
 ap_as.s: ap_as.c.s
@@ -316,7 +316,7 @@ ap_as.s: ap_as.c.s
 
 # target to generate assembly for a file
 ap_as.c.s:
-	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f src/libs/libastro/CMakeFiles/astro.dir/build.make src/libs/libastro/CMakeFiles/astro.dir/ap_as.c.s
+	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f src/libs/libastro/CMakeFiles/astro.dir/build.make src/libs/libastro/CMakeFiles/astro.dir/ap_as.c.s
 .PHONY : ap_as.c.s
 
 auxil.o: auxil.c.o
@@ -324,7 +324,7 @@ auxil.o: auxil.c.o
 
 # target to build an object file
 auxil.c.o:
-	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f src/libs/libastro/CMakeFiles/astro.dir/build.make src/libs/libastro/CMakeFiles/astro.dir/auxil.c.o
+	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f src/libs/libastro/CMakeFiles/astro.dir/build.make src/libs/libastro/CMakeFiles/astro.dir/auxil.c.o
 .PHONY : auxil.c.o
 
 auxil.i: auxil.c.i
@@ -332,7 +332,7 @@ auxil.i: auxil.c.i
 
 # target to preprocess a source file
 auxil.c.i:
-	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f src/libs/libastro/CMakeFiles/astro.dir/build.make src/libs/libastro/CMakeFiles/astro.dir/auxil.c.i
+	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f src/libs/libastro/CMakeFiles/astro.dir/build.make src/libs/libastro/CMakeFiles/astro.dir/auxil.c.i
 .PHONY : auxil.c.i
 
 auxil.s: auxil.c.s
@@ -340,7 +340,7 @@ auxil.s: auxil.c.s
 
 # target to generate assembly for a file
 auxil.c.s:
-	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f src/libs/libastro/CMakeFiles/astro.dir/build.make src/libs/libastro/CMakeFiles/astro.dir/auxil.c.s
+	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f src/libs/libastro/CMakeFiles/astro.dir/build.make src/libs/libastro/CMakeFiles/astro.dir/auxil.c.s
 .PHONY : auxil.c.s
 
 chap95.o: chap95.c.o
@@ -348,7 +348,7 @@ chap95.o: chap95.c.o
 
 # target to build an object file
 chap95.c.o:
-	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f src/libs/libastro/CMakeFiles/astro.dir/build.make src/libs/libastro/CMakeFiles/astro.dir/chap95.c.o
+	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f src/libs/libastro/CMakeFiles/astro.dir/build.make src/libs/libastro/CMakeFiles/astro.dir/chap95.c.o
 .PHONY : chap95.c.o
 
 chap95.i: chap95.c.i
@@ -356,7 +356,7 @@ chap95.i: chap95.c.i
 
 # target to preprocess a source file
 chap95.c.i:
-	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f src/libs/libastro/CMakeFiles/astro.dir/build.make src/libs/libastro/CMakeFiles/astro.dir/chap95.c.i
+	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f src/libs/libastro/CMakeFiles/astro.dir/build.make src/libs/libastro/CMakeFiles/astro.dir/chap95.c.i
 .PHONY : chap95.c.i
 
 chap95.s: chap95.c.s
@@ -364,7 +364,7 @@ chap95.s: chap95.c.s
 
 # target to generate assembly for a file
 chap95.c.s:
-	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f src/libs/libastro/CMakeFiles/astro.dir/build.make src/libs/libastro/CMakeFiles/astro.dir/chap95.c.s
+	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f src/libs/libastro/CMakeFiles/astro.dir/build.make src/libs/libastro/CMakeFiles/astro.dir/chap95.c.s
 .PHONY : chap95.c.s
 
 chap95_data.o: chap95_data.c.o
@@ -372,7 +372,7 @@ chap95_data.o: chap95_data.c.o
 
 # target to build an object file
 chap95_data.c.o:
-	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f src/libs/libastro/CMakeFiles/astro.dir/build.make src/libs/libastro/CMakeFiles/astro.dir/chap95_data.c.o
+	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f src/libs/libastro/CMakeFiles/astro.dir/build.make src/libs/libastro/CMakeFiles/astro.dir/chap95_data.c.o
 .PHONY : chap95_data.c.o
 
 chap95_data.i: chap95_data.c.i
@@ -380,7 +380,7 @@ chap95_data.i: chap95_data.c.i
 
 # target to preprocess a source file
 chap95_data.c.i:
-	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f src/libs/libastro/CMakeFiles/astro.dir/build.make src/libs/libastro/CMakeFiles/astro.dir/chap95_data.c.i
+	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f src/libs/libastro/CMakeFiles/astro.dir/build.make src/libs/libastro/CMakeFiles/astro.dir/chap95_data.c.i
 .PHONY : chap95_data.c.i
 
 chap95_data.s: chap95_data.c.s
@@ -388,7 +388,7 @@ chap95_data.s: chap95_data.c.s
 
 # target to generate assembly for a file
 chap95_data.c.s:
-	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f src/libs/libastro/CMakeFiles/astro.dir/build.make src/libs/libastro/CMakeFiles/astro.dir/chap95_data.c.s
+	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f src/libs/libastro/CMakeFiles/astro.dir/build.make src/libs/libastro/CMakeFiles/astro.dir/chap95_data.c.s
 .PHONY : chap95_data.c.s
 
 circum.o: circum.c.o
@@ -396,7 +396,7 @@ circum.o: circum.c.o
 
 # target to build an object file
 circum.c.o:
-	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f src/libs/libastro/CMakeFiles/astro.dir/build.make src/libs/libastro/CMakeFiles/astro.dir/circum.c.o
+	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f src/libs/libastro/CMakeFiles/astro.dir/build.make src/libs/libastro/CMakeFiles/astro.dir/circum.c.o
 .PHONY : circum.c.o
 
 circum.i: circum.c.i
@@ -404,7 +404,7 @@ circum.i: circum.c.i
 
 # target to preprocess a source file
 circum.c.i:
-	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f src/libs/libastro/CMakeFiles/astro.dir/build.make src/libs/libastro/CMakeFiles/astro.dir/circum.c.i
+	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f src/libs/libastro/CMakeFiles/astro.dir/build.make src/libs/libastro/CMakeFiles/astro.dir/circum.c.i
 .PHONY : circum.c.i
 
 circum.s: circum.c.s
@@ -412,7 +412,7 @@ circum.s: circum.c.s
 
 # target to generate assembly for a file
 circum.c.s:
-	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f src/libs/libastro/CMakeFiles/astro.dir/build.make src/libs/libastro/CMakeFiles/astro.dir/circum.c.s
+	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f src/libs/libastro/CMakeFiles/astro.dir/build.make src/libs/libastro/CMakeFiles/astro.dir/circum.c.s
 .PHONY : circum.c.s
 
 comet.o: comet.c.o
@@ -420,7 +420,7 @@ comet.o: comet.c.o
 
 # target to build an object file
 comet.c.o:
-	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f src/libs/libastro/CMakeFiles/astro.dir/build.make src/libs/libastro/CMakeFiles/astro.dir/comet.c.o
+	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f src/libs/libastro/CMakeFiles/astro.dir/build.make src/libs/libastro/CMakeFiles/astro.dir/comet.c.o
 .PHONY : comet.c.o
 
 comet.i: comet.c.i
@@ -428,7 +428,7 @@ comet.i: comet.c.i
 
 # target to preprocess a source file
 comet.c.i:
-	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f src/libs/libastro/CMakeFiles/astro.dir/build.make src/libs/libastro/CMakeFiles/astro.dir/comet.c.i
+	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f src/libs/libastro/CMakeFiles/astro.dir/build.make src/libs/libastro/CMakeFiles/astro.dir/comet.c.i
 .PHONY : comet.c.i
 
 comet.s: comet.c.s
@@ -436,7 +436,7 @@ comet.s: comet.c.s
 
 # target to generate assembly for a file
 comet.c.s:
-	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f src/libs/libastro/CMakeFiles/astro.dir/build.make src/libs/libastro/CMakeFiles/astro.dir/comet.c.s
+	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f src/libs/libastro/CMakeFiles/astro.dir/build.make src/libs/libastro/CMakeFiles/astro.dir/comet.c.s
 .PHONY : comet.c.s
 
 dbfmt.o: dbfmt.c.o
@@ -444,7 +444,7 @@ dbfmt.o: dbfmt.c.o
 
 # target to build an object file
 dbfmt.c.o:
-	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f src/libs/libastro/CMakeFiles/astro.dir/build.make src/libs/libastro/CMakeFiles/astro.dir/dbfmt.c.o
+	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f src/libs/libastro/CMakeFiles/astro.dir/build.make src/libs/libastro/CMakeFiles/astro.dir/dbfmt.c.o
 .PHONY : dbfmt.c.o
 
 dbfmt.i: dbfmt.c.i
@@ -452,7 +452,7 @@ dbfmt.i: dbfmt.c.i
 
 # target to preprocess a source file
 dbfmt.c.i:
-	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f src/libs/libastro/CMakeFiles/astro.dir/build.make src/libs/libastro/CMakeFiles/astro.dir/dbfmt.c.i
+	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f src/libs/libastro/CMakeFiles/astro.dir/build.make src/libs/libastro/CMakeFiles/astro.dir/dbfmt.c.i
 .PHONY : dbfmt.c.i
 
 dbfmt.s: dbfmt.c.s
@@ -460,7 +460,7 @@ dbfmt.s: dbfmt.c.s
 
 # target to generate assembly for a file
 dbfmt.c.s:
-	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f src/libs/libastro/CMakeFiles/astro.dir/build.make src/libs/libastro/CMakeFiles/astro.dir/dbfmt.c.s
+	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f src/libs/libastro/CMakeFiles/astro.dir/build.make src/libs/libastro/CMakeFiles/astro.dir/dbfmt.c.s
 .PHONY : dbfmt.c.s
 
 deep.o: deep.c.o
@@ -468,7 +468,7 @@ deep.o: deep.c.o
 
 # target to build an object file
 deep.c.o:
-	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f src/libs/libastro/CMakeFiles/astro.dir/build.make src/libs/libastro/CMakeFiles/astro.dir/deep.c.o
+	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f src/libs/libastro/CMakeFiles/astro.dir/build.make src/libs/libastro/CMakeFiles/astro.dir/deep.c.o
 .PHONY : deep.c.o
 
 deep.i: deep.c.i
@@ -476,7 +476,7 @@ deep.i: deep.c.i
 
 # target to preprocess a source file
 deep.c.i:
-	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f src/libs/libastro/CMakeFiles/astro.dir/build.make src/libs/libastro/CMakeFiles/astro.dir/deep.c.i
+	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f src/libs/libastro/CMakeFiles/astro.dir/build.make src/libs/libastro/CMakeFiles/astro.dir/deep.c.i
 .PHONY : deep.c.i
 
 deep.s: deep.c.s
@@ -484,7 +484,7 @@ deep.s: deep.c.s
 
 # target to generate assembly for a file
 deep.c.s:
-	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f src/libs/libastro/CMakeFiles/astro.dir/build.make src/libs/libastro/CMakeFiles/astro.dir/deep.c.s
+	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f src/libs/libastro/CMakeFiles/astro.dir/build.make src/libs/libastro/CMakeFiles/astro.dir/deep.c.s
 .PHONY : deep.c.s
 
 deltat.o: deltat.c.o
@@ -492,7 +492,7 @@ deltat.o: deltat.c.o
 
 # target to build an object file
 deltat.c.o:
-	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f src/libs/libastro/CMakeFiles/astro.dir/build.make src/libs/libastro/CMakeFiles/astro.dir/deltat.c.o
+	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f src/libs/libastro/CMakeFiles/astro.dir/build.make src/libs/libastro/CMakeFiles/astro.dir/deltat.c.o
 .PHONY : deltat.c.o
 
 deltat.i: deltat.c.i
@@ -500,7 +500,7 @@ deltat.i: deltat.c.i
 
 # target to preprocess a source file
 deltat.c.i:
-	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f src/libs/libastro/CMakeFiles/astro.dir/build.make src/libs/libastro/CMakeFiles/astro.dir/deltat.c.i
+	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f src/libs/libastro/CMakeFiles/astro.dir/build.make src/libs/libastro/CMakeFiles/astro.dir/deltat.c.i
 .PHONY : deltat.c.i
 
 deltat.s: deltat.c.s
@@ -508,7 +508,7 @@ deltat.s: deltat.c.s
 
 # target to generate assembly for a file
 deltat.c.s:
-	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f src/libs/libastro/CMakeFiles/astro.dir/build.make src/libs/libastro/CMakeFiles/astro.dir/deltat.c.s
+	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f src/libs/libastro/CMakeFiles/astro.dir/build.make src/libs/libastro/CMakeFiles/astro.dir/deltat.c.s
 .PHONY : deltat.c.s
 
 earthsat.o: earthsat.c.o
@@ -516,7 +516,7 @@ earthsat.o: earthsat.c.o
 
 # target to build an object file
 earthsat.c.o:
-	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f src/libs/libastro/CMakeFiles/astro.dir/build.make src/libs/libastro/CMakeFiles/astro.dir/earthsat.c.o
+	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f src/libs/libastro/CMakeFiles/astro.dir/build.make src/libs/libastro/CMakeFiles/astro.dir/earthsat.c.o
 .PHONY : earthsat.c.o
 
 earthsat.i: earthsat.c.i
@@ -524,7 +524,7 @@ earthsat.i: earthsat.c.i
 
 # target to preprocess a source file
 earthsat.c.i:
-	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f src/libs/libastro/CMakeFiles/astro.dir/build.make src/libs/libastro/CMakeFiles/astro.dir/earthsat.c.i
+	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f src/libs/libastro/CMakeFiles/astro.dir/build.make src/libs/libastro/CMakeFiles/astro.dir/earthsat.c.i
 .PHONY : earthsat.c.i
 
 earthsat.s: earthsat.c.s
@@ -532,7 +532,7 @@ earthsat.s: earthsat.c.s
 
 # target to generate assembly for a file
 earthsat.c.s:
-	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f src/libs/libastro/CMakeFiles/astro.dir/build.make src/libs/libastro/CMakeFiles/astro.dir/earthsat.c.s
+	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f src/libs/libastro/CMakeFiles/astro.dir/build.make src/libs/libastro/CMakeFiles/astro.dir/earthsat.c.s
 .PHONY : earthsat.c.s
 
 eq_ecl.o: eq_ecl.c.o
@@ -540,7 +540,7 @@ eq_ecl.o: eq_ecl.c.o
 
 # target to build an object file
 eq_ecl.c.o:
-	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f src/libs/libastro/CMakeFiles/astro.dir/build.make src/libs/libastro/CMakeFiles/astro.dir/eq_ecl.c.o
+	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f src/libs/libastro/CMakeFiles/astro.dir/build.make src/libs/libastro/CMakeFiles/astro.dir/eq_ecl.c.o
 .PHONY : eq_ecl.c.o
 
 eq_ecl.i: eq_ecl.c.i
@@ -548,7 +548,7 @@ eq_ecl.i: eq_ecl.c.i
 
 # target to preprocess a source file
 eq_ecl.c.i:
-	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f src/libs/libastro/CMakeFiles/astro.dir/build.make src/libs/libastro/CMakeFiles/astro.dir/eq_ecl.c.i
+	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f src/libs/libastro/CMakeFiles/astro.dir/build.make src/libs/libastro/CMakeFiles/astro.dir/eq_ecl.c.i
 .PHONY : eq_ecl.c.i
 
 eq_ecl.s: eq_ecl.c.s
@@ -556,7 +556,7 @@ eq_ecl.s: eq_ecl.c.s
 
 # target to generate assembly for a file
 eq_ecl.c.s:
-	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f src/libs/libastro/CMakeFiles/astro.dir/build.make src/libs/libastro/CMakeFiles/astro.dir/eq_ecl.c.s
+	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f src/libs/libastro/CMakeFiles/astro.dir/build.make src/libs/libastro/CMakeFiles/astro.dir/eq_ecl.c.s
 .PHONY : eq_ecl.c.s
 
 eq_gal.o: eq_gal.c.o
@@ -564,7 +564,7 @@ eq_gal.o: eq_gal.c.o
 
 # target to build an object file
 eq_gal.c.o:
-	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f src/libs/libastro/CMakeFiles/astro.dir/build.make src/libs/libastro/CMakeFiles/astro.dir/eq_gal.c.o
+	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f src/libs/libastro/CMakeFiles/astro.dir/build.make src/libs/libastro/CMakeFiles/astro.dir/eq_gal.c.o
 .PHONY : eq_gal.c.o
 
 eq_gal.i: eq_gal.c.i
@@ -572,7 +572,7 @@ eq_gal.i: eq_gal.c.i
 
 # target to preprocess a source file
 eq_gal.c.i:
-	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f src/libs/libastro/CMakeFiles/astro.dir/build.make src/libs/libastro/CMakeFiles/astro.dir/eq_gal.c.i
+	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f src/libs/libastro/CMakeFiles/astro.dir/build.make src/libs/libastro/CMakeFiles/astro.dir/eq_gal.c.i
 .PHONY : eq_gal.c.i
 
 eq_gal.s: eq_gal.c.s
@@ -580,7 +580,7 @@ eq_gal.s: eq_gal.c.s
 
 # target to generate assembly for a file
 eq_gal.c.s:
-	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f src/libs/libastro/CMakeFiles/astro.dir/build.make src/libs/libastro/CMakeFiles/astro.dir/eq_gal.c.s
+	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f src/libs/libastro/CMakeFiles/astro.dir/build.make src/libs/libastro/CMakeFiles/astro.dir/eq_gal.c.s
 .PHONY : eq_gal.c.s
 
 formats.o: formats.c.o
@@ -588,7 +588,7 @@ formats.o: formats.c.o
 
 # target to build an object file
 formats.c.o:
-	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f src/libs/libastro/CMakeFiles/astro.dir/build.make src/libs/libastro/CMakeFiles/astro.dir/formats.c.o
+	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f src/libs/libastro/CMakeFiles/astro.dir/build.make src/libs/libastro/CMakeFiles/astro.dir/formats.c.o
 .PHONY : formats.c.o
 
 formats.i: formats.c.i
@@ -596,7 +596,7 @@ formats.i: formats.c.i
 
 # target to preprocess a source file
 formats.c.i:
-	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f src/libs/libastro/CMakeFiles/astro.dir/build.make src/libs/libastro/CMakeFiles/astro.dir/formats.c.i
+	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f src/libs/libastro/CMakeFiles/astro.dir/build.make src/libs/libastro/CMakeFiles/astro.dir/formats.c.i
 .PHONY : formats.c.i
 
 formats.s: formats.c.s
@@ -604,7 +604,7 @@ formats.s: formats.c.s
 
 # target to generate assembly for a file
 formats.c.s:
-	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f src/libs/libastro/CMakeFiles/astro.dir/build.make src/libs/libastro/CMakeFiles/astro.dir/formats.c.s
+	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f src/libs/libastro/CMakeFiles/astro.dir/build.make src/libs/libastro/CMakeFiles/astro.dir/formats.c.s
 .PHONY : formats.c.s
 
 helio.o: helio.c.o
@@ -612,7 +612,7 @@ helio.o: helio.c.o
 
 # target to build an object file
 helio.c.o:
-	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f src/libs/libastro/CMakeFiles/astro.dir/build.make src/libs/libastro/CMakeFiles/astro.dir/helio.c.o
+	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f src/libs/libastro/CMakeFiles/astro.dir/build.make src/libs/libastro/CMakeFiles/astro.dir/helio.c.o
 .PHONY : helio.c.o
 
 helio.i: helio.c.i
@@ -620,7 +620,7 @@ helio.i: helio.c.i
 
 # target to preprocess a source file
 helio.c.i:
-	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f src/libs/libastro/CMakeFiles/astro.dir/build.make src/libs/libastro/CMakeFiles/astro.dir/helio.c.i
+	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f src/libs/libastro/CMakeFiles/astro.dir/build.make src/libs/libastro/CMakeFiles/astro.dir/helio.c.i
 .PHONY : helio.c.i
 
 helio.s: helio.c.s
@@ -628,7 +628,7 @@ helio.s: helio.c.s
 
 # target to generate assembly for a file
 helio.c.s:
-	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f src/libs/libastro/CMakeFiles/astro.dir/build.make src/libs/libastro/CMakeFiles/astro.dir/helio.c.s
+	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f src/libs/libastro/CMakeFiles/astro.dir/build.make src/libs/libastro/CMakeFiles/astro.dir/helio.c.s
 .PHONY : helio.c.s
 
 libration.o: libration.c.o
@@ -636,7 +636,7 @@ libration.o: libration.c.o
 
 # target to build an object file
 libration.c.o:
-	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f src/libs/libastro/CMakeFiles/astro.dir/build.make src/libs/libastro/CMakeFiles/astro.dir/libration.c.o
+	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f src/libs/libastro/CMakeFiles/astro.dir/build.make src/libs/libastro/CMakeFiles/astro.dir/libration.c.o
 .PHONY : libration.c.o
 
 libration.i: libration.c.i
@@ -644,7 +644,7 @@ libration.i: libration.c.i
 
 # target to preprocess a source file
 libration.c.i:
-	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f src/libs/libastro/CMakeFiles/astro.dir/build.make src/libs/libastro/CMakeFiles/astro.dir/libration.c.i
+	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f src/libs/libastro/CMakeFiles/astro.dir/build.make src/libs/libastro/CMakeFiles/astro.dir/libration.c.i
 .PHONY : libration.c.i
 
 libration.s: libration.c.s
@@ -652,7 +652,7 @@ libration.s: libration.c.s
 
 # target to generate assembly for a file
 libration.c.s:
-	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f src/libs/libastro/CMakeFiles/astro.dir/build.make src/libs/libastro/CMakeFiles/astro.dir/libration.c.s
+	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f src/libs/libastro/CMakeFiles/astro.dir/build.make src/libs/libastro/CMakeFiles/astro.dir/libration.c.s
 .PHONY : libration.c.s
 
 misc.o: misc.c.o
@@ -660,7 +660,7 @@ misc.o: misc.c.o
 
 # target to build an object file
 misc.c.o:
-	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f src/libs/libastro/CMakeFiles/astro.dir/build.make src/libs/libastro/CMakeFiles/astro.dir/misc.c.o
+	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f src/libs/libastro/CMakeFiles/astro.dir/build.make src/libs/libastro/CMakeFiles/astro.dir/misc.c.o
 .PHONY : misc.c.o
 
 misc.i: misc.c.i
@@ -668,7 +668,7 @@ misc.i: misc.c.i
 
 # target to preprocess a source file
 misc.c.i:
-	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f src/libs/libastro/CMakeFiles/astro.dir/build.make src/libs/libastro/CMakeFiles/astro.dir/misc.c.i
+	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f src/libs/libastro/CMakeFiles/astro.dir/build.make src/libs/libastro/CMakeFiles/astro.dir/misc.c.i
 .PHONY : misc.c.i
 
 misc.s: misc.c.s
@@ -676,7 +676,7 @@ misc.s: misc.c.s
 
 # target to generate assembly for a file
 misc.c.s:
-	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f src/libs/libastro/CMakeFiles/astro.dir/build.make src/libs/libastro/CMakeFiles/astro.dir/misc.c.s
+	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f src/libs/libastro/CMakeFiles/astro.dir/build.make src/libs/libastro/CMakeFiles/astro.dir/misc.c.s
 .PHONY : misc.c.s
 
 mjd.o: mjd.c.o
@@ -684,7 +684,7 @@ mjd.o: mjd.c.o
 
 # target to build an object file
 mjd.c.o:
-	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f src/libs/libastro/CMakeFiles/astro.dir/build.make src/libs/libastro/CMakeFiles/astro.dir/mjd.c.o
+	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f src/libs/libastro/CMakeFiles/astro.dir/build.make src/libs/libastro/CMakeFiles/astro.dir/mjd.c.o
 .PHONY : mjd.c.o
 
 mjd.i: mjd.c.i
@@ -692,7 +692,7 @@ mjd.i: mjd.c.i
 
 # target to preprocess a source file
 mjd.c.i:
-	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f src/libs/libastro/CMakeFiles/astro.dir/build.make src/libs/libastro/CMakeFiles/astro.dir/mjd.c.i
+	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f src/libs/libastro/CMakeFiles/astro.dir/build.make src/libs/libastro/CMakeFiles/astro.dir/mjd.c.i
 .PHONY : mjd.c.i
 
 mjd.s: mjd.c.s
@@ -700,7 +700,7 @@ mjd.s: mjd.c.s
 
 # target to generate assembly for a file
 mjd.c.s:
-	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f src/libs/libastro/CMakeFiles/astro.dir/build.make src/libs/libastro/CMakeFiles/astro.dir/mjd.c.s
+	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f src/libs/libastro/CMakeFiles/astro.dir/build.make src/libs/libastro/CMakeFiles/astro.dir/mjd.c.s
 .PHONY : mjd.c.s
 
 moon.o: moon.c.o
@@ -708,7 +708,7 @@ moon.o: moon.c.o
 
 # target to build an object file
 moon.c.o:
-	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f src/libs/libastro/CMakeFiles/astro.dir/build.make src/libs/libastro/CMakeFiles/astro.dir/moon.c.o
+	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f src/libs/libastro/CMakeFiles/astro.dir/build.make src/libs/libastro/CMakeFiles/astro.dir/moon.c.o
 .PHONY : moon.c.o
 
 moon.i: moon.c.i
@@ -716,7 +716,7 @@ moon.i: moon.c.i
 
 # target to preprocess a source file
 moon.c.i:
-	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f src/libs/libastro/CMakeFiles/astro.dir/build.make src/libs/libastro/CMakeFiles/astro.dir/moon.c.i
+	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f src/libs/libastro/CMakeFiles/astro.dir/build.make src/libs/libastro/CMakeFiles/astro.dir/moon.c.i
 .PHONY : moon.c.i
 
 moon.s: moon.c.s
@@ -724,7 +724,7 @@ moon.s: moon.c.s
 
 # target to generate assembly for a file
 moon.c.s:
-	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f src/libs/libastro/CMakeFiles/astro.dir/build.make src/libs/libastro/CMakeFiles/astro.dir/moon.c.s
+	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f src/libs/libastro/CMakeFiles/astro.dir/build.make src/libs/libastro/CMakeFiles/astro.dir/moon.c.s
 .PHONY : moon.c.s
 
 mooncolong.o: mooncolong.c.o
@@ -732,7 +732,7 @@ mooncolong.o: mooncolong.c.o
 
 # target to build an object file
 mooncolong.c.o:
-	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f src/libs/libastro/CMakeFiles/astro.dir/build.make src/libs/libastro/CMakeFiles/astro.dir/mooncolong.c.o
+	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f src/libs/libastro/CMakeFiles/astro.dir/build.make src/libs/libastro/CMakeFiles/astro.dir/mooncolong.c.o
 .PHONY : mooncolong.c.o
 
 mooncolong.i: mooncolong.c.i
@@ -740,7 +740,7 @@ mooncolong.i: mooncolong.c.i
 
 # target to preprocess a source file
 mooncolong.c.i:
-	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f src/libs/libastro/CMakeFiles/astro.dir/build.make src/libs/libastro/CMakeFiles/astro.dir/mooncolong.c.i
+	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f src/libs/libastro/CMakeFiles/astro.dir/build.make src/libs/libastro/CMakeFiles/astro.dir/mooncolong.c.i
 .PHONY : mooncolong.c.i
 
 mooncolong.s: mooncolong.c.s
@@ -748,7 +748,7 @@ mooncolong.s: mooncolong.c.s
 
 # target to generate assembly for a file
 mooncolong.c.s:
-	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f src/libs/libastro/CMakeFiles/astro.dir/build.make src/libs/libastro/CMakeFiles/astro.dir/mooncolong.c.s
+	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f src/libs/libastro/CMakeFiles/astro.dir/build.make src/libs/libastro/CMakeFiles/astro.dir/mooncolong.c.s
 .PHONY : mooncolong.c.s
 
 nutation.o: nutation.c.o
@@ -756,7 +756,7 @@ nutation.o: nutation.c.o
 
 # target to build an object file
 nutation.c.o:
-	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f src/libs/libastro/CMakeFiles/astro.dir/build.make src/libs/libastro/CMakeFiles/astro.dir/nutation.c.o
+	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f src/libs/libastro/CMakeFiles/astro.dir/build.make src/libs/libastro/CMakeFiles/astro.dir/nutation.c.o
 .PHONY : nutation.c.o
 
 nutation.i: nutation.c.i
@@ -764,7 +764,7 @@ nutation.i: nutation.c.i
 
 # target to preprocess a source file
 nutation.c.i:
-	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f src/libs/libastro/CMakeFiles/astro.dir/build.make src/libs/libastro/CMakeFiles/astro.dir/nutation.c.i
+	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f src/libs/libastro/CMakeFiles/astro.dir/build.make src/libs/libastro/CMakeFiles/astro.dir/nutation.c.i
 .PHONY : nutation.c.i
 
 nutation.s: nutation.c.s
@@ -772,7 +772,7 @@ nutation.s: nutation.c.s
 
 # target to generate assembly for a file
 nutation.c.s:
-	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f src/libs/libastro/CMakeFiles/astro.dir/build.make src/libs/libastro/CMakeFiles/astro.dir/nutation.c.s
+	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f src/libs/libastro/CMakeFiles/astro.dir/build.make src/libs/libastro/CMakeFiles/astro.dir/nutation.c.s
 .PHONY : nutation.c.s
 
 obliq.o: obliq.c.o
@@ -780,7 +780,7 @@ obliq.o: obliq.c.o
 
 # target to build an object file
 obliq.c.o:
-	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f src/libs/libastro/CMakeFiles/astro.dir/build.make src/libs/libastro/CMakeFiles/astro.dir/obliq.c.o
+	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f src/libs/libastro/CMakeFiles/astro.dir/build.make src/libs/libastro/CMakeFiles/astro.dir/obliq.c.o
 .PHONY : obliq.c.o
 
 obliq.i: obliq.c.i
@@ -788,7 +788,7 @@ obliq.i: obliq.c.i
 
 # target to preprocess a source file
 obliq.c.i:
-	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f src/libs/libastro/CMakeFiles/astro.dir/build.make src/libs/libastro/CMakeFiles/astro.dir/obliq.c.i
+	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f src/libs/libastro/CMakeFiles/astro.dir/build.make src/libs/libastro/CMakeFiles/astro.dir/obliq.c.i
 .PHONY : obliq.c.i
 
 obliq.s: obliq.c.s
@@ -796,7 +796,7 @@ obliq.s: obliq.c.s
 
 # target to generate assembly for a file
 obliq.c.s:
-	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f src/libs/libastro/CMakeFiles/astro.dir/build.make src/libs/libastro/CMakeFiles/astro.dir/obliq.c.s
+	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f src/libs/libastro/CMakeFiles/astro.dir/build.make src/libs/libastro/CMakeFiles/astro.dir/obliq.c.s
 .PHONY : obliq.c.s
 
 parallax.o: parallax.c.o
@@ -804,7 +804,7 @@ parallax.o: parallax.c.o
 
 # target to build an object file
 parallax.c.o:
-	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f src/libs/libastro/CMakeFiles/astro.dir/build.make src/libs/libastro/CMakeFiles/astro.dir/parallax.c.o
+	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f src/libs/libastro/CMakeFiles/astro.dir/build.make src/libs/libastro/CMakeFiles/astro.dir/parallax.c.o
 .PHONY : parallax.c.o
 
 parallax.i: parallax.c.i
@@ -812,7 +812,7 @@ parallax.i: parallax.c.i
 
 # target to preprocess a source file
 parallax.c.i:
-	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f src/libs/libastro/CMakeFiles/astro.dir/build.make src/libs/libastro/CMakeFiles/astro.dir/parallax.c.i
+	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f src/libs/libastro/CMakeFiles/astro.dir/build.make src/libs/libastro/CMakeFiles/astro.dir/parallax.c.i
 .PHONY : parallax.c.i
 
 parallax.s: parallax.c.s
@@ -820,7 +820,7 @@ parallax.s: parallax.c.s
 
 # target to generate assembly for a file
 parallax.c.s:
-	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f src/libs/libastro/CMakeFiles/astro.dir/build.make src/libs/libastro/CMakeFiles/astro.dir/parallax.c.s
+	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f src/libs/libastro/CMakeFiles/astro.dir/build.make src/libs/libastro/CMakeFiles/astro.dir/parallax.c.s
 .PHONY : parallax.c.s
 
 plans.o: plans.c.o
@@ -828,7 +828,7 @@ plans.o: plans.c.o
 
 # target to build an object file
 plans.c.o:
-	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f src/libs/libastro/CMakeFiles/astro.dir/build.make src/libs/libastro/CMakeFiles/astro.dir/plans.c.o
+	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f src/libs/libastro/CMakeFiles/astro.dir/build.make src/libs/libastro/CMakeFiles/astro.dir/plans.c.o
 .PHONY : plans.c.o
 
 plans.i: plans.c.i
@@ -836,7 +836,7 @@ plans.i: plans.c.i
 
 # target to preprocess a source file
 plans.c.i:
-	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f src/libs/libastro/CMakeFiles/astro.dir/build.make src/libs/libastro/CMakeFiles/astro.dir/plans.c.i
+	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f src/libs/libastro/CMakeFiles/astro.dir/build.make src/libs/libastro/CMakeFiles/astro.dir/plans.c.i
 .PHONY : plans.c.i
 
 plans.s: plans.c.s
@@ -844,7 +844,7 @@ plans.s: plans.c.s
 
 # target to generate assembly for a file
 plans.c.s:
-	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f src/libs/libastro/CMakeFiles/astro.dir/build.make src/libs/libastro/CMakeFiles/astro.dir/plans.c.s
+	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f src/libs/libastro/CMakeFiles/astro.dir/build.make src/libs/libastro/CMakeFiles/astro.dir/plans.c.s
 .PHONY : plans.c.s
 
 precess.o: precess.c.o
@@ -852,7 +852,7 @@ precess.o: precess.c.o
 
 # target to build an object file
 precess.c.o:
-	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f src/libs/libastro/CMakeFiles/astro.dir/build.make src/libs/libastro/CMakeFiles/astro.dir/precess.c.o
+	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f src/libs/libastro/CMakeFiles/astro.dir/build.make src/libs/libastro/CMakeFiles/astro.dir/precess.c.o
 .PHONY : precess.c.o
 
 precess.i: precess.c.i
@@ -860,7 +860,7 @@ precess.i: precess.c.i
 
 # target to preprocess a source file
 precess.c.i:
-	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f src/libs/libastro/CMakeFiles/astro.dir/build.make src/libs/libastro/CMakeFiles/astro.dir/precess.c.i
+	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f src/libs/libastro/CMakeFiles/astro.dir/build.make src/libs/libastro/CMakeFiles/astro.dir/precess.c.i
 .PHONY : precess.c.i
 
 precess.s: precess.c.s
@@ -868,7 +868,7 @@ precess.s: precess.c.s
 
 # target to generate assembly for a file
 precess.c.s:
-	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f src/libs/libastro/CMakeFiles/astro.dir/build.make src/libs/libastro/CMakeFiles/astro.dir/precess.c.s
+	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f src/libs/libastro/CMakeFiles/astro.dir/build.make src/libs/libastro/CMakeFiles/astro.dir/precess.c.s
 .PHONY : precess.c.s
 
 reduce.o: reduce.c.o
@@ -876,7 +876,7 @@ reduce.o: reduce.c.o
 
 # target to build an object file
 reduce.c.o:
-	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f src/libs/libastro/CMakeFiles/astro.dir/build.make src/libs/libastro/CMakeFiles/astro.dir/reduce.c.o
+	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f src/libs/libastro/CMakeFiles/astro.dir/build.make src/libs/libastro/CMakeFiles/astro.dir/reduce.c.o
 .PHONY : reduce.c.o
 
 reduce.i: reduce.c.i
@@ -884,7 +884,7 @@ reduce.i: reduce.c.i
 
 # target to preprocess a source file
 reduce.c.i:
-	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f src/libs/libastro/CMakeFiles/astro.dir/build.make src/libs/libastro/CMakeFiles/astro.dir/reduce.c.i
+	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f src/libs/libastro/CMakeFiles/astro.dir/build.make src/libs/libastro/CMakeFiles/astro.dir/reduce.c.i
 .PHONY : reduce.c.i
 
 reduce.s: reduce.c.s
@@ -892,7 +892,7 @@ reduce.s: reduce.c.s
 
 # target to generate assembly for a file
 reduce.c.s:
-	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f src/libs/libastro/CMakeFiles/astro.dir/build.make src/libs/libastro/CMakeFiles/astro.dir/reduce.c.s
+	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f src/libs/libastro/CMakeFiles/astro.dir/build.make src/libs/libastro/CMakeFiles/astro.dir/reduce.c.s
 .PHONY : reduce.c.s
 
 refract.o: refract.c.o
@@ -900,7 +900,7 @@ refract.o: refract.c.o
 
 # target to build an object file
 refract.c.o:
-	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f src/libs/libastro/CMakeFiles/astro.dir/build.make src/libs/libastro/CMakeFiles/astro.dir/refract.c.o
+	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f src/libs/libastro/CMakeFiles/astro.dir/build.make src/libs/libastro/CMakeFiles/astro.dir/refract.c.o
 .PHONY : refract.c.o
 
 refract.i: refract.c.i
@@ -908,7 +908,7 @@ refract.i: refract.c.i
 
 # target to preprocess a source file
 refract.c.i:
-	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f src/libs/libastro/CMakeFiles/astro.dir/build.make src/libs/libastro/CMakeFiles/astro.dir/refract.c.i
+	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f src/libs/libastro/CMakeFiles/astro.dir/build.make src/libs/libastro/CMakeFiles/astro.dir/refract.c.i
 .PHONY : refract.c.i
 
 refract.s: refract.c.s
@@ -916,7 +916,7 @@ refract.s: refract.c.s
 
 # target to generate assembly for a file
 refract.c.s:
-	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f src/libs/libastro/CMakeFiles/astro.dir/build.make src/libs/libastro/CMakeFiles/astro.dir/refract.c.s
+	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f src/libs/libastro/CMakeFiles/astro.dir/build.make src/libs/libastro/CMakeFiles/astro.dir/refract.c.s
 .PHONY : refract.c.s
 
 riset.o: riset.c.o
@@ -924,7 +924,7 @@ riset.o: riset.c.o
 
 # target to build an object file
 riset.c.o:
-	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f src/libs/libastro/CMakeFiles/astro.dir/build.make src/libs/libastro/CMakeFiles/astro.dir/riset.c.o
+	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f src/libs/libastro/CMakeFiles/astro.dir/build.make src/libs/libastro/CMakeFiles/astro.dir/riset.c.o
 .PHONY : riset.c.o
 
 riset.i: riset.c.i
@@ -932,7 +932,7 @@ riset.i: riset.c.i
 
 # target to preprocess a source file
 riset.c.i:
-	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f src/libs/libastro/CMakeFiles/astro.dir/build.make src/libs/libastro/CMakeFiles/astro.dir/riset.c.i
+	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f src/libs/libastro/CMakeFiles/astro.dir/build.make src/libs/libastro/CMakeFiles/astro.dir/riset.c.i
 .PHONY : riset.c.i
 
 riset.s: riset.c.s
@@ -940,7 +940,7 @@ riset.s: riset.c.s
 
 # target to generate assembly for a file
 riset.c.s:
-	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f src/libs/libastro/CMakeFiles/astro.dir/build.make src/libs/libastro/CMakeFiles/astro.dir/riset.c.s
+	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f src/libs/libastro/CMakeFiles/astro.dir/build.make src/libs/libastro/CMakeFiles/astro.dir/riset.c.s
 .PHONY : riset.c.s
 
 riset_cir.o: riset_cir.c.o
@@ -948,7 +948,7 @@ riset_cir.o: riset_cir.c.o
 
 # target to build an object file
 riset_cir.c.o:
-	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f src/libs/libastro/CMakeFiles/astro.dir/build.make src/libs/libastro/CMakeFiles/astro.dir/riset_cir.c.o
+	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f src/libs/libastro/CMakeFiles/astro.dir/build.make src/libs/libastro/CMakeFiles/astro.dir/riset_cir.c.o
 .PHONY : riset_cir.c.o
 
 riset_cir.i: riset_cir.c.i
@@ -956,7 +956,7 @@ riset_cir.i: riset_cir.c.i
 
 # target to preprocess a source file
 riset_cir.c.i:
-	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f src/libs/libastro/CMakeFiles/astro.dir/build.make src/libs/libastro/CMakeFiles/astro.dir/riset_cir.c.i
+	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f src/libs/libastro/CMakeFiles/astro.dir/build.make src/libs/libastro/CMakeFiles/astro.dir/riset_cir.c.i
 .PHONY : riset_cir.c.i
 
 riset_cir.s: riset_cir.c.s
@@ -964,7 +964,7 @@ riset_cir.s: riset_cir.c.s
 
 # target to generate assembly for a file
 riset_cir.c.s:
-	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f src/libs/libastro/CMakeFiles/astro.dir/build.make src/libs/libastro/CMakeFiles/astro.dir/riset_cir.c.s
+	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f src/libs/libastro/CMakeFiles/astro.dir/build.make src/libs/libastro/CMakeFiles/astro.dir/riset_cir.c.s
 .PHONY : riset_cir.c.s
 
 sdp4.o: sdp4.c.o
@@ -972,7 +972,7 @@ sdp4.o: sdp4.c.o
 
 # target to build an object file
 sdp4.c.o:
-	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f src/libs/libastro/CMakeFiles/astro.dir/build.make src/libs/libastro/CMakeFiles/astro.dir/sdp4.c.o
+	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f src/libs/libastro/CMakeFiles/astro.dir/build.make src/libs/libastro/CMakeFiles/astro.dir/sdp4.c.o
 .PHONY : sdp4.c.o
 
 sdp4.i: sdp4.c.i
@@ -980,7 +980,7 @@ sdp4.i: sdp4.c.i
 
 # target to preprocess a source file
 sdp4.c.i:
-	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f src/libs/libastro/CMakeFiles/astro.dir/build.make src/libs/libastro/CMakeFiles/astro.dir/sdp4.c.i
+	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f src/libs/libastro/CMakeFiles/astro.dir/build.make src/libs/libastro/CMakeFiles/astro.dir/sdp4.c.i
 .PHONY : sdp4.c.i
 
 sdp4.s: sdp4.c.s
@@ -988,7 +988,7 @@ sdp4.s: sdp4.c.s
 
 # target to generate assembly for a file
 sdp4.c.s:
-	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f src/libs/libastro/CMakeFiles/astro.dir/build.make src/libs/libastro/CMakeFiles/astro.dir/sdp4.c.s
+	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f src/libs/libastro/CMakeFiles/astro.dir/build.make src/libs/libastro/CMakeFiles/astro.dir/sdp4.c.s
 .PHONY : sdp4.c.s
 
 sgp4.o: sgp4.c.o
@@ -996,7 +996,7 @@ sgp4.o: sgp4.c.o
 
 # target to build an object file
 sgp4.c.o:
-	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f src/libs/libastro/CMakeFiles/astro.dir/build.make src/libs/libastro/CMakeFiles/astro.dir/sgp4.c.o
+	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f src/libs/libastro/CMakeFiles/astro.dir/build.make src/libs/libastro/CMakeFiles/astro.dir/sgp4.c.o
 .PHONY : sgp4.c.o
 
 sgp4.i: sgp4.c.i
@@ -1004,7 +1004,7 @@ sgp4.i: sgp4.c.i
 
 # target to preprocess a source file
 sgp4.c.i:
-	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f src/libs/libastro/CMakeFiles/astro.dir/build.make src/libs/libastro/CMakeFiles/astro.dir/sgp4.c.i
+	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f src/libs/libastro/CMakeFiles/astro.dir/build.make src/libs/libastro/CMakeFiles/astro.dir/sgp4.c.i
 .PHONY : sgp4.c.i
 
 sgp4.s: sgp4.c.s
@@ -1012,7 +1012,7 @@ sgp4.s: sgp4.c.s
 
 # target to generate assembly for a file
 sgp4.c.s:
-	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f src/libs/libastro/CMakeFiles/astro.dir/build.make src/libs/libastro/CMakeFiles/astro.dir/sgp4.c.s
+	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f src/libs/libastro/CMakeFiles/astro.dir/build.make src/libs/libastro/CMakeFiles/astro.dir/sgp4.c.s
 .PHONY : sgp4.c.s
 
 sphcart.o: sphcart.c.o
@@ -1020,7 +1020,7 @@ sphcart.o: sphcart.c.o
 
 # target to build an object file
 sphcart.c.o:
-	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f src/libs/libastro/CMakeFiles/astro.dir/build.make src/libs/libastro/CMakeFiles/astro.dir/sphcart.c.o
+	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f src/libs/libastro/CMakeFiles/astro.dir/build.make src/libs/libastro/CMakeFiles/astro.dir/sphcart.c.o
 .PHONY : sphcart.c.o
 
 sphcart.i: sphcart.c.i
@@ -1028,7 +1028,7 @@ sphcart.i: sphcart.c.i
 
 # target to preprocess a source file
 sphcart.c.i:
-	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f src/libs/libastro/CMakeFiles/astro.dir/build.make src/libs/libastro/CMakeFiles/astro.dir/sphcart.c.i
+	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f src/libs/libastro/CMakeFiles/astro.dir/build.make src/libs/libastro/CMakeFiles/astro.dir/sphcart.c.i
 .PHONY : sphcart.c.i
 
 sphcart.s: sphcart.c.s
@@ -1036,7 +1036,7 @@ sphcart.s: sphcart.c.s
 
 # target to generate assembly for a file
 sphcart.c.s:
-	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f src/libs/libastro/CMakeFiles/astro.dir/build.make src/libs/libastro/CMakeFiles/astro.dir/sphcart.c.s
+	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f src/libs/libastro/CMakeFiles/astro.dir/build.make src/libs/libastro/CMakeFiles/astro.dir/sphcart.c.s
 .PHONY : sphcart.c.s
 
 sun.o: sun.c.o
@@ -1044,7 +1044,7 @@ sun.o: sun.c.o
 
 # target to build an object file
 sun.c.o:
-	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f src/libs/libastro/CMakeFiles/astro.dir/build.make src/libs/libastro/CMakeFiles/astro.dir/sun.c.o
+	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f src/libs/libastro/CMakeFiles/astro.dir/build.make src/libs/libastro/CMakeFiles/astro.dir/sun.c.o
 .PHONY : sun.c.o
 
 sun.i: sun.c.i
@@ -1052,7 +1052,7 @@ sun.i: sun.c.i
 
 # target to preprocess a source file
 sun.c.i:
-	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f src/libs/libastro/CMakeFiles/astro.dir/build.make src/libs/libastro/CMakeFiles/astro.dir/sun.c.i
+	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f src/libs/libastro/CMakeFiles/astro.dir/build.make src/libs/libastro/CMakeFiles/astro.dir/sun.c.i
 .PHONY : sun.c.i
 
 sun.s: sun.c.s
@@ -1060,7 +1060,7 @@ sun.s: sun.c.s
 
 # target to generate assembly for a file
 sun.c.s:
-	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f src/libs/libastro/CMakeFiles/astro.dir/build.make src/libs/libastro/CMakeFiles/astro.dir/sun.c.s
+	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f src/libs/libastro/CMakeFiles/astro.dir/build.make src/libs/libastro/CMakeFiles/astro.dir/sun.c.s
 .PHONY : sun.c.s
 
 thetag.o: thetag.c.o
@@ -1068,7 +1068,7 @@ thetag.o: thetag.c.o
 
 # target to build an object file
 thetag.c.o:
-	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f src/libs/libastro/CMakeFiles/astro.dir/build.make src/libs/libastro/CMakeFiles/astro.dir/thetag.c.o
+	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f src/libs/libastro/CMakeFiles/astro.dir/build.make src/libs/libastro/CMakeFiles/astro.dir/thetag.c.o
 .PHONY : thetag.c.o
 
 thetag.i: thetag.c.i
@@ -1076,7 +1076,7 @@ thetag.i: thetag.c.i
 
 # target to preprocess a source file
 thetag.c.i:
-	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f src/libs/libastro/CMakeFiles/astro.dir/build.make src/libs/libastro/CMakeFiles/astro.dir/thetag.c.i
+	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f src/libs/libastro/CMakeFiles/astro.dir/build.make src/libs/libastro/CMakeFiles/astro.dir/thetag.c.i
 .PHONY : thetag.c.i
 
 thetag.s: thetag.c.s
@@ -1084,7 +1084,7 @@ thetag.s: thetag.c.s
 
 # target to generate assembly for a file
 thetag.c.s:
-	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f src/libs/libastro/CMakeFiles/astro.dir/build.make src/libs/libastro/CMakeFiles/astro.dir/thetag.c.s
+	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f src/libs/libastro/CMakeFiles/astro.dir/build.make src/libs/libastro/CMakeFiles/astro.dir/thetag.c.s
 .PHONY : thetag.c.s
 
 utc_gst.o: utc_gst.c.o
@@ -1092,7 +1092,7 @@ utc_gst.o: utc_gst.c.o
 
 # target to build an object file
 utc_gst.c.o:
-	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f src/libs/libastro/CMakeFiles/astro.dir/build.make src/libs/libastro/CMakeFiles/astro.dir/utc_gst.c.o
+	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f src/libs/libastro/CMakeFiles/astro.dir/build.make src/libs/libastro/CMakeFiles/astro.dir/utc_gst.c.o
 .PHONY : utc_gst.c.o
 
 utc_gst.i: utc_gst.c.i
@@ -1100,7 +1100,7 @@ utc_gst.i: utc_gst.c.i
 
 # target to preprocess a source file
 utc_gst.c.i:
-	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f src/libs/libastro/CMakeFiles/astro.dir/build.make src/libs/libastro/CMakeFiles/astro.dir/utc_gst.c.i
+	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f src/libs/libastro/CMakeFiles/astro.dir/build.make src/libs/libastro/CMakeFiles/astro.dir/utc_gst.c.i
 .PHONY : utc_gst.c.i
 
 utc_gst.s: utc_gst.c.s
@@ -1108,7 +1108,7 @@ utc_gst.s: utc_gst.c.s
 
 # target to generate assembly for a file
 utc_gst.c.s:
-	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f src/libs/libastro/CMakeFiles/astro.dir/build.make src/libs/libastro/CMakeFiles/astro.dir/utc_gst.c.s
+	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f src/libs/libastro/CMakeFiles/astro.dir/build.make src/libs/libastro/CMakeFiles/astro.dir/utc_gst.c.s
 .PHONY : utc_gst.c.s
 
 vsop87.o: vsop87.c.o
@@ -1116,7 +1116,7 @@ vsop87.o: vsop87.c.o
 
 # target to build an object file
 vsop87.c.o:
-	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f src/libs/libastro/CMakeFiles/astro.dir/build.make src/libs/libastro/CMakeFiles/astro.dir/vsop87.c.o
+	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f src/libs/libastro/CMakeFiles/astro.dir/build.make src/libs/libastro/CMakeFiles/astro.dir/vsop87.c.o
 .PHONY : vsop87.c.o
 
 vsop87.i: vsop87.c.i
@@ -1124,7 +1124,7 @@ vsop87.i: vsop87.c.i
 
 # target to preprocess a source file
 vsop87.c.i:
-	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f src/libs/libastro/CMakeFiles/astro.dir/build.make src/libs/libastro/CMakeFiles/astro.dir/vsop87.c.i
+	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f src/libs/libastro/CMakeFiles/astro.dir/build.make src/libs/libastro/CMakeFiles/astro.dir/vsop87.c.i
 .PHONY : vsop87.c.i
 
 vsop87.s: vsop87.c.s
@@ -1132,7 +1132,7 @@ vsop87.s: vsop87.c.s
 
 # target to generate assembly for a file
 vsop87.c.s:
-	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f src/libs/libastro/CMakeFiles/astro.dir/build.make src/libs/libastro/CMakeFiles/astro.dir/vsop87.c.s
+	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f src/libs/libastro/CMakeFiles/astro.dir/build.make src/libs/libastro/CMakeFiles/astro.dir/vsop87.c.s
 .PHONY : vsop87.c.s
 
 vsop87_data.o: vsop87_data.c.o
@@ -1140,7 +1140,7 @@ vsop87_data.o: vsop87_data.c.o
 
 # target to build an object file
 vsop87_data.c.o:
-	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f src/libs/libastro/CMakeFiles/astro.dir/build.make src/libs/libastro/CMakeFiles/astro.dir/vsop87_data.c.o
+	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f src/libs/libastro/CMakeFiles/astro.dir/build.make src/libs/libastro/CMakeFiles/astro.dir/vsop87_data.c.o
 .PHONY : vsop87_data.c.o
 
 vsop87_data.i: vsop87_data.c.i
@@ -1148,7 +1148,7 @@ vsop87_data.i: vsop87_data.c.i
 
 # target to preprocess a source file
 vsop87_data.c.i:
-	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f src/libs/libastro/CMakeFiles/astro.dir/build.make src/libs/libastro/CMakeFiles/astro.dir/vsop87_data.c.i
+	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f src/libs/libastro/CMakeFiles/astro.dir/build.make src/libs/libastro/CMakeFiles/astro.dir/vsop87_data.c.i
 .PHONY : vsop87_data.c.i
 
 vsop87_data.s: vsop87_data.c.s
@@ -1156,7 +1156,7 @@ vsop87_data.s: vsop87_data.c.s
 
 # target to generate assembly for a file
 vsop87_data.c.s:
-	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f src/libs/libastro/CMakeFiles/astro.dir/build.make src/libs/libastro/CMakeFiles/astro.dir/vsop87_data.c.s
+	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f src/libs/libastro/CMakeFiles/astro.dir/build.make src/libs/libastro/CMakeFiles/astro.dir/vsop87_data.c.s
 .PHONY : vsop87_data.c.s
 
 # Help Target
@@ -1306,6 +1306,6 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
-	cd /home/voden/Projects/Talon-OCAAS && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
+	cd /home/voden/Projects/talon-ocaas && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system
 

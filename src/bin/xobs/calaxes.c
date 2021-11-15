@@ -28,7 +28,7 @@
 #include "misc.h"
 #include "db.h"
 #include "xtools.h"
-#include "ccdcamera.h"
+/* #include "ccdcamera.h" */ /*Removed from source*/
 #include "configfile.h"
 #include "telenv.h"
 #include "telstatshm.h"

@@ -57,10 +57,10 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/voden/Projects/Talon-OCAAS
+CMAKE_SOURCE_DIR = /home/voden/Projects/talon-ocaas
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/voden/Projects/Talon-OCAAS
+CMAKE_BINARY_DIR = /home/voden/Projects/talon-ocaas
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -132,14 +132,14 @@ edit_cache/fast: edit_cache
 
 # The main all target
 all: cmake_check_build_system
-	cd /home/voden/Projects/Talon-OCAAS && $(CMAKE_COMMAND) -E cmake_progress_start /home/voden/Projects/Talon-OCAAS/CMakeFiles /home/voden/Projects/Talon-OCAAS/src/tools/mntmodel//CMakeFiles/progress.marks
-	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/tools/mntmodel/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/voden/Projects/Talon-OCAAS/CMakeFiles 0
+	cd /home/voden/Projects/talon-ocaas && $(CMAKE_COMMAND) -E cmake_progress_start /home/voden/Projects/talon-ocaas/CMakeFiles /home/voden/Projects/talon-ocaas/src/tools/mntmodel//CMakeFiles/progress.marks
+	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/tools/mntmodel/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/voden/Projects/talon-ocaas/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
 clean:
-	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/tools/mntmodel/clean
+	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/tools/mntmodel/clean
 .PHONY : clean
 
 # The main clean target
@@ -148,22 +148,22 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/tools/mntmodel/preinstall
+	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/tools/mntmodel/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/tools/mntmodel/preinstall
+	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/tools/mntmodel/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
 depend:
-	cd /home/voden/Projects/Talon-OCAAS && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
+	cd /home/voden/Projects/talon-ocaas && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
 # Convenience name for target.
 src/tools/mntmodel/CMakeFiles/mntmodel.dir/rule:
-	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/tools/mntmodel/CMakeFiles/mntmodel.dir/rule
+	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/tools/mntmodel/CMakeFiles/mntmodel.dir/rule
 .PHONY : src/tools/mntmodel/CMakeFiles/mntmodel.dir/rule
 
 # Convenience name for target.
@@ -172,7 +172,7 @@ mntmodel: src/tools/mntmodel/CMakeFiles/mntmodel.dir/rule
 
 # fast build rule for target.
 mntmodel/fast:
-	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f src/tools/mntmodel/CMakeFiles/mntmodel.dir/build.make src/tools/mntmodel/CMakeFiles/mntmodel.dir/build
+	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f src/tools/mntmodel/CMakeFiles/mntmodel.dir/build.make src/tools/mntmodel/CMakeFiles/mntmodel.dir/build
 .PHONY : mntmodel/fast
 
 mntmodel.o: mntmodel.c.o
@@ -180,7 +180,7 @@ mntmodel.o: mntmodel.c.o
 
 # target to build an object file
 mntmodel.c.o:
-	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f src/tools/mntmodel/CMakeFiles/mntmodel.dir/build.make src/tools/mntmodel/CMakeFiles/mntmodel.dir/mntmodel.c.o
+	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f src/tools/mntmodel/CMakeFiles/mntmodel.dir/build.make src/tools/mntmodel/CMakeFiles/mntmodel.dir/mntmodel.c.o
 .PHONY : mntmodel.c.o
 
 mntmodel.i: mntmodel.c.i
@@ -188,7 +188,7 @@ mntmodel.i: mntmodel.c.i
 
 # target to preprocess a source file
 mntmodel.c.i:
-	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f src/tools/mntmodel/CMakeFiles/mntmodel.dir/build.make src/tools/mntmodel/CMakeFiles/mntmodel.dir/mntmodel.c.i
+	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f src/tools/mntmodel/CMakeFiles/mntmodel.dir/build.make src/tools/mntmodel/CMakeFiles/mntmodel.dir/mntmodel.c.i
 .PHONY : mntmodel.c.i
 
 mntmodel.s: mntmodel.c.s
@@ -196,7 +196,7 @@ mntmodel.s: mntmodel.c.s
 
 # target to generate assembly for a file
 mntmodel.c.s:
-	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f src/tools/mntmodel/CMakeFiles/mntmodel.dir/build.make src/tools/mntmodel/CMakeFiles/mntmodel.dir/mntmodel.c.s
+	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f src/tools/mntmodel/CMakeFiles/mntmodel.dir/build.make src/tools/mntmodel/CMakeFiles/mntmodel.dir/mntmodel.c.s
 .PHONY : mntmodel.c.s
 
 # Help Target
@@ -226,6 +226,6 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
-	cd /home/voden/Projects/Talon-OCAAS && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
+	cd /home/voden/Projects/talon-ocaas && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system
 
