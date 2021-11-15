@@ -1,0 +1,6 @@
+add_subdirectory(libXmisc)
+add_subdirectory(libastro)
+add_subdirectory(libmisc)
+add_subdirectory(libfs)
+add_subdirectory(libwcs)
+add_subdirectory(libfits)

@@ -141,7 +141,7 @@ elNext (char buf[])
 	case 21:	/* ^U -- delete entire line */
 	    elClear();
 	    break;
-	    
+
 	case '\b':	/* backspace or delete -- delete char to left */
 	case 127:
 	    if (cc > 0) {

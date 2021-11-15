@@ -67,9 +67,11 @@ g_stop (Widget w, XtPointer client, XtPointer call)
 
 	msg ("All stop");
 
-	/* if batch is on reinstate direct controls and fifos */
-	if (batchIsOn())
-	    batchOff();
+	/* if batch is on reinstate direct controls and fifos
+     Removed Batch files
+   */
+	/* if (batchIsOn()) */
+	/*     batchOff(); */
 
 	/* issue stops to all fifos */
 	stop_all_devices();
@@ -156,11 +158,11 @@ g_limit (Widget w, XtPointer client, XtPointer call)
 	    XtUnmanageChild (limit_w);
 }
 
-void
-g_focus (Widget w, XtPointer client, XtPointer call)
-{
-	afoc_manage();
-}
+/* void */
+/* g_focus (Widget w, XtPointer client, XtPointer call) */
+/* { */
+/* 	afoc_manage(); */
+/* } */
 
 void
 g_calib (Widget w, XtPointer client, XtPointer call)

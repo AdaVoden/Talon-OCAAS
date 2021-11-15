@@ -99,3 +99,4 @@ addShmFITS (FImage *fip, TelStatShm *telstatshmp)
 						"Outdoor humidity, percent");
 	}
 }
+

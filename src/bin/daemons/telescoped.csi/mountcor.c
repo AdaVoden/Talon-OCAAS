@@ -262,4 +262,3 @@ sortMPoints()
 {
 	qsort ((void *)mpoints, nmpoints, sizeof(MeshPoint), cmpMP);
 }
-

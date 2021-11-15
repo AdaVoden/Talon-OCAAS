@@ -246,8 +246,4 @@ extern void tel_ideal2realxy (TelAxes *tap, double *Xp, double *Yp);
 extern int tel_solve_axes (double H[], double D[], double X[], double Y[],
     int nstars, double ftol, TelAxes *tap, double fitp[]);
 
-
-
-
-
 #endif // TELSTATSHM_H

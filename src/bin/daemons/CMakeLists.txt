@@ -1,0 +1,7 @@
+add_subdirectory(camerad)
+add_subdirectory(csimcd)
+add_subdirectory(gpsd)
+add_subdirectory(rund)
+add_subdirectory(shmd)
+add_subdirectory(telescoped)
+add_subdirectory(telescoped.csi)

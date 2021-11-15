@@ -1,6 +1,6 @@
 
 // include file created by makefile for specific build settings
-#include "buildcfg.h"
+/* #include "buildcfg.h" */
 
 /* ids for fifos.
  * N.B. see fifos[] in telescoped.c
