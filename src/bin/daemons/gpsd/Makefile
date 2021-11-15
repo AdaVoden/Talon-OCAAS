@@ -57,10 +57,10 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/voden/Projects/talon-ocaas
+CMAKE_SOURCE_DIR = /home/voden/Projects/Talon-OCAAS
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/voden/Projects/talon-ocaas
+CMAKE_BINARY_DIR = /home/voden/Projects/Talon-OCAAS
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -132,14 +132,14 @@ edit_cache/fast: edit_cache
 
 # The main all target
 all: cmake_check_build_system
-	cd /home/voden/Projects/talon-ocaas && $(CMAKE_COMMAND) -E cmake_progress_start /home/voden/Projects/talon-ocaas/CMakeFiles /home/voden/Projects/talon-ocaas/src/bin/daemons/gpsd//CMakeFiles/progress.marks
-	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/bin/daemons/gpsd/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/voden/Projects/talon-ocaas/CMakeFiles 0
+	cd /home/voden/Projects/Talon-OCAAS && $(CMAKE_COMMAND) -E cmake_progress_start /home/voden/Projects/Talon-OCAAS/CMakeFiles /home/voden/Projects/Talon-OCAAS/src/bin/daemons/gpsd//CMakeFiles/progress.marks
+	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/bin/daemons/gpsd/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/voden/Projects/Talon-OCAAS/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
 clean:
-	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/bin/daemons/gpsd/clean
+	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/bin/daemons/gpsd/clean
 .PHONY : clean
 
 # The main clean target
@@ -148,22 +148,22 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/bin/daemons/gpsd/preinstall
+	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/bin/daemons/gpsd/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/bin/daemons/gpsd/preinstall
+	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/bin/daemons/gpsd/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
 depend:
-	cd /home/voden/Projects/talon-ocaas && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
+	cd /home/voden/Projects/Talon-OCAAS && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
 # Convenience name for target.
 src/bin/daemons/gpsd/CMakeFiles/gpsd.dir/rule:
-	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/bin/daemons/gpsd/CMakeFiles/gpsd.dir/rule
+	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/bin/daemons/gpsd/CMakeFiles/gpsd.dir/rule
 .PHONY : src/bin/daemons/gpsd/CMakeFiles/gpsd.dir/rule
 
 # Convenience name for target.
@@ -172,7 +172,7 @@ gpsd: src/bin/daemons/gpsd/CMakeFiles/gpsd.dir/rule
 
 # fast build rule for target.
 gpsd/fast:
-	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f src/bin/daemons/gpsd/CMakeFiles/gpsd.dir/build.make src/bin/daemons/gpsd/CMakeFiles/gpsd.dir/build
+	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f src/bin/daemons/gpsd/CMakeFiles/gpsd.dir/build.make src/bin/daemons/gpsd/CMakeFiles/gpsd.dir/build
 .PHONY : gpsd/fast
 
 gpsd.o: gpsd.c.o
@@ -180,7 +180,7 @@ gpsd.o: gpsd.c.o
 
 # target to build an object file
 gpsd.c.o:
-	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f src/bin/daemons/gpsd/CMakeFiles/gpsd.dir/build.make src/bin/daemons/gpsd/CMakeFiles/gpsd.dir/gpsd.c.o
+	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f src/bin/daemons/gpsd/CMakeFiles/gpsd.dir/build.make src/bin/daemons/gpsd/CMakeFiles/gpsd.dir/gpsd.c.o
 .PHONY : gpsd.c.o
 
 gpsd.i: gpsd.c.i
@@ -188,7 +188,7 @@ gpsd.i: gpsd.c.i
 
 # target to preprocess a source file
 gpsd.c.i:
-	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f src/bin/daemons/gpsd/CMakeFiles/gpsd.dir/build.make src/bin/daemons/gpsd/CMakeFiles/gpsd.dir/gpsd.c.i
+	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f src/bin/daemons/gpsd/CMakeFiles/gpsd.dir/build.make src/bin/daemons/gpsd/CMakeFiles/gpsd.dir/gpsd.c.i
 .PHONY : gpsd.c.i
 
 gpsd.s: gpsd.c.s
@@ -196,7 +196,7 @@ gpsd.s: gpsd.c.s
 
 # target to generate assembly for a file
 gpsd.c.s:
-	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f src/bin/daemons/gpsd/CMakeFiles/gpsd.dir/build.make src/bin/daemons/gpsd/CMakeFiles/gpsd.dir/gpsd.c.s
+	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f src/bin/daemons/gpsd/CMakeFiles/gpsd.dir/build.make src/bin/daemons/gpsd/CMakeFiles/gpsd.dir/gpsd.c.s
 .PHONY : gpsd.c.s
 
 # Help Target
@@ -226,6 +226,6 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
-	cd /home/voden/Projects/talon-ocaas && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
+	cd /home/voden/Projects/Talon-OCAAS && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system
 

@@ -1,3 +1,4 @@
+add_subdirectory(camerad)
 add_subdirectory(csimcd)
 add_subdirectory(gpsd)
 add_subdirectory(rund)

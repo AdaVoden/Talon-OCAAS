@@ -227,5 +227,3 @@ flatField (FImage *from, FImage *to, int order)
 	return (0);
 }
 
-/* For RCS Only -- Do Not Edit */
-static char *rcsid[2] = {(char *)rcsid, "@(#) $RCSfile: filters.c,v $ $Date: 2003/04/15 20:48:14 $ $Revision: 1.1.1.1 $ $Name:  $"};

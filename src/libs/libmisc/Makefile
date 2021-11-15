@@ -57,10 +57,10 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/voden/Projects/talon-ocaas
+CMAKE_SOURCE_DIR = /home/voden/Projects/Talon-OCAAS
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/voden/Projects/talon-ocaas
+CMAKE_BINARY_DIR = /home/voden/Projects/Talon-OCAAS
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -132,14 +132,14 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	cd /home/voden/Projects/talon-ocaas && $(CMAKE_COMMAND) -E cmake_progress_start /home/voden/Projects/talon-ocaas/CMakeFiles /home/voden/Projects/talon-ocaas/src/libs/libmisc//CMakeFiles/progress.marks
-	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/libs/libmisc/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/voden/Projects/talon-ocaas/CMakeFiles 0
+	cd /home/voden/Projects/Talon-OCAAS && $(CMAKE_COMMAND) -E cmake_progress_start /home/voden/Projects/Talon-OCAAS/CMakeFiles /home/voden/Projects/Talon-OCAAS/src/libs/libmisc//CMakeFiles/progress.marks
+	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/libs/libmisc/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/voden/Projects/Talon-OCAAS/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
 clean:
-	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/libs/libmisc/clean
+	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/libs/libmisc/clean
 .PHONY : clean
 
 # The main clean target
@@ -148,22 +148,22 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/libs/libmisc/preinstall
+	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/libs/libmisc/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/libs/libmisc/preinstall
+	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/libs/libmisc/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
 depend:
-	cd /home/voden/Projects/talon-ocaas && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
+	cd /home/voden/Projects/Talon-OCAAS && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
 # Convenience name for target.
 src/libs/libmisc/CMakeFiles/misc.dir/rule:
-	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/libs/libmisc/CMakeFiles/misc.dir/rule
+	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/libs/libmisc/CMakeFiles/misc.dir/rule
 .PHONY : src/libs/libmisc/CMakeFiles/misc.dir/rule
 
 # Convenience name for target.
@@ -172,7 +172,7 @@ misc: src/libs/libmisc/CMakeFiles/misc.dir/rule
 
 # fast build rule for target.
 misc/fast:
-	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f src/libs/libmisc/CMakeFiles/misc.dir/build.make src/libs/libmisc/CMakeFiles/misc.dir/build
+	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f src/libs/libmisc/CMakeFiles/misc.dir/build.make src/libs/libmisc/CMakeFiles/misc.dir/build
 .PHONY : misc/fast
 
 catalogs.o: catalogs.c.o
@@ -180,7 +180,7 @@ catalogs.o: catalogs.c.o
 
 # target to build an object file
 catalogs.c.o:
-	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f src/libs/libmisc/CMakeFiles/misc.dir/build.make src/libs/libmisc/CMakeFiles/misc.dir/catalogs.c.o
+	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f src/libs/libmisc/CMakeFiles/misc.dir/build.make src/libs/libmisc/CMakeFiles/misc.dir/catalogs.c.o
 .PHONY : catalogs.c.o
 
 catalogs.i: catalogs.c.i
@@ -188,7 +188,7 @@ catalogs.i: catalogs.c.i
 
 # target to preprocess a source file
 catalogs.c.i:
-	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f src/libs/libmisc/CMakeFiles/misc.dir/build.make src/libs/libmisc/CMakeFiles/misc.dir/catalogs.c.i
+	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f src/libs/libmisc/CMakeFiles/misc.dir/build.make src/libs/libmisc/CMakeFiles/misc.dir/catalogs.c.i
 .PHONY : catalogs.c.i
 
 catalogs.s: catalogs.c.s
@@ -196,15 +196,39 @@ catalogs.s: catalogs.c.s
 
 # target to generate assembly for a file
 catalogs.c.s:
-	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f src/libs/libmisc/CMakeFiles/misc.dir/build.make src/libs/libmisc/CMakeFiles/misc.dir/catalogs.c.s
+	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f src/libs/libmisc/CMakeFiles/misc.dir/build.make src/libs/libmisc/CMakeFiles/misc.dir/catalogs.c.s
 .PHONY : catalogs.c.s
+
+ccdcamera.o: ccdcamera.c.o
+.PHONY : ccdcamera.o
+
+# target to build an object file
+ccdcamera.c.o:
+	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f src/libs/libmisc/CMakeFiles/misc.dir/build.make src/libs/libmisc/CMakeFiles/misc.dir/ccdcamera.c.o
+.PHONY : ccdcamera.c.o
+
+ccdcamera.i: ccdcamera.c.i
+.PHONY : ccdcamera.i
+
+# target to preprocess a source file
+ccdcamera.c.i:
+	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f src/libs/libmisc/CMakeFiles/misc.dir/build.make src/libs/libmisc/CMakeFiles/misc.dir/ccdcamera.c.i
+.PHONY : ccdcamera.c.i
+
+ccdcamera.s: ccdcamera.c.s
+.PHONY : ccdcamera.s
+
+# target to generate assembly for a file
+ccdcamera.c.s:
+	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f src/libs/libmisc/CMakeFiles/misc.dir/build.make src/libs/libmisc/CMakeFiles/misc.dir/ccdcamera.c.s
+.PHONY : ccdcamera.c.s
 
 cliserv.o: cliserv.c.o
 .PHONY : cliserv.o
 
 # target to build an object file
 cliserv.c.o:
-	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f src/libs/libmisc/CMakeFiles/misc.dir/build.make src/libs/libmisc/CMakeFiles/misc.dir/cliserv.c.o
+	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f src/libs/libmisc/CMakeFiles/misc.dir/build.make src/libs/libmisc/CMakeFiles/misc.dir/cliserv.c.o
 .PHONY : cliserv.c.o
 
 cliserv.i: cliserv.c.i
@@ -212,7 +236,7 @@ cliserv.i: cliserv.c.i
 
 # target to preprocess a source file
 cliserv.c.i:
-	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f src/libs/libmisc/CMakeFiles/misc.dir/build.make src/libs/libmisc/CMakeFiles/misc.dir/cliserv.c.i
+	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f src/libs/libmisc/CMakeFiles/misc.dir/build.make src/libs/libmisc/CMakeFiles/misc.dir/cliserv.c.i
 .PHONY : cliserv.c.i
 
 cliserv.s: cliserv.c.s
@@ -220,7 +244,7 @@ cliserv.s: cliserv.c.s
 
 # target to generate assembly for a file
 cliserv.c.s:
-	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f src/libs/libmisc/CMakeFiles/misc.dir/build.make src/libs/libmisc/CMakeFiles/misc.dir/cliserv.c.s
+	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f src/libs/libmisc/CMakeFiles/misc.dir/build.make src/libs/libmisc/CMakeFiles/misc.dir/cliserv.c.s
 .PHONY : cliserv.c.s
 
 configfile.o: configfile.c.o
@@ -228,7 +252,7 @@ configfile.o: configfile.c.o
 
 # target to build an object file
 configfile.c.o:
-	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f src/libs/libmisc/CMakeFiles/misc.dir/build.make src/libs/libmisc/CMakeFiles/misc.dir/configfile.c.o
+	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f src/libs/libmisc/CMakeFiles/misc.dir/build.make src/libs/libmisc/CMakeFiles/misc.dir/configfile.c.o
 .PHONY : configfile.c.o
 
 configfile.i: configfile.c.i
@@ -236,7 +260,7 @@ configfile.i: configfile.c.i
 
 # target to preprocess a source file
 configfile.c.i:
-	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f src/libs/libmisc/CMakeFiles/misc.dir/build.make src/libs/libmisc/CMakeFiles/misc.dir/configfile.c.i
+	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f src/libs/libmisc/CMakeFiles/misc.dir/build.make src/libs/libmisc/CMakeFiles/misc.dir/configfile.c.i
 .PHONY : configfile.c.i
 
 configfile.s: configfile.c.s
@@ -244,7 +268,7 @@ configfile.s: configfile.c.s
 
 # target to generate assembly for a file
 configfile.c.s:
-	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f src/libs/libmisc/CMakeFiles/misc.dir/build.make src/libs/libmisc/CMakeFiles/misc.dir/configfile.c.s
+	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f src/libs/libmisc/CMakeFiles/misc.dir/build.make src/libs/libmisc/CMakeFiles/misc.dir/configfile.c.s
 .PHONY : configfile.c.s
 
 crackini.o: crackini.c.o
@@ -252,7 +276,7 @@ crackini.o: crackini.c.o
 
 # target to build an object file
 crackini.c.o:
-	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f src/libs/libmisc/CMakeFiles/misc.dir/build.make src/libs/libmisc/CMakeFiles/misc.dir/crackini.c.o
+	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f src/libs/libmisc/CMakeFiles/misc.dir/build.make src/libs/libmisc/CMakeFiles/misc.dir/crackini.c.o
 .PHONY : crackini.c.o
 
 crackini.i: crackini.c.i
@@ -260,7 +284,7 @@ crackini.i: crackini.c.i
 
 # target to preprocess a source file
 crackini.c.i:
-	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f src/libs/libmisc/CMakeFiles/misc.dir/build.make src/libs/libmisc/CMakeFiles/misc.dir/crackini.c.i
+	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f src/libs/libmisc/CMakeFiles/misc.dir/build.make src/libs/libmisc/CMakeFiles/misc.dir/crackini.c.i
 .PHONY : crackini.c.i
 
 crackini.s: crackini.c.s
@@ -268,7 +292,7 @@ crackini.s: crackini.c.s
 
 # target to generate assembly for a file
 crackini.c.s:
-	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f src/libs/libmisc/CMakeFiles/misc.dir/build.make src/libs/libmisc/CMakeFiles/misc.dir/crackini.c.s
+	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f src/libs/libmisc/CMakeFiles/misc.dir/build.make src/libs/libmisc/CMakeFiles/misc.dir/crackini.c.s
 .PHONY : crackini.c.s
 
 csimc.o: csimc.c.o
@@ -276,7 +300,7 @@ csimc.o: csimc.c.o
 
 # target to build an object file
 csimc.c.o:
-	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f src/libs/libmisc/CMakeFiles/misc.dir/build.make src/libs/libmisc/CMakeFiles/misc.dir/csimc.c.o
+	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f src/libs/libmisc/CMakeFiles/misc.dir/build.make src/libs/libmisc/CMakeFiles/misc.dir/csimc.c.o
 .PHONY : csimc.c.o
 
 csimc.i: csimc.c.i
@@ -284,7 +308,7 @@ csimc.i: csimc.c.i
 
 # target to preprocess a source file
 csimc.c.i:
-	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f src/libs/libmisc/CMakeFiles/misc.dir/build.make src/libs/libmisc/CMakeFiles/misc.dir/csimc.c.i
+	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f src/libs/libmisc/CMakeFiles/misc.dir/build.make src/libs/libmisc/CMakeFiles/misc.dir/csimc.c.i
 .PHONY : csimc.c.i
 
 csimc.s: csimc.c.s
@@ -292,7 +316,7 @@ csimc.s: csimc.c.s
 
 # target to generate assembly for a file
 csimc.c.s:
-	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f src/libs/libmisc/CMakeFiles/misc.dir/build.make src/libs/libmisc/CMakeFiles/misc.dir/csimc.c.s
+	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f src/libs/libmisc/CMakeFiles/misc.dir/build.make src/libs/libmisc/CMakeFiles/misc.dir/csimc.c.s
 .PHONY : csimc.c.s
 
 focustemp.o: focustemp.c.o
@@ -300,7 +324,7 @@ focustemp.o: focustemp.c.o
 
 # target to build an object file
 focustemp.c.o:
-	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f src/libs/libmisc/CMakeFiles/misc.dir/build.make src/libs/libmisc/CMakeFiles/misc.dir/focustemp.c.o
+	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f src/libs/libmisc/CMakeFiles/misc.dir/build.make src/libs/libmisc/CMakeFiles/misc.dir/focustemp.c.o
 .PHONY : focustemp.c.o
 
 focustemp.i: focustemp.c.i
@@ -308,7 +332,7 @@ focustemp.i: focustemp.c.i
 
 # target to preprocess a source file
 focustemp.c.i:
-	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f src/libs/libmisc/CMakeFiles/misc.dir/build.make src/libs/libmisc/CMakeFiles/misc.dir/focustemp.c.i
+	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f src/libs/libmisc/CMakeFiles/misc.dir/build.make src/libs/libmisc/CMakeFiles/misc.dir/focustemp.c.i
 .PHONY : focustemp.c.i
 
 focustemp.s: focustemp.c.s
@@ -316,7 +340,7 @@ focustemp.s: focustemp.c.s
 
 # target to generate assembly for a file
 focustemp.c.s:
-	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f src/libs/libmisc/CMakeFiles/misc.dir/build.make src/libs/libmisc/CMakeFiles/misc.dir/focustemp.c.s
+	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f src/libs/libmisc/CMakeFiles/misc.dir/build.make src/libs/libmisc/CMakeFiles/misc.dir/focustemp.c.s
 .PHONY : focustemp.c.s
 
 funcmax.o: funcmax.c.o
@@ -324,7 +348,7 @@ funcmax.o: funcmax.c.o
 
 # target to build an object file
 funcmax.c.o:
-	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f src/libs/libmisc/CMakeFiles/misc.dir/build.make src/libs/libmisc/CMakeFiles/misc.dir/funcmax.c.o
+	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f src/libs/libmisc/CMakeFiles/misc.dir/build.make src/libs/libmisc/CMakeFiles/misc.dir/funcmax.c.o
 .PHONY : funcmax.c.o
 
 funcmax.i: funcmax.c.i
@@ -332,7 +356,7 @@ funcmax.i: funcmax.c.i
 
 # target to preprocess a source file
 funcmax.c.i:
-	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f src/libs/libmisc/CMakeFiles/misc.dir/build.make src/libs/libmisc/CMakeFiles/misc.dir/funcmax.c.i
+	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f src/libs/libmisc/CMakeFiles/misc.dir/build.make src/libs/libmisc/CMakeFiles/misc.dir/funcmax.c.i
 .PHONY : funcmax.c.i
 
 funcmax.s: funcmax.c.s
@@ -340,7 +364,7 @@ funcmax.s: funcmax.c.s
 
 # target to generate assembly for a file
 funcmax.c.s:
-	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f src/libs/libmisc/CMakeFiles/misc.dir/build.make src/libs/libmisc/CMakeFiles/misc.dir/funcmax.c.s
+	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f src/libs/libmisc/CMakeFiles/misc.dir/build.make src/libs/libmisc/CMakeFiles/misc.dir/funcmax.c.s
 .PHONY : funcmax.c.s
 
 gaussfit.o: gaussfit.c.o
@@ -348,7 +372,7 @@ gaussfit.o: gaussfit.c.o
 
 # target to build an object file
 gaussfit.c.o:
-	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f src/libs/libmisc/CMakeFiles/misc.dir/build.make src/libs/libmisc/CMakeFiles/misc.dir/gaussfit.c.o
+	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f src/libs/libmisc/CMakeFiles/misc.dir/build.make src/libs/libmisc/CMakeFiles/misc.dir/gaussfit.c.o
 .PHONY : gaussfit.c.o
 
 gaussfit.i: gaussfit.c.i
@@ -356,7 +380,7 @@ gaussfit.i: gaussfit.c.i
 
 # target to preprocess a source file
 gaussfit.c.i:
-	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f src/libs/libmisc/CMakeFiles/misc.dir/build.make src/libs/libmisc/CMakeFiles/misc.dir/gaussfit.c.i
+	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f src/libs/libmisc/CMakeFiles/misc.dir/build.make src/libs/libmisc/CMakeFiles/misc.dir/gaussfit.c.i
 .PHONY : gaussfit.c.i
 
 gaussfit.s: gaussfit.c.s
@@ -364,7 +388,7 @@ gaussfit.s: gaussfit.c.s
 
 # target to generate assembly for a file
 gaussfit.c.s:
-	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f src/libs/libmisc/CMakeFiles/misc.dir/build.make src/libs/libmisc/CMakeFiles/misc.dir/gaussfit.c.s
+	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f src/libs/libmisc/CMakeFiles/misc.dir/build.make src/libs/libmisc/CMakeFiles/misc.dir/gaussfit.c.s
 .PHONY : gaussfit.c.s
 
 lstsqr.o: lstsqr.c.o
@@ -372,7 +396,7 @@ lstsqr.o: lstsqr.c.o
 
 # target to build an object file
 lstsqr.c.o:
-	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f src/libs/libmisc/CMakeFiles/misc.dir/build.make src/libs/libmisc/CMakeFiles/misc.dir/lstsqr.c.o
+	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f src/libs/libmisc/CMakeFiles/misc.dir/build.make src/libs/libmisc/CMakeFiles/misc.dir/lstsqr.c.o
 .PHONY : lstsqr.c.o
 
 lstsqr.i: lstsqr.c.i
@@ -380,7 +404,7 @@ lstsqr.i: lstsqr.c.i
 
 # target to preprocess a source file
 lstsqr.c.i:
-	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f src/libs/libmisc/CMakeFiles/misc.dir/build.make src/libs/libmisc/CMakeFiles/misc.dir/lstsqr.c.i
+	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f src/libs/libmisc/CMakeFiles/misc.dir/build.make src/libs/libmisc/CMakeFiles/misc.dir/lstsqr.c.i
 .PHONY : lstsqr.c.i
 
 lstsqr.s: lstsqr.c.s
@@ -388,7 +412,7 @@ lstsqr.s: lstsqr.c.s
 
 # target to generate assembly for a file
 lstsqr.c.s:
-	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f src/libs/libmisc/CMakeFiles/misc.dir/build.make src/libs/libmisc/CMakeFiles/misc.dir/lstsqr.c.s
+	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f src/libs/libmisc/CMakeFiles/misc.dir/build.make src/libs/libmisc/CMakeFiles/misc.dir/lstsqr.c.s
 .PHONY : lstsqr.c.s
 
 misc.o: misc.c.o
@@ -396,7 +420,7 @@ misc.o: misc.c.o
 
 # target to build an object file
 misc.c.o:
-	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f src/libs/libmisc/CMakeFiles/misc.dir/build.make src/libs/libmisc/CMakeFiles/misc.dir/misc.c.o
+	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f src/libs/libmisc/CMakeFiles/misc.dir/build.make src/libs/libmisc/CMakeFiles/misc.dir/misc.c.o
 .PHONY : misc.c.o
 
 misc.i: misc.c.i
@@ -404,7 +428,7 @@ misc.i: misc.c.i
 
 # target to preprocess a source file
 misc.c.i:
-	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f src/libs/libmisc/CMakeFiles/misc.dir/build.make src/libs/libmisc/CMakeFiles/misc.dir/misc.c.i
+	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f src/libs/libmisc/CMakeFiles/misc.dir/build.make src/libs/libmisc/CMakeFiles/misc.dir/misc.c.i
 .PHONY : misc.c.i
 
 misc.s: misc.c.s
@@ -412,7 +436,7 @@ misc.s: misc.c.s
 
 # target to generate assembly for a file
 misc.c.s:
-	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f src/libs/libmisc/CMakeFiles/misc.dir/build.make src/libs/libmisc/CMakeFiles/misc.dir/misc.c.s
+	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f src/libs/libmisc/CMakeFiles/misc.dir/build.make src/libs/libmisc/CMakeFiles/misc.dir/misc.c.s
 .PHONY : misc.c.s
 
 newton.o: newton.c.o
@@ -420,7 +444,7 @@ newton.o: newton.c.o
 
 # target to build an object file
 newton.c.o:
-	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f src/libs/libmisc/CMakeFiles/misc.dir/build.make src/libs/libmisc/CMakeFiles/misc.dir/newton.c.o
+	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f src/libs/libmisc/CMakeFiles/misc.dir/build.make src/libs/libmisc/CMakeFiles/misc.dir/newton.c.o
 .PHONY : newton.c.o
 
 newton.i: newton.c.i
@@ -428,7 +452,7 @@ newton.i: newton.c.i
 
 # target to preprocess a source file
 newton.c.i:
-	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f src/libs/libmisc/CMakeFiles/misc.dir/build.make src/libs/libmisc/CMakeFiles/misc.dir/newton.c.i
+	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f src/libs/libmisc/CMakeFiles/misc.dir/build.make src/libs/libmisc/CMakeFiles/misc.dir/newton.c.i
 .PHONY : newton.c.i
 
 newton.s: newton.c.s
@@ -436,7 +460,7 @@ newton.s: newton.c.s
 
 # target to generate assembly for a file
 newton.c.s:
-	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f src/libs/libmisc/CMakeFiles/misc.dir/build.make src/libs/libmisc/CMakeFiles/misc.dir/newton.c.s
+	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f src/libs/libmisc/CMakeFiles/misc.dir/build.make src/libs/libmisc/CMakeFiles/misc.dir/newton.c.s
 .PHONY : newton.c.s
 
 rot.o: rot.c.o
@@ -444,7 +468,7 @@ rot.o: rot.c.o
 
 # target to build an object file
 rot.c.o:
-	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f src/libs/libmisc/CMakeFiles/misc.dir/build.make src/libs/libmisc/CMakeFiles/misc.dir/rot.c.o
+	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f src/libs/libmisc/CMakeFiles/misc.dir/build.make src/libs/libmisc/CMakeFiles/misc.dir/rot.c.o
 .PHONY : rot.c.o
 
 rot.i: rot.c.i
@@ -452,7 +476,7 @@ rot.i: rot.c.i
 
 # target to preprocess a source file
 rot.c.i:
-	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f src/libs/libmisc/CMakeFiles/misc.dir/build.make src/libs/libmisc/CMakeFiles/misc.dir/rot.c.i
+	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f src/libs/libmisc/CMakeFiles/misc.dir/build.make src/libs/libmisc/CMakeFiles/misc.dir/rot.c.i
 .PHONY : rot.c.i
 
 rot.s: rot.c.s
@@ -460,7 +484,7 @@ rot.s: rot.c.s
 
 # target to generate assembly for a file
 rot.c.s:
-	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f src/libs/libmisc/CMakeFiles/misc.dir/build.make src/libs/libmisc/CMakeFiles/misc.dir/rot.c.s
+	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f src/libs/libmisc/CMakeFiles/misc.dir/build.make src/libs/libmisc/CMakeFiles/misc.dir/rot.c.s
 .PHONY : rot.c.s
 
 running.o: running.c.o
@@ -468,7 +492,7 @@ running.o: running.c.o
 
 # target to build an object file
 running.c.o:
-	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f src/libs/libmisc/CMakeFiles/misc.dir/build.make src/libs/libmisc/CMakeFiles/misc.dir/running.c.o
+	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f src/libs/libmisc/CMakeFiles/misc.dir/build.make src/libs/libmisc/CMakeFiles/misc.dir/running.c.o
 .PHONY : running.c.o
 
 running.i: running.c.i
@@ -476,7 +500,7 @@ running.i: running.c.i
 
 # target to preprocess a source file
 running.c.i:
-	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f src/libs/libmisc/CMakeFiles/misc.dir/build.make src/libs/libmisc/CMakeFiles/misc.dir/running.c.i
+	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f src/libs/libmisc/CMakeFiles/misc.dir/build.make src/libs/libmisc/CMakeFiles/misc.dir/running.c.i
 .PHONY : running.c.i
 
 running.s: running.c.s
@@ -484,15 +508,39 @@ running.s: running.c.s
 
 # target to generate assembly for a file
 running.c.s:
-	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f src/libs/libmisc/CMakeFiles/misc.dir/build.make src/libs/libmisc/CMakeFiles/misc.dir/running.c.s
+	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f src/libs/libmisc/CMakeFiles/misc.dir/build.make src/libs/libmisc/CMakeFiles/misc.dir/running.c.s
 .PHONY : running.c.s
+
+scan.o: scan.c.o
+.PHONY : scan.o
+
+# target to build an object file
+scan.c.o:
+	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f src/libs/libmisc/CMakeFiles/misc.dir/build.make src/libs/libmisc/CMakeFiles/misc.dir/scan.c.o
+.PHONY : scan.c.o
+
+scan.i: scan.c.i
+.PHONY : scan.i
+
+# target to preprocess a source file
+scan.c.i:
+	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f src/libs/libmisc/CMakeFiles/misc.dir/build.make src/libs/libmisc/CMakeFiles/misc.dir/scan.c.i
+.PHONY : scan.c.i
+
+scan.s: scan.c.s
+.PHONY : scan.s
+
+# target to generate assembly for a file
+scan.c.s:
+	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f src/libs/libmisc/CMakeFiles/misc.dir/build.make src/libs/libmisc/CMakeFiles/misc.dir/scan.c.s
+.PHONY : scan.c.s
 
 strops.o: strops.c.o
 .PHONY : strops.o
 
 # target to build an object file
 strops.c.o:
-	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f src/libs/libmisc/CMakeFiles/misc.dir/build.make src/libs/libmisc/CMakeFiles/misc.dir/strops.c.o
+	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f src/libs/libmisc/CMakeFiles/misc.dir/build.make src/libs/libmisc/CMakeFiles/misc.dir/strops.c.o
 .PHONY : strops.c.o
 
 strops.i: strops.c.i
@@ -500,7 +548,7 @@ strops.i: strops.c.i
 
 # target to preprocess a source file
 strops.c.i:
-	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f src/libs/libmisc/CMakeFiles/misc.dir/build.make src/libs/libmisc/CMakeFiles/misc.dir/strops.c.i
+	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f src/libs/libmisc/CMakeFiles/misc.dir/build.make src/libs/libmisc/CMakeFiles/misc.dir/strops.c.i
 .PHONY : strops.c.i
 
 strops.s: strops.c.s
@@ -508,7 +556,7 @@ strops.s: strops.c.s
 
 # target to generate assembly for a file
 strops.c.s:
-	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f src/libs/libmisc/CMakeFiles/misc.dir/build.make src/libs/libmisc/CMakeFiles/misc.dir/strops.c.s
+	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f src/libs/libmisc/CMakeFiles/misc.dir/build.make src/libs/libmisc/CMakeFiles/misc.dir/strops.c.s
 .PHONY : strops.c.s
 
 telaxes.o: telaxes.c.o
@@ -516,7 +564,7 @@ telaxes.o: telaxes.c.o
 
 # target to build an object file
 telaxes.c.o:
-	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f src/libs/libmisc/CMakeFiles/misc.dir/build.make src/libs/libmisc/CMakeFiles/misc.dir/telaxes.c.o
+	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f src/libs/libmisc/CMakeFiles/misc.dir/build.make src/libs/libmisc/CMakeFiles/misc.dir/telaxes.c.o
 .PHONY : telaxes.c.o
 
 telaxes.i: telaxes.c.i
@@ -524,7 +572,7 @@ telaxes.i: telaxes.c.i
 
 # target to preprocess a source file
 telaxes.c.i:
-	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f src/libs/libmisc/CMakeFiles/misc.dir/build.make src/libs/libmisc/CMakeFiles/misc.dir/telaxes.c.i
+	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f src/libs/libmisc/CMakeFiles/misc.dir/build.make src/libs/libmisc/CMakeFiles/misc.dir/telaxes.c.i
 .PHONY : telaxes.c.i
 
 telaxes.s: telaxes.c.s
@@ -532,7 +580,7 @@ telaxes.s: telaxes.c.s
 
 # target to generate assembly for a file
 telaxes.c.s:
-	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f src/libs/libmisc/CMakeFiles/misc.dir/build.make src/libs/libmisc/CMakeFiles/misc.dir/telaxes.c.s
+	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f src/libs/libmisc/CMakeFiles/misc.dir/build.make src/libs/libmisc/CMakeFiles/misc.dir/telaxes.c.s
 .PHONY : telaxes.c.s
 
 telenv.o: telenv.c.o
@@ -540,7 +588,7 @@ telenv.o: telenv.c.o
 
 # target to build an object file
 telenv.c.o:
-	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f src/libs/libmisc/CMakeFiles/misc.dir/build.make src/libs/libmisc/CMakeFiles/misc.dir/telenv.c.o
+	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f src/libs/libmisc/CMakeFiles/misc.dir/build.make src/libs/libmisc/CMakeFiles/misc.dir/telenv.c.o
 .PHONY : telenv.c.o
 
 telenv.i: telenv.c.i
@@ -548,7 +596,7 @@ telenv.i: telenv.c.i
 
 # target to preprocess a source file
 telenv.c.i:
-	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f src/libs/libmisc/CMakeFiles/misc.dir/build.make src/libs/libmisc/CMakeFiles/misc.dir/telenv.c.i
+	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f src/libs/libmisc/CMakeFiles/misc.dir/build.make src/libs/libmisc/CMakeFiles/misc.dir/telenv.c.i
 .PHONY : telenv.c.i
 
 telenv.s: telenv.c.s
@@ -556,15 +604,39 @@ telenv.s: telenv.c.s
 
 # target to generate assembly for a file
 telenv.c.s:
-	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f src/libs/libmisc/CMakeFiles/misc.dir/build.make src/libs/libmisc/CMakeFiles/misc.dir/telenv.c.s
+	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f src/libs/libmisc/CMakeFiles/misc.dir/build.make src/libs/libmisc/CMakeFiles/misc.dir/telenv.c.s
 .PHONY : telenv.c.s
+
+telfits.o: telfits.c.o
+.PHONY : telfits.o
+
+# target to build an object file
+telfits.c.o:
+	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f src/libs/libmisc/CMakeFiles/misc.dir/build.make src/libs/libmisc/CMakeFiles/misc.dir/telfits.c.o
+.PHONY : telfits.c.o
+
+telfits.i: telfits.c.i
+.PHONY : telfits.i
+
+# target to preprocess a source file
+telfits.c.i:
+	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f src/libs/libmisc/CMakeFiles/misc.dir/build.make src/libs/libmisc/CMakeFiles/misc.dir/telfits.c.i
+.PHONY : telfits.c.i
+
+telfits.s: telfits.c.s
+.PHONY : telfits.s
+
+# target to generate assembly for a file
+telfits.c.s:
+	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f src/libs/libmisc/CMakeFiles/misc.dir/build.make src/libs/libmisc/CMakeFiles/misc.dir/telfits.c.s
+.PHONY : telfits.c.s
 
 tts.o: tts.c.o
 .PHONY : tts.o
 
 # target to build an object file
 tts.c.o:
-	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f src/libs/libmisc/CMakeFiles/misc.dir/build.make src/libs/libmisc/CMakeFiles/misc.dir/tts.c.o
+	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f src/libs/libmisc/CMakeFiles/misc.dir/build.make src/libs/libmisc/CMakeFiles/misc.dir/tts.c.o
 .PHONY : tts.c.o
 
 tts.i: tts.c.i
@@ -572,7 +644,7 @@ tts.i: tts.c.i
 
 # target to preprocess a source file
 tts.c.i:
-	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f src/libs/libmisc/CMakeFiles/misc.dir/build.make src/libs/libmisc/CMakeFiles/misc.dir/tts.c.i
+	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f src/libs/libmisc/CMakeFiles/misc.dir/build.make src/libs/libmisc/CMakeFiles/misc.dir/tts.c.i
 .PHONY : tts.c.i
 
 tts.s: tts.c.s
@@ -580,7 +652,7 @@ tts.s: tts.c.s
 
 # target to generate assembly for a file
 tts.c.s:
-	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f src/libs/libmisc/CMakeFiles/misc.dir/build.make src/libs/libmisc/CMakeFiles/misc.dir/tts.c.s
+	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f src/libs/libmisc/CMakeFiles/misc.dir/build.make src/libs/libmisc/CMakeFiles/misc.dir/tts.c.s
 .PHONY : tts.c.s
 
 # Help Target
@@ -599,6 +671,9 @@ help:
 	@echo "... catalogs.o"
 	@echo "... catalogs.i"
 	@echo "... catalogs.s"
+	@echo "... ccdcamera.o"
+	@echo "... ccdcamera.i"
+	@echo "... ccdcamera.s"
 	@echo "... cliserv.o"
 	@echo "... cliserv.i"
 	@echo "... cliserv.s"
@@ -635,6 +710,9 @@ help:
 	@echo "... running.o"
 	@echo "... running.i"
 	@echo "... running.s"
+	@echo "... scan.o"
+	@echo "... scan.i"
+	@echo "... scan.s"
 	@echo "... strops.o"
 	@echo "... strops.i"
 	@echo "... strops.s"
@@ -644,6 +722,9 @@ help:
 	@echo "... telenv.o"
 	@echo "... telenv.i"
 	@echo "... telenv.s"
+	@echo "... telfits.o"
+	@echo "... telfits.i"
+	@echo "... telfits.s"
 	@echo "... tts.o"
 	@echo "... tts.i"
 	@echo "... tts.s"
@@ -658,6 +739,6 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
-	cd /home/voden/Projects/talon-ocaas && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
+	cd /home/voden/Projects/Talon-OCAAS && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system
 

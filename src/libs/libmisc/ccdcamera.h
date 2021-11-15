@@ -88,7 +88,3 @@ extern void abortExpCCD (void);
 #endif	/* __KERNEL__ */
 
 #endif	/* _CCDCAM_H */
-
-/* For RCS Only -- Do Not Edit
- * @(#) $RCSfile: ccdcamera.h,v $ $Date: 2003/04/15 20:48:18 $ $Revision: 1.1.1.1 $ $Name:  $
- */

@@ -30,6 +30,3 @@ int x, y, w, h;
 	setRealFITS (fip1, "CRPIX1", w/2.0, 10, "RA reference pixel index");
 	setRealFITS (fip1, "CRPIX2", h/2.0, 10, "Dec reference pixel index");
 }
-
-/* For RCS Only -- Do Not Edit */
-static char *rcsid[2] = {(char *)rcsid, "@(#) $RCSfile: resetwcs.c,v $ $Date: 2003/04/15 20:48:19 $ $Revision: 1.1.1.1 $ $Name:  $"};

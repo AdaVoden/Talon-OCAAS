@@ -680,5 +680,3 @@ double pixszh)
 					    "Rotation N through E, degrees");
 }
 
-/* For RCS Only -- Do Not Edit */
-static char *rcsid[2] = {(char *)rcsid, "@(#) $RCSfile: findreg.c,v $ $Date: 2003/04/15 20:48:19 $ $Revision: 1.1.1.1 $ $Name:  $"};

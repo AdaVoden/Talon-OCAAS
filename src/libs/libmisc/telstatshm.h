@@ -3,6 +3,9 @@
 #ifndef TELSTATSHM_H
 #define TELSTATSHM_H
 
+#include "ccdcamera.h"
+#include "scan.h"
+
 /* shared memory key; can be anything unlikely ;-)
  * N.B. bug in some ipcrm's prevents removing it if it's greater than 1<<31.
  */
@@ -172,7 +175,9 @@ typedef struct {
 
     /* various status indicators */
     TelState telstate;		/* telescope state */
-  int camtemp;		/* current ccd camera temperature, C */
+    CCDTempStatus coolerstatus;	/* one of CCDTempStatus values */
+    CamState camstate;		/* camera state */
+    int camtemp;		/* current ccd camera temperature, C */
     int camtarg;		/* target ccd camera temperature */
     char filter;		/* current filter, or < or > if moving */
     int lights;			/* flat lights: -1 none; 0 off; > 0 intensity */
@@ -183,6 +188,9 @@ typedef struct {
     double dometaz;		/* dome target azimuth, rads +E of N */
     DomeState domestate;	/* dome state */
     DShState shutterstate;	/* shutter state */
+
+    /* info about the current or next run. filled periodically by telrun */
+    Scan scan;
 
     /* other weather stats */
     WxStats wxs;
@@ -237,9 +245,5 @@ extern void tel_realxy2ideal (TelAxes *tap, double *Xp, double *Yp);
 extern void tel_ideal2realxy (TelAxes *tap, double *Xp, double *Yp);
 extern int tel_solve_axes (double H[], double D[], double X[], double Y[],
     int nstars, double ftol, TelAxes *tap, double fitp[]);
-
-
-
-
 
 #endif // TELSTATSHM_H

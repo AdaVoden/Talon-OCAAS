@@ -55,8 +55,8 @@ int virtual_mode;			/* non-zero for virtual mode enabled */
 char tscfn[] = "archive/config/telsched.cfg";
 char tdcfn[] = "archive/config/telescoped.cfg";
 char hcfn[] = "archive/config/home.cfg";
-/* char ocfn[] = "archive/config/focus.cfg"; */
-/* char icfn[] = "archive/config/filter.cfg"; */
+char ocfn[] = "archive/config/focus.cfg";
+char icfn[] = "archive/config/filter.cfg";
 char dcfn[] = "archive/config/dome.cfg";
 
 static void usage (void);

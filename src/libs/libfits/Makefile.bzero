@@ -23,5 +23,3 @@ clobber:
 	touch x.o
 	rm -f *.o libfits.a libfits.so
 
-# For RCS Only -- Do Not Edit
-# @(#) $RCSfile: Makefile.bzero,v $ $Date: 2003/04/15 20:48:14 $ $Revision: 1.1.1.1 $ $Name:  $

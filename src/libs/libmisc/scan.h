@@ -90,7 +90,3 @@ extern void ccdSOStrs (char *names[CCDSO_NSTR]);
 #define ACPYZ(d,s)      (void)strncpy(d,s,sizeof(d)-1)
 
 #endif /* _SCAN_H */
-
-/* For RCS Only -- Do Not Edit
- * @(#) $RCSfile: scan.h,v $ $Date: 2003/04/15 20:48:18 $ $Revision: 1.1.1.1 $ $Name:  $
- */

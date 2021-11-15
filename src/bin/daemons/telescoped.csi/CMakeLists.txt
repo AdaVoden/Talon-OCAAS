@@ -8,7 +8,9 @@ set(
   axes.c
   csimc.c
   dome.c
+  filter.c
   fifoio.c
+  focus.c
   lights.c
   mountcor.c
   powerfail.c

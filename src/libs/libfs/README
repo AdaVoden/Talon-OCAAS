@@ -10,5 +10,3 @@ of stars near any direction.
 For test, a complete program, sadump, accepts RA/Dec/FOV on the command line and
 prints the SA?.0 fields in said region to stdout in .edb format.
 
-! For RCS Only -- Do Not Edit
-! @(#) $RCSfile: README,v $ $Date: 2003/04/15 20:48:17 $ $Revision: 1.1.1.1 $ $Name:  $

@@ -57,10 +57,10 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/voden/Projects/talon-ocaas
+CMAKE_SOURCE_DIR = /home/voden/Projects/Talon-OCAAS
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/voden/Projects/talon-ocaas
+CMAKE_BINARY_DIR = /home/voden/Projects/Talon-OCAAS
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -132,14 +132,14 @@ edit_cache/fast: edit_cache
 
 # The main all target
 all: cmake_check_build_system
-	cd /home/voden/Projects/talon-ocaas && $(CMAKE_COMMAND) -E cmake_progress_start /home/voden/Projects/talon-ocaas/CMakeFiles /home/voden/Projects/talon-ocaas/src/bin/xobs//CMakeFiles/progress.marks
-	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/bin/xobs/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/voden/Projects/talon-ocaas/CMakeFiles 0
+	cd /home/voden/Projects/Talon-OCAAS && $(CMAKE_COMMAND) -E cmake_progress_start /home/voden/Projects/Talon-OCAAS/CMakeFiles /home/voden/Projects/Talon-OCAAS/src/bin/xobs//CMakeFiles/progress.marks
+	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/bin/xobs/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/voden/Projects/Talon-OCAAS/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
 clean:
-	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/bin/xobs/clean
+	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/bin/xobs/clean
 .PHONY : clean
 
 # The main clean target
@@ -148,22 +148,22 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/bin/xobs/preinstall
+	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/bin/xobs/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/bin/xobs/preinstall
+	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/bin/xobs/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
 depend:
-	cd /home/voden/Projects/talon-ocaas && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
+	cd /home/voden/Projects/Talon-OCAAS && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
 # Convenience name for target.
 src/bin/xobs/CMakeFiles/xobs.dir/rule:
-	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/bin/xobs/CMakeFiles/xobs.dir/rule
+	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/bin/xobs/CMakeFiles/xobs.dir/rule
 .PHONY : src/bin/xobs/CMakeFiles/xobs.dir/rule
 
 # Convenience name for target.
@@ -172,7 +172,7 @@ xobs: src/bin/xobs/CMakeFiles/xobs.dir/rule
 
 # fast build rule for target.
 xobs/fast:
-	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f src/bin/xobs/CMakeFiles/xobs.dir/build.make src/bin/xobs/CMakeFiles/xobs.dir/build
+	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f src/bin/xobs/CMakeFiles/xobs.dir/build.make src/bin/xobs/CMakeFiles/xobs.dir/build
 .PHONY : xobs/fast
 
 calaxes.o: calaxes.c.o
@@ -180,7 +180,7 @@ calaxes.o: calaxes.c.o
 
 # target to build an object file
 calaxes.c.o:
-	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f src/bin/xobs/CMakeFiles/xobs.dir/build.make src/bin/xobs/CMakeFiles/xobs.dir/calaxes.c.o
+	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f src/bin/xobs/CMakeFiles/xobs.dir/build.make src/bin/xobs/CMakeFiles/xobs.dir/calaxes.c.o
 .PHONY : calaxes.c.o
 
 calaxes.i: calaxes.c.i
@@ -188,7 +188,7 @@ calaxes.i: calaxes.c.i
 
 # target to preprocess a source file
 calaxes.c.i:
-	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f src/bin/xobs/CMakeFiles/xobs.dir/build.make src/bin/xobs/CMakeFiles/xobs.dir/calaxes.c.i
+	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f src/bin/xobs/CMakeFiles/xobs.dir/build.make src/bin/xobs/CMakeFiles/xobs.dir/calaxes.c.i
 .PHONY : calaxes.c.i
 
 calaxes.s: calaxes.c.s
@@ -196,7 +196,7 @@ calaxes.s: calaxes.c.s
 
 # target to generate assembly for a file
 calaxes.c.s:
-	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f src/bin/xobs/CMakeFiles/xobs.dir/build.make src/bin/xobs/CMakeFiles/xobs.dir/calaxes.c.s
+	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f src/bin/xobs/CMakeFiles/xobs.dir/build.make src/bin/xobs/CMakeFiles/xobs.dir/calaxes.c.s
 .PHONY : calaxes.c.s
 
 config.o: config.c.o
@@ -204,7 +204,7 @@ config.o: config.c.o
 
 # target to build an object file
 config.c.o:
-	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f src/bin/xobs/CMakeFiles/xobs.dir/build.make src/bin/xobs/CMakeFiles/xobs.dir/config.c.o
+	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f src/bin/xobs/CMakeFiles/xobs.dir/build.make src/bin/xobs/CMakeFiles/xobs.dir/config.c.o
 .PHONY : config.c.o
 
 config.i: config.c.i
@@ -212,7 +212,7 @@ config.i: config.c.i
 
 # target to preprocess a source file
 config.c.i:
-	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f src/bin/xobs/CMakeFiles/xobs.dir/build.make src/bin/xobs/CMakeFiles/xobs.dir/config.c.i
+	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f src/bin/xobs/CMakeFiles/xobs.dir/build.make src/bin/xobs/CMakeFiles/xobs.dir/config.c.i
 .PHONY : config.c.i
 
 config.s: config.c.s
@@ -220,7 +220,7 @@ config.s: config.c.s
 
 # target to generate assembly for a file
 config.c.s:
-	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f src/bin/xobs/CMakeFiles/xobs.dir/build.make src/bin/xobs/CMakeFiles/xobs.dir/config.c.s
+	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f src/bin/xobs/CMakeFiles/xobs.dir/build.make src/bin/xobs/CMakeFiles/xobs.dir/config.c.s
 .PHONY : config.c.s
 
 control.o: control.c.o
@@ -228,7 +228,7 @@ control.o: control.c.o
 
 # target to build an object file
 control.c.o:
-	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f src/bin/xobs/CMakeFiles/xobs.dir/build.make src/bin/xobs/CMakeFiles/xobs.dir/control.c.o
+	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f src/bin/xobs/CMakeFiles/xobs.dir/build.make src/bin/xobs/CMakeFiles/xobs.dir/control.c.o
 .PHONY : control.c.o
 
 control.i: control.c.i
@@ -236,7 +236,7 @@ control.i: control.c.i
 
 # target to preprocess a source file
 control.c.i:
-	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f src/bin/xobs/CMakeFiles/xobs.dir/build.make src/bin/xobs/CMakeFiles/xobs.dir/control.c.i
+	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f src/bin/xobs/CMakeFiles/xobs.dir/build.make src/bin/xobs/CMakeFiles/xobs.dir/control.c.i
 .PHONY : control.c.i
 
 control.s: control.c.s
@@ -244,7 +244,7 @@ control.s: control.c.s
 
 # target to generate assembly for a file
 control.c.s:
-	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f src/bin/xobs/CMakeFiles/xobs.dir/build.make src/bin/xobs/CMakeFiles/xobs.dir/control.c.s
+	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f src/bin/xobs/CMakeFiles/xobs.dir/build.make src/bin/xobs/CMakeFiles/xobs.dir/control.c.s
 .PHONY : control.c.s
 
 dome.o: dome.c.o
@@ -252,7 +252,7 @@ dome.o: dome.c.o
 
 # target to build an object file
 dome.c.o:
-	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f src/bin/xobs/CMakeFiles/xobs.dir/build.make src/bin/xobs/CMakeFiles/xobs.dir/dome.c.o
+	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f src/bin/xobs/CMakeFiles/xobs.dir/build.make src/bin/xobs/CMakeFiles/xobs.dir/dome.c.o
 .PHONY : dome.c.o
 
 dome.i: dome.c.i
@@ -260,7 +260,7 @@ dome.i: dome.c.i
 
 # target to preprocess a source file
 dome.c.i:
-	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f src/bin/xobs/CMakeFiles/xobs.dir/build.make src/bin/xobs/CMakeFiles/xobs.dir/dome.c.i
+	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f src/bin/xobs/CMakeFiles/xobs.dir/build.make src/bin/xobs/CMakeFiles/xobs.dir/dome.c.i
 .PHONY : dome.c.i
 
 dome.s: dome.c.s
@@ -268,7 +268,7 @@ dome.s: dome.c.s
 
 # target to generate assembly for a file
 dome.c.s:
-	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f src/bin/xobs/CMakeFiles/xobs.dir/build.make src/bin/xobs/CMakeFiles/xobs.dir/dome.c.s
+	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f src/bin/xobs/CMakeFiles/xobs.dir/build.make src/bin/xobs/CMakeFiles/xobs.dir/dome.c.s
 .PHONY : dome.c.s
 
 fifos.o: fifos.c.o
@@ -276,7 +276,7 @@ fifos.o: fifos.c.o
 
 # target to build an object file
 fifos.c.o:
-	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f src/bin/xobs/CMakeFiles/xobs.dir/build.make src/bin/xobs/CMakeFiles/xobs.dir/fifos.c.o
+	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f src/bin/xobs/CMakeFiles/xobs.dir/build.make src/bin/xobs/CMakeFiles/xobs.dir/fifos.c.o
 .PHONY : fifos.c.o
 
 fifos.i: fifos.c.i
@@ -284,7 +284,7 @@ fifos.i: fifos.c.i
 
 # target to preprocess a source file
 fifos.c.i:
-	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f src/bin/xobs/CMakeFiles/xobs.dir/build.make src/bin/xobs/CMakeFiles/xobs.dir/fifos.c.i
+	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f src/bin/xobs/CMakeFiles/xobs.dir/build.make src/bin/xobs/CMakeFiles/xobs.dir/fifos.c.i
 .PHONY : fifos.c.i
 
 fifos.s: fifos.c.s
@@ -292,7 +292,7 @@ fifos.s: fifos.c.s
 
 # target to generate assembly for a file
 fifos.c.s:
-	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f src/bin/xobs/CMakeFiles/xobs.dir/build.make src/bin/xobs/CMakeFiles/xobs.dir/fifos.c.s
+	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f src/bin/xobs/CMakeFiles/xobs.dir/build.make src/bin/xobs/CMakeFiles/xobs.dir/fifos.c.s
 .PHONY : fifos.c.s
 
 gui.o: gui.c.o
@@ -300,7 +300,7 @@ gui.o: gui.c.o
 
 # target to build an object file
 gui.c.o:
-	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f src/bin/xobs/CMakeFiles/xobs.dir/build.make src/bin/xobs/CMakeFiles/xobs.dir/gui.c.o
+	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f src/bin/xobs/CMakeFiles/xobs.dir/build.make src/bin/xobs/CMakeFiles/xobs.dir/gui.c.o
 .PHONY : gui.c.o
 
 gui.i: gui.c.i
@@ -308,7 +308,7 @@ gui.i: gui.c.i
 
 # target to preprocess a source file
 gui.c.i:
-	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f src/bin/xobs/CMakeFiles/xobs.dir/build.make src/bin/xobs/CMakeFiles/xobs.dir/gui.c.i
+	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f src/bin/xobs/CMakeFiles/xobs.dir/build.make src/bin/xobs/CMakeFiles/xobs.dir/gui.c.i
 .PHONY : gui.c.i
 
 gui.s: gui.c.s
@@ -316,7 +316,7 @@ gui.s: gui.c.s
 
 # target to generate assembly for a file
 gui.c.s:
-	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f src/bin/xobs/CMakeFiles/xobs.dir/build.make src/bin/xobs/CMakeFiles/xobs.dir/gui.c.s
+	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f src/bin/xobs/CMakeFiles/xobs.dir/build.make src/bin/xobs/CMakeFiles/xobs.dir/gui.c.s
 .PHONY : gui.c.s
 
 paddle.o: paddle.c.o
@@ -324,7 +324,7 @@ paddle.o: paddle.c.o
 
 # target to build an object file
 paddle.c.o:
-	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f src/bin/xobs/CMakeFiles/xobs.dir/build.make src/bin/xobs/CMakeFiles/xobs.dir/paddle.c.o
+	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f src/bin/xobs/CMakeFiles/xobs.dir/build.make src/bin/xobs/CMakeFiles/xobs.dir/paddle.c.o
 .PHONY : paddle.c.o
 
 paddle.i: paddle.c.i
@@ -332,7 +332,7 @@ paddle.i: paddle.c.i
 
 # target to preprocess a source file
 paddle.c.i:
-	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f src/bin/xobs/CMakeFiles/xobs.dir/build.make src/bin/xobs/CMakeFiles/xobs.dir/paddle.c.i
+	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f src/bin/xobs/CMakeFiles/xobs.dir/build.make src/bin/xobs/CMakeFiles/xobs.dir/paddle.c.i
 .PHONY : paddle.c.i
 
 paddle.s: paddle.c.s
@@ -340,7 +340,7 @@ paddle.s: paddle.c.s
 
 # target to generate assembly for a file
 paddle.c.s:
-	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f src/bin/xobs/CMakeFiles/xobs.dir/build.make src/bin/xobs/CMakeFiles/xobs.dir/paddle.c.s
+	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f src/bin/xobs/CMakeFiles/xobs.dir/build.make src/bin/xobs/CMakeFiles/xobs.dir/paddle.c.s
 .PHONY : paddle.c.s
 
 query.o: query.c.o
@@ -348,7 +348,7 @@ query.o: query.c.o
 
 # target to build an object file
 query.c.o:
-	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f src/bin/xobs/CMakeFiles/xobs.dir/build.make src/bin/xobs/CMakeFiles/xobs.dir/query.c.o
+	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f src/bin/xobs/CMakeFiles/xobs.dir/build.make src/bin/xobs/CMakeFiles/xobs.dir/query.c.o
 .PHONY : query.c.o
 
 query.i: query.c.i
@@ -356,7 +356,7 @@ query.i: query.c.i
 
 # target to preprocess a source file
 query.c.i:
-	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f src/bin/xobs/CMakeFiles/xobs.dir/build.make src/bin/xobs/CMakeFiles/xobs.dir/query.c.i
+	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f src/bin/xobs/CMakeFiles/xobs.dir/build.make src/bin/xobs/CMakeFiles/xobs.dir/query.c.i
 .PHONY : query.c.i
 
 query.s: query.c.s
@@ -364,7 +364,7 @@ query.s: query.c.s
 
 # target to generate assembly for a file
 query.c.s:
-	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f src/bin/xobs/CMakeFiles/xobs.dir/build.make src/bin/xobs/CMakeFiles/xobs.dir/query.c.s
+	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f src/bin/xobs/CMakeFiles/xobs.dir/build.make src/bin/xobs/CMakeFiles/xobs.dir/query.c.s
 .PHONY : query.c.s
 
 scope.o: scope.c.o
@@ -372,7 +372,7 @@ scope.o: scope.c.o
 
 # target to build an object file
 scope.c.o:
-	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f src/bin/xobs/CMakeFiles/xobs.dir/build.make src/bin/xobs/CMakeFiles/xobs.dir/scope.c.o
+	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f src/bin/xobs/CMakeFiles/xobs.dir/build.make src/bin/xobs/CMakeFiles/xobs.dir/scope.c.o
 .PHONY : scope.c.o
 
 scope.i: scope.c.i
@@ -380,7 +380,7 @@ scope.i: scope.c.i
 
 # target to preprocess a source file
 scope.c.i:
-	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f src/bin/xobs/CMakeFiles/xobs.dir/build.make src/bin/xobs/CMakeFiles/xobs.dir/scope.c.i
+	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f src/bin/xobs/CMakeFiles/xobs.dir/build.make src/bin/xobs/CMakeFiles/xobs.dir/scope.c.i
 .PHONY : scope.c.i
 
 scope.s: scope.c.s
@@ -388,7 +388,7 @@ scope.s: scope.c.s
 
 # target to generate assembly for a file
 scope.c.s:
-	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f src/bin/xobs/CMakeFiles/xobs.dir/build.make src/bin/xobs/CMakeFiles/xobs.dir/scope.c.s
+	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f src/bin/xobs/CMakeFiles/xobs.dir/build.make src/bin/xobs/CMakeFiles/xobs.dir/scope.c.s
 .PHONY : scope.c.s
 
 skymap.o: skymap.c.o
@@ -396,7 +396,7 @@ skymap.o: skymap.c.o
 
 # target to build an object file
 skymap.c.o:
-	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f src/bin/xobs/CMakeFiles/xobs.dir/build.make src/bin/xobs/CMakeFiles/xobs.dir/skymap.c.o
+	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f src/bin/xobs/CMakeFiles/xobs.dir/build.make src/bin/xobs/CMakeFiles/xobs.dir/skymap.c.o
 .PHONY : skymap.c.o
 
 skymap.i: skymap.c.i
@@ -404,7 +404,7 @@ skymap.i: skymap.c.i
 
 # target to preprocess a source file
 skymap.c.i:
-	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f src/bin/xobs/CMakeFiles/xobs.dir/build.make src/bin/xobs/CMakeFiles/xobs.dir/skymap.c.i
+	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f src/bin/xobs/CMakeFiles/xobs.dir/build.make src/bin/xobs/CMakeFiles/xobs.dir/skymap.c.i
 .PHONY : skymap.c.i
 
 skymap.s: skymap.c.s
@@ -412,7 +412,7 @@ skymap.s: skymap.c.s
 
 # target to generate assembly for a file
 skymap.c.s:
-	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f src/bin/xobs/CMakeFiles/xobs.dir/build.make src/bin/xobs/CMakeFiles/xobs.dir/skymap.c.s
+	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f src/bin/xobs/CMakeFiles/xobs.dir/build.make src/bin/xobs/CMakeFiles/xobs.dir/skymap.c.s
 .PHONY : skymap.c.s
 
 sound.o: sound.c.o
@@ -420,7 +420,7 @@ sound.o: sound.c.o
 
 # target to build an object file
 sound.c.o:
-	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f src/bin/xobs/CMakeFiles/xobs.dir/build.make src/bin/xobs/CMakeFiles/xobs.dir/sound.c.o
+	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f src/bin/xobs/CMakeFiles/xobs.dir/build.make src/bin/xobs/CMakeFiles/xobs.dir/sound.c.o
 .PHONY : sound.c.o
 
 sound.i: sound.c.i
@@ -428,7 +428,7 @@ sound.i: sound.c.i
 
 # target to preprocess a source file
 sound.c.i:
-	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f src/bin/xobs/CMakeFiles/xobs.dir/build.make src/bin/xobs/CMakeFiles/xobs.dir/sound.c.i
+	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f src/bin/xobs/CMakeFiles/xobs.dir/build.make src/bin/xobs/CMakeFiles/xobs.dir/sound.c.i
 .PHONY : sound.c.i
 
 sound.s: sound.c.s
@@ -436,7 +436,7 @@ sound.s: sound.c.s
 
 # target to generate assembly for a file
 sound.c.s:
-	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f src/bin/xobs/CMakeFiles/xobs.dir/build.make src/bin/xobs/CMakeFiles/xobs.dir/sound.c.s
+	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f src/bin/xobs/CMakeFiles/xobs.dir/build.make src/bin/xobs/CMakeFiles/xobs.dir/sound.c.s
 .PHONY : sound.c.s
 
 telrun.o: telrun.c.o
@@ -444,7 +444,7 @@ telrun.o: telrun.c.o
 
 # target to build an object file
 telrun.c.o:
-	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f src/bin/xobs/CMakeFiles/xobs.dir/build.make src/bin/xobs/CMakeFiles/xobs.dir/telrun.c.o
+	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f src/bin/xobs/CMakeFiles/xobs.dir/build.make src/bin/xobs/CMakeFiles/xobs.dir/telrun.c.o
 .PHONY : telrun.c.o
 
 telrun.i: telrun.c.i
@@ -452,7 +452,7 @@ telrun.i: telrun.c.i
 
 # target to preprocess a source file
 telrun.c.i:
-	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f src/bin/xobs/CMakeFiles/xobs.dir/build.make src/bin/xobs/CMakeFiles/xobs.dir/telrun.c.i
+	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f src/bin/xobs/CMakeFiles/xobs.dir/build.make src/bin/xobs/CMakeFiles/xobs.dir/telrun.c.i
 .PHONY : telrun.c.i
 
 telrun.s: telrun.c.s
@@ -460,7 +460,7 @@ telrun.s: telrun.c.s
 
 # target to generate assembly for a file
 telrun.c.s:
-	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f src/bin/xobs/CMakeFiles/xobs.dir/build.make src/bin/xobs/CMakeFiles/xobs.dir/telrun.c.s
+	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f src/bin/xobs/CMakeFiles/xobs.dir/build.make src/bin/xobs/CMakeFiles/xobs.dir/telrun.c.s
 .PHONY : telrun.c.s
 
 tips.o: tips.c.o
@@ -468,7 +468,7 @@ tips.o: tips.c.o
 
 # target to build an object file
 tips.c.o:
-	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f src/bin/xobs/CMakeFiles/xobs.dir/build.make src/bin/xobs/CMakeFiles/xobs.dir/tips.c.o
+	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f src/bin/xobs/CMakeFiles/xobs.dir/build.make src/bin/xobs/CMakeFiles/xobs.dir/tips.c.o
 .PHONY : tips.c.o
 
 tips.i: tips.c.i
@@ -476,7 +476,7 @@ tips.i: tips.c.i
 
 # target to preprocess a source file
 tips.c.i:
-	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f src/bin/xobs/CMakeFiles/xobs.dir/build.make src/bin/xobs/CMakeFiles/xobs.dir/tips.c.i
+	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f src/bin/xobs/CMakeFiles/xobs.dir/build.make src/bin/xobs/CMakeFiles/xobs.dir/tips.c.i
 .PHONY : tips.c.i
 
 tips.s: tips.c.s
@@ -484,7 +484,7 @@ tips.s: tips.c.s
 
 # target to generate assembly for a file
 tips.c.s:
-	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f src/bin/xobs/CMakeFiles/xobs.dir/build.make src/bin/xobs/CMakeFiles/xobs.dir/tips.c.s
+	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f src/bin/xobs/CMakeFiles/xobs.dir/build.make src/bin/xobs/CMakeFiles/xobs.dir/tips.c.s
 .PHONY : tips.c.s
 
 update.o: update.c.o
@@ -492,7 +492,7 @@ update.o: update.c.o
 
 # target to build an object file
 update.c.o:
-	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f src/bin/xobs/CMakeFiles/xobs.dir/build.make src/bin/xobs/CMakeFiles/xobs.dir/update.c.o
+	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f src/bin/xobs/CMakeFiles/xobs.dir/build.make src/bin/xobs/CMakeFiles/xobs.dir/update.c.o
 .PHONY : update.c.o
 
 update.i: update.c.i
@@ -500,7 +500,7 @@ update.i: update.c.i
 
 # target to preprocess a source file
 update.c.i:
-	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f src/bin/xobs/CMakeFiles/xobs.dir/build.make src/bin/xobs/CMakeFiles/xobs.dir/update.c.i
+	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f src/bin/xobs/CMakeFiles/xobs.dir/build.make src/bin/xobs/CMakeFiles/xobs.dir/update.c.i
 .PHONY : update.c.i
 
 update.s: update.c.s
@@ -508,7 +508,7 @@ update.s: update.c.s
 
 # target to generate assembly for a file
 update.c.s:
-	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f src/bin/xobs/CMakeFiles/xobs.dir/build.make src/bin/xobs/CMakeFiles/xobs.dir/update.c.s
+	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f src/bin/xobs/CMakeFiles/xobs.dir/build.make src/bin/xobs/CMakeFiles/xobs.dir/update.c.s
 .PHONY : update.c.s
 
 xephem.o: xephem.c.o
@@ -516,7 +516,7 @@ xephem.o: xephem.c.o
 
 # target to build an object file
 xephem.c.o:
-	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f src/bin/xobs/CMakeFiles/xobs.dir/build.make src/bin/xobs/CMakeFiles/xobs.dir/xephem.c.o
+	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f src/bin/xobs/CMakeFiles/xobs.dir/build.make src/bin/xobs/CMakeFiles/xobs.dir/xephem.c.o
 .PHONY : xephem.c.o
 
 xephem.i: xephem.c.i
@@ -524,7 +524,7 @@ xephem.i: xephem.c.i
 
 # target to preprocess a source file
 xephem.c.i:
-	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f src/bin/xobs/CMakeFiles/xobs.dir/build.make src/bin/xobs/CMakeFiles/xobs.dir/xephem.c.i
+	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f src/bin/xobs/CMakeFiles/xobs.dir/build.make src/bin/xobs/CMakeFiles/xobs.dir/xephem.c.i
 .PHONY : xephem.c.i
 
 xephem.s: xephem.c.s
@@ -532,7 +532,7 @@ xephem.s: xephem.c.s
 
 # target to generate assembly for a file
 xephem.c.s:
-	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f src/bin/xobs/CMakeFiles/xobs.dir/build.make src/bin/xobs/CMakeFiles/xobs.dir/xephem.c.s
+	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f src/bin/xobs/CMakeFiles/xobs.dir/build.make src/bin/xobs/CMakeFiles/xobs.dir/xephem.c.s
 .PHONY : xephem.c.s
 
 xobs.o: xobs.c.o
@@ -540,7 +540,7 @@ xobs.o: xobs.c.o
 
 # target to build an object file
 xobs.c.o:
-	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f src/bin/xobs/CMakeFiles/xobs.dir/build.make src/bin/xobs/CMakeFiles/xobs.dir/xobs.c.o
+	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f src/bin/xobs/CMakeFiles/xobs.dir/build.make src/bin/xobs/CMakeFiles/xobs.dir/xobs.c.o
 .PHONY : xobs.c.o
 
 xobs.i: xobs.c.i
@@ -548,7 +548,7 @@ xobs.i: xobs.c.i
 
 # target to preprocess a source file
 xobs.c.i:
-	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f src/bin/xobs/CMakeFiles/xobs.dir/build.make src/bin/xobs/CMakeFiles/xobs.dir/xobs.c.i
+	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f src/bin/xobs/CMakeFiles/xobs.dir/build.make src/bin/xobs/CMakeFiles/xobs.dir/xobs.c.i
 .PHONY : xobs.c.i
 
 xobs.s: xobs.c.s
@@ -556,7 +556,7 @@ xobs.s: xobs.c.s
 
 # target to generate assembly for a file
 xobs.c.s:
-	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f src/bin/xobs/CMakeFiles/xobs.dir/build.make src/bin/xobs/CMakeFiles/xobs.dir/xobs.c.s
+	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f src/bin/xobs/CMakeFiles/xobs.dir/build.make src/bin/xobs/CMakeFiles/xobs.dir/xobs.c.s
 .PHONY : xobs.c.s
 
 # Help Target
@@ -631,6 +631,6 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
-	cd /home/voden/Projects/talon-ocaas && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
+	cd /home/voden/Projects/Talon-OCAAS && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system
 

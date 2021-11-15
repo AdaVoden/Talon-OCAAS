@@ -16,7 +16,3 @@ extern int GSCFetch (double ra0, double dec0, double fov, double fmag,
 extern int USNOSetup (char *cdpath, int wantgsc, char *msg);
 extern int USNOFetch (double ra0, double dec0, double fov, double fmag,
     FieldStar **spp, char msg[]);
-
-/* For RCS Only -- Do Not Edit
- * @(#) $RCSfile: fieldstar.h,v $ $Date: 2003/04/15 20:48:17 $ $Revision: 1.1.1.1 $ $Name:  $
- */

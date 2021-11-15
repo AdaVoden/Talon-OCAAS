@@ -201,9 +201,3 @@ extern double MATCHDIST;
 extern double REJECTDIST;
 extern int ORDER;
 //#endif
-
-
-
-/* For RCS Only -- Do Not Edit
- * @(#) $RCSfile: fits.h,v $ $Date: 2003/04/15 20:48:14 $ $Revision: 1.1.1.1 $ $Name:  $
- */

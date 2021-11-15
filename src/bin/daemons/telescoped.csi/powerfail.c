@@ -74,4 +74,3 @@ chkPowerfail(void)
 {
 	return (pwrfail ? 0 : -1);
 }
-

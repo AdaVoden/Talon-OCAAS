@@ -780,4 +780,3 @@ focusTemp()
 
 	return (newtemp);
 }
-

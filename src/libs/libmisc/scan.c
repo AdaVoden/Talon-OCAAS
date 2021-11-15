@@ -519,6 +519,3 @@ ccdSOStrs (char *names[CCDSO_NSTR])
 	names[2] = "Dbl Expose";
 	names[3] = "Multi Expose";
 }
-
-/* For RCS Only -- Do Not Edit */
-static char *rcsid[2] = {(char *)rcsid, "@(#) $RCSfile: scan.c,v $ $Date: 2003/04/15 20:48:18 $ $Revision: 1.1.1.1 $ $Name:  $"};

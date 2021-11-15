@@ -46,8 +46,3 @@ BADCOL;
 /* Bad Column Fix function STO20010405 */
 extern int removeBadColumns(FImage *fip, BADCOL *badColMap, char *mapfileused, char *errmsg);
 extern int readMapFile(char * dirname, char *mapfile, BADCOL **bcOut, char *mapnameused, char *errmsg);
-
-
-/* For RCS Only -- Do Not Edit
- * @(#) $RCSfile: fitscorr.h,v $ $Date: 2003/04/15 20:48:15 $ $Revision: 1.1.1.1 $ $Name:  $
- */

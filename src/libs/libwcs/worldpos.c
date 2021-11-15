@@ -454,6 +454,3 @@ int xypix(double xpos, double ypos, double xref, double yref,
   *ypix = dy / yinc + yrefpix;
   return 0;
 }  /* end xypix */
-
-/* For RCS Only -- Do Not Edit */
-static char *rcsid[2] = {(char *)rcsid, "@(#) $RCSfile: worldpos.c,v $ $Date: 2003/04/15 20:48:19 $ $Revision: 1.1.1.1 $ $Name:  $"};

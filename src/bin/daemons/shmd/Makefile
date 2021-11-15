@@ -57,10 +57,10 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/voden/Projects/talon-ocaas
+CMAKE_SOURCE_DIR = /home/voden/Projects/Talon-OCAAS
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/voden/Projects/talon-ocaas
+CMAKE_BINARY_DIR = /home/voden/Projects/Talon-OCAAS
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -132,14 +132,14 @@ edit_cache/fast: edit_cache
 
 # The main all target
 all: cmake_check_build_system
-	cd /home/voden/Projects/talon-ocaas && $(CMAKE_COMMAND) -E cmake_progress_start /home/voden/Projects/talon-ocaas/CMakeFiles /home/voden/Projects/talon-ocaas/src/bin/daemons/shmd//CMakeFiles/progress.marks
-	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/bin/daemons/shmd/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/voden/Projects/talon-ocaas/CMakeFiles 0
+	cd /home/voden/Projects/Talon-OCAAS && $(CMAKE_COMMAND) -E cmake_progress_start /home/voden/Projects/Talon-OCAAS/CMakeFiles /home/voden/Projects/Talon-OCAAS/src/bin/daemons/shmd//CMakeFiles/progress.marks
+	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/bin/daemons/shmd/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/voden/Projects/Talon-OCAAS/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
 clean:
-	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/bin/daemons/shmd/clean
+	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/bin/daemons/shmd/clean
 .PHONY : clean
 
 # The main clean target
@@ -148,22 +148,22 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/bin/daemons/shmd/preinstall
+	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/bin/daemons/shmd/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/bin/daemons/shmd/preinstall
+	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/bin/daemons/shmd/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
 depend:
-	cd /home/voden/Projects/talon-ocaas && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
+	cd /home/voden/Projects/Talon-OCAAS && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
 # Convenience name for target.
 src/bin/daemons/shmd/CMakeFiles/shmd.dir/rule:
-	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/bin/daemons/shmd/CMakeFiles/shmd.dir/rule
+	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/bin/daemons/shmd/CMakeFiles/shmd.dir/rule
 .PHONY : src/bin/daemons/shmd/CMakeFiles/shmd.dir/rule
 
 # Convenience name for target.
@@ -172,7 +172,7 @@ shmd: src/bin/daemons/shmd/CMakeFiles/shmd.dir/rule
 
 # fast build rule for target.
 shmd/fast:
-	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f src/bin/daemons/shmd/CMakeFiles/shmd.dir/build.make src/bin/daemons/shmd/CMakeFiles/shmd.dir/build
+	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f src/bin/daemons/shmd/CMakeFiles/shmd.dir/build.make src/bin/daemons/shmd/CMakeFiles/shmd.dir/build
 .PHONY : shmd/fast
 
 shmd.o: shmd.c.o
@@ -180,7 +180,7 @@ shmd.o: shmd.c.o
 
 # target to build an object file
 shmd.c.o:
-	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f src/bin/daemons/shmd/CMakeFiles/shmd.dir/build.make src/bin/daemons/shmd/CMakeFiles/shmd.dir/shmd.c.o
+	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f src/bin/daemons/shmd/CMakeFiles/shmd.dir/build.make src/bin/daemons/shmd/CMakeFiles/shmd.dir/shmd.c.o
 .PHONY : shmd.c.o
 
 shmd.i: shmd.c.i
@@ -188,7 +188,7 @@ shmd.i: shmd.c.i
 
 # target to preprocess a source file
 shmd.c.i:
-	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f src/bin/daemons/shmd/CMakeFiles/shmd.dir/build.make src/bin/daemons/shmd/CMakeFiles/shmd.dir/shmd.c.i
+	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f src/bin/daemons/shmd/CMakeFiles/shmd.dir/build.make src/bin/daemons/shmd/CMakeFiles/shmd.dir/shmd.c.i
 .PHONY : shmd.c.i
 
 shmd.s: shmd.c.s
@@ -196,7 +196,7 @@ shmd.s: shmd.c.s
 
 # target to generate assembly for a file
 shmd.c.s:
-	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f src/bin/daemons/shmd/CMakeFiles/shmd.dir/build.make src/bin/daemons/shmd/CMakeFiles/shmd.dir/shmd.c.s
+	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f src/bin/daemons/shmd/CMakeFiles/shmd.dir/build.make src/bin/daemons/shmd/CMakeFiles/shmd.dir/shmd.c.s
 .PHONY : shmd.c.s
 
 # Help Target
@@ -226,6 +226,6 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
-	cd /home/voden/Projects/talon-ocaas && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
+	cd /home/voden/Projects/Talon-OCAAS && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system
 
