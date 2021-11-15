@@ -17,6 +17,7 @@ set(
 	rot.c
 	running.c
 	strops.c
+  strops.h
 	telaxes.c
 	telenv.c
 	tts.c
