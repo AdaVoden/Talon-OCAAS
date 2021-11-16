@@ -33,20 +33,23 @@ add_subdirectory(src)
 ### Installation
 set(CMAKE_INSTALL_PREFIX "/usr/local/telescope")
 set(CMAKE_INSTALL_RPATH "${CMAKE_INSTALL_PREFIX}/lib")
-include(CPack)
 
+### Packaging
+set(CPACK_PACKAGE_NAME "Talon-OCAAS")
+set(CPACK_PACKAGE_DESCRIPTION "GUI-Enabled package of legacy Talon observatory control software")
+set(CPACK_PACKAGE_CONTACT "harlan.shaw@ucalgary.ca")
 ### Debian
 
 set(
   CPACK_DEBIAN_PACKAGE_DEPENDS
-  libmotif
-  libxpm
-  libxext
-  libxmu
-  libdb)
-
-set(
-  CPACK_DEBIAN_CONTACT
-  "harlan.shaw@ucalgary.ca")
+  "libmotif, libxpm, libxext, libxmu, libdb")
+set(CPACK_DEBIAN_PACKAGE_ARCHITECTURE "amd64")
 
 ### RHEL
+
+set(
+  CPACK_RPM_PACKAGE_REQUIRES
+  "openmotif, libXpm, libXext, libXmu, libdbd")
+
+# must be after CPACK variables
+include(CPack)
