@@ -57,10 +57,10 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/voden/Projects/Talon-OCAAS
+CMAKE_SOURCE_DIR = /home/voden/Projects/talon-ocaas
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/voden/Projects/Talon-OCAAS
+CMAKE_BINARY_DIR = /home/voden/Projects/talon-ocaas
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -76,6 +76,26 @@ install/strip/fast: preinstall/fast
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing the project stripped..."
 	/usr/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
 .PHONY : install/strip/fast
+
+# Special rule for the target edit_cache
+edit_cache:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake cache editor..."
+	/usr/bin/ccmake -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+.PHONY : edit_cache
+
+# Special rule for the target edit_cache
+edit_cache/fast: edit_cache
+.PHONY : edit_cache/fast
+
+# Special rule for the target package_source
+package_source:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Run CPack packaging tool for source..."
+	cd /home/voden/Projects/talon-ocaas && /usr/bin/cpack --config ./CPackSourceConfig.cmake /home/voden/Projects/talon-ocaas/CPackSourceConfig.cmake
+.PHONY : package_source
+
+# Special rule for the target package_source
+package_source/fast: package_source
+.PHONY : package_source/fast
 
 # Special rule for the target install
 install: preinstall
@@ -108,15 +128,15 @@ rebuild_cache:
 rebuild_cache/fast: rebuild_cache
 .PHONY : rebuild_cache/fast
 
-# Special rule for the target edit_cache
-edit_cache:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake cache editor..."
-	/usr/bin/ccmake -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
-.PHONY : edit_cache
+# Special rule for the target package
+package: preinstall
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Run CPack packaging tool..."
+	cd /home/voden/Projects/talon-ocaas && /usr/bin/cpack --config ./CPackConfig.cmake
+.PHONY : package
 
-# Special rule for the target edit_cache
-edit_cache/fast: edit_cache
-.PHONY : edit_cache/fast
+# Special rule for the target package
+package/fast: package
+.PHONY : package/fast
 
 # Special rule for the target install/local
 install/local: preinstall
@@ -132,14 +152,14 @@ install/local/fast: preinstall/fast
 
 # The main all target
 all: cmake_check_build_system
-	cd /home/voden/Projects/Talon-OCAAS && $(CMAKE_COMMAND) -E cmake_progress_start /home/voden/Projects/Talon-OCAAS/CMakeFiles /home/voden/Projects/Talon-OCAAS/src/bin/daemons/telescoped.csi//CMakeFiles/progress.marks
-	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/bin/daemons/telescoped.csi/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/voden/Projects/Talon-OCAAS/CMakeFiles 0
+	cd /home/voden/Projects/talon-ocaas && $(CMAKE_COMMAND) -E cmake_progress_start /home/voden/Projects/talon-ocaas/CMakeFiles /home/voden/Projects/talon-ocaas/src/bin/daemons/telescoped.csi//CMakeFiles/progress.marks
+	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/bin/daemons/telescoped.csi/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/voden/Projects/talon-ocaas/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
 clean:
-	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/bin/daemons/telescoped.csi/clean
+	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/bin/daemons/telescoped.csi/clean
 .PHONY : clean
 
 # The main clean target
@@ -148,22 +168,22 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/bin/daemons/telescoped.csi/preinstall
+	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/bin/daemons/telescoped.csi/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/bin/daemons/telescoped.csi/preinstall
+	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/bin/daemons/telescoped.csi/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
 depend:
-	cd /home/voden/Projects/Talon-OCAAS && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
+	cd /home/voden/Projects/talon-ocaas && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
 # Convenience name for target.
 src/bin/daemons/telescoped.csi/CMakeFiles/telescoped.csi.dir/rule:
-	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/bin/daemons/telescoped.csi/CMakeFiles/telescoped.csi.dir/rule
+	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/bin/daemons/telescoped.csi/CMakeFiles/telescoped.csi.dir/rule
 .PHONY : src/bin/daemons/telescoped.csi/CMakeFiles/telescoped.csi.dir/rule
 
 # Convenience name for target.
@@ -172,7 +192,7 @@ telescoped.csi: src/bin/daemons/telescoped.csi/CMakeFiles/telescoped.csi.dir/rul
 
 # fast build rule for target.
 telescoped.csi/fast:
-	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f src/bin/daemons/telescoped.csi/CMakeFiles/telescoped.csi.dir/build.make src/bin/daemons/telescoped.csi/CMakeFiles/telescoped.csi.dir/build
+	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f src/bin/daemons/telescoped.csi/CMakeFiles/telescoped.csi.dir/build.make src/bin/daemons/telescoped.csi/CMakeFiles/telescoped.csi.dir/build
 .PHONY : telescoped.csi/fast
 
 axes.o: axes.c.o
@@ -180,7 +200,7 @@ axes.o: axes.c.o
 
 # target to build an object file
 axes.c.o:
-	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f src/bin/daemons/telescoped.csi/CMakeFiles/telescoped.csi.dir/build.make src/bin/daemons/telescoped.csi/CMakeFiles/telescoped.csi.dir/axes.c.o
+	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f src/bin/daemons/telescoped.csi/CMakeFiles/telescoped.csi.dir/build.make src/bin/daemons/telescoped.csi/CMakeFiles/telescoped.csi.dir/axes.c.o
 .PHONY : axes.c.o
 
 axes.i: axes.c.i
@@ -188,7 +208,7 @@ axes.i: axes.c.i
 
 # target to preprocess a source file
 axes.c.i:
-	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f src/bin/daemons/telescoped.csi/CMakeFiles/telescoped.csi.dir/build.make src/bin/daemons/telescoped.csi/CMakeFiles/telescoped.csi.dir/axes.c.i
+	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f src/bin/daemons/telescoped.csi/CMakeFiles/telescoped.csi.dir/build.make src/bin/daemons/telescoped.csi/CMakeFiles/telescoped.csi.dir/axes.c.i
 .PHONY : axes.c.i
 
 axes.s: axes.c.s
@@ -196,7 +216,7 @@ axes.s: axes.c.s
 
 # target to generate assembly for a file
 axes.c.s:
-	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f src/bin/daemons/telescoped.csi/CMakeFiles/telescoped.csi.dir/build.make src/bin/daemons/telescoped.csi/CMakeFiles/telescoped.csi.dir/axes.c.s
+	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f src/bin/daemons/telescoped.csi/CMakeFiles/telescoped.csi.dir/build.make src/bin/daemons/telescoped.csi/CMakeFiles/telescoped.csi.dir/axes.c.s
 .PHONY : axes.c.s
 
 csimc.o: csimc.c.o
@@ -204,7 +224,7 @@ csimc.o: csimc.c.o
 
 # target to build an object file
 csimc.c.o:
-	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f src/bin/daemons/telescoped.csi/CMakeFiles/telescoped.csi.dir/build.make src/bin/daemons/telescoped.csi/CMakeFiles/telescoped.csi.dir/csimc.c.o
+	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f src/bin/daemons/telescoped.csi/CMakeFiles/telescoped.csi.dir/build.make src/bin/daemons/telescoped.csi/CMakeFiles/telescoped.csi.dir/csimc.c.o
 .PHONY : csimc.c.o
 
 csimc.i: csimc.c.i
@@ -212,7 +232,7 @@ csimc.i: csimc.c.i
 
 # target to preprocess a source file
 csimc.c.i:
-	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f src/bin/daemons/telescoped.csi/CMakeFiles/telescoped.csi.dir/build.make src/bin/daemons/telescoped.csi/CMakeFiles/telescoped.csi.dir/csimc.c.i
+	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f src/bin/daemons/telescoped.csi/CMakeFiles/telescoped.csi.dir/build.make src/bin/daemons/telescoped.csi/CMakeFiles/telescoped.csi.dir/csimc.c.i
 .PHONY : csimc.c.i
 
 csimc.s: csimc.c.s
@@ -220,7 +240,7 @@ csimc.s: csimc.c.s
 
 # target to generate assembly for a file
 csimc.c.s:
-	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f src/bin/daemons/telescoped.csi/CMakeFiles/telescoped.csi.dir/build.make src/bin/daemons/telescoped.csi/CMakeFiles/telescoped.csi.dir/csimc.c.s
+	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f src/bin/daemons/telescoped.csi/CMakeFiles/telescoped.csi.dir/build.make src/bin/daemons/telescoped.csi/CMakeFiles/telescoped.csi.dir/csimc.c.s
 .PHONY : csimc.c.s
 
 dome.o: dome.c.o
@@ -228,7 +248,7 @@ dome.o: dome.c.o
 
 # target to build an object file
 dome.c.o:
-	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f src/bin/daemons/telescoped.csi/CMakeFiles/telescoped.csi.dir/build.make src/bin/daemons/telescoped.csi/CMakeFiles/telescoped.csi.dir/dome.c.o
+	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f src/bin/daemons/telescoped.csi/CMakeFiles/telescoped.csi.dir/build.make src/bin/daemons/telescoped.csi/CMakeFiles/telescoped.csi.dir/dome.c.o
 .PHONY : dome.c.o
 
 dome.i: dome.c.i
@@ -236,7 +256,7 @@ dome.i: dome.c.i
 
 # target to preprocess a source file
 dome.c.i:
-	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f src/bin/daemons/telescoped.csi/CMakeFiles/telescoped.csi.dir/build.make src/bin/daemons/telescoped.csi/CMakeFiles/telescoped.csi.dir/dome.c.i
+	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f src/bin/daemons/telescoped.csi/CMakeFiles/telescoped.csi.dir/build.make src/bin/daemons/telescoped.csi/CMakeFiles/telescoped.csi.dir/dome.c.i
 .PHONY : dome.c.i
 
 dome.s: dome.c.s
@@ -244,7 +264,7 @@ dome.s: dome.c.s
 
 # target to generate assembly for a file
 dome.c.s:
-	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f src/bin/daemons/telescoped.csi/CMakeFiles/telescoped.csi.dir/build.make src/bin/daemons/telescoped.csi/CMakeFiles/telescoped.csi.dir/dome.c.s
+	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f src/bin/daemons/telescoped.csi/CMakeFiles/telescoped.csi.dir/build.make src/bin/daemons/telescoped.csi/CMakeFiles/telescoped.csi.dir/dome.c.s
 .PHONY : dome.c.s
 
 fifoio.o: fifoio.c.o
@@ -252,7 +272,7 @@ fifoio.o: fifoio.c.o
 
 # target to build an object file
 fifoio.c.o:
-	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f src/bin/daemons/telescoped.csi/CMakeFiles/telescoped.csi.dir/build.make src/bin/daemons/telescoped.csi/CMakeFiles/telescoped.csi.dir/fifoio.c.o
+	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f src/bin/daemons/telescoped.csi/CMakeFiles/telescoped.csi.dir/build.make src/bin/daemons/telescoped.csi/CMakeFiles/telescoped.csi.dir/fifoio.c.o
 .PHONY : fifoio.c.o
 
 fifoio.i: fifoio.c.i
@@ -260,7 +280,7 @@ fifoio.i: fifoio.c.i
 
 # target to preprocess a source file
 fifoio.c.i:
-	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f src/bin/daemons/telescoped.csi/CMakeFiles/telescoped.csi.dir/build.make src/bin/daemons/telescoped.csi/CMakeFiles/telescoped.csi.dir/fifoio.c.i
+	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f src/bin/daemons/telescoped.csi/CMakeFiles/telescoped.csi.dir/build.make src/bin/daemons/telescoped.csi/CMakeFiles/telescoped.csi.dir/fifoio.c.i
 .PHONY : fifoio.c.i
 
 fifoio.s: fifoio.c.s
@@ -268,7 +288,7 @@ fifoio.s: fifoio.c.s
 
 # target to generate assembly for a file
 fifoio.c.s:
-	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f src/bin/daemons/telescoped.csi/CMakeFiles/telescoped.csi.dir/build.make src/bin/daemons/telescoped.csi/CMakeFiles/telescoped.csi.dir/fifoio.c.s
+	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f src/bin/daemons/telescoped.csi/CMakeFiles/telescoped.csi.dir/build.make src/bin/daemons/telescoped.csi/CMakeFiles/telescoped.csi.dir/fifoio.c.s
 .PHONY : fifoio.c.s
 
 filter.o: filter.c.o
@@ -276,7 +296,7 @@ filter.o: filter.c.o
 
 # target to build an object file
 filter.c.o:
-	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f src/bin/daemons/telescoped.csi/CMakeFiles/telescoped.csi.dir/build.make src/bin/daemons/telescoped.csi/CMakeFiles/telescoped.csi.dir/filter.c.o
+	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f src/bin/daemons/telescoped.csi/CMakeFiles/telescoped.csi.dir/build.make src/bin/daemons/telescoped.csi/CMakeFiles/telescoped.csi.dir/filter.c.o
 .PHONY : filter.c.o
 
 filter.i: filter.c.i
@@ -284,7 +304,7 @@ filter.i: filter.c.i
 
 # target to preprocess a source file
 filter.c.i:
-	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f src/bin/daemons/telescoped.csi/CMakeFiles/telescoped.csi.dir/build.make src/bin/daemons/telescoped.csi/CMakeFiles/telescoped.csi.dir/filter.c.i
+	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f src/bin/daemons/telescoped.csi/CMakeFiles/telescoped.csi.dir/build.make src/bin/daemons/telescoped.csi/CMakeFiles/telescoped.csi.dir/filter.c.i
 .PHONY : filter.c.i
 
 filter.s: filter.c.s
@@ -292,7 +312,7 @@ filter.s: filter.c.s
 
 # target to generate assembly for a file
 filter.c.s:
-	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f src/bin/daemons/telescoped.csi/CMakeFiles/telescoped.csi.dir/build.make src/bin/daemons/telescoped.csi/CMakeFiles/telescoped.csi.dir/filter.c.s
+	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f src/bin/daemons/telescoped.csi/CMakeFiles/telescoped.csi.dir/build.make src/bin/daemons/telescoped.csi/CMakeFiles/telescoped.csi.dir/filter.c.s
 .PHONY : filter.c.s
 
 focus.o: focus.c.o
@@ -300,7 +320,7 @@ focus.o: focus.c.o
 
 # target to build an object file
 focus.c.o:
-	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f src/bin/daemons/telescoped.csi/CMakeFiles/telescoped.csi.dir/build.make src/bin/daemons/telescoped.csi/CMakeFiles/telescoped.csi.dir/focus.c.o
+	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f src/bin/daemons/telescoped.csi/CMakeFiles/telescoped.csi.dir/build.make src/bin/daemons/telescoped.csi/CMakeFiles/telescoped.csi.dir/focus.c.o
 .PHONY : focus.c.o
 
 focus.i: focus.c.i
@@ -308,7 +328,7 @@ focus.i: focus.c.i
 
 # target to preprocess a source file
 focus.c.i:
-	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f src/bin/daemons/telescoped.csi/CMakeFiles/telescoped.csi.dir/build.make src/bin/daemons/telescoped.csi/CMakeFiles/telescoped.csi.dir/focus.c.i
+	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f src/bin/daemons/telescoped.csi/CMakeFiles/telescoped.csi.dir/build.make src/bin/daemons/telescoped.csi/CMakeFiles/telescoped.csi.dir/focus.c.i
 .PHONY : focus.c.i
 
 focus.s: focus.c.s
@@ -316,7 +336,7 @@ focus.s: focus.c.s
 
 # target to generate assembly for a file
 focus.c.s:
-	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f src/bin/daemons/telescoped.csi/CMakeFiles/telescoped.csi.dir/build.make src/bin/daemons/telescoped.csi/CMakeFiles/telescoped.csi.dir/focus.c.s
+	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f src/bin/daemons/telescoped.csi/CMakeFiles/telescoped.csi.dir/build.make src/bin/daemons/telescoped.csi/CMakeFiles/telescoped.csi.dir/focus.c.s
 .PHONY : focus.c.s
 
 lights.o: lights.c.o
@@ -324,7 +344,7 @@ lights.o: lights.c.o
 
 # target to build an object file
 lights.c.o:
-	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f src/bin/daemons/telescoped.csi/CMakeFiles/telescoped.csi.dir/build.make src/bin/daemons/telescoped.csi/CMakeFiles/telescoped.csi.dir/lights.c.o
+	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f src/bin/daemons/telescoped.csi/CMakeFiles/telescoped.csi.dir/build.make src/bin/daemons/telescoped.csi/CMakeFiles/telescoped.csi.dir/lights.c.o
 .PHONY : lights.c.o
 
 lights.i: lights.c.i
@@ -332,7 +352,7 @@ lights.i: lights.c.i
 
 # target to preprocess a source file
 lights.c.i:
-	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f src/bin/daemons/telescoped.csi/CMakeFiles/telescoped.csi.dir/build.make src/bin/daemons/telescoped.csi/CMakeFiles/telescoped.csi.dir/lights.c.i
+	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f src/bin/daemons/telescoped.csi/CMakeFiles/telescoped.csi.dir/build.make src/bin/daemons/telescoped.csi/CMakeFiles/telescoped.csi.dir/lights.c.i
 .PHONY : lights.c.i
 
 lights.s: lights.c.s
@@ -340,7 +360,7 @@ lights.s: lights.c.s
 
 # target to generate assembly for a file
 lights.c.s:
-	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f src/bin/daemons/telescoped.csi/CMakeFiles/telescoped.csi.dir/build.make src/bin/daemons/telescoped.csi/CMakeFiles/telescoped.csi.dir/lights.c.s
+	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f src/bin/daemons/telescoped.csi/CMakeFiles/telescoped.csi.dir/build.make src/bin/daemons/telescoped.csi/CMakeFiles/telescoped.csi.dir/lights.c.s
 .PHONY : lights.c.s
 
 mountcor.o: mountcor.c.o
@@ -348,7 +368,7 @@ mountcor.o: mountcor.c.o
 
 # target to build an object file
 mountcor.c.o:
-	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f src/bin/daemons/telescoped.csi/CMakeFiles/telescoped.csi.dir/build.make src/bin/daemons/telescoped.csi/CMakeFiles/telescoped.csi.dir/mountcor.c.o
+	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f src/bin/daemons/telescoped.csi/CMakeFiles/telescoped.csi.dir/build.make src/bin/daemons/telescoped.csi/CMakeFiles/telescoped.csi.dir/mountcor.c.o
 .PHONY : mountcor.c.o
 
 mountcor.i: mountcor.c.i
@@ -356,7 +376,7 @@ mountcor.i: mountcor.c.i
 
 # target to preprocess a source file
 mountcor.c.i:
-	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f src/bin/daemons/telescoped.csi/CMakeFiles/telescoped.csi.dir/build.make src/bin/daemons/telescoped.csi/CMakeFiles/telescoped.csi.dir/mountcor.c.i
+	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f src/bin/daemons/telescoped.csi/CMakeFiles/telescoped.csi.dir/build.make src/bin/daemons/telescoped.csi/CMakeFiles/telescoped.csi.dir/mountcor.c.i
 .PHONY : mountcor.c.i
 
 mountcor.s: mountcor.c.s
@@ -364,7 +384,7 @@ mountcor.s: mountcor.c.s
 
 # target to generate assembly for a file
 mountcor.c.s:
-	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f src/bin/daemons/telescoped.csi/CMakeFiles/telescoped.csi.dir/build.make src/bin/daemons/telescoped.csi/CMakeFiles/telescoped.csi.dir/mountcor.c.s
+	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f src/bin/daemons/telescoped.csi/CMakeFiles/telescoped.csi.dir/build.make src/bin/daemons/telescoped.csi/CMakeFiles/telescoped.csi.dir/mountcor.c.s
 .PHONY : mountcor.c.s
 
 powerfail.o: powerfail.c.o
@@ -372,7 +392,7 @@ powerfail.o: powerfail.c.o
 
 # target to build an object file
 powerfail.c.o:
-	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f src/bin/daemons/telescoped.csi/CMakeFiles/telescoped.csi.dir/build.make src/bin/daemons/telescoped.csi/CMakeFiles/telescoped.csi.dir/powerfail.c.o
+	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f src/bin/daemons/telescoped.csi/CMakeFiles/telescoped.csi.dir/build.make src/bin/daemons/telescoped.csi/CMakeFiles/telescoped.csi.dir/powerfail.c.o
 .PHONY : powerfail.c.o
 
 powerfail.i: powerfail.c.i
@@ -380,7 +400,7 @@ powerfail.i: powerfail.c.i
 
 # target to preprocess a source file
 powerfail.c.i:
-	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f src/bin/daemons/telescoped.csi/CMakeFiles/telescoped.csi.dir/build.make src/bin/daemons/telescoped.csi/CMakeFiles/telescoped.csi.dir/powerfail.c.i
+	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f src/bin/daemons/telescoped.csi/CMakeFiles/telescoped.csi.dir/build.make src/bin/daemons/telescoped.csi/CMakeFiles/telescoped.csi.dir/powerfail.c.i
 .PHONY : powerfail.c.i
 
 powerfail.s: powerfail.c.s
@@ -388,7 +408,7 @@ powerfail.s: powerfail.c.s
 
 # target to generate assembly for a file
 powerfail.c.s:
-	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f src/bin/daemons/telescoped.csi/CMakeFiles/telescoped.csi.dir/build.make src/bin/daemons/telescoped.csi/CMakeFiles/telescoped.csi.dir/powerfail.c.s
+	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f src/bin/daemons/telescoped.csi/CMakeFiles/telescoped.csi.dir/build.make src/bin/daemons/telescoped.csi/CMakeFiles/telescoped.csi.dir/powerfail.c.s
 .PHONY : powerfail.c.s
 
 tel.o: tel.c.o
@@ -396,7 +416,7 @@ tel.o: tel.c.o
 
 # target to build an object file
 tel.c.o:
-	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f src/bin/daemons/telescoped.csi/CMakeFiles/telescoped.csi.dir/build.make src/bin/daemons/telescoped.csi/CMakeFiles/telescoped.csi.dir/tel.c.o
+	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f src/bin/daemons/telescoped.csi/CMakeFiles/telescoped.csi.dir/build.make src/bin/daemons/telescoped.csi/CMakeFiles/telescoped.csi.dir/tel.c.o
 .PHONY : tel.c.o
 
 tel.i: tel.c.i
@@ -404,7 +424,7 @@ tel.i: tel.c.i
 
 # target to preprocess a source file
 tel.c.i:
-	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f src/bin/daemons/telescoped.csi/CMakeFiles/telescoped.csi.dir/build.make src/bin/daemons/telescoped.csi/CMakeFiles/telescoped.csi.dir/tel.c.i
+	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f src/bin/daemons/telescoped.csi/CMakeFiles/telescoped.csi.dir/build.make src/bin/daemons/telescoped.csi/CMakeFiles/telescoped.csi.dir/tel.c.i
 .PHONY : tel.c.i
 
 tel.s: tel.c.s
@@ -412,7 +432,7 @@ tel.s: tel.c.s
 
 # target to generate assembly for a file
 tel.c.s:
-	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f src/bin/daemons/telescoped.csi/CMakeFiles/telescoped.csi.dir/build.make src/bin/daemons/telescoped.csi/CMakeFiles/telescoped.csi.dir/tel.c.s
+	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f src/bin/daemons/telescoped.csi/CMakeFiles/telescoped.csi.dir/build.make src/bin/daemons/telescoped.csi/CMakeFiles/telescoped.csi.dir/tel.c.s
 .PHONY : tel.c.s
 
 telescoped.o: telescoped.c.o
@@ -420,7 +440,7 @@ telescoped.o: telescoped.c.o
 
 # target to build an object file
 telescoped.c.o:
-	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f src/bin/daemons/telescoped.csi/CMakeFiles/telescoped.csi.dir/build.make src/bin/daemons/telescoped.csi/CMakeFiles/telescoped.csi.dir/telescoped.c.o
+	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f src/bin/daemons/telescoped.csi/CMakeFiles/telescoped.csi.dir/build.make src/bin/daemons/telescoped.csi/CMakeFiles/telescoped.csi.dir/telescoped.c.o
 .PHONY : telescoped.c.o
 
 telescoped.i: telescoped.c.i
@@ -428,7 +448,7 @@ telescoped.i: telescoped.c.i
 
 # target to preprocess a source file
 telescoped.c.i:
-	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f src/bin/daemons/telescoped.csi/CMakeFiles/telescoped.csi.dir/build.make src/bin/daemons/telescoped.csi/CMakeFiles/telescoped.csi.dir/telescoped.c.i
+	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f src/bin/daemons/telescoped.csi/CMakeFiles/telescoped.csi.dir/build.make src/bin/daemons/telescoped.csi/CMakeFiles/telescoped.csi.dir/telescoped.c.i
 .PHONY : telescoped.c.i
 
 telescoped.s: telescoped.c.s
@@ -436,7 +456,7 @@ telescoped.s: telescoped.c.s
 
 # target to generate assembly for a file
 telescoped.c.s:
-	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f src/bin/daemons/telescoped.csi/CMakeFiles/telescoped.csi.dir/build.make src/bin/daemons/telescoped.csi/CMakeFiles/telescoped.csi.dir/telescoped.c.s
+	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f src/bin/daemons/telescoped.csi/CMakeFiles/telescoped.csi.dir/build.make src/bin/daemons/telescoped.csi/CMakeFiles/telescoped.csi.dir/telescoped.c.s
 .PHONY : telescoped.c.s
 
 virmc.o: virmc.c.o
@@ -444,7 +464,7 @@ virmc.o: virmc.c.o
 
 # target to build an object file
 virmc.c.o:
-	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f src/bin/daemons/telescoped.csi/CMakeFiles/telescoped.csi.dir/build.make src/bin/daemons/telescoped.csi/CMakeFiles/telescoped.csi.dir/virmc.c.o
+	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f src/bin/daemons/telescoped.csi/CMakeFiles/telescoped.csi.dir/build.make src/bin/daemons/telescoped.csi/CMakeFiles/telescoped.csi.dir/virmc.c.o
 .PHONY : virmc.c.o
 
 virmc.i: virmc.c.i
@@ -452,7 +472,7 @@ virmc.i: virmc.c.i
 
 # target to preprocess a source file
 virmc.c.i:
-	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f src/bin/daemons/telescoped.csi/CMakeFiles/telescoped.csi.dir/build.make src/bin/daemons/telescoped.csi/CMakeFiles/telescoped.csi.dir/virmc.c.i
+	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f src/bin/daemons/telescoped.csi/CMakeFiles/telescoped.csi.dir/build.make src/bin/daemons/telescoped.csi/CMakeFiles/telescoped.csi.dir/virmc.c.i
 .PHONY : virmc.c.i
 
 virmc.s: virmc.c.s
@@ -460,7 +480,7 @@ virmc.s: virmc.c.s
 
 # target to generate assembly for a file
 virmc.c.s:
-	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f src/bin/daemons/telescoped.csi/CMakeFiles/telescoped.csi.dir/build.make src/bin/daemons/telescoped.csi/CMakeFiles/telescoped.csi.dir/virmc.c.s
+	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f src/bin/daemons/telescoped.csi/CMakeFiles/telescoped.csi.dir/build.make src/bin/daemons/telescoped.csi/CMakeFiles/telescoped.csi.dir/virmc.c.s
 .PHONY : virmc.c.s
 
 # Help Target
@@ -474,6 +494,8 @@ help:
 	@echo "... install/local"
 	@echo "... install/strip"
 	@echo "... list_install_components"
+	@echo "... package"
+	@echo "... package_source"
 	@echo "... rebuild_cache"
 	@echo "... telescoped.csi"
 	@echo "... axes.o"
@@ -523,6 +545,6 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
-	cd /home/voden/Projects/Talon-OCAAS && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
+	cd /home/voden/Projects/talon-ocaas && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system
 

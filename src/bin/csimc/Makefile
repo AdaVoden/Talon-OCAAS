@@ -57,10 +57,10 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/voden/Projects/Talon-OCAAS
+CMAKE_SOURCE_DIR = /home/voden/Projects/talon-ocaas
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/voden/Projects/Talon-OCAAS
+CMAKE_BINARY_DIR = /home/voden/Projects/talon-ocaas
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -88,6 +88,26 @@ install/local/fast: preinstall/fast
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing only the local directory..."
 	/usr/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
 .PHONY : install/local/fast
+
+# Special rule for the target edit_cache
+edit_cache:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake cache editor..."
+	/usr/bin/ccmake -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+.PHONY : edit_cache
+
+# Special rule for the target edit_cache
+edit_cache/fast: edit_cache
+.PHONY : edit_cache/fast
+
+# Special rule for the target package_source
+package_source:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Run CPack packaging tool for source..."
+	cd /home/voden/Projects/talon-ocaas && /usr/bin/cpack --config ./CPackSourceConfig.cmake /home/voden/Projects/talon-ocaas/CPackSourceConfig.cmake
+.PHONY : package_source
+
+# Special rule for the target package_source
+package_source/fast: package_source
+.PHONY : package_source/fast
 
 # Special rule for the target install
 install: preinstall
@@ -120,26 +140,26 @@ rebuild_cache:
 rebuild_cache/fast: rebuild_cache
 .PHONY : rebuild_cache/fast
 
-# Special rule for the target edit_cache
-edit_cache:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake cache editor..."
-	/usr/bin/ccmake -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
-.PHONY : edit_cache
+# Special rule for the target package
+package: preinstall
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Run CPack packaging tool..."
+	cd /home/voden/Projects/talon-ocaas && /usr/bin/cpack --config ./CPackConfig.cmake
+.PHONY : package
 
-# Special rule for the target edit_cache
-edit_cache/fast: edit_cache
-.PHONY : edit_cache/fast
+# Special rule for the target package
+package/fast: package
+.PHONY : package/fast
 
 # The main all target
 all: cmake_check_build_system
-	cd /home/voden/Projects/Talon-OCAAS && $(CMAKE_COMMAND) -E cmake_progress_start /home/voden/Projects/Talon-OCAAS/CMakeFiles /home/voden/Projects/Talon-OCAAS/src/bin/csimc//CMakeFiles/progress.marks
-	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/bin/csimc/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/voden/Projects/Talon-OCAAS/CMakeFiles 0
+	cd /home/voden/Projects/talon-ocaas && $(CMAKE_COMMAND) -E cmake_progress_start /home/voden/Projects/talon-ocaas/CMakeFiles /home/voden/Projects/talon-ocaas/src/bin/csimc//CMakeFiles/progress.marks
+	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/bin/csimc/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/voden/Projects/talon-ocaas/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
 clean:
-	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/bin/csimc/clean
+	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/bin/csimc/clean
 .PHONY : clean
 
 # The main clean target
@@ -148,22 +168,22 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/bin/csimc/preinstall
+	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/bin/csimc/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/bin/csimc/preinstall
+	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/bin/csimc/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
 depend:
-	cd /home/voden/Projects/Talon-OCAAS && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
+	cd /home/voden/Projects/talon-ocaas && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
 # Convenience name for target.
 src/bin/csimc/CMakeFiles/csimc.dir/rule:
-	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/bin/csimc/CMakeFiles/csimc.dir/rule
+	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/bin/csimc/CMakeFiles/csimc.dir/rule
 .PHONY : src/bin/csimc/CMakeFiles/csimc.dir/rule
 
 # Convenience name for target.
@@ -172,7 +192,7 @@ csimc: src/bin/csimc/CMakeFiles/csimc.dir/rule
 
 # fast build rule for target.
 csimc/fast:
-	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f src/bin/csimc/CMakeFiles/csimc.dir/build.make src/bin/csimc/CMakeFiles/csimc.dir/build
+	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f src/bin/csimc/CMakeFiles/csimc.dir/build.make src/bin/csimc/CMakeFiles/csimc.dir/build
 .PHONY : csimc/fast
 
 boot.o: boot.c.o
@@ -180,7 +200,7 @@ boot.o: boot.c.o
 
 # target to build an object file
 boot.c.o:
-	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f src/bin/csimc/CMakeFiles/csimc.dir/build.make src/bin/csimc/CMakeFiles/csimc.dir/boot.c.o
+	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f src/bin/csimc/CMakeFiles/csimc.dir/build.make src/bin/csimc/CMakeFiles/csimc.dir/boot.c.o
 .PHONY : boot.c.o
 
 boot.i: boot.c.i
@@ -188,7 +208,7 @@ boot.i: boot.c.i
 
 # target to preprocess a source file
 boot.c.i:
-	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f src/bin/csimc/CMakeFiles/csimc.dir/build.make src/bin/csimc/CMakeFiles/csimc.dir/boot.c.i
+	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f src/bin/csimc/CMakeFiles/csimc.dir/build.make src/bin/csimc/CMakeFiles/csimc.dir/boot.c.i
 .PHONY : boot.c.i
 
 boot.s: boot.c.s
@@ -196,7 +216,7 @@ boot.s: boot.c.s
 
 # target to generate assembly for a file
 boot.c.s:
-	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f src/bin/csimc/CMakeFiles/csimc.dir/build.make src/bin/csimc/CMakeFiles/csimc.dir/boot.c.s
+	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f src/bin/csimc/CMakeFiles/csimc.dir/build.make src/bin/csimc/CMakeFiles/csimc.dir/boot.c.s
 .PHONY : boot.c.s
 
 csimc.o: csimc.c.o
@@ -204,7 +224,7 @@ csimc.o: csimc.c.o
 
 # target to build an object file
 csimc.c.o:
-	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f src/bin/csimc/CMakeFiles/csimc.dir/build.make src/bin/csimc/CMakeFiles/csimc.dir/csimc.c.o
+	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f src/bin/csimc/CMakeFiles/csimc.dir/build.make src/bin/csimc/CMakeFiles/csimc.dir/csimc.c.o
 .PHONY : csimc.c.o
 
 csimc.i: csimc.c.i
@@ -212,7 +232,7 @@ csimc.i: csimc.c.i
 
 # target to preprocess a source file
 csimc.c.i:
-	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f src/bin/csimc/CMakeFiles/csimc.dir/build.make src/bin/csimc/CMakeFiles/csimc.dir/csimc.c.i
+	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f src/bin/csimc/CMakeFiles/csimc.dir/build.make src/bin/csimc/CMakeFiles/csimc.dir/csimc.c.i
 .PHONY : csimc.c.i
 
 csimc.s: csimc.c.s
@@ -220,7 +240,7 @@ csimc.s: csimc.c.s
 
 # target to generate assembly for a file
 csimc.c.s:
-	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f src/bin/csimc/CMakeFiles/csimc.dir/build.make src/bin/csimc/CMakeFiles/csimc.dir/csimc.c.s
+	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f src/bin/csimc/CMakeFiles/csimc.dir/build.make src/bin/csimc/CMakeFiles/csimc.dir/csimc.c.s
 .PHONY : csimc.c.s
 
 eintrio.o: eintrio.c.o
@@ -228,7 +248,7 @@ eintrio.o: eintrio.c.o
 
 # target to build an object file
 eintrio.c.o:
-	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f src/bin/csimc/CMakeFiles/csimc.dir/build.make src/bin/csimc/CMakeFiles/csimc.dir/eintrio.c.o
+	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f src/bin/csimc/CMakeFiles/csimc.dir/build.make src/bin/csimc/CMakeFiles/csimc.dir/eintrio.c.o
 .PHONY : eintrio.c.o
 
 eintrio.i: eintrio.c.i
@@ -236,7 +256,7 @@ eintrio.i: eintrio.c.i
 
 # target to preprocess a source file
 eintrio.c.i:
-	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f src/bin/csimc/CMakeFiles/csimc.dir/build.make src/bin/csimc/CMakeFiles/csimc.dir/eintrio.c.i
+	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f src/bin/csimc/CMakeFiles/csimc.dir/build.make src/bin/csimc/CMakeFiles/csimc.dir/eintrio.c.i
 .PHONY : eintrio.c.i
 
 eintrio.s: eintrio.c.s
@@ -244,7 +264,7 @@ eintrio.s: eintrio.c.s
 
 # target to generate assembly for a file
 eintrio.c.s:
-	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f src/bin/csimc/CMakeFiles/csimc.dir/build.make src/bin/csimc/CMakeFiles/csimc.dir/eintrio.c.s
+	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f src/bin/csimc/CMakeFiles/csimc.dir/build.make src/bin/csimc/CMakeFiles/csimc.dir/eintrio.c.s
 .PHONY : eintrio.c.s
 
 el.o: el.c.o
@@ -252,7 +272,7 @@ el.o: el.c.o
 
 # target to build an object file
 el.c.o:
-	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f src/bin/csimc/CMakeFiles/csimc.dir/build.make src/bin/csimc/CMakeFiles/csimc.dir/el.c.o
+	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f src/bin/csimc/CMakeFiles/csimc.dir/build.make src/bin/csimc/CMakeFiles/csimc.dir/el.c.o
 .PHONY : el.c.o
 
 el.i: el.c.i
@@ -260,7 +280,7 @@ el.i: el.c.i
 
 # target to preprocess a source file
 el.c.i:
-	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f src/bin/csimc/CMakeFiles/csimc.dir/build.make src/bin/csimc/CMakeFiles/csimc.dir/el.c.i
+	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f src/bin/csimc/CMakeFiles/csimc.dir/build.make src/bin/csimc/CMakeFiles/csimc.dir/el.c.i
 .PHONY : el.c.i
 
 el.s: el.c.s
@@ -268,7 +288,7 @@ el.s: el.c.s
 
 # target to generate assembly for a file
 el.c.s:
-	cd /home/voden/Projects/Talon-OCAAS && $(MAKE) $(MAKESILENT) -f src/bin/csimc/CMakeFiles/csimc.dir/build.make src/bin/csimc/CMakeFiles/csimc.dir/el.c.s
+	cd /home/voden/Projects/talon-ocaas && $(MAKE) $(MAKESILENT) -f src/bin/csimc/CMakeFiles/csimc.dir/build.make src/bin/csimc/CMakeFiles/csimc.dir/el.c.s
 .PHONY : el.c.s
 
 # Help Target
@@ -282,6 +302,8 @@ help:
 	@echo "... install/local"
 	@echo "... install/strip"
 	@echo "... list_install_components"
+	@echo "... package"
+	@echo "... package_source"
 	@echo "... rebuild_cache"
 	@echo "... csimc"
 	@echo "... boot.o"
@@ -307,6 +329,6 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
-	cd /home/voden/Projects/Talon-OCAAS && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
+	cd /home/voden/Projects/talon-ocaas && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system
 
