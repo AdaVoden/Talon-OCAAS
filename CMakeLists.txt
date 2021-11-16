@@ -47,11 +47,12 @@ set(
   "libmotif-common, libxpm4, libxext6, libxmu6, libx11-6, libxt6")
 set(CPACK_DEBIAN_PACKAGE_ARCHITECTURE "amd64")
 
-### RHEL
+# Abandoned for now, should work without much issue
+# ### RHEL
 
-set(
-  CPACK_RPM_PACKAGE_REQUIRES
-  "openmotif, libXpm, libXext, libXmu, libX11, libXt")
+# set(
+#   CPACK_RPM_PACKAGE_REQUIRES
+#   "openmotif, libXpm, libXext, libXmu, libX11, libXt")
 
-# must be after CPACK variables
+# # must be after CPACK variables
 include(CPack)
