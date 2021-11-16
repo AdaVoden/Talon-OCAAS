@@ -26,10 +26,27 @@ find_library(XEXT_LIBRARY Xext REQUIRED)
 find_library(XMU_LIBRARY  Xmu  REQUIRED)
 find_library(X11_LIBRARY  X11  REQUIRED)
 
-### Subdirectory settings
+### Subdirectory
 
 add_subdirectory(src)
 
 ### Installation
 set(CMAKE_INSTALL_PREFIX "/usr/local/telescope")
+set(CMAKE_INSTALL_RPATH "${CMAKE_INSTALL_PREFIX}/lib")
 include(CPack)
+
+### Debian
+
+set(
+  CPACK_DEBIAN_PACKAGE_DEPENDS
+  libmotif
+  libxpm
+  libxext
+  libxmu
+  libdb)
+
+set(
+  CPACK_DEBIAN_CONTACT
+  "harlan.shaw@ucalgary.ca")
+
+### RHEL
