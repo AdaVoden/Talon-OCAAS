@@ -25,8 +25,11 @@ set(
 	misc.c
   misc.h
 	newton.c
+  pc39.h
 	rot.c
   rot.h
+  photstd.c
+  photstd.h
 	running.c
   running.h
   scan.c

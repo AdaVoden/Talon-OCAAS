@@ -31,6 +31,7 @@
 #include "running.h"
 #include "strops.h"
 #include "telenv.h"
+#include "scan.h"
 #include "telstatshm.h"
 #include "configfile.h"
 #include "cliserv.h"
@@ -189,10 +190,12 @@ static void
 fillSI()
 {
 	Now *np = &telstatshmp->now;
-  TelAxes *tap = &telstatshmp->tax;
+	Scan *sp = &telstatshmp->scan;
+	TelAxes *tap = &telstatshmp->tax;
 	char buf1[128], buf2[128], buf3[128];
 	int joffset = telstatshmp->jogging_ison;
-  MotorInfo *mip;
+	int soffset = (sp->running && (sp->rao || sp->deco));
+	MotorInfo *mip;
 	double tmp;
 	int m, id, y;
 	double d;
@@ -279,6 +282,10 @@ fillSI()
 	    fs_sexa (buf1, radhr(telstatshmp->DARA), 3, 36000);
 	    fs_sexa (buf2, raddeg(telstatshmp->DADec), 3, 3600);
 	    fs_sexa (buf3, radhr(telstatshmp->DAHA), 3, 36000);
+	    wprintf ("%7.7s :%c  RA = %s  Dec = %s   HA = %s",
+					    telstatshmp->scan.obj.o_name,
+					    joffset || soffset ? '*' : ' ',
+					    buf1, buf2, buf3);
 
 	    /* find the next error */
 	    tmp = telstatshmp->CARA - telstatshmp->DARA;
@@ -318,6 +325,15 @@ fillSI()
 	wprintf ("Jogging :%c dRA = %s dDec = %s  dHA = %s",
 					joffset ? '*' : ' ', buf1, buf2, buf3);
 
+	if (sp->running) {
+	    fs_sexa (buf1, radhr(sp->rao), 3, 36000);
+	    fs_sexa (buf2, raddeg(sp->deco), 3, 3600);
+	    fs_sexa (buf3, -radhr(sp->rao), 3, 36000);
+	} else {
+	    fs_sexa (buf1, 0.0, 3, 36000);
+	    fs_sexa (buf2, 0.0, 3, 3600);
+	    fs_sexa (buf3, 0.0, 3, 36000);
+	}
 	wprintf ("  Sched :%c dRA = %s dDec = %s  dHA = %s",
 					soffset ? '*' : ' ', buf1, buf2, buf3);
 
@@ -490,7 +506,8 @@ fillSI()
 static void
 showQueue ()
 {
-  int telrunok;
+	Scan *sp = &telstatshmp->scan;
+	int telrunok;
 
 	if (want_sections) {
 	    wprintf (blankline);
@@ -523,6 +540,8 @@ showQueue ()
 	    wprintf ("  sx/sy/sw/sh : %d/%d/%d/%d",sp->sx,sp->sy,sp->sw,sp->sh);
 	    wprintf ("    binx/biny : %d/%d", sp->binx, sp->biny);
 	    wprintf ("     Duration : %g secs", sp->dur);
+	    wprintf ("      Shutter : %s", ccdSO2Str(sp->shutter));
+	    wprintf ("     CCDCalib : %s", ccdCalib2Str(sp->ccdcalib));
 
 	} else {
 	    wprintf ("  Queue : enabled but empty.");
@@ -746,3 +765,5 @@ showSI()
 
 #endif /* USEX */
 
+/* For RCS Only -- Do Not Edit */
+static char *rcsid[2] = {(char *)rcsid, "@(#) $RCSfile: shm.c,v $ $Date: 2003/04/15 20:47:04 $ $Revision: 1.1.1.1 $ $Name:  $"};

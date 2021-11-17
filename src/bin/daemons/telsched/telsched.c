@@ -350,7 +350,7 @@ char *schedfn;
 {
 	Obs *newop;
 	int old, new;
-	
+
 	destroyEditMenus();
 
 	newop = (Obs *) calloc (nworkop, sizeof(Obs));

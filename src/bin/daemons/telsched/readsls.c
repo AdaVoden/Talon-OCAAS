@@ -124,4 +124,3 @@ opensls_cb (Widget w, XtPointer client, XtPointer call)
 	    free ((void *)newobs);
 	watch_cursor(0);
 }
-

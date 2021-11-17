@@ -9,7 +9,8 @@ set(
   mksch.c
   msg.c
   sched.c
-  tips.c)
+  tips.c
+  )
 
 add_executable(mksch ${SRC_FILES})
 
