@@ -70,12 +70,11 @@ set(CPACK_PACKAGE_CONTACT "harlan.shaw@ucalgary.ca")
 set(CPACK_PACKAGING_INSTALL_PREFIX "/usr/local/telescope")
 
 ### Debian
-
+set(CPACK_DEBIAN_FILE_NAME DEB-DEFAULT)
 set(
   CPACK_DEBIAN_PACKAGE_DEPENDS
   "libmotif-common, libxpm4, libxext6, libxmu6, libx11-6, libxt6, xfonts-75dpi")
-set(CPACK_DEBIAN_PACKAGE_ARCHITECTURE "amd64")
-
+set(CPACK_DEBIAN_PACKAGE_SHLIBDEPS ON)
 # Abandoned for now, should work without much issue
 # ### RHEL
 
