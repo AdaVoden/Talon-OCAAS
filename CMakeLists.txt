@@ -62,6 +62,11 @@ add_test(NAME "WXD_RUNS" COMMAND "wxd" "-h")
 ### Installation
 set(CMAKE_INSTALL_PREFIX "/usr/local/telescope")
 set(CMAKE_INSTALL_RPATH "${CMAKE_INSTALL_PREFIX}/lib")
+set(CMAKE_INSTALL_DEFAULT_DIRECTORY_PERMISSIONS
+  WORLD_READ
+  WORLD_WRITE
+  WORLD_EXECUTE
+  )
 
 ### Packaging
 set(CPACK_PACKAGE_NAME "talon-ocaas")
