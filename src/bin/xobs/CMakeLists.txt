@@ -6,7 +6,7 @@ include_directories(${PROJ_LIBS})
 set(
   SRC_FILES
   paddle.c
-  # batch.c # removed from source
+  batch.c
   calaxes.c
   config.c
   control.c

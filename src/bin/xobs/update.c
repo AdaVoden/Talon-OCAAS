@@ -82,8 +82,8 @@ updateStatus(int force)
 	/* always do these at least more often */
 	if (dofast) {
 	    showTime();
-	    /* batchUpdate(); */
-	    /* showCamera(); */
+	    batchUpdate();
+	    showCamera();
 	    last_fast = mjd;
 	}
 
@@ -114,7 +114,7 @@ updateStatus(int force)
 
 	busy = OMOT->cvel != 0;
 	if (doslow || busy || mjd < last_obusy + COAST_DT) {
-	    /* showFocus(); */
+	    showFocus();
 	    if (busy)
 		last_obusy = mjd;
 	}
@@ -360,128 +360,128 @@ showFilter()
 	setLt (g_w[CFILT_W], LTWARN);
 }
 
-/* static void */
-/* showFocus() */
-/* { */
-/* 	double tmp; */
+static void
+showFocus()
+{
+	double tmp;
 
-/* 	if (!OMOT->have) */
-/* 	    return; */
+	if (!OMOT->have)
+	    return;
 
-/* 	/\* show microns from home *\/ */
-/* 	tmp = OMOT->step*OMOT->cpos/OMOT->focscale/(2*PI); */
-/* 	wtprintf (g_w[CFO_W], "%8.1f", tmp); */
+	/* show microns from home */
+	tmp = OMOT->step*OMOT->cpos/OMOT->focscale/(2*PI);
+	wtprintf (g_w[CFO_W], "%8.1f", tmp);
 
-/* 	/\* show status *\/ */
-/* 	if (OMOT->cvel != 0) */
-/* 	    setLt (g_w[CFOLT_W], LTACTIVE); */
-/* 	else { */
-/* 	    /\* ok if within 1 step *\/ */
-/* 	    tmp = OMOT->step*(OMOT->cpos - OMOT->dpos)/(2*PI); */
-/* 	    setLt (g_w[CFOLT_W], fabs(tmp) < 1.5 ? LTOK : LTWARN); */
-/* 	} */
-/* } */
+	/* show status */
+	if (OMOT->cvel != 0)
+	    setLt (g_w[CFOLT_W], LTACTIVE);
+	else {
+	    /* ok if within 1 step */
+	    tmp = OMOT->step*(OMOT->cpos - OMOT->dpos)/(2*PI);
+	    setLt (g_w[CFOLT_W], fabs(tmp) < 1.5 ? LTOK : LTWARN);
+	}
+}
 
 
-/* static void */
-/* showCamera() */
-/* { */
-/* 	static int last_maxflint = -1; */
-/* 	LtState camlt; */
-/* 	Widget w; */
-/* 	int i; */
+static void
+showCamera()
+{
+	static int last_maxflint = -1;
+	LtState camlt;
+	Widget w;
+	int i;
 
-/* 	w = g_w[CS_W]; */
-/* 	switch (telstatshmp->camstate) { */
-/* 	case CAM_IDLE: wtprintf(w,"    IDLE");  camlt = LTIDLE;    break; */
-/* 	case CAM_EXPO: wtprintf(w,"EXPOSING");  camlt = LTACTIVE;  break; */
-/* 	case CAM_READ: wtprintf(w," READING");  camlt = LTACTIVE;  break; */
-/* 	default:				camlt = LTWARN;	   break; */
-/* 	} */
-/* 	setLt (g_w[CSLT_W], camlt); */
+	w = g_w[CS_W];
+	switch (telstatshmp->camstate) {
+	case CAM_IDLE: wtprintf(w,"    IDLE");  camlt = LTIDLE;    break;
+	case CAM_EXPO: wtprintf(w,"EXPOSING");  camlt = LTACTIVE;  break;
+	case CAM_READ: wtprintf(w," READING");  camlt = LTACTIVE;  break;
+	default:				camlt = LTWARN;	   break;
+	}
+	setLt (g_w[CSLT_W], camlt);
 
-/* 	wtprintf (g_w[CT_W], "%8d", telstatshmp->camtemp); */
+	wtprintf (g_w[CT_W], "%8d", telstatshmp->camtemp);
 
-/* 	w = g_w[CC_W]; */
-/* 	switch (telstatshmp->coolerstatus) { */
-/* 	case CCDTS_AT:   wtprintf(w," At Targ"); camlt = LTOK;     break; */
-/* 	case CCDTS_UNDER:wtprintf(w,"  < Targ"); camlt = LTWARN;   break; */
-/* 	case CCDTS_OVER: wtprintf(w,"  > Targ"); camlt = LTWARN;   break; */
-/* 	case CCDTS_OFF:  wtprintf(w,"     Off"); camlt = LTIDLE;   break; */
-/* 	case CCDTS_RDN:  wtprintf(w," Ramping"); camlt = LTACTIVE; break; */
-/* 	case CCDTS_RUP:  wtprintf(w,"  To Amb"); camlt = LTACTIVE; break; */
-/* 	case CCDTS_STUCK:wtprintf(w," Ceiling"); camlt = LTWARN;   break; */
-/* 	case CCDTS_MAX:  wtprintf(w,"   Floor"); camlt = LTWARN;   break; */
-/* 	case CCDTS_AMB:  wtprintf(w,"  At Amb"); camlt = LTIDLE;   break; */
-/* 	case CCDTS_ERR: /\* FALLTHRU *\/ */
-/* 	default:         wtprintf(w,"   Error"); camlt = LTWARN;   break; */
-/* 	    break; */
-/* 	} */
+	w = g_w[CC_W];
+	switch (telstatshmp->coolerstatus) {
+	case CCDTS_AT:   wtprintf(w," At Targ"); camlt = LTOK;     break;
+	case CCDTS_UNDER:wtprintf(w,"  < Targ"); camlt = LTWARN;   break;
+	case CCDTS_OVER: wtprintf(w,"  > Targ"); camlt = LTWARN;   break;
+	case CCDTS_OFF:  wtprintf(w,"     Off"); camlt = LTIDLE;   break;
+	case CCDTS_RDN:  wtprintf(w," Ramping"); camlt = LTACTIVE; break;
+	case CCDTS_RUP:  wtprintf(w,"  To Amb"); camlt = LTACTIVE; break;
+	case CCDTS_STUCK:wtprintf(w," Ceiling"); camlt = LTWARN;   break;
+	case CCDTS_MAX:  wtprintf(w,"   Floor"); camlt = LTWARN;   break;
+	case CCDTS_AMB:  wtprintf(w,"  At Amb"); camlt = LTIDLE;   break;
+	case CCDTS_ERR: /* FALLTHRU */
+	default:         wtprintf(w,"   Error"); camlt = LTWARN;   break;
+	    break;
+	}
 
-/* 	setLt (g_w[CCLT_W], camlt); */
+	setLt (g_w[CCLT_W], camlt);
 
-/* 	switch (telstatshmp->coolerstatus) { */
-/* 	case CCDTS_OFF:	/\* FALLTHRU *\/ */
-/* 	case CCDTS_RUP:	/\* FALLTHRU *\/ */
-/* 	case CCDTS_AMB: */
-/* 	    camlt = LTIDLE; */
-/* 	    break; */
-/* 	default: */
-/* 	    i = abs (telstatshmp->camtarg - telstatshmp->camtemp); */
-/* 	    if (i == 0) */
-/* 		camlt = LTOK; */
-/* 	    else if (i <= MAXTEMPERR) */
-/* 		camlt = LTACTIVE; */
-/* 	    else */
-/* 		camlt = LTWARN; */
-/* 	    break; */
-/* 	} */
-/* 	setLt (g_w[CTLT_W], camlt); */
+	switch (telstatshmp->coolerstatus) {
+	case CCDTS_OFF:	/* FALLTHRU */
+	case CCDTS_RUP:	/* FALLTHRU */
+	case CCDTS_AMB:
+	    camlt = LTIDLE;
+	    break;
+	default:
+	    i = abs (telstatshmp->camtarg - telstatshmp->camtemp);
+	    if (i == 0)
+		camlt = LTOK;
+	    else if (i <= MAXTEMPERR)
+		camlt = LTACTIVE;
+	    else
+		camlt = LTWARN;
+	    break;
+	}
+	setLt (g_w[CTLT_W], camlt);
 
-/* 	/\* even have dome flat lights? *\/ */
-/* 	if (MAXFLINT != last_maxflint) { */
-/* 	    /\* label depends only on whether, TB's depend on passive too *\/ */
-/* 	    if (MAXFLINT > 0) { */
-/* 		XtSetSensitive (g_w[CL_W], True); */
-/* 		XtSetSensitive (g_w[CL1_W], xobs_alone); */
-/* 		XtSetSensitive (g_w[CL2_W], MAXFLINT > 1 && xobs_alone); */
-/* 	    } else { */
-/* 		XtSetSensitive (g_w[CL_W], False); */
-/* 		XtSetSensitive (g_w[CL1_W], False); */
-/* 		XtSetSensitive (g_w[CL2_W], False); */
-/* 	    } */
+	/* even have dome flat lights? */
+	if (MAXFLINT != last_maxflint) {
+	    /* label depends only on whether, TB's depend on passive too */
+	    if (MAXFLINT > 0) {
+		XtSetSensitive (g_w[CL_W], True);
+		XtSetSensitive (g_w[CL1_W], xobs_alone);
+		XtSetSensitive (g_w[CL2_W], MAXFLINT > 1 && xobs_alone);
+	    } else {
+		XtSetSensitive (g_w[CL_W], False);
+		XtSetSensitive (g_w[CL1_W], False);
+		XtSetSensitive (g_w[CL2_W], False);
+	    }
 
-/* 	    last_maxflint = MAXFLINT; */
-/* 	} */
+	    last_maxflint = MAXFLINT;
+	}
 
-/* 	i = telstatshmp->lights; */
-/* 	if (i >= 0) { */
-/* 	    int now; */
+	i = telstatshmp->lights;
+	if (i >= 0) {
+	    int now;
 
-/* 	    now = XmToggleButtonGetState (g_w[CL1_W]); */
-/* 	    if (!!now != !!(i&1)) */
-/* 		XmToggleButtonSetState (g_w[CL1_W], !now, False); */
+	    now = XmToggleButtonGetState (g_w[CL1_W]);
+	    if (!!now != !!(i&1))
+		XmToggleButtonSetState (g_w[CL1_W], !now, False);
 
-/* 	    now = XmToggleButtonGetState (g_w[CL2_W]); */
-/* 	    if (!!now != !!(i&2)) */
-/* 		XmToggleButtonSetState (g_w[CL2_W], !now, False); */
-/* 	} */
+	    now = XmToggleButtonGetState (g_w[CL2_W]);
+	    if (!!now != !!(i&2))
+		XmToggleButtonSetState (g_w[CL2_W], !now, False);
+	}
 
-/* 	setLt (g_w[CLLT_W], i <= 0 ? LTIDLE : LTACTIVE); */
-/* } */
+	setLt (g_w[CLLT_W], i <= 0 ? LTIDLE : LTACTIVE);
+}
 
 static void
 showScope()
 {
-	/* batch status
-   Removed from source*/
-	/* setLt (g_w[SBLT_W], batchison ? LTOK : LTIDLE); */
-	/* if (!xobs_alone) { */
-	/*     /\* track state if passive *\/ */
-	/*     int now = XmToggleButtonGetState(g_w[CBATCH_W]); */
-	/*     if (now != batchison) */
-	/* 	XmToggleButtonSetState (g_w[CBATCH_W], batchison, False); */
-	/* } */
+	/* batch status */
+
+	setLt (g_w[SBLT_W], batchison ? LTOK : LTIDLE);
+	if (!xobs_alone) {
+	    /* track state if passive */
+	    int now = XmToggleButtonGetState(g_w[CBATCH_W]);
+	    if (now != batchison)
+		XmToggleButtonSetState (g_w[CBATCH_W], batchison, False);
+	}
 
 	switch (telstatshmp->telstate) {
 	case TS_STOPPED:
