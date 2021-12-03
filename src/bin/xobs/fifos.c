@@ -34,8 +34,7 @@ static void filter_rd_cb (XtPointer client, int *fdp, XtInputId *idp);
 static void focus_rd_cb (XtPointer client, int *fdp, XtInputId *idp);
 static void dome_rd_cb (XtPointer client, int *fdp, XtInputId *idp);
 static void lights_rd_cb (XtPointer client, int *fdp, XtInputId *idp);
-/* static void cam_rd_cb (XtPointer client, int *fdp, XtInputId *idp); */
-/*Removed from source*/
+static void cam_rd_cb (XtPointer client, int *fdp, XtInputId *idp);
 
 /* this is used to describe the several FIFOs used to communicate with
  * the telescoped.
@@ -52,11 +51,11 @@ typedef struct {
 /* list of fifos to the control daemons */
 static FifoInfo fifos[] = {
     {"Tel",	Tel_Id,		tel_rd_cb},
-    /* {"Filter",	Filter_Id,	filter_rd_cb}, */
-    /* {"Focus",	Focus_Id,	focus_rd_cb}, */
+    {"Filter",	Filter_Id,	filter_rd_cb},
+    {"Focus",	Focus_Id,	focus_rd_cb},
     {"Dome",	Dome_Id,	dome_rd_cb},
     {"Lights",	Lights_Id,	lights_rd_cb},
-    /* {"Camera",	Cam_Id,		cam_rd_cb}, */
+    {"Camera",	Cam_Id,		cam_rd_cb},
 };
 
 #define	NFIFOS	XtNumber(fifos)
@@ -143,7 +142,7 @@ resetSW()
 
 	/* keep up with filter assignments */
 	fillFilterMenu();
-	/* afoc_initCfg(); */ /*Removed from source*/
+	afoc_initCfg();
 }
 
 /* shut down all activity */
@@ -156,8 +155,8 @@ stop_all_devices()
 	    fifoMsg (Dome_Id, "Stop");
 	if (IMOT->have)
 	    fifoMsg (Filter_Id, "Stop");
-	/* if (OMOT->have) */
-	/*     fifoMsg (Focus_Id, "Stop"); */ /*Removed from source*/
+	if (OMOT->have)
+	    fifoMsg (Focus_Id, "Stop");
 }
 
 /* make connections to daemons.
@@ -226,39 +225,37 @@ XtInputId *idp;         /* pointer to input id */
 	updateStatus(1);
 }
 
-/* /\* called whenever we get input from the Filter fifo *\/
- Removed from source*/
-/* /\* ARGSUSED *\/ */
-/* static void */
-/* filter_rd_cb (client, fdp, idp) */
-/* XtPointer client;       /\* unused *\/ */
-/* int *fdp;               /\* pointer to file descriptor *\/ */
-/* XtInputId *idp;         /\* pointer to input id *\/ */
-/* { */
-/* 	char buf[1024]; */
+/* called whenever we get input from the Filter fifo */
+/* ARGSUSED */
+static void
+filter_rd_cb (client, fdp, idp)
+XtPointer client;       /* unused */
+int *fdp;               /* pointer to file descriptor */
+XtInputId *idp;         /* pointer to input id */
+{
+	char buf[1024];
 
-/* 	fifoRead (Filter_Id, buf, sizeof(buf)); */
-/* 	msg ("Filter: %s", buf); */
-/* 	updateStatus(1); */
-/* } */
+	fifoRead (Filter_Id, buf, sizeof(buf));
+	msg ("Filter: %s", buf);
+	updateStatus(1);
+}
 
-/* /\* called whenever we get input from the Focus fifo *\/
- Removed from source*/
-/* /\* ARGSUSED *\/ */
-/* static void */
-/* focus_rd_cb (client, fdp, idp) */
-/* XtPointer client;       /\* unused name *\/ */
-/* int *fdp;               /\* pointer to file descriptor *\/ */
-/* XtInputId *idp;         /\* pointer to input id *\/ */
-/* { */
-/* 	char buf[1024]; */
-/* 	int s; */
+/* called whenever we get input from the Focus fifo */
+/* ARGSUSED */
+static void
+focus_rd_cb (client, fdp, idp)
+XtPointer client;       /* unused name */
+int *fdp;               /* pointer to file descriptor */
+XtInputId *idp;         /* pointer to input id */
+{
+	char buf[1024];
+	int s;
 
-/* 	s = fifoRead (Focus_Id, buf, sizeof(buf)); */
-/* 	msg ("Focus: %s", buf); */
-/* 	afoc_foc_cb(s, buf);	/\* tell autofocus in case he's running *\/ */
-/* 	updateStatus(1); */
-/* } */
+	s = fifoRead (Focus_Id, buf, sizeof(buf));
+	msg ("Focus: %s", buf);
+	afoc_foc_cb(s, buf);	/* tell autofocus in case he's running */
+	updateStatus(1);
+}
 
 /* called whenever we get input from the Dome fifo */
 /* ARGSUSED */
@@ -293,18 +290,17 @@ XtInputId *idp;         /* pointer to input id */
 }
 
 /* called whenever we get input from the camerad fifo */
-/* ARGSUSED
- Removed from source*/
-/* static void */
-/* cam_rd_cb (client, fdp, idp) */
-/* XtPointer client;       /\* unused name *\/ */
-/* int *fdp;               /\* pointer to file descriptor *\/ */
-/* XtInputId *idp;         /\* pointer to input id *\/ */
-/* { */
-/* 	char buf[1024]; */
-/* 	int s; */
+/* ARGSUSED */
+static void
+cam_rd_cb (client, fdp, idp)
+XtPointer client;       /* unused name */
+int *fdp;               /* pointer to file descriptor */
+XtInputId *idp;         /* pointer to input id */
+{
+	char buf[1024];
+	int s;
 
-/* 	s = fifoRead (Cam_Id, buf, sizeof(buf)); */
-/* 	msg ("Camera: %s", buf); */
-/* 	afoc_cam_cb (s, buf); */
-/* } */
+	s = fifoRead (Cam_Id, buf, sizeof(buf));
+	msg ("Camera: %s", buf);
+	afoc_cam_cb (s, buf);
+}
