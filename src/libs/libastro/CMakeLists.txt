@@ -1,8 +1,11 @@
 cmake_minimum_required(VERSION 3.1)
 project(libastro VERSION 0.1)
 
+include_directories(${PROJ_LIBS})
+
 set(
   SRC_FILES
+  P_.h
 	aa_hadec.c
 	aberration.c
 	actan.c

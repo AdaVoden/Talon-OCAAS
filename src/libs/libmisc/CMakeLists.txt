@@ -25,7 +25,6 @@ set(
 	misc.c
   misc.h
 	newton.c
-  pc39.h
 	rot.c
   rot.h
   photstd.c
@@ -46,9 +45,9 @@ set(
   tts.h
   )
 
-include_directories(${PROJ_LIBS})
-
 add_library(misc SHARED ${SRC_FILES})
-target_link_libraries(misc fits)
+target_link_libraries(misc fits astro)
+
+include_directories(${PROJ_LIBS})
 
 install(TARGETS misc DESTINATION lib)
