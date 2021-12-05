@@ -36,6 +36,7 @@ add_subdirectory(src)
 # Rudimentary testing, just making sure that no binary segfaults on us
 # Don't know how to make the tests pass yet, but it doesn't matter
 # So long as they output
+
 # Bin
 add_test(NAME "CAMERA_RUNS" COMMAND "camera" "-h")
 add_test(NAME "CSIMC_RUNS" COMMAND "csimc" "-h")
@@ -94,3 +95,14 @@ set(CPACK_DEBIAN_PACKAGE_SHLIBDEPS ON)
 
 # # must be after CPACK variables
 include(CPack)
+
+### Services
+
+install(FILES talon.conf
+  DESTINATION "/etc/ld.so.conf.d")
+install(FILES weather.service
+  DESTINATION "/etc/systemd/system")
+install(FILES telescope.service
+  DESTINATION "/etc/systemd/system")
+install(FILES telescope.sh
+  DESTINATION "/etc/profile.d")

@@ -1,0 +1,10 @@
+[Unit]
+Description=Talon observatory control
+
+[Service]
+Type=simple
+ExecStart=/usr/local/telescope/bin/rund telescoped
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
