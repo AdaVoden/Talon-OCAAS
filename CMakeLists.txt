@@ -105,4 +105,4 @@ install(FILES weather.service
 install(FILES telescope.service
   DESTINATION "/etc/systemd/system")
 install(FILES telescope.sh
-  DESTINATE "/etc/profile.d")
+  DESTINATION "/etc/profile.d")
