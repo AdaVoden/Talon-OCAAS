@@ -1,0 +1,10 @@
+[Unit]
+Description=Observatory control software weather service, can interface with a variety of very old weather stations that no one makes anymore.
+
+[Service]
+Type=simple
+ExecStart=rund wxd -dls /usr/local/telescope/archive/logs/wx.log
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
