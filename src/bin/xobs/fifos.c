@@ -29,6 +29,7 @@
 #include "widgets.h"
 #include "xobs.h"
 
+
 static void tel_rd_cb(XtPointer client, int *fdp, XtInputId *idp);
 static void filter_rd_cb(XtPointer client, int *fdp, XtInputId *idp);
 static void focus_rd_cb(XtPointer client, int *fdp, XtInputId *idp);
@@ -50,9 +51,12 @@ typedef struct {
 
 /* list of fifos to the control daemons */
 static FifoInfo fifos[] = {
-    {"Tel", Tel_Id, tel_rd_cb},          {"Filter", Filter_Id, filter_rd_cb},
-    {"Focus", Focus_Id, focus_rd_cb},    {"Dome", Dome_Id, dome_rd_cb},
-    {"Lights", Lights_Id, lights_rd_cb}, {"Camera", Cam_Id, cam_rd_cb},
+    {"Tel",	Tel_Id,		tel_rd_cb},
+    {"Filter",	Filter_Id,	filter_rd_cb},
+    {"Focus",	Focus_Id,	focus_rd_cb},
+    {"Dome",	Dome_Id,	dome_rd_cb},
+    {"Lights",	Lights_Id,	lights_rd_cb},
+    {"Camera",	Cam_Id,		cam_rd_cb},
 };
 
 #define NFIFOS XtNumber(fifos)
@@ -120,6 +124,7 @@ int fifoRead(FifoId fid, char buf[], int buflen) {
  * also reload our own info.
  * N.B. we assume there can not be any aux functions running.
  */
+
 void resetSW() {
   /* read ours */
   initCfg();
@@ -195,7 +200,8 @@ void closePipes() {
 
 /* called whenever we get input from the Tel fifo */
 /* ARGSUSED */
-static void tel_rd_cb(client, fdp, idp) XtPointer client; /* unused */
+static void tel_rd_cb(client, fdp, idp) 
+XtPointer client; /* unused */
 int *fdp;       /* pointer to file descriptor */
 XtInputId *idp; /* pointer to input id */
 {
@@ -208,7 +214,8 @@ XtInputId *idp; /* pointer to input id */
 
 /* called whenever we get input from the Filter fifo */
 /* ARGSUSED */
-static void filter_rd_cb(client, fdp, idp) XtPointer client; /* unused */
+static void filter_rd_cb(client, fdp, idp) 
+XtPointer client; /* unused */
 int *fdp;       /* pointer to file descriptor */
 XtInputId *idp; /* pointer to input id */
 {
@@ -219,24 +226,43 @@ XtInputId *idp; /* pointer to input id */
   updateStatus(1);
 }
 
+
+/* called whenever we get input from the Filter fifo */
+/* ARGSUSED */
+static void
+filter_rd_cb (client, fdp, idp)
+XtPointer client;       /* unused */
+int *fdp;               /* pointer to file descriptor */
+XtInputId *idp;         /* pointer to input id */
+{
+	char buf[1024];
+
+	fifoRead (Filter_Id, buf, sizeof(buf));
+	msg ("Filter: %s", buf);
+	updateStatus(1);
+}
+
 /* called whenever we get input from the Focus fifo */
 /* ARGSUSED */
-static void focus_rd_cb(client, fdp, idp) XtPointer client; /* unused name */
-int *fdp;       /* pointer to file descriptor */
-XtInputId *idp; /* pointer to input id */
+static void
+focus_rd_cb (client, fdp, idp)
+XtPointer client;       /* unused name */
+int *fdp;               /* pointer to file descriptor */
+XtInputId *idp;         /* pointer to input id */
 {
-  char buf[1024];
-  int s;
+	char buf[1024];
+	int s;
 
-  s = fifoRead(Focus_Id, buf, sizeof(buf));
-  msg("Focus: %s", buf);
-  afoc_foc_cb(s, buf); /* tell autofocus in case he's running */
-  updateStatus(1);
+	s = fifoRead (Focus_Id, buf, sizeof(buf));
+	msg ("Focus: %s", buf);
+	afoc_foc_cb(s, buf);	/* tell autofocus in case he's running */
+	updateStatus(1);
 }
 
 /* called whenever we get input from the Dome fifo */
 /* ARGSUSED */
-static void dome_rd_cb(client, fdp, idp) XtPointer client; /* file name */
+static void dome_rd_cb(client, fdp, idp)
+XtPointer client; /* file name */
 int *fdp;       /* pointer to file descriptor */
 XtInputId *idp; /* pointer to input id */
 {
@@ -250,7 +276,8 @@ XtInputId *idp; /* pointer to input id */
 
 /* called whenever we get input from the Lights fifo */
 /* ARGSUSED */
-static void lights_rd_cb(client, fdp, idp) XtPointer client; /* file name */
+static void lights_rd_cb(client, fdp, idp) 
+XtPointer client; /* file name */
 int *fdp;       /* pointer to file descriptor */
 XtInputId *idp; /* pointer to input id */
 {
@@ -264,7 +291,8 @@ XtInputId *idp; /* pointer to input id */
 
 /* called whenever we get input from the camerad fifo */
 /* ARGSUSED */
-static void cam_rd_cb(client, fdp, idp) XtPointer client; /* unused name */
+static void cam_rd_cb(client, fdp, idp) 
+XtPointer client; /* unused name */
 int *fdp;       /* pointer to file descriptor */
 XtInputId *idp; /* pointer to input id */
 {
