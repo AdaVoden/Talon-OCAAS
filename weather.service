@@ -1,9 +1,9 @@
 [Unit]
-Description=Observatory control software weather service, can interface with a variety of very old weather stations that no one makes anymore.
+Description=Talon weather station
 
 [Service]
 Type=simple
-ExecStart=rund wxd -dls /usr/local/telescope/archive/logs/wx.log
+ExecStart=/usr/local/telescope/bin/rund /usr/local/telescope/bin/wxd -dls /usr/local/telescope/archive/logs/wx.log
 Restart=always
 
 [Install]
