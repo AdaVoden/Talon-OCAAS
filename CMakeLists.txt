@@ -98,9 +98,11 @@ include(CPack)
 
 ### Services
 
-install(FILE talon.conf
+install(FILES talon.conf
   DESTINATION "/etc/ld.so.conf.d")
-install(FILE weather.service
+install(FILES weather.service
   DESTINATION "/etc/systemd/system")
-install(FILE telescope.service
+install(FILES telescope.service
   DESTINATION "/etc/systemd/system")
+install(FILES telescope.sh
+  DESTINATE "/etc/profile.d")
