@@ -226,22 +226,6 @@ XtInputId *idp; /* pointer to input id */
   updateStatus(1);
 }
 
-
-/* called whenever we get input from the Filter fifo */
-/* ARGSUSED */
-static void
-filter_rd_cb (client, fdp, idp)
-XtPointer client;       /* unused */
-int *fdp;               /* pointer to file descriptor */
-XtInputId *idp;         /* pointer to input id */
-{
-	char buf[1024];
-
-	fifoRead (Filter_Id, buf, sizeof(buf));
-	msg ("Filter: %s", buf);
-	updateStatus(1);
-}
-
 /* called whenever we get input from the Focus fifo */
 /* ARGSUSED */
 static void
