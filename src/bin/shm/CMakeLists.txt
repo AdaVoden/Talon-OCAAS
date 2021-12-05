@@ -1,9 +1,9 @@
 cmake_minimum_required(VERSION 3.1)
 project(shm VERSION 0.1)
 
-include_directories(${PROJ_LIBS})
-
 add_executable(shm shm.c)
+
+include_directories(${PROJ_LIBS})
 
 target_link_libraries(shm misc astro Xmisc fits wcs fs)
 target_link_libraries(shm ${MATH_LIBRARY})

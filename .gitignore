@@ -70,6 +70,7 @@ CTestTestfile.cmake
 _deps
 .cmake
 build
+Debug
 #############
 ### CPACK ###
 #############
@@ -127,3 +128,9 @@ flycheck_*.el
 
 # network security
 /network-security.data
+##############
+### CSCOPE ###
+##############
+cscope.files
+cscope.out
+cscope.in

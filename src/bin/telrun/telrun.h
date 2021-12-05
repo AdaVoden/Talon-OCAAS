@@ -1,6 +1,7 @@
 
 // build specfic settings
-#include "buildcfg.h"
+/* #include "buildcfg.h"/*  *\/ */
+/* Removed as no longer necessary */
 
 /* ids for fifos.
  * N.B. see fifos[] in fifoio.c

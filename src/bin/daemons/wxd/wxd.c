@@ -45,7 +45,7 @@
 #define	MINLOGDT	1	/* log at least this often, hours */
 #define	NOAUXT		-99.99
 
-extern void digitemp(char *tty, WxStats *wp);
+/* extern void digitemp(char *tty, WxStats *wp); */
 extern void createPage (char *tfn, char *ofn, WxStats *wp, double t, double p);
 
 int rflag;
@@ -279,7 +279,7 @@ main (int ac, char *av[])
 	    while (1) {
 		fake (fake_readings, &wxs, &t, &p);
 		bldWdirstr (&wxs);
-		digitemp(NULL, &wxs);
+		/* digitemp(NULL, &wxs); */
 		dispense (&wxs, t, p);
 		sleep (1);
 	    }
@@ -319,8 +319,8 @@ main (int ac, char *av[])
 		    	bldWdirstr (&wxs);
 			    s = 0;
 			}
-			if (HAVEAUX)
-			    digitemp(auxtty, &wxs);
+			/* if (HAVEAUX) */
+			/*     digitemp(auxtty, &wxs); */
 		}			
 		if (s == 0)
 		    dispense (&wxs, t, p);

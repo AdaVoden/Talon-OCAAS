@@ -17,6 +17,7 @@
 #include "catalogs.h"
 #include "strops.h"
 #include "telenv.h"
+#include "scan.h"
 
 static int sao_catalog (FILE *fp);
 static int do_sao (FILE *fp, char name[], Obj *op, char m[]);
