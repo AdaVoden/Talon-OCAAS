@@ -22,9 +22,9 @@ Build
 
 Tested on **Ubuntu LTS 20.04**
 
-install required development packages:
+Building required development packages:
 
-  `sudo apt install libmotif-dev libxpm-dev libxext-dev libxmu-dev libdb-dev`
+  `sudo apt install build-essential libmotif-dev libxpm-dev libxext-dev libxmu-dev libdb-dev`
   
 Download the repository and into a directory, enter it in the commandline and run
 
@@ -51,16 +51,14 @@ Set the OCAAS software to automatically start via the commands:
 
   `sudo systemctl enable weather`
   
+  `sudo systemctl enable csimc`
+  
   `sudo systemctl enable telescope`
 
 Usage
 ------
 
-When connected to a telescope and weather station, you can set the software's required daemons (csicmd, wxd, telescoped) to run via the commands
-  
-  `sudo systemctl start weather`
-  
-  `sudo systemctl start telescope`
+When connected to a telescope and weather station, you can set the software's required daemons (csicmd, wxd, telescoped) to run via the command
   
   `xobs&`
  

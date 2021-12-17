@@ -1,0 +1,10 @@
+[Unit]
+Description=Talon observatory motor controller
+
+[Service]
+Type=simple
+ExecStart=/usr/local/telescope/bin/csimcd
+Restart=always
+
+[Install]
+WantedBy=multi-user.target

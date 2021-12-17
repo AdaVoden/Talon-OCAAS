@@ -3,7 +3,7 @@ Description=Talon weather station
 
 [Service]
 Type=simple
-ExecStart=/usr/local/telescope/bin/rund /usr/local/telescope/bin/wxd -dls /usr/local/telescope/archive/logs/wx.log
+ExecStart=/usr/local/telescope/bin/wxd -dls /usr/local/telescope/archive/logs/wx.log
 Restart=always
 
 [Install]

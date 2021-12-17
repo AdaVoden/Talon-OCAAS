@@ -104,5 +104,7 @@ install(FILES weather.service
   DESTINATION "/etc/systemd/system")
 install(FILES telescope.service
   DESTINATION "/etc/systemd/system")
+install(FILES csimc.service
+  DESTINATION "/etc/systemd/system")
 install(FILES telescope.sh
   DESTINATION "/etc/profile.d")
