@@ -200,7 +200,7 @@ static void initShm() {
     exit(1);
   }
 
-  addr = (long)shmat(shmid, (void *)0, 0);
+  addr = (long)shmat(shmid, (void *)0, SHM_RDONLY);
   if (addr == -1) {
     perror("shmat TELSTATSHMKEY");
     unlock_running(progname, 0);
