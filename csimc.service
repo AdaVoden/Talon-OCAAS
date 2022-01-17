@@ -1,14 +1,12 @@
 [Unit]
 Description=Talon observatory motor controller
-StartLimitIntervalSec=400
-StartLimitBurst=3
 
 [Service]
-Type=forking
+Type=exec
 ExecStart=/usr/local/telescope/bin/csimcd
-PIDFILE=/usr/local/telescope/comm/csimc.pid
+PIDFile=/usr/local/telescope/comm/csimcd.pid
 Restart=always
-RestartSec=30
+RestartSec=5
 
 [Install]
 WantedBy=multi-user.target

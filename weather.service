@@ -1,13 +1,12 @@
 [Unit]
 Description=Talon weather station
-StartLimitIntervalSec=400
-StartLimitBurst=3
 
 [Service]
 Type=forking
 ExecStart=/usr/local/telescope/bin/wxd -dls /usr/local/telescope/archive/logs/wx.log
 Restart=always
-RestartSec=30
-PIDFILE=/usr/local/telescope/comm/wx.pid
+RestartSec=5
+PIDFile=/usr/local/telescope/comm/wxd.pid
+
 [Install]
 WantedBy=multi-user.target
