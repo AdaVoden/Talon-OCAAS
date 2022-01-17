@@ -2,12 +2,17 @@
 Description=Talon observatory control
 After=csimc.service
 Requires=csimc.service
+StartLimitIntervalSec=400
+StartLimitBurst=3
+
 
 [Service]
 Environment=PATH=/bin:/usr/bin:/sbin:/usr/sbin:/usr/local/bin:/usr/local/sbin:/usr/local/telescope/bin
-Type=simple
+Type=forking
 ExecStart=/usr/local/telescope/bin/telescoped.csi
 Restart=always
+RestartSec=30
+PIDFILE=/usr/local/telescope/comm/telescoped.pid
 
 [Install]
 WantedBy=multi-user.target
